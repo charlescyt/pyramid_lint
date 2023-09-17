@@ -1,0 +1,15 @@
+name: pyramid_lint
+description: pyramid_lint introduces a set of additional lints and fixes to enforce a consistent coding style, prevent common mistakes and enhance code readability.
+version: 0.1.0
+repository: https://github.com/charlescyt/pyramid_lint
+issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
+topics: [lints, analyzer]
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  analyzer: ">=6.0.0 <7.0.0"
+  analyzer_plugin: ^0.11.2
+  collection: ^1.17.1
+  custom_lint_builder: ^0.5.3
