@@ -136,7 +136,7 @@ class Point {
 
 Fix
 
-![prefer_declaring_const_constructor](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_declaring_const_constructor.gif)
+![prefer_declaring_const_constructor](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_declaring_const_constructor.gif)
 
 ### prefer_declaring_parameter_name
 
@@ -177,7 +177,7 @@ int add(int a, int b) {
 
 Fix
 
-![prefer_immediate_return](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_immediate_return.gif)
+![prefer_immediate_return](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_immediate_return.gif)
 
 ### prefer_iterable_first
 
@@ -204,7 +204,7 @@ firstNumber = numbers.first;
 
 Fix
 
-![prefer_iterable_first](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_iterable_first.gif)
+![prefer_iterable_first](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_iterable_first.gif)
 
 ### prefer_iterable_last
 
@@ -222,7 +222,7 @@ lastNumber = numbers.elementAt(numbers.length - 1);
 
 Fix
 
-![prefer_iterable_last](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_iterable_last.gif)
+![prefer_iterable_last](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_iterable_last.gif)
 
 Good
 
@@ -265,7 +265,7 @@ Center(
 
 Fix
 
-![avoid_single_child_in_flex](https://github.com/charlescyt/pyramid_lint/blob/main/resources/avoid_single_child_in_flex.gif)
+![avoid_single_child_in_flex](https://github.com/charlescyt/pyramid_lint/raw/main/resources/avoid_single_child_in_flex.gif)
 
 ### correct_order_for_super_dispose
 
@@ -293,7 +293,7 @@ void dispose() {
 
 Fix
 
-![correct_order_for_dispose](https://github.com/charlescyt/pyramid_lint/blob/main/resources/correct_order_for_super_dispose.gif)
+![correct_order_for_dispose](https://github.com/charlescyt/pyramid_lint/raw/main/resources/correct_order_for_super_dispose.gif)
 
 ### correct_order_for_super_init_state
 
@@ -321,7 +321,7 @@ void initState() {
 
 Fix
 
-![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/blob/main/resources/correct_order_for_super_init_state.gif)
+![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/raw/main/resources/correct_order_for_super_init_state.gif)
 
 ### prefer_border_from_border_side
 
@@ -357,7 +357,7 @@ const DecoratedBox(
 
 Fix
 
-![prefer_border_from_border_side](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_border_from_border_side.gif)
+![prefer_border_from_border_side](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_border_from_border_side.gif)
 
 ### prefer_border_radius_all
 
@@ -385,7 +385,7 @@ const DecoratedBox(
 
 Fix
 
-![prefer_border_radius_all](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_border_radius_all.gif)
+![prefer_border_radius_all](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_border_radius_all.gif)
 
 ### prefer_spacer
 
@@ -416,7 +416,7 @@ Column(
 
 Fix
 
-![prefer_spacer](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_spacer.gif)
+![prefer_spacer](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_spacer.gif)
 
 ### prefer_text_rich
 
@@ -450,7 +450,7 @@ const Text.rich(
 
 Fix
 
-![prefer_text_rich](https://github.com/charlescyt/pyramid_lint/blob/main/resources/prefer_text_rich.gif)
+![prefer_text_rich](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_text_rich.gif)
 
 ### proper_usage_of_expanded_and_flexible
 
@@ -491,19 +491,19 @@ Replace
 
 with EdgeInsets.zero.
 
-![use_edge_insets_zero](https://github.com/charlescyt/pyramid_lint/blob/main/resources/use_edge_insets_zero.gif)
+![use_edge_insets_zero](https://github.com/charlescyt/pyramid_lint/raw/main/resources/use_edge_insets_zero.gif)
 
 ### wrap_with_expanded
 
 Wrap the selected widget with an Expanded.
 
-![wrap_with_expanded](https://github.com/charlescyt/pyramid_lint/blob/main/resources/wrap_with_expanded.gif)
+![wrap_with_expanded](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_expanded.gif)
 
 ### wrap_with_stack
 
 Wrap the selected widget with a Stack.
 
-![wrap_with_stack](https://github.com/charlescyt/pyramid_lint/blob/main/resources/wrap_with_stack.gif)
+![wrap_with_stack](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_stack.gif)
 
 [pyramid_lint]: https://pub.dev/packages/pyramid_lint
 [custom_lint]: https://pub.dev/packages/custom_lint
