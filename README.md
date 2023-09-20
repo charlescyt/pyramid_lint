@@ -24,6 +24,7 @@
   - [prefer_spacer](#prefer_spacer)
   - [prefer_text_rich](#prefer_text_rich)
   - [proper_controller_dispose](#proper_controller_dispose)
+  - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
 - [Assists](#assists)
   - [use_edge_insets_zero](#use_edge_insets_zero)
@@ -538,6 +539,54 @@ class _MyWidgetState extends State<MyWidget> {
   }
 }
 ```
+
+### proper_edge_insets_constructor
+
+EdgeInsets.all(0) should be replaced with EdgeInsets.zero.
+
+Bad
+
+```dart
+padding = const EdgeInsets.fromLTRB(0, 0, 0, 0);
+padding = const EdgeInsets.fromLTRB(8, 8, 8, 8);
+padding = const EdgeInsets.fromLTRB(8, 0, 8, 0);
+padding = const EdgeInsets.fromLTRB(8, 4, 8, 4);
+padding = const EdgeInsets.fromLTRB(8, 4, 8, 0);
+
+padding = const EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
+padding = const EdgeInsets.only(left: 8, top: 8, right: 8, bottom: 8);
+padding = const EdgeInsets.only(left: 8, top: 0, right: 8, bottom: 0);
+padding = const EdgeInsets.only(left: 8, top: 4, right: 8, bottom: 4);
+padding = const EdgeInsets.only(left: 2, top: 4, right: 6, bottom: 8);
+
+padding = const EdgeInsets.symmetric(horizontal: 0, vertical: 0);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 0);
+```
+
+Good
+
+```dart
+padding = EdgeInsets.zero;
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
+padding = const EdgeInsets.only(left: 8, top: 4, right: 8);
+
+padding = EdgeInsets.zero;
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
+padding = const EdgeInsets.fromLTRB(2, 4, 6, 8);
+
+padding = EdgeInsets.zero;
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+```
+
+Fix
+
+![proper_edge_insets_constructor](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_edge_insets_constructor.gif)
 
 ### proper_usage_of_expanded_and_flexible
 
