@@ -20,6 +20,7 @@
   - [correct_order_for_super_init_state](#correct_order_for_super_init_state)
   - [prefer_border_from_border_side](#prefer_border_from_border_side)
   - [prefer_border_radius_all](#prefer_border_radius_all)
+  - [prefer_dedicated_media_query_method](#prefer_dedicated_media_query_method)
   - [prefer_spacer](#prefer_spacer)
   - [prefer_text_rich](#prefer_text_rich)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
@@ -386,6 +387,47 @@ const DecoratedBox(
 Fix
 
 ![prefer_border_radius_all](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_border_radius_all.gif)
+
+### prefer_dedicated_media_query_method
+
+Using MediaQuery.of(context) to access below properties will cause unnecessary rebuilds.
+
+- accessibleNavigation
+- alwaysUse24HourFormat
+- boldText
+- devicePixelRatio
+- disableAnimations
+- displayFeatures
+- gestureSettings
+- highContrast
+- invertColors
+- navigationMode
+- orientation
+- padding
+- platformBrightness
+- size
+- systemGestureInsets
+- textScaleFactor
+- viewInsets
+- viewPadding
+
+Bad
+
+```dart
+final size = MediaQuery.of(context).size;
+final orientation = MediaQuery.maybeOf(context)?.orientation;
+```
+
+Good
+
+```dart
+final size = MediaQuery.of(context).size;
+final orientation = MediaQuery.maybeOrientationOf(context);
+```
+
+Fix
+
+![prefer_dedicated_media_query_method](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_dedicated_media_query_method.gif)
 
 ### prefer_spacer
 

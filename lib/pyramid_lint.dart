@@ -14,6 +14,7 @@ import 'src/lints/flutter/correct_order_for_super_dispose.dart';
 import 'src/lints/flutter/correct_order_for_super_init_state.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
+import 'src/lints/flutter/prefer_dedicated_media_query_method.dart';
 import 'src/lints/flutter/prefer_spacer.dart';
 import 'src/lints/flutter/prefer_text_rich.dart';
 import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
@@ -36,6 +37,7 @@ class _PyramidLinter extends PluginBase {
         const CorrectOrderForSuperInitState(),
         const PreferBorderFromBorderSide(),
         const PreferBorderRadiusAll(),
+        const PreferDedicatedMediaQueryMethod(),
         const PreferSpacer(),
         const PreferTextRich(),
         const ProperUsageOfExpandedAndFlexible(),
