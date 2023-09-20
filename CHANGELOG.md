@@ -6,7 +6,9 @@
 
 ### Added
 
-- New lint `prefer_dedicated_media_query_method`.
+- New lints
+  - `prefer_dedicated_media_query_method`
+  - `proper_controller_dispose`
 
 ## [0.1.1] - 2023-09-18
 

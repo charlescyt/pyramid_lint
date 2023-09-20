@@ -17,6 +17,7 @@ import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_method.dart';
 import 'src/lints/flutter/prefer_spacer.dart';
 import 'src/lints/flutter/prefer_text_rich.dart';
+import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
 
 PluginBase createPlugin() => _PyramidLinter();
@@ -40,6 +41,7 @@ class _PyramidLinter extends PluginBase {
         const PreferDedicatedMediaQueryMethod(),
         const PreferSpacer(),
         const PreferTextRich(),
+        const ProperControllerDispose(),
         const ProperUsageOfExpandedAndFlexible(),
       ];
 

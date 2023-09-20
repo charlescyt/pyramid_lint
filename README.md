@@ -23,6 +23,7 @@
   - [prefer_dedicated_media_query_method](#prefer_dedicated_media_query_method)
   - [prefer_spacer](#prefer_spacer)
   - [prefer_text_rich](#prefer_text_rich)
+  - [proper_controller_dispose](#proper_controller_dispose)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
 - [Assists](#assists)
   - [use_edge_insets_zero](#use_edge_insets_zero)
@@ -493,6 +494,50 @@ const Text.rich(
 Fix
 
 ![prefer_text_rich](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_text_rich.gif)
+
+### proper_controller_dispose
+
+Controllers should be disposed in dispose method.
+
+- AnimationController
+- PageController
+- ScrollController
+- SearchController
+- TabController
+- TextEditingController
+- UndoHistoryController
+
+Bad
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  final _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+
+Good
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  final _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+}
+```
 
 ### proper_usage_of_expanded_and_flexible
 

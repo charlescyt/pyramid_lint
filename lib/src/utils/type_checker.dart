@@ -83,3 +83,50 @@ const mediaQueryChecker = TypeChecker.fromName(
   'MediaQuery',
   packageName: 'flutter',
 );
+
+const animationControllerChecker = TypeChecker.fromName(
+  'AnimationController',
+  packageName: 'flutter',
+);
+
+const pageControllerChecker = TypeChecker.fromName(
+  'PageController',
+  packageName: 'flutter',
+);
+
+const scrollControllerChecker = TypeChecker.fromName(
+  'ScrollController',
+  packageName: 'flutter',
+);
+
+const searchControllerChecker = TypeChecker.fromName(
+  'SearchController',
+  packageName: 'flutter',
+);
+
+const tabControllerChecker = TypeChecker.fromName(
+  'TabController',
+  packageName: 'flutter',
+);
+
+const textEditingControllerChecker = TypeChecker.fromName(
+  'TextEditingController',
+  packageName: 'flutter',
+);
+
+const undoHistoryControllerChecker = TypeChecker.fromName(
+  'UndoHistoryController',
+  packageName: 'flutter',
+);
+
+const disposableControllerChecker = TypeChecker.any(
+  [
+    animationControllerChecker,
+    pageControllerChecker,
+    scrollControllerChecker,
+    searchControllerChecker,
+    tabControllerChecker,
+    textEditingControllerChecker,
+    undoHistoryControllerChecker,
+  ],
+);
