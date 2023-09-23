@@ -9,6 +9,7 @@
 - [Configuration](#configuration)
 - [Dart lints](#dart-lints)
   - [avoid_empty_block](#avoid_empty_block)
+  - [avoid_inverted_boolean_expression](#avoid_inverted_boolean_expression)
   - [prefer_declaring_const_constructor](#prefer_declaring_const_constructor)
   - [prefer_declaring_parameter_name](#prefer_declaring_parameter_name)
   - [prefer_immediate_return](#prefer_immediate_return)
@@ -102,6 +103,30 @@ void doSomething() {}
   // TODO: implement doSomething
 }
 ```
+
+### avoid_inverted_boolean_expression
+
+Inverted boolean expression decreases code readability.
+
+Bad
+
+```dart
+if (!(number == 0)) {}
+if (!(number > 0)) {}
+final anotherNumber = !(number == 0) ? 1 : 2;
+```
+
+Good
+
+```dart
+if (number != 0) {}
+if (number <= 0) {}
+final anotherNumber = number != 0 ? 2 : 1;
+```
+
+Fix
+
+![avoid_inverted_boolean_expression](https://github.com/charlescyt/pyramid_lint/raw/main/resources/avoid_inverted_boolean_expression.gif)
 
 ### prefer_declaring_const_constructor
 

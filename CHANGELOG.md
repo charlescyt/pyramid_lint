@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.3.0] - 2023-09-23
+
+### Added
+
+- New lints
+  - `avoid_inverted_boolean_expression`
+
 ## [0.2.0] - 2023-09-21
 
 ### Added
