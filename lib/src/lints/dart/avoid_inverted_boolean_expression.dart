@@ -4,14 +4,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-const _validOperator = {
-  TokenType.EQ_EQ,
-  TokenType.BANG_EQ,
-  TokenType.GT,
-  TokenType.GT_EQ,
-  TokenType.LT,
-  TokenType.LT_EQ,
-};
+import '../../utils/token_type_extensions.dart';
 
 TokenType? _getInvertedOperator(TokenType operator) {
   return switch (operator) {
@@ -53,7 +46,7 @@ class AvoidInvertedBooleanExpression extends DartLintRule {
       if (operandExpression is! BinaryExpression) return;
 
       final operator = operandExpression.operator.type;
-      if (!_validOperator.contains(operator)) return;
+      if (!operator.isEqualityOrRelationalOperator) return;
 
       final invertedOperator = _getInvertedOperator(operator);
       if (invertedOperator == null) return;
@@ -114,7 +107,7 @@ class AvoidInvertedBooleanExpressionFix extends DartFix {
       if (operandExpression is! BinaryExpression) return;
 
       final operator = operandExpression.operator.type;
-      if (!_validOperator.contains(operator)) return;
+      if (!operator.isEqualityOrRelationalOperator) return;
 
       final invertedOperator = _getInvertedOperator(operator);
       if (invertedOperator == null) return;
