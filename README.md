@@ -28,6 +28,7 @@
   - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
 - [Assists](#assists)
+  - [swap_then_else_expression](#swap_then_else_expression)
   - [use_edge_insets_zero](#use_edge_insets_zero)
   - [wrap_with_expanded](#wrap_with_expanded)
   - [wrap_with_stack](#wrap_with_stack)
@@ -640,6 +641,12 @@ Row(
 ```
 
 ## Assists
+
+### swap_then_else_expression
+
+Swap the then and else expression of a if-else expression or conditional expression.
+
+![swap_then_else_expression](https://github.com/charlescyt/pyramid_lint/raw/main/resources/swap_then_else_expression.gif)
 
 ### use_edge_insets_zero
 

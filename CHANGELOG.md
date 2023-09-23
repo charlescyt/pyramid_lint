@@ -2,12 +2,15 @@
 
 ## [Unreleased]
 
-## [0.3.0] - 2023-09-23
+## [0.3.0] - 2023-09-24
 
 ### Added
 
 - New lints
   - `avoid_inverted_boolean_expression`
+
+- New assists
+  - `swap_then_else_expression`
 
 ## [0.2.0] - 2023-09-21
 
