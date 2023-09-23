@@ -22,6 +22,7 @@ import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_edge_insets_constructor.dart';
 import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
 
+/// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
 
 class _PyramidLinter extends PluginBase {
