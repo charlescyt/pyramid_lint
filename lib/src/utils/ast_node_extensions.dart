@@ -33,4 +33,16 @@ extension AstNodeExtensions on AstNode {
 
     return conditionalExpressions;
   }
+
+  Iterable<BinaryExpression> get childrenBinaryExpressions {
+    final binaryExpressions = <BinaryExpression>[];
+
+    visitChildren(
+      RecursiveBinaryExpressionVisitor(
+        onVisitBinaryExpression: binaryExpressions.add,
+      ),
+    );
+
+    return binaryExpressions;
+  }
 }

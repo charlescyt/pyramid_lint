@@ -28,3 +28,17 @@ class RecursiveConditionalExpressionVisitor extends RecursiveAstVisitor<void> {
     node.visitChildren(this);
   }
 }
+
+class RecursiveBinaryExpressionVisitor extends RecursiveAstVisitor<void> {
+  const RecursiveBinaryExpressionVisitor({
+    required this.onVisitBinaryExpression,
+  });
+
+  final void Function(BinaryExpression node) onVisitBinaryExpression;
+
+  @override
+  void visitBinaryExpression(BinaryExpression node) {
+    onVisitBinaryExpression(node);
+    node.visitChildren(this);
+  }
+}

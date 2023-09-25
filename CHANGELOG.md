@@ -10,6 +10,7 @@
   - `avoid_inverted_boolean_expression`
 
 - New assists
+  - `invert_boolean_expression`
   - `swap_then_else_expression`
 
 ## [0.2.0] - 2023-09-21

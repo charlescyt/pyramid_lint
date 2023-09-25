@@ -28,6 +28,7 @@
   - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
 - [Assists](#assists)
+  - [invert_boolean_expression](#invert_boolean_expression)
   - [swap_then_else_expression](#swap_then_else_expression)
   - [use_edge_insets_zero](#use_edge_insets_zero)
   - [wrap_with_expanded](#wrap_with_expanded)
@@ -641,6 +642,12 @@ Row(
 ```
 
 ## Assists
+
+### invert_boolean_expression
+
+Invert a boolean expression.
+
+![invert_boolean_expression](https://github.com/charlescyt/pyramid_lint/raw/main/resources/invert_boolean_expression.gif)
 
 ### swap_then_else_expression
 

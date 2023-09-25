@@ -1,5 +1,6 @@
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import 'src/assists/invert_boolean_expression.dart';
 import 'src/assists/swap_then_else_expression.dart';
 import 'src/assists/use_edge_insets_zero.dart';
 import 'src/assists/wrap_with_expanded.dart';
@@ -53,6 +54,7 @@ class _PyramidLinter extends PluginBase {
 
   @override
   List<Assist> getAssists() => [
+        InvertBooleanExpression(),
         SwapThenElseExpression(),
         UseEdgeInsetsZero(),
         WrapWithExpanded(),
