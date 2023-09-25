@@ -3,12 +3,13 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'visitors.dart';
 
 extension AstNodeExtensions on AstNode {
-  /// Returns the nearest ancestor node of this node that is of type
-  /// [InstanceCreationExpression], or `null` if there are none.
+  /// Returns the nearest [InstanceCreationExpression] that is an ancestor
+  /// of this [AstNode], or `null` if there is none.
   InstanceCreationExpression? get parentInstanceCreationExpression =>
       parent?.thisOrAncestorOfType<InstanceCreationExpression>();
 
-  // Returns the if statements in this node.
+  /// Returns an iterable of all the [ConstructorDeclaration] that are
+  /// children of this [AstNode].
   Iterable<IfStatement> get childrenIfStatements {
     final ifStatements = <IfStatement>[];
 
@@ -21,8 +22,9 @@ extension AstNodeExtensions on AstNode {
     return ifStatements;
   }
 
-  /// Returns the conditional expressions in this node.
-  List<ConditionalExpression> get childrenConditionalExpressions {
+  /// Returns an iterable of all the [ConstructorDeclaration] that are
+  /// children of this [AstNode].
+  Iterable<ConditionalExpression> get childrenConditionalExpressions {
     final conditionalExpressions = <ConditionalExpression>[];
 
     visitChildren(
@@ -34,6 +36,8 @@ extension AstNodeExtensions on AstNode {
     return conditionalExpressions;
   }
 
+  /// Returns an iterable of all the [ConstructorDeclaration] that are
+  /// children of this [AstNode].
   Iterable<BinaryExpression> get childrenBinaryExpressions {
     final binaryExpressions = <BinaryExpression>[];
 
