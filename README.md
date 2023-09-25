@@ -11,6 +11,7 @@
   - [avoid_empty_block](#avoid_empty_block)
   - [avoid_inverted_boolean_expression](#avoid_inverted_boolean_expression)
   - [max_lines_for_file](#max_lines_for_file)
+  - [max_lines_for_function](#max_lines_for_function)
   - [prefer_declaring_const_constructor](#prefer_declaring_const_constructor)
   - [prefer_declaring_parameter_name](#prefer_declaring_parameter_name)
   - [prefer_immediate_return](#prefer_immediate_return)
@@ -138,6 +139,13 @@ A file should not exceed a certain number of lines.
 
 Options:
 `max_lines` (default: 200)
+
+### max_lines_for_function
+
+A function should not exceed a certain number of lines.
+
+Options:
+`max_lines` (default: 100)
 
 ### prefer_declaring_const_constructor
 

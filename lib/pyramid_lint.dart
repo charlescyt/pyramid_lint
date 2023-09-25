@@ -8,6 +8,7 @@ import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/lints/dart/avoid_empty_block.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expression.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
+import 'src/lints/dart/max_lines_for_function.dart';
 import 'src/lints/dart/prefer_declaring_const_constructor.dart';
 import 'src/lints/dart/prefer_declaring_parameter_name.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
@@ -35,6 +36,7 @@ class _PyramidLinter extends PluginBase {
         const AvoidEmptyBlock(),
         const AvoidInvertedBooleanExpression(),
         MaxLinesForFile(configs),
+        MaxLinesForFunction(configs),
         const PreferDeclaringConstConstructor(),
         const PreferDeclaringParameterName(),
         const PreferImmediateReturn(),

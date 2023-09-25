@@ -8,6 +8,7 @@
 
 - New lints
   - `max_lines_for_file`
+  - `max_lines_for_function`
 
 ## [0.3.0] - 2023-09-25
 
