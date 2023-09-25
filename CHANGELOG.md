@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.4.0] - 2023-09-26
+
+### Added
+
+- New lints
+  - `max_lines_for_file`
+
 ## [0.3.0] - 2023-09-25
 
 ### Added

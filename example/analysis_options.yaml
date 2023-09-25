@@ -3,3 +3,8 @@ include: ../analysis_options.yaml
 analyzer:
   plugins:
     - custom_lint
+
+custom_lint:
+  rules:
+    - max_lines_for_file:
+      max_lines: 100
