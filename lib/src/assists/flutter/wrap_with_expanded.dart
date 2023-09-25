@@ -1,8 +1,8 @@
 import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../utils/ast_node_extensions.dart';
-import '../utils/type_checker.dart';
+import '../../utils/ast_node_extensions.dart';
+import '../../utils/type_checker.dart';
 
 class WrapWithExpanded extends DartAssist {
   @override
