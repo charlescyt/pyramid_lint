@@ -7,6 +7,7 @@
 ### Added
 
 - New lints
+  - `avoid_duplicate_import`
   - `max_lines_for_file`
   - `max_lines_for_function`
 

@@ -5,6 +5,7 @@ import 'src/assists/dart/swap_then_else_expression.dart';
 import 'src/assists/flutter/use_edge_insets_zero.dart';
 import 'src/assists/flutter/wrap_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
+import 'src/lints/dart/avoid_duplicate_import.dart';
 import 'src/lints/dart/avoid_empty_block.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expression.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
@@ -33,6 +34,7 @@ class _PyramidLinter extends PluginBase {
   @override
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
         // Dart lints
+        const AvoidDuplicateImport(),
         const AvoidEmptyBlock(),
         const AvoidInvertedBooleanExpression(),
         MaxLinesForFile(configs),

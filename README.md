@@ -8,6 +8,7 @@
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Dart lints](#dart-lints)
+  - [avoid_duplicate_import](#avoid_duplicate_import)
   - [avoid_empty_block](#avoid_empty_block)
   - [avoid_inverted_boolean_expression](#avoid_inverted_boolean_expression)
   - [max_lines_for_file](#max_lines_for_file)
@@ -84,6 +85,29 @@ custom_lint:
 ```
 
 ## Dart lints
+
+### avoid_duplicate_import
+
+Duplicate imports are unnecessary.
+
+Bad
+
+```dart
+import 'dart:math' as math show max;
+import 'dart:math';
+
+final a = math.max(1, 10);
+final b = min(1, 10);
+```
+
+Good
+
+```dart
+import 'dart:math' as math show max, min;
+
+final a = math.max(1, 10);
+final b = math.min(1, 10);
+```
 
 ### avoid_empty_block
 
