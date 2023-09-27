@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.5.0] - 2023-09-27
+
+### Added
+
+- New Assist
+  - `wrap_with_layout_builder`
+
 ## [0.4.0] - 2023-09-26
 
 ### Added

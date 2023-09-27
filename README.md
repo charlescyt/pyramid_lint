@@ -36,6 +36,7 @@
 - [Flutter assists](#flutter-assists)
   - [use_edge_insets_zero](#use_edge_insets_zero)
   - [wrap_with_expanded](#wrap_with_expanded)
+  - [wrap_with_layout_builder](#wrap_with_layout_builder)
   - [wrap_with_stack](#wrap_with_stack)
 
 ## Installation
@@ -716,6 +717,12 @@ with EdgeInsets.zero.
 Wrap the selected widget with an Expanded.
 
 ![wrap_with_expanded](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_expanded.gif)
+
+### wrap_with_layout_builder
+
+Wrap the selected widget with a LayoutBuilder.
+
+![wrap_with_layout_builder](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_layout_builder.gif)
 
 ### wrap_with_stack
 
