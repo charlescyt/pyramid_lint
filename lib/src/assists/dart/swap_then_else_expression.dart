@@ -13,7 +13,7 @@ class SwapThenElseExpression extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addIfStatement((node) {
-      if (!target.intersects(node.sourceRange)) return;
+      if (!node.sourceRange.covers(target)) return;
 
       final childrenIfStatements = node.childrenIfStatements;
       final isTargetInsideChildrenIfStatements =

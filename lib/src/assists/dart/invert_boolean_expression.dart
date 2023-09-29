@@ -25,7 +25,7 @@ class InvertBooleanExpression extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addBinaryExpression((node) {
-      if (!target.intersects(node.sourceRange)) return;
+      if (!node.sourceRange.covers(target)) return;
 
       final childrenBinaryExpressions = node.childrenBinaryExpressions;
       final isTargetInsideChildrenBinaryExpressions = childrenBinaryExpressions

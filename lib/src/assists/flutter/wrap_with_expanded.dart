@@ -13,7 +13,7 @@ class WrapWithExpanded extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addInstanceCreationExpression((node) {
-      if (!target.intersects(node.constructorName.sourceRange)) return;
+      if (!node.constructorName.sourceRange.covers(target)) return;
 
       final type = node.staticType;
       if (type == null ||

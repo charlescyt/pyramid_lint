@@ -14,7 +14,7 @@ class UseEdgeInsetsZero extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addInstanceCreationExpression((node) {
-      if (!target.intersects(node.sourceRange)) return;
+      if (!node.sourceRange.covers(target)) return;
 
       final type = node.staticType;
       if (type == null || !edgeInsetsChecker.isExactlyType(type)) return;
