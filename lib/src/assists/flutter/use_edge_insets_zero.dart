@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/source_range.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
@@ -14,7 +15,14 @@ class UseEdgeInsetsZero extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addInstanceCreationExpression((node) {
-      if (!node.sourceRange.covers(target)) return;
+      final sourceRange = switch (node.keyword) {
+        null => node.sourceRange,
+        final keyword => range.startEnd(
+            keyword,
+            node,
+          ),
+      };
+      if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;
       if (type == null || !edgeInsetsChecker.isExactlyType(type)) return;

@@ -2,12 +2,16 @@
 
 ## [Unreleased]
 
-## [0.5.0] - 2023-09-27
+## [0.5.0] - 2023-09-29
 
 ### Added
 
 - New Assist
   - `wrap_with_layout_builder`
+
+### Changed
+
+- Assists triggered on InstanceCreationExpression are now available on `new` and `const` keywords.
 
 ## [0.4.0] - 2023-09-26
 

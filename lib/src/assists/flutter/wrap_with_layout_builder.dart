@@ -1,4 +1,5 @@
 import 'package:analyzer/source/source_range.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/type_checker.dart';
@@ -12,8 +13,14 @@ class WrapWithLayoutBuilder extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addInstanceCreationExpression((node) {
-      if (!(target.intersects(node.constructorName.sourceRange) ||
-          target.intersects(node.keyword?.sourceRange))) return;
+      final sourceRange = switch (node.keyword) {
+        null => node.constructorName.sourceRange,
+        final keyword => range.startEnd(
+            keyword,
+            node.constructorName,
+          ),
+      };
+      if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;
       if (type == null || !widgetChecker.isSuperTypeOf(type)) return;
