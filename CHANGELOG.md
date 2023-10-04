@@ -2,12 +2,15 @@
 
 ## [Unreleased]
 
-## [0.5.0] - 2023-10-04
+## [0.5.0] - 2023-10-05
 
 ### Added
 
 - New Assist
   - `wrap_with_layout_builder`
+
+- New lint
+  - `proper_usage_of_from_environment`
 
 ### Changed
 

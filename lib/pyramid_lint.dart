@@ -27,6 +27,7 @@ import 'src/lints/flutter/prefer_text_rich.dart';
 import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_edge_insets_constructor.dart';
 import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
+import 'src/lints/flutter/proper_usage_of_from_environment.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -57,6 +58,7 @@ class _PyramidLinter extends PluginBase {
         const ProperControllerDispose(),
         const ProperEdgeInsetsConstructor(),
         const ProperUsageOfExpandedAndFlexible(),
+        const ProperUsageOfFromEnvironment(),
       ];
 
   @override
