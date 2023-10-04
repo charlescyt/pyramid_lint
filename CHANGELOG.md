@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [0.5.0] - 2023-09-29
+## [0.5.0] - 2023-10-04
 
 ### Added
 
@@ -12,6 +12,10 @@
 ### Changed
 
 - Assists triggered on InstanceCreationExpression are now available on `new` and `const` keywords.
+
+### Fixed
+
+- Fix a bug where the fix for `correct_order_for_super_dispose` is not working.
 
 ## [0.4.0] - 2023-09-26
 

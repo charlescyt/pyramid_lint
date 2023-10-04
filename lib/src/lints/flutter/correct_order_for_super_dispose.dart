@@ -68,7 +68,7 @@ class CorrectOrderForSuperDisposeFix extends DartFix {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       final body =
-          node.members.getConstructorDeclarationByName('dispose')?.body;
+          node.members.getMethodDeclarationByName('dispose')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;
