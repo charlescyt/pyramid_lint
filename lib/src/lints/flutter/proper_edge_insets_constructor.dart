@@ -120,11 +120,11 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
       }
 
       if (constructorName == 'only') {
-        final left = node.argumentList.getArgumentByName('left')?.expression;
-        final top = node.argumentList.getArgumentByName('top')?.expression;
-        final right = node.argumentList.getArgumentByName('right')?.expression;
+        final left = node.argumentList.findArgumentByName('left')?.expression;
+        final top = node.argumentList.findArgumentByName('top')?.expression;
+        final right = node.argumentList.findArgumentByName('right')?.expression;
         final bottom =
-            node.argumentList.getArgumentByName('bottom')?.expression;
+            node.argumentList.findArgumentByName('bottom')?.expression;
 
         switch ((left: left, top: top, right: right, bottom: bottom)) {
           case (
@@ -233,9 +233,9 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
 
       if (constructorName == 'symmetric') {
         final vertical =
-            node.argumentList.getArgumentByName('vertical')?.expression;
+            node.argumentList.findArgumentByName('vertical')?.expression;
         final horizontal =
-            node.argumentList.getArgumentByName('horizontal')?.expression;
+            node.argumentList.findArgumentByName('horizontal')?.expression;
 
         switch ((vertical: vertical, horizontal: horizontal)) {
           case (
@@ -417,11 +417,11 @@ class ProperEdgeInsetsConstructorFix extends DartFix {
       }
 
       if (constructorName == 'only') {
-        final left = node.argumentList.getArgumentByName('left')?.expression;
-        final top = node.argumentList.getArgumentByName('top')?.expression;
-        final right = node.argumentList.getArgumentByName('right')?.expression;
+        final left = node.argumentList.findArgumentByName('left')?.expression;
+        final top = node.argumentList.findArgumentByName('top')?.expression;
+        final right = node.argumentList.findArgumentByName('right')?.expression;
         final bottom =
-            node.argumentList.getArgumentByName('bottom')?.expression;
+            node.argumentList.findArgumentByName('bottom')?.expression;
 
         switch ((left: left, top: top, right: right, bottom: bottom)) {
           case (
@@ -547,9 +547,9 @@ class ProperEdgeInsetsConstructorFix extends DartFix {
 
       if (constructorName == 'symmetric') {
         final vertical =
-            node.argumentList.getArgumentByName('vertical')?.expression;
+            node.argumentList.findArgumentByName('vertical')?.expression;
         final horizontal =
-            node.argumentList.getArgumentByName('horizontal')?.expression;
+            node.argumentList.findArgumentByName('horizontal')?.expression;
 
         switch ((vertical: vertical, horizontal: horizontal)) {
           case (

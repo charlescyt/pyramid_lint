@@ -34,7 +34,7 @@ class CorrectOrderForSuperDispose extends DartLintRule {
         return;
       }
 
-      final body = node.members.getMethodDeclarationByName('dispose')?.body;
+      final body = node.members.findMethodDeclarationByName('dispose')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;
@@ -67,8 +67,7 @@ class CorrectOrderForSuperDisposeFix extends DartFix {
     context.registry.addClassDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final body =
-          node.members.getMethodDeclarationByName('dispose')?.body;
+      final body = node.members.findMethodDeclarationByName('dispose')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;

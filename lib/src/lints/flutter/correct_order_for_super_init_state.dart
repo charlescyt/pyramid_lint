@@ -34,7 +34,7 @@ class CorrectOrderForSuperInitState extends DartLintRule {
         return;
       }
 
-      final body = node.members.getMethodDeclarationByName('initState')?.body;
+      final body = node.members.findMethodDeclarationByName('initState')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;
@@ -67,7 +67,7 @@ class CorrectOrderForSuperInitStateFix extends DartFix {
     context.registry.addClassDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final body = node.members.getMethodDeclarationByName('initState')?.body;
+      final body = node.members.findMethodDeclarationByName('initState')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;

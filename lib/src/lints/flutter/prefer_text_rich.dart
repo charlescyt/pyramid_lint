@@ -53,7 +53,7 @@ class PreferTextRichFix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final textArgument = node.argumentList.getArgumentByName('text');
+        final textArgument = node.argumentList.findArgumentByName('text');
 
         builder.addSimpleReplacement(
           node.constructorName.sourceRange,

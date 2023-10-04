@@ -5,13 +5,13 @@ extension ArgumentListExtensions on ArgumentList {
   /// Returns the named argument with the name child in this [ArgumentList], or
   /// `null` if there is none.
   NamedExpression? get childArgument {
-    return getArgumentByName('child');
+    return findArgumentByName('child');
   }
 
   /// Returns the named argument with the name children in this [ArgumentList],
   /// or `null` if there is none.
   NamedExpression? get childrenArgument {
-    return getArgumentByName('children');
+    return findArgumentByName('children');
   }
 
   /// Returns an iterable of all the named arguments in this [ArgumentList].
@@ -26,7 +26,7 @@ extension ArgumentListExtensions on ArgumentList {
 
   /// Returns the named argument with the given [name], or `null` if there is
   /// none.
-  NamedExpression? getArgumentByName(String name) {
+  NamedExpression? findArgumentByName(String name) {
     return namedArguments.firstWhereOrNull((e) => e.name.label.name == name);
   }
 }

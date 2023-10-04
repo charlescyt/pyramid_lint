@@ -72,7 +72,7 @@ class PreferSpacerFix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final flexArgument = node.argumentList.getArgumentByName('flex');
+        final flexArgument = node.argumentList.findArgumentByName('flex');
 
         if (flexArgument == null) {
           builder.addSimpleReplacement(

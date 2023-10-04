@@ -22,20 +22,20 @@ extension ClassMembersExtensions on NodeList<ClassMember> {
 
   /// Returns the first [ConstructorDeclaration] with the given [name], or
   /// `null` if there is none.
-  ConstructorDeclaration? getConstructorDeclarationByName(String name) {
+  ConstructorDeclaration? findConstructorDeclarationByName(String name) {
     return constructorDeclarations
         .firstWhereOrNull((e) => e.name?.lexeme == name);
   }
 
   /// Returns the first [MethodDeclaration] with the given [name], or `null` if
   /// there is none.
-  MethodDeclaration? getMethodDeclarationByName(String name) {
+  MethodDeclaration? findMethodDeclarationByName(String name) {
     return methodDeclarations.firstWhereOrNull((e) => e.name.lexeme == name);
   }
 
   /// Returns the first [FieldDeclaration] with the given [name], or `null` if
   /// there is none.
-  FieldDeclaration? getFieldDeclarationByName(String name) {
+  FieldDeclaration? findFieldDeclarationByName(String name) {
     return fieldDeclarations.firstWhereOrNull(
       (e) => e.fields.variables.first.name.lexeme == name,
     );

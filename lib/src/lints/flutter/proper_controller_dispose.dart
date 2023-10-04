@@ -62,7 +62,7 @@ class ProperControllerDispose extends DartLintRule {
       if (controllerDeclarations.isEmpty) return;
 
       final disposeMethodDeclaration =
-          node.members.getMethodDeclarationByName('dispose');
+          node.members.findMethodDeclarationByName('dispose');
       if (disposeMethodDeclaration == null) {
         reporter.reportErrorForToken(
           code.copyWith(
