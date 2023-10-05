@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.6.0] - 2023-10-05
+
+### Added
+
+- New lints
+  - `prefer_async_callback`
+  - `prefer_value_changed`
+  - `prefer_void_callback`
+
 ## [0.5.0] - 2023-10-05
 
 ### Added

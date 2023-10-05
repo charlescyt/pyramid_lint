@@ -22,6 +22,7 @@
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
   - [correct_order_for_super_dispose](#correct_order_for_super_dispose)
   - [correct_order_for_super_init_state](#correct_order_for_super_init_state)
+  - [prefer_async_callback](#prefer_async_callback)
   - [prefer_border_from_border_side](#prefer_border_from_border_side)
   - [prefer_border_radius_all](#prefer_border_radius_all)
   - [prefer_dedicated_media_query_method](#prefer_dedicated_media_query_method)
@@ -396,6 +397,22 @@ Fix
 
 ![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/raw/main/resources/correct_order_for_super_init_state.gif)
 
+### prefer_async_callback
+
+There is a typedef AsyncCallback defined in flutter.
+
+Bad
+
+```dart
+final Future<void> Function() cb;
+```
+
+Good
+
+```dart
+final AsyncCallback cb;
+```
+
 ### prefer_border_from_border_side
 
 Border.all is not a const constructor and it uses const constructor Border.fromBorderSide internally.
@@ -565,6 +582,38 @@ const Text.rich(
 Fix
 
 ![prefer_text_rich](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_text_rich.gif)
+
+### prefer_value_changed
+
+There is a typedef ValueChanged defined in flutter.
+
+Bad
+
+```dart
+final void Function(int) cb;
+```
+
+Good
+
+```dart
+final ValueChanged<int> cb;
+```
+
+### prefer_void_callback
+
+There is a typedef VoidCallback defined in flutter.
+
+Bad
+
+```dart
+final void Function() cb;
+```
+
+Good
+
+```dart
+final VoidCallback cb;
+```
 
 ### proper_controller_dispose
 

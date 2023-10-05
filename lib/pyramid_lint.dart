@@ -19,11 +19,14 @@ import 'src/lints/dart/prefer_iterable_last.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
 import 'src/lints/flutter/correct_order_for_super_dispose.dart';
 import 'src/lints/flutter/correct_order_for_super_init_state.dart';
+import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_method.dart';
 import 'src/lints/flutter/prefer_spacer.dart';
 import 'src/lints/flutter/prefer_text_rich.dart';
+import 'src/lints/flutter/prefer_value_changed.dart';
+import 'src/lints/flutter/prefer_void_callback.dart';
 import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_edge_insets_constructor.dart';
 import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
@@ -50,11 +53,14 @@ class _PyramidLinter extends PluginBase {
         const AvoidSingleChildInFlex(),
         const CorrectOrderForSuperDispose(),
         const CorrectOrderForSuperInitState(),
+        const PreferAsyncCallback(),
         const PreferBorderFromBorderSide(),
         const PreferBorderRadiusAll(),
         const PreferDedicatedMediaQueryMethod(),
         const PreferSpacer(),
         const PreferTextRich(),
+        const PreferValueChanged(),
+        const PreferVoidCallback(),
         const ProperControllerDispose(),
         const ProperEdgeInsetsConstructor(),
         const ProperUsageOfExpandedAndFlexible(),
