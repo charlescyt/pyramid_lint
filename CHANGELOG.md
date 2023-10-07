@@ -2,11 +2,12 @@
 
 ## [Unreleased]
 
-## [0.6.0] - 2023-10-05
+## [0.6.0] - 2023-10-07
 
 ### Added
 
 - New lints
+  - `avoid_dynamic`
   - `prefer_async_callback`
   - `prefer_value_changed`
   - `prefer_void_callback`
