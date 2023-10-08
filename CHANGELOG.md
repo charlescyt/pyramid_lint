@@ -11,6 +11,7 @@
   - `prefer_async_callback`
   - `prefer_value_changed`
   - `prefer_void_callback`
+  - `prefer_underscore_for_unused_callback_parameters`
 
 ## [0.5.0] - 2023-10-05
 

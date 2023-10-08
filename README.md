@@ -19,6 +19,7 @@
   - [prefer_immediate_return](#prefer_immediate_return)
   - [prefer_iterable_first](#prefer_iterable_first)
   - [prefer_iterable_last](#prefer_iterable_last)
+  - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
 - [Flutter lints](#flutter-lints)
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
   - [correct_order_for_super_dispose](#correct_order_for_super_dispose)
@@ -330,6 +331,26 @@ const numbers = [1, 2, 3];
 int lastNumber;
 
 lastNumber = numbers.last;
+```
+
+### prefer_underscore_for_unused_callback_parameters
+
+Using `_` for unused callback parameters increases code readability.
+
+Bad
+
+```dart
+itemBuilder: (context, index) {
+  return Text('Item $index');
+}
+```
+
+Good
+
+```dart
+itemBuilder: (_, index) {
+  return Text('Item $index');
+}
 ```
 
 ## Flutter lints

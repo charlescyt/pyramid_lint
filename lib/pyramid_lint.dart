@@ -17,6 +17,7 @@ import 'src/lints/dart/prefer_declaring_parameter_name.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
 import 'src/lints/dart/prefer_iterable_first.dart';
 import 'src/lints/dart/prefer_iterable_last.dart';
+import 'src/lints/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
 import 'src/lints/flutter/correct_order_for_super_dispose.dart';
 import 'src/lints/flutter/correct_order_for_super_init_state.dart';
@@ -51,6 +52,7 @@ class _PyramidLinter extends PluginBase {
         const PreferImmediateReturn(),
         const PreferIterableFirst(),
         const PreferIterableLast(),
+        const PreferUnderscoreForUnusedCallbackParameters(),
         // Flutter lints
         const AvoidSingleChildInFlex(),
         const CorrectOrderForSuperDispose(),
