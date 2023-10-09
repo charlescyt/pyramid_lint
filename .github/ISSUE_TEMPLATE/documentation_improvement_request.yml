@@ -1,0 +1,22 @@
+name: 📚 Documentation improvement request
+description: Suggest a documentation improvement
+labels: ["documentation", "needs triage"]
+assignees: [charlescyt]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for using Pyramid Lint and taking the time to file a documentation improvement request!
+
+  - type: textarea
+    attributes:
+      label: Documentation Improvement Description
+      description: Please provide a clear and concise description of the documentation improvement you would like to see.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: Add any additional information, references, or resources that may be helpful in understanding the requested documentation improvement.
