@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Flutter and Dart SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Show Dart SDK version
+        run: dart --version
+
+      - name: Show Flutter SDK version
+        run: flutter --version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Show outdated packages
+        run: flutter pub outdated
+
+      - name: Check formating
+        run: dart format --output=none --set-exit-if-changed ./lib ./example
+
+      - name: Analyze
+        run: flutter analyze ./lib ./example
+
+      - name: Install custom_lint
+        run: dart pub global activate custom_lint
+
+      - name: Run custom_lint
+        run: custom_lint ./example
