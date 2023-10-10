@@ -31,8 +31,8 @@ import 'src/lints/flutter/prefer_value_changed.dart';
 import 'src/lints/flutter/prefer_void_callback.dart';
 import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_edge_insets_constructor.dart';
+import 'src/lints/flutter/proper_expanded_and_flexible.dart';
 import 'src/lints/flutter/proper_from_environment.dart';
-import 'src/lints/flutter/proper_usage_of_expanded_and_flexible.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -67,8 +67,8 @@ class _PyramidLinter extends PluginBase {
         const PreferVoidCallback(),
         const ProperControllerDispose(),
         const ProperEdgeInsetsConstructor(),
+        const ProperExpandedAndFlexible(),
         const ProperFromEnvironment(),
-        const ProperUsageOfExpandedAndFlexible(),
       ];
 
   @override

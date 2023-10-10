@@ -32,7 +32,7 @@
   - [prefer_text_rich](#prefer_text_rich)
   - [proper_controller_dispose](#proper_controller_dispose)
   - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
-  - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
+  - [proper_expanded_and_flexible](#proper_expanded_and_flexible)
   - [proper_from_environment](#proper_from_environment)
 - [Dart assists](#dart-assists)
   - [invert_boolean_expression](#invert_boolean_expression)
@@ -753,7 +753,7 @@ Fix
 
 ![proper_edge_insets_constructor](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_edge_insets_constructor.gif)
 
-### proper_usage_of_expanded_and_flexible
+### proper_expanded_and_flexible
 
 Expanded and Flexible should be placed inside a Row, Column, or Flex.
 

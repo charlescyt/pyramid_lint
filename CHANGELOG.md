@@ -7,6 +7,7 @@
 ### Changed
 
 - **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
+- **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
 
 ### Fixed
 

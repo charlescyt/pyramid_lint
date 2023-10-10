@@ -7,11 +7,11 @@ class ProperUsageOfExpandedOrFlexibleExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Stack(
       children: [
-        // expect_lint: proper_usage_of_expanded_and_flexible
+        // expect_lint: proper_expanded_and_flexible
         Expanded(
           child: Text('Pyramid'),
         ),
-        // expect_lint: proper_usage_of_expanded_and_flexible
+        // expect_lint: proper_expanded_and_flexible
         Flexible(
           child: Text('Lint'),
         ),
