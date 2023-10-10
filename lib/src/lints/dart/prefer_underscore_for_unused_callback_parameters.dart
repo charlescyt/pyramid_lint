@@ -3,15 +3,19 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/visitors.dart';
 
 class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
   const PreferUnderscoreForUnusedCallbackParameters() : super(code: _code);
 
+  static const name = 'prefer_underscore_for_unused_callback_parameters';
+
   static const _code = LintCode(
-    name: 'prefer_underscore_for_unused_callback_parameters',
+    name: name,
     problemMessage: 'The callback parameter is not used.',
     correctionMessage: 'Consider using underscores for the unused parameter.',
+    url: '$docUrl#${PreferUnderscoreForUnusedCallbackParameters.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

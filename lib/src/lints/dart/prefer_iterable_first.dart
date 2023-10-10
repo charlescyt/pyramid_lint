@@ -4,15 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferIterableFirst extends DartLintRule {
   const PreferIterableFirst() : super(code: _code);
 
+  static const name = 'prefer_iterable_first';
+
   static const _code = LintCode(
-    name: 'prefer_iterable_first',
+    name: name,
     problemMessage: '{0} is more verbose than iterable.first.',
     correctionMessage: 'Try replacing {1} with {2}.',
+    url: '$docUrl#${PreferIterableFirst.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

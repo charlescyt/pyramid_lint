@@ -4,15 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/iterable_extensions.dart';
 
 class AvoidDuplicateImport extends DartLintRule {
   const AvoidDuplicateImport() : super(code: _code);
 
+  static const name = 'avoid_duplicate_import';
+
   static const _code = LintCode(
-    name: 'avoid_duplicate_import',
+    name: name,
     problemMessage: 'There is a duplicate import.',
     correctionMessage: 'Consider combining or removing the duplicate imports.',
+    url: '$docUrl#${AvoidDuplicateImport.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

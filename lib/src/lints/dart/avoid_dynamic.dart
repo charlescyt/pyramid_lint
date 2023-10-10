@@ -4,13 +4,18 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
+
 class AvoidDynamic extends DartLintRule {
   const AvoidDynamic() : super(code: _code);
 
+  static const name = 'avoid_dynamic';
+
   static const _code = LintCode(
-    name: 'avoid_dynamic',
+    name: name,
     problemMessage: 'Avoid using dynamic type.',
     correctionMessage: 'Consider specifying a type other than dynamic.',
+    url: '$docUrl#${AvoidDynamic.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

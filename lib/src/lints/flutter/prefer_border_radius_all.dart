@@ -2,18 +2,22 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferBorderRadiusAll extends DartLintRule {
   const PreferBorderRadiusAll() : super(code: _code);
 
+  static const name = 'prefer_border_radius_all';
+
   static const _code = LintCode(
-    name: 'prefer_border_radius_all',
+    name: name,
     problemMessage:
         'BorderRadius.circular is not a const constructor and it uses const '
         'constructor BorderRadius.all internally.',
     correctionMessage:
         'Try replacing BorderRadius.circular with BorderRadius.all.',
+    url: '$docUrl#${PreferBorderRadiusAll.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

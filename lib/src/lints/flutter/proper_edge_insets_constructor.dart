@@ -4,15 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class ProperEdgeInsetsConstructor extends DartLintRule {
   const ProperEdgeInsetsConstructor() : super(code: _code);
 
+  static const name = 'proper_edge_insets_constructor';
+
   static const _code = LintCode(
-    name: 'proper_edge_insets_constructor',
+    name: name,
     problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
     correctionMessage: 'Replace with {0}.',
+    url: '$docUrl#${ProperEdgeInsetsConstructor.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

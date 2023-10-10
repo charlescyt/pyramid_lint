@@ -4,15 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class AvoidSingleChildInFlex extends DartLintRule {
   const AvoidSingleChildInFlex() : super(code: _code);
 
+  static const name = 'avoid_single_child_in_flex';
+
   static const _code = LintCode(
-    name: 'avoid_single_child_in_flex',
+    name: name,
     problemMessage: 'Using {0} to position a single widget is inefficient.',
     correctionMessage: 'Try replacing {0} with Align or Center.',
+    url: '$docUrl#${AvoidSingleChildInFlex.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

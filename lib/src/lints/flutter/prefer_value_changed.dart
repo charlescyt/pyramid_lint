@@ -4,14 +4,19 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
+
 class PreferValueChanged extends DartLintRule {
   const PreferValueChanged() : super(code: _code);
 
+  static const name = 'prefer_value_changed';
+
   static const _code = LintCode(
-    name: 'prefer_value_changed',
+    name: name,
     problemMessage: 'There is a typedef ValueChanged<T> defined in flutter.',
     correctionMessage:
         'Try using ValueChanged<{0}> instead of void Function({1}).',
+    url: '$docUrl#${PreferValueChanged.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

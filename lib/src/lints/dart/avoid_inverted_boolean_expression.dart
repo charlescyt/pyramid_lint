@@ -4,6 +4,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/token_type_extensions.dart';
 
 TokenType? _getInvertedOperator(TokenType operator) {
@@ -21,11 +22,14 @@ TokenType? _getInvertedOperator(TokenType operator) {
 class AvoidInvertedBooleanExpression extends DartLintRule {
   const AvoidInvertedBooleanExpression() : super(code: _code);
 
+  static const name = 'avoid_inverted_boolean_expression';
+
   static const _code = LintCode(
-    name: 'avoid_inverted_boolean_expression',
+    name: name,
     problemMessage:
         'Using inverted boolean expression decreases code readability.',
     correctionMessage: 'Consider using {0} instead.',
+    url: '$docUrl#${AvoidInvertedBooleanExpression.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

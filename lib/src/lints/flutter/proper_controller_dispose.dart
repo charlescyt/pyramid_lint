@@ -4,6 +4,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/class_members_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/lint_code_extensions.dart';
 import '../../utils/statements_extensions.dart';
 import '../../utils/type_checker.dart';
@@ -11,10 +12,13 @@ import '../../utils/type_checker.dart';
 class ProperControllerDispose extends DartLintRule {
   const ProperControllerDispose() : super(code: _code);
 
+  static const name = 'proper_controller_dispose';
+
   static const _code = LintCode(
-    name: 'proper_controller_dispose',
+    name: name,
     problemMessage: 'Controller should be disposed in dispose method',
     correctionMessage: 'Add {0}.dispose() in dispose method}',
+    url: '$docUrl#${ProperControllerDispose.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 

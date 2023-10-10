@@ -2,6 +2,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/custom_lint_resolver_extension.dart';
 
 class MaxLinesForFunction extends DartLintRule {
@@ -12,12 +13,13 @@ class MaxLinesForFunction extends DartLintRule {
   final CustomLintConfigs configs;
   late final int maxLines;
 
-  static const String name = 'max_lines_for_function';
+  static const name = 'max_lines_for_function';
 
   static const _code = LintCode(
     name: name,
     problemMessage: 'There are too many lines in this function.',
     correctionMessage: 'Try to reduce the number of lines to {0} or less.',
+    url: '$docUrl#${MaxLinesForFunction.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

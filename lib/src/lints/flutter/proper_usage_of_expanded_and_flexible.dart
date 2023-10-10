@@ -3,16 +3,20 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/ast_node_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class ProperUsageOfExpandedAndFlexible extends DartLintRule {
   const ProperUsageOfExpandedAndFlexible() : super(code: _code);
 
+  static const name = 'proper_usage_of_expanded_and_flexible';
+
   static const _code = LintCode(
-    name: 'proper_usage_of_expanded_and_flexible',
+    name: name,
     problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
     correctionMessage:
         'Try placing {0} inside a Row, Column, or Flex, or remove it.',
+    url: '$docUrl#${ProperUsageOfExpandedAndFlexible.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 

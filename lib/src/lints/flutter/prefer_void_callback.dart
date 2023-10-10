@@ -3,13 +3,18 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
+
 class PreferVoidCallback extends DartLintRule {
   const PreferVoidCallback() : super(code: _code);
 
+  static const name = 'prefer_void_callback';
+
   static const _code = LintCode(
-    name: 'prefer_void_callback',
+    name: name,
     problemMessage: 'There is a typedef VoidCallback defined in flutter.',
     correctionMessage: 'Try using VoidCallback instead of void Function().',
+    url: '$docUrl#${PreferVoidCallback.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

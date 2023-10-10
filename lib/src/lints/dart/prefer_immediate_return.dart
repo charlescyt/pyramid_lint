@@ -4,14 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
+
 class PreferImmediateReturn extends DartLintRule {
   const PreferImmediateReturn() : super(code: _code);
 
+  static const name = 'prefer_immediate_return';
+
   static const _code = LintCode(
-    name: 'prefer_immediate_return',
+    name: name,
     problemMessage: 'Declaring a variable to return it on the next line is '
         'unnecessary.',
     correctionMessage: 'Return the value immediately.',
+    url: '$docUrl#${PreferImmediateReturn.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

@@ -2,17 +2,21 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferBorderFromBorderSide extends DartLintRule {
   const PreferBorderFromBorderSide() : super(code: _code);
 
+  static const name = 'prefer_border_from_border_side';
+
   static const _code = LintCode(
-    name: 'prefer_border_from_border_side',
+    name: name,
     problemMessage:
         'Border.all is not a const constructor and it uses const constructor '
         'Border.fromBorderSide internally.',
     correctionMessage: 'Try replacing Border.all with Border.fromBorderSide.',
+    url: '$docUrl#${PreferBorderFromBorderSide.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

@@ -2,14 +2,19 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
+
 class PreferAsyncCallback extends DartLintRule {
   const PreferAsyncCallback() : super(code: _code);
 
+  static const name = 'prefer_async_callback';
+
   static const _code = LintCode(
-    name: 'prefer_async_callback',
+    name: name,
     problemMessage: 'There is a typedef AsyncCallback defined in flutter.',
     correctionMessage:
         'Try using AsyncCallback instead of Future<void> Function().',
+    url: '$docUrl#${PreferAsyncCallback.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

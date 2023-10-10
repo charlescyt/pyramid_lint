@@ -5,17 +5,21 @@ import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/class_members_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class CorrectOrderForSuperInitState extends DartLintRule {
   const CorrectOrderForSuperInitState() : super(code: _code);
 
+  static const name = 'correct_order_for_super_init_state';
+
   static const _code = LintCode(
-    name: 'correct_order_for_super_init_state',
+    name: name,
     problemMessage:
         'super.initState() should be called at the start of the initState method.',
     correctionMessage:
         'Try placing super.initState() at the start of the initState method.',
+    url: '$docUrl#${CorrectOrderForSuperInitState.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 

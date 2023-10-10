@@ -3,16 +3,20 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferTextRich extends DartLintRule {
   const PreferTextRich() : super(code: _code);
 
+  static const name = 'prefer_text_rich';
+
   static const _code = LintCode(
-    name: 'prefer_text_rich',
+    name: name,
     problemMessage:
         'RichText does not inherit TextStyle from DefaultTextStyle.',
     correctionMessage: 'Try replacing RichText with Text.rich.',
+    url: '$docUrl#${PreferTextRich.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

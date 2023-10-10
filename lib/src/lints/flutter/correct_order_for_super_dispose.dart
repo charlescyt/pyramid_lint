@@ -5,17 +5,21 @@ import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/class_members_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class CorrectOrderForSuperDispose extends DartLintRule {
   const CorrectOrderForSuperDispose() : super(code: _code);
 
+  static const name = 'correct_order_for_super_dispose';
+
   static const _code = LintCode(
-    name: 'correct_order_for_super_dispose',
+    name: name,
     problemMessage:
         'super.dispose() should be called at the end of the dispose method.',
     correctionMessage:
         'Try placing super.dispose() at the end of the dispose method.',
+    url: '$docUrl#${CorrectOrderForSuperDispose.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 

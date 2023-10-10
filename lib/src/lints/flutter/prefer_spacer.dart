@@ -4,15 +4,19 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
+import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferSpacer extends DartLintRule {
   const PreferSpacer() : super(code: _code);
 
+  static const name = 'prefer_spacer';
+
   static const _code = LintCode(
-    name: 'prefer_spacer',
+    name: name,
     problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
     correctionMessage: 'Try replacing Expanded with Spacer.',
+    url: '$docUrl#${PreferSpacer.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

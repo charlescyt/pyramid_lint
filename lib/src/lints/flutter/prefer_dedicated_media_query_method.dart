@@ -3,6 +3,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/string_extensions.dart';
 
 const List<String> _properties = [
@@ -29,11 +30,14 @@ const List<String> _properties = [
 class PreferDedicatedMediaQueryMethod extends DartLintRule {
   const PreferDedicatedMediaQueryMethod() : super(code: _code);
 
+  static const name = 'prefer_dedicated_media_query_method';
+
   static const _code = LintCode(
-    name: 'prefer_dedicated_media_query_method',
+    name: name,
     problemMessage:
         'Using MediaQuery.of(context).{0} will cause unnecessary rebuilds.',
     correctionMessage: 'Use MediaQuery.{1}(context) instead.',
+    url: '$docUrl#${PreferDedicatedMediaQueryMethod.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 
