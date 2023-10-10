@@ -2,15 +2,20 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-class ProperUsageOfFromEnvironment extends DartLintRule {
-  const ProperUsageOfFromEnvironment() : super(code: _code);
+import '../../utils/constants.dart';
+
+class ProperFromEnvironment extends DartLintRule {
+  const ProperFromEnvironment() : super(code: _code);
+
+  static const name = 'proper_from_environment';
 
   static const _code = LintCode(
-    name: 'proper_usage_of_from_environment',
+    name: name,
     problemMessage: 'The {0}.fromEnvironment constructor should be invoked '
         'as a const constructor.',
     correctionMessage: 'Try invoking the {0}.fromEnvironment constructor as a '
         'const constructor.',
+    url: '$docUrl#${ProperFromEnvironment.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 
@@ -41,10 +46,10 @@ class ProperUsageOfFromEnvironment extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [_UseConst()];
+  List<Fix> getFixes() => [_InvokeAsConstConstructor()];
 }
 
-class _UseConst extends DartFix {
+class _InvokeAsConstConstructor extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

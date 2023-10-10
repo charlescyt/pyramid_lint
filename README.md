@@ -33,7 +33,7 @@
   - [proper_controller_dispose](#proper_controller_dispose)
   - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
   - [proper_usage_of_expanded_and_flexible](#proper_usage_of_expanded_and_flexible)
-  - [proper_usage_of_from_environment](#proper_usage_of_from_environment)
+  - [proper_from_environment](#proper_from_environment)
 - [Dart assists](#dart-assists)
   - [invert_boolean_expression](#invert_boolean_expression)
   - [swap_then_else_expression](#swap_then_else_expression)
@@ -779,9 +779,9 @@ Row(
 )
 ```
 
-### proper_usage_of_from_environment
+### proper_from_environment
 
-`bool.fromEnvironment`, `int.fromEnvironment` and `String.fromEnvironment` constructors should be invoked as `const`.
+The constructors `bool.fromEnvironment`, `int.fromEnvironment` and `String.fromEnvironment` are only guaranteed to work when invoked as a `const` constructor.
 
 Bad
 

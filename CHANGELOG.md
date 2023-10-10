@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
-## [0.6.1] - 2023-10-10
+## [1.0.0] - 2023-10-10
+
+### Changed
+
+- **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
 
 ### Fixed
 
