@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+## [0.6.1] - 2023-10-10
+
+### Fixed
+
+- Fix `prefer_underscore_for_unused_callback_parameters` false positive on unused parameters in function declarations.
+
 ## [0.6.0] - 2023-10-10
 
 ### Added

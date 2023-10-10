@@ -1,3 +1,4 @@
+import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -23,6 +24,9 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
     context.registry.addFunctionExpression((node) {
       final parameters = node.parameters?.parameters;
       if (parameters == null) return;
+
+      final parent = node.parent;
+      if (parent is FunctionDeclaration) return;
 
       for (final parameter in parameters) {
         final parameterElement = parameter.declaredElement;

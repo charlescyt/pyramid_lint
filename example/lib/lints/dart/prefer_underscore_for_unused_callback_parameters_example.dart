@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_empty_block
+
 import 'package:flutter/widgets.dart';
 
 class Example extends StatelessWidget {
@@ -18,3 +20,6 @@ class Example extends StatelessWidget {
     );
   }
 }
+
+// function declaration will not trigger the lint.
+void log(String message) {}
