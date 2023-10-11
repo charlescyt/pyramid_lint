@@ -1,20 +1,8 @@
-import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/ast_node_extensions.dart';
-
-TokenType? _getInvertedOperator(TokenType operator) {
-  return switch (operator) {
-    TokenType.EQ_EQ => TokenType.BANG_EQ,
-    TokenType.BANG_EQ => TokenType.EQ_EQ,
-    TokenType.GT => TokenType.LT_EQ,
-    TokenType.LT => TokenType.GT_EQ,
-    TokenType.GT_EQ => TokenType.LT,
-    TokenType.LT_EQ => TokenType.GT,
-    _ => null,
-  };
-}
+import '../../utils/utils.dart';
 
 class InvertBooleanExpression extends DartAssist {
   @override
@@ -37,7 +25,7 @@ class InvertBooleanExpression extends DartAssist {
         return;
       }
 
-      final invertedOperator = _getInvertedOperator(operator);
+      final invertedOperator = getInvertedOperator(operator);
       if (invertedOperator == null) return;
 
       final changeBuilder = reporter.createChangeBuilder(

@@ -6,18 +6,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
 import '../../utils/token_type_extensions.dart';
-
-TokenType? _getInvertedOperator(TokenType operator) {
-  return switch (operator) {
-    TokenType.EQ_EQ => TokenType.BANG_EQ,
-    TokenType.BANG_EQ => TokenType.EQ_EQ,
-    TokenType.GT => TokenType.LT_EQ,
-    TokenType.LT => TokenType.GT_EQ,
-    TokenType.GT_EQ => TokenType.LT,
-    TokenType.LT_EQ => TokenType.GT,
-    _ => null,
-  };
-}
+import '../../utils/utils.dart';
 
 class AvoidInvertedBooleanExpression extends DartLintRule {
   const AvoidInvertedBooleanExpression() : super(code: _code);
@@ -52,7 +41,7 @@ class AvoidInvertedBooleanExpression extends DartLintRule {
       final operator = operandExpression.operator.type;
       if (!operator.isEqualityOrRelationalOperator) return;
 
-      final invertedOperator = _getInvertedOperator(operator);
+      final invertedOperator = getInvertedOperator(operator);
       if (invertedOperator == null) return;
 
       final parent = node.parent;
@@ -113,7 +102,7 @@ class _ReplaceWithPositiveBooleanExpression extends DartFix {
       final operator = operandExpression.operator.type;
       if (!operator.isEqualityOrRelationalOperator) return;
 
-      final invertedOperator = _getInvertedOperator(operator);
+      final invertedOperator = getInvertedOperator(operator);
       if (invertedOperator == null) return;
 
       final parent = node.parent;
