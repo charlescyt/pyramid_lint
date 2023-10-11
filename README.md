@@ -1,10 +1,9 @@
 # Pyramid Lint
 
-[pyramid_lint] introduces a set of additional lints and fixes to enforce a consistent coding style, prevent common mistakes and enhance code readability using [custom_lint].
+Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of additional lints and quick fixes to help developers enforce a consistent coding style, prevent common mistakes and enhance code readability.
 
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Dart lints](#dart-lints)
@@ -51,7 +50,7 @@ Run the following command to add `custom_lint` and `pyramid_lint` to your projec
 dart pub add --dev custom_lint pyramid_lint
 ```
 
-Enable `custom_lint` in your `analysis_options.yaml` file:
+Then enable `custom_lint` in your `analysis_options.yaml` file:
 
 ```yaml
 analyzer:
@@ -61,8 +60,7 @@ analyzer:
 
 ## Configuration
 
-By default, all lints are enabled.
-To disable a specific lint, add the following to your `analysis_options.yaml` file:
+By default, all lints are enabled. To disable a specific lint, add the following to your `analysis_options.yaml` file:
 
 ```yaml
 custom_lint:
@@ -70,7 +68,7 @@ custom_lint:
     - specific_lint_rule: false # disable specific_lint_rule
 ```
 
-To disable all lints and only enable the one you want, edit your `analysis_options.yaml` file as below:
+If you prefer to disable all lints and only enable specific ones, you can edit your analysis_options.yaml file as below:
 
 ```yaml
 custom_lint:
@@ -79,7 +77,7 @@ custom_lint:
     - specific_lint_rule # enable specific_lint_rule
 ```
 
-Some lints have additional configuration options. To configure a lint, follow the example below:
+Some lints are configurable. To configure a lint, follow the example below:
 
 ```yaml
 custom_lint:
@@ -93,7 +91,9 @@ custom_lint:
 
 ### avoid_duplicate_import
 
-Duplicate imports are unnecessary.
+Duplicate imports can lead to confusion.
+
+- Severity: warning
 
 Bad
 
@@ -116,9 +116,9 @@ final b = math.min(1, 10);
 
 ### avoid_dynamic
 
-Using `dynamic` sacrifices the benefits of static typing and decreases code readability. Only use `dynamic` when necessary.
+While dynamic can be useful in certain scenarios, it sacrifices the benefits of static typing and can decrease code readability. Using `dynamic` with `Map` will not trigger this lint.
 
-Using `dynamic` with `Map` will not trigger this lint.
+- Severity: info
 
 Bad
 
@@ -142,12 +142,12 @@ final setLiteral = <String>{'a', 'b', 'c'};
 
 Empty block usually indicates a missing implementation.
 
+- Severity: warning
+
 Bad
 
 ```dart
-void doSomething() {
-
-}
+void doSomething() {}
 ```
 
 Good
@@ -157,52 +157,54 @@ void doSomething() {
   actuallyDoSomething();
 }
 
-void doSomething() {}
+void doSomething() {
   // TODO: implement doSomething
 }
 ```
 
 ### avoid_inverted_boolean_expression
 
-Inverted boolean expression decreases code readability.
+Unnecessary inverted boolean expression should be avoided since it decreases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
 ```dart
-if (!(number == 0)) {}
 if (!(number > 0)) {}
-final anotherNumber = !(number == 0) ? 1 : 2;
+final text = !(number == 0) ? 'Not zero' : 'Zero';
 ```
 
 Good
 
 ```dart
-if (number != 0) {}
 if (number <= 0) {}
-final anotherNumber = number != 0 ? 2 : 1;
+final text = number != 0 ? 'Not zero' : 'Zero';
 ```
-
-Fix
-
-![avoid_inverted_boolean_expression](https://github.com/charlescyt/pyramid_lint/raw/main/resources/avoid_inverted_boolean_expression.gif)
 
 ### max_lines_for_file
 
 A file should not exceed a certain number of lines.
 
-Options:
-`max_lines` (default: 200)
+- Severity: info
+- Options:
+  - max_lines: `int` (default: 200)
 
 ### max_lines_for_function
 
 A function should not exceed a certain number of lines.
 
-Options:
-`max_lines` (default: 100)
+- Severity: info
+- Options:
+  - max_lines: `int` (default: 100)
 
 ### prefer_declaring_const_constructor
 
 Constructors of classes with only final fields should be declared as const constructors when possible.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -234,13 +236,11 @@ class Point {
 }
 ```
 
-Fix
-
-![prefer_declaring_const_constructor](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_declaring_const_constructor.gif)
-
 ### prefer_declaring_parameter_name
 
 Not declaring parameter name decreases code readability and the IDEs code completion will not be able to suggest the parameter name.
+
+- Severity: info
 
 Bad
 
@@ -256,7 +256,10 @@ typedef ItemBuilder = Widget Function(BuildContext context, int index);
 
 ### prefer_immediate_return
 
-Declaring a variable to return it on the next line is unnecessary.
+By directly returning the expression instead of assigning it to a variable and then returning the variable, you can simplify the code and improve readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -275,67 +278,61 @@ int add(int a, int b) {
 }
 ```
 
-Fix
-
-![prefer_immediate_return](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_immediate_return.gif)
-
 ### prefer_iterable_first
 
-Using iterable.first increases code readability.
+Using `iterable.first` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
 ```dart
 const numbers = [1, 2, 3];
-int firstNumber;
 
-firstNumber = numbers[0];
-firstNumber = numbers.elementAt(0);
+final firstNumber = numbers[0];
+// or
+final firstNumber = numbers.elementAt(0);
 ```
 
 Good
 
 ```dart
 const numbers = [1, 2, 3];
-int firstNumber;
-
-firstNumber = numbers.first;
+final firstNumber = numbers.first;
 ```
-
-Fix
-
-![prefer_iterable_first](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_iterable_first.gif)
 
 ### prefer_iterable_last
 
-Using iterable.last increases code readability.
+Using `iterable.last` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
 ```dart
 const numbers = [1, 2, 3];
-int lastNumber;
 
-lastNumber = numbers[numbers.length - 1];
-lastNumber = numbers.elementAt(numbers.length - 1);
+final lastNumber = numbers[numbers.length - 1];
+// or
+final lastNumber = numbers.elementAt(numbers.length - 1);
 ```
-
-Fix
-
-![prefer_iterable_last](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_iterable_last.gif)
 
 Good
 
 ```dart
 const numbers = [1, 2, 3];
-int lastNumber;
-
-lastNumber = numbers.last;
+final lastNumber = numbers.last;
 ```
 
 ### prefer_underscore_for_unused_callback_parameters
 
-Using `_` for unused callback parameters increases code readability.
+Using `_` for unused callback parameters clearly convey that the parameter is intentionally ignored within the code block. If the function has multiple unused parameters, use additional underscores such as `__`, `___`.
+
+see: [effective-dart](https://dart.dev/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters)
+
+- Severity: info
 
 Bad
 
@@ -359,12 +356,15 @@ itemBuilder: (_, index) {
 
 Using Column or Row with only one child is inefficient.
 
+- Severity: info
+- Quick fix: ✓
+
 Bad
 
 ```dart
 Row(
   children: [
-    Container(),
+    Placeholder(),
   ],
 )
 ```
@@ -373,23 +373,22 @@ Good
 
 ```dart
 Align(
-  child: Container(),
+  child: Placeholder(),
 )
 
 // or
 
 Center(
-  child: Container(),
+  child: Placeholder(),
 )
 ```
 
-Fix
-
-![avoid_single_child_in_flex](https://github.com/charlescyt/pyramid_lint/raw/main/resources/avoid_single_child_in_flex.gif)
-
 ### prefer_async_callback
 
-There is a typedef AsyncCallback defined in flutter.
+Using the built-in typedef `AsyncCallback` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -405,7 +404,10 @@ final AsyncCallback cb;
 
 ### prefer_border_from_border_side
 
-Border.all is not a const constructor and it uses const constructor Border.fromBorderSide internally.
+`Border.all` is not a const constructor and it uses const constructor `Border.fromBorderSide` internally.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -435,13 +437,12 @@ const DecoratedBox(
 )
 ```
 
-Fix
-
-![prefer_border_from_border_side](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_border_from_border_side.gif)
-
 ### prefer_border_radius_all
 
-BorderRadius.all is not a const constructor and it uses const constructor BorderRadius.circular internally.
+`BorderRadius.all` is not a const constructor and it uses const constructor `BorderRadius.circular` internally.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -463,13 +464,14 @@ const DecoratedBox(
 )
 ```
 
-Fix
-
-![prefer_border_radius_all](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_border_radius_all.gif)
-
 ### prefer_dedicated_media_query_method
 
 Using MediaQuery.of(context) to access below properties will cause unnecessary rebuilds.
+
+- Severity: info
+- Quick fix: ✓
+
+Properties:
 
 - accessibleNavigation
 - alwaysUse24HourFormat
@@ -504,13 +506,12 @@ final size = MediaQuery.of(context).size;
 final orientation = MediaQuery.maybeOrientationOf(context);
 ```
 
-Fix
-
-![prefer_dedicated_media_query_method](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_dedicated_media_query_method.gif)
-
 ### prefer_spacer
 
 Using Expanded with an empty Container or SizedBox is inefficient.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -535,13 +536,12 @@ Column(
 )
 ```
 
-Fix
-
-![prefer_spacer](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_spacer.gif)
-
 ### prefer_text_rich
 
-RichText does not inherit TextStyle from DefaultTextStyle.
+`RichText` does not inherit TextStyle from DefaultTextStyle.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -569,13 +569,12 @@ const Text.rich(
 )
 ```
 
-Fix
-
-![prefer_text_rich](https://github.com/charlescyt/pyramid_lint/raw/main/resources/prefer_text_rich.gif)
-
 ### prefer_value_changed
 
-There is a typedef ValueChanged defined in flutter.
+Using the built-in typedef `ValueChanged` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -591,7 +590,10 @@ final ValueChanged<int> cb;
 
 ### prefer_void_callback
 
-There is a typedef VoidCallback defined in flutter.
+Using the built-in typedef `VoidCallback` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
@@ -607,7 +609,12 @@ final VoidCallback cb;
 
 ### proper_controller_dispose
 
-Controllers should be disposed in dispose method.
+Controllers should be disposed in dispose method to avoid memory leaks.
+
+- Severity: error
+- Quick fix: ✓
+
+Controllers:
 
 - AnimationController
 - PageController
@@ -625,7 +632,7 @@ class _MyWidgetState extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Placeholder();
   }
 }
 ```
@@ -638,7 +645,7 @@ class _MyWidgetState extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Placeholder();
   }
 
   @override
@@ -651,18 +658,19 @@ class _MyWidgetState extends State<MyWidget> {
 
 ### proper_edge_insets_constructor
 
-EdgeInsets.all(0) should be replaced with EdgeInsets.zero.
+Using correct EdgeInsets constructor increases code readability.
+
+- Severity: info
+- Quick fix: ✓
 
 Bad
 
 ```dart
-padding = const EdgeInsets.fromLTRB(0, 0, 0, 0);
 padding = const EdgeInsets.fromLTRB(8, 8, 8, 8);
 padding = const EdgeInsets.fromLTRB(8, 0, 8, 0);
 padding = const EdgeInsets.fromLTRB(8, 4, 8, 4);
 padding = const EdgeInsets.fromLTRB(8, 4, 8, 0);
 
-padding = const EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
 padding = const EdgeInsets.only(left: 8, top: 8, right: 8, bottom: 8);
 padding = const EdgeInsets.only(left: 8, top: 0, right: 8, bottom: 0);
 padding = const EdgeInsets.only(left: 8, top: 4, right: 8, bottom: 4);
@@ -676,30 +684,25 @@ padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 0);
 Good
 
 ```dart
-padding = EdgeInsets.zero;
 padding = const EdgeInsets.all(8);
 padding = const EdgeInsets.symmetric(horizontal: 8);
 padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
 padding = const EdgeInsets.only(left: 8, top: 4, right: 8);
 
-padding = EdgeInsets.zero;
 padding = const EdgeInsets.all(8);
 padding = const EdgeInsets.symmetric(horizontal: 8);
 padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
 padding = const EdgeInsets.fromLTRB(2, 4, 6, 8);
 
-padding = EdgeInsets.zero;
 padding = const EdgeInsets.all(8);
 padding = const EdgeInsets.symmetric(horizontal: 8);
 ```
 
-Fix
-
-![proper_edge_insets_constructor](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_edge_insets_constructor.gif)
-
 ### proper_expanded_and_flexible
 
 Expanded and Flexible should be placed inside a Row, Column, or Flex.
+
+- Severity: error
 
 Bad
 
@@ -727,6 +730,11 @@ Row(
 
 The constructors `bool.fromEnvironment`, `int.fromEnvironment` and `String.fromEnvironment` are only guaranteed to work when invoked as a `const` constructor.
 
+see: [dart-lang-issue](https://github.com/dart-lang/sdk/issues/42177)
+
+- Severity: error
+- Quick fix: ✓
+
 Bad
 
 ```dart
@@ -745,7 +753,10 @@ const string = String.fromEnvironment('String');
 
 ### proper_super_dispose
 
-super.dispose() should be called at the end of the dispose method.
+`super.dispose()` should be called at the end of the dispose method.
+
+- Severity: error
+- Quick fix: ✓
 
 Bad
 
@@ -766,14 +777,13 @@ void dispose() {
   super.dispose();
 }
 ```
-
-Fix
-
-![correct_order_for_dispose](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_super_dispose.gif)
 
 ### proper_super_init_state
 
-super.initState() should be called at the start of the initState method.
+`super.initState()` should be called at the start of the initState method.
+
+- Severity: error
+- Quick fix: ✓
 
 Bad
 
@@ -794,10 +804,6 @@ void initState() {
   _init();
 }
 ```
-
-Fix
-
-![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_super_init_state.gif)
 
 ## Dart assists
 
@@ -846,5 +852,6 @@ Wrap the selected widget with a Stack.
 
 ![wrap_with_stack](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_stack.gif)
 
-[pyramid_lint]: https://pub.dev/packages/pyramid_lint
+<!-- Links -->
+
 [custom_lint]: https://pub.dev/packages/custom_lint
