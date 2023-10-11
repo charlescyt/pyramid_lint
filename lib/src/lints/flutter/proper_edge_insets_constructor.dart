@@ -6,6 +6,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/argument_list_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
+import '../../utils/utils.dart';
 
 class ProperEdgeInsetsConstructor extends DartLintRule {
   const ProperEdgeInsetsConstructor() : super(code: _code);
@@ -91,12 +92,8 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
           node,
           [
             'EdgeInsets.symmetric(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'horizontal: ${l.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'vertical: ${t.toSource()}',
+              if (!isZeroExpression(l)) 'horizontal: ${l.toSource()}',
+              if (!isZeroExpression(t)) 'vertical: ${t.toSource()}',
             ].join(', ')})',
           ],
         );
@@ -106,28 +103,16 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
             right: final r,
             bottom: final b,
           )
-          when [l, t, r, b].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+          when [l, t, r, b].any(isZeroExpression):
         reporter.reportErrorForNode(
           code,
           node,
           [
             'EdgeInsets.only(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'left: ${l.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'top: ${t.toSource()}',
-              if (r is IntegerLiteral && r.value != 0 ||
-                  r is DoubleLiteral && r.value != 0.0)
-                'right: ${r.toSource()}',
-              if (b is IntegerLiteral && b.value != 0 ||
-                  b is DoubleLiteral && b.value != 0.0)
-                'bottom: ${b.toSource()}',
+              if (!isZeroExpression(l)) 'left: ${l.toSource()}',
+              if (!isZeroExpression(t)) 'top: ${t.toSource()}',
+              if (!isZeroExpression(r)) 'right: ${r.toSource()}',
+              if (!isZeroExpression(b)) 'bottom: ${b.toSource()}',
             ].join(', ')})',
           ],
         );
@@ -179,12 +164,10 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
           node,
           [
             'EdgeInsets.symmetric(${[
-              if ((l is IntegerLiteral && l.value != 0) ||
-                  (l is DoubleLiteral && l.value != 0.0))
-                'horizontal: ${l?.toSource()}',
-              if ((t is IntegerLiteral && t.value != 0) ||
-                  (t is DoubleLiteral && t.value != 0.0))
-                'vertical: ${t?.toSource()}',
+              if (l != null && !isZeroExpression(l))
+                'horizontal: ${l.toSource()}',
+              if (t != null && !isZeroExpression(t))
+                'vertical: ${t.toSource()}',
             ].join(', ')})',
           ],
         );
@@ -271,22 +254,14 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
             vertical: final v?,
             horizontal: final h?,
           )
-          when [v, h].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+          when [v, h].any(isZeroExpression):
         reporter.reportErrorForNode(
           code,
           node,
           [
             'EdgeInsets.symmetric(${[
-              if (v is IntegerLiteral && v.value != 0 ||
-                  v is DoubleLiteral && v.value != 0.0)
-                'vertical: ${v.toSource()}',
-              if (h is IntegerLiteral && h.value != 0 ||
-                  h is DoubleLiteral && h.value != 0.0)
-                'horizontal: ${h.toSource()}',
+              if (!isZeroExpression(v)) 'vertical: ${v.toSource()}',
+              if (!isZeroExpression(h)) 'horizontal: ${h.toSource()}',
             ].join(', ')})',
           ],
         );
@@ -378,12 +353,8 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.symmetric(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'horizontal: ${l.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'vertical: ${t.toSource()}',
+              if (!isZeroExpression(l)) 'horizontal: ${l.toSource()}',
+              if (!isZeroExpression(t)) 'vertical: ${t.toSource()}',
             ].join(', ')})',
           );
         });
@@ -393,11 +364,7 @@ class _ReplaceWithProperConstructor extends DartFix {
             right: final r,
             bottom: final b,
           )
-          when [l, t, r, b].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+          when [l, t, r, b].any(isZeroExpression):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.only',
           priority: 80,
@@ -406,18 +373,10 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.only(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'left: ${l.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'top: ${t.toSource()}',
-              if (r is IntegerLiteral && r.value != 0 ||
-                  r is DoubleLiteral && r.value != 0.0)
-                'right: ${r.toSource()}',
-              if (b is IntegerLiteral && b.value != 0 ||
-                  b is DoubleLiteral && b.value != 0.0)
-                'bottom: ${b.toSource()}',
+              if (!isZeroExpression(l)) 'left: ${l.toSource()}',
+              if (!isZeroExpression(t)) 'top: ${t.toSource()}',
+              if (!isZeroExpression(r)) 'right: ${r.toSource()}',
+              if (!isZeroExpression(b)) 'bottom: ${b.toSource()}',
             ].join(', ')})',
           );
         });
@@ -475,12 +434,10 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.symmetric(${[
-              if ((l is IntegerLiteral && l.value != 0) ||
-                  (l is DoubleLiteral && l.value != 0.0))
-                'horizontal: ${l?.toSource()}',
-              if ((t is IntegerLiteral && t.value != 0) ||
-                  (t is DoubleLiteral && t.value != 0.0))
-                'vertical: ${t?.toSource()}',
+              if (l != null && !isZeroExpression(l))
+                'horizontal: ${l.toSource()}',
+              if (t != null && !isZeroExpression(t))
+                'vertical: ${t.toSource()}',
             ].join(', ')})',
           );
         });
@@ -490,11 +447,7 @@ class _ReplaceWithProperConstructor extends DartFix {
             right: final r,
             bottom: final b,
           )
-          when [l, t, r, b].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+          when [l, t, r, b].any((e) => e != null && isZeroExpression(e)):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.only',
           priority: 80,
@@ -579,11 +532,7 @@ class _ReplaceWithProperConstructor extends DartFix {
             vertical: final v?,
             horizontal: final h?,
           )
-          when [v, h].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+          when [v, h].any(isZeroExpression):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.symmetric',
           priority: 80,
@@ -593,12 +542,8 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.symmetric(${[
-              if (v is IntegerLiteral && v.value != 0 ||
-                  v is DoubleLiteral && v.value != 0.0)
-                'vertical: ${v.toSource()}',
-              if (h is IntegerLiteral && h.value != 0 ||
-                  h is DoubleLiteral && h.value != 0.0)
-                'horizontal: ${h.toSource()}',
+              if (!isZeroExpression(v)) 'vertical: ${v.toSource()}',
+              if (!isZeroExpression(h)) 'horizontal: ${h.toSource()}',
             ].join(', ')})',
           );
         });
