@@ -10,6 +10,7 @@
 - **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
 - **BREAKING**: `correct_order_for_super_init_state` is renamed to `proper_super_init_state`.
 - **BREAKING**: `correct_order_for_super_dispose` is renamed to `proper_super_dispose`.
+- `proper_edge_insets_constructor` is no longer triggered if all the arguments are 0 in flavor of the built-in `use_named_constants`.
 
 ### Fixed
 

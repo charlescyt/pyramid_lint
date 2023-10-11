@@ -64,11 +64,7 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
           right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
           bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
         ):
-        reporter.reportErrorForNode(
-          code,
-          node,
-          ['EdgeInsets.zero'],
-        );
+        return;
       case (
             left: final l,
             top: final t,
@@ -154,11 +150,7 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
           right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
           bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
         ):
-        reporter.reportErrorForNode(
-          code,
-          node,
-          ['EdgeInsets.zero'],
-        );
+        return;
       case (
             left: final l?,
             top: final t?,
@@ -264,11 +256,7 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
           horizontal:
               null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
         ):
-        reporter.reportErrorForNode(
-          code,
-          node,
-          ['EdgeInsets.zero'],
-        );
+        return;
       case (
             vertical: final v?,
             horizontal: final h?,
@@ -355,16 +343,7 @@ class _ReplaceWithProperConstructor extends DartFix {
           right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
           bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
         ):
-        final changeBuilder = reporter.createChangeBuilder(
-          message: 'Replace with EdgeInsets.zero',
-          priority: 80,
-        );
-        changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.zero',
-          );
-        });
+        return;
       case (
             left: final l,
             top: final t,
@@ -461,16 +440,7 @@ class _ReplaceWithProperConstructor extends DartFix {
           right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
           bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
         ):
-        final changeBuilder = reporter.createChangeBuilder(
-          message: 'Replace with EdgeInsets.zero',
-          priority: 80,
-        );
-        changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.zero',
-          );
-        });
+        return;
       case (
             left: final l?,
             top: final t?,
@@ -588,16 +558,7 @@ class _ReplaceWithProperConstructor extends DartFix {
           horizontal:
               null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
         ):
-        final changeBuilder = reporter.createChangeBuilder(
-          message: 'Replace with EdgeInsets.zero',
-          priority: 80,
-        );
-        changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.zero',
-          );
-        });
+        return;
       case (
             vertical: final v?,
             horizontal: final h?,
