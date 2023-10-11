@@ -41,6 +41,8 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [wrap_with_expanded](#wrap_with_expanded)
   - [wrap_with_layout_builder](#wrap_with_layout_builder)
   - [wrap_with_stack](#wrap_with_stack)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
@@ -852,6 +854,22 @@ Wrap the selected widget with a Stack.
 
 ![wrap_with_stack](https://github.com/charlescyt/pyramid_lint/raw/main/resources/wrap_with_stack.gif)
 
+## Contributing
+
+Contributions are appreciated! You can contribute by:
+
+- Creating an issue to report a bug or suggest a new feature.
+- Submitting a pull request to fix a bug or implement a new feature.
+- Improving the documentation.
+
+To get started contributing to Pyramid Lint, please refer to the [Contributing guide][contributing_link].
+
+## License
+
+Pyramid Lint is licensed under the [MIT License][license_link].
+
 <!-- Links -->
 
 [custom_lint]: https://pub.dev/packages/custom_lint
+[contributing_link]: https://github.com/charlescyt/pyramid_lint/blob/main/CONTRIBUTING.md
+[license_link]: https://github.com/charlescyt/pyramid_lint/blob/main/LICENSE
