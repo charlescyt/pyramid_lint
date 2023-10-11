@@ -1,16 +1,16 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, avoid_multiple_declarations_per_line
 
 import 'package:flutter/widgets.dart';
 
-class _Example extends StatefulWidget {
-  const _Example();
+class Example extends StatefulWidget {
+  const Example({super.key});
 
   @override
-  State<_Example> createState() => _ExampleState();
+  State<Example> createState() => _ExampleState();
 }
 
 // expect_lint: proper_controller_dispose
-class _ExampleState extends State<_Example> {
+class _ExampleState extends State<Example> {
   final _textEditingController = TextEditingController();
 
   @override
@@ -19,43 +19,51 @@ class _ExampleState extends State<_Example> {
   }
 }
 
-class _Example2 extends StatefulWidget {
-  const _Example2({required this.duration});
+class Example2 extends StatefulWidget {
+  const Example2({
+    super.key,
+    required this.duration,
+  });
 
   final Duration duration;
 
   @override
-  State<_Example2> createState() => _Example2State();
+  State<Example2> createState() => _Example2State();
 }
 
-class _Example2State extends State<_Example2>
+class _Example2State extends State<Example2>
     with SingleTickerProviderStateMixin {
+  // The lint is triggered here because _controller2 is not disposed.
   // expect_lint: proper_controller_dispose
-  late AnimationController _controller;
+  late AnimationController _controller1, _controller2;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _controller1 = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    );
+    _controller2 = AnimationController(
       vsync: this,
       duration: widget.duration,
     );
   }
 
   @override
-  void didUpdateWidget(_Example2 oldWidget) {
+  void didUpdateWidget(Example2 oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _controller.duration = widget.duration;
+    _controller1.duration = widget.duration;
   }
 
   @override
   void dispose() {
-    // _controller.dispose();
+    _controller1.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Placeholder();
   }
 }

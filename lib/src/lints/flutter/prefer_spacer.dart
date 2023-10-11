@@ -54,10 +54,10 @@ class PreferSpacer extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferSpacerFix()];
+  List<Fix> getFixes() => [_ReplaceWithSpacer()];
 }
 
-class PreferSpacerFix extends DartFix {
+class _ReplaceWithSpacer extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

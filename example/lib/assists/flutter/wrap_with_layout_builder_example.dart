@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class Example extends StatelessWidget {
-  const Example({super.key});
+class WrapWithLayoutBuilderExample extends StatelessWidget {
+  const WrapWithLayoutBuilderExample({super.key});
 
   @override
   Widget build(BuildContext context) {

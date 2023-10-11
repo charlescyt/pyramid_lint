@@ -69,10 +69,10 @@ class PreferIterableFirst extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferIterableFirstFix()];
+  List<Fix> getFixes() => [_ReplaceWithIterableFirst()];
 }
 
-class PreferIterableFirstFix extends DartFix {
+class _ReplaceWithIterableFirst extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

@@ -39,10 +39,10 @@ class PreferVoidCallback extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [_UseVoidCallBack()];
+  List<Fix> getFixes() => [_ReplaceWithVoidCallBack()];
 }
 
-class _UseVoidCallBack extends DartFix {
+class _ReplaceWithVoidCallBack extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

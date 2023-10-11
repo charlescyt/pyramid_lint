@@ -32,18 +32,17 @@ class PreferBorderRadiusAll extends DartLintRule {
       if (type == null || !borderRadiusChecker.isExactlyType(type)) return;
 
       final constructorNameIdentifier = node.constructorName.name;
-      if (constructorNameIdentifier == null ||
-          constructorNameIdentifier.name != 'circular') return;
+      if (constructorNameIdentifier?.name != 'circular') return;
 
       reporter.reportErrorForNode(code, node.constructorName);
     });
   }
 
   @override
-  List<Fix> getFixes() => [PreferBorderRadiusAllFix()];
+  List<Fix> getFixes() => [_ReplaceWithBorderRadiusAll()];
 }
 
-class PreferBorderRadiusAllFix extends DartFix {
+class _ReplaceWithBorderRadiusAll extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -65,20 +64,12 @@ class PreferBorderRadiusAllFix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final argumentList = node.argumentList;
-
         builder.addSimpleReplacement(
           constructorNameIdentifier.sourceRange,
-          'all',
+          'all(Radius.circular',
         );
-
         builder.addSimpleInsertion(
-          argumentList.leftParenthesis.end,
-          'Radius.circular(',
-        );
-
-        builder.addSimpleInsertion(
-          argumentList.rightParenthesis.end,
+          node.endToken.offset,
           ')',
         );
       });

@@ -40,7 +40,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
         if (containsOnlyUnderscores(parameterName)) continue;
 
         var isParameterReferenced = false;
-        final v = RecursiveSimpleIdentifierVisitor(
+        final visitor = RecursiveSimpleIdentifierVisitor(
           onVisitSimpleIdentifier: (node) {
             if (node.staticElement == parameterElement) {
               isParameterReferenced = true;
@@ -48,7 +48,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
           },
         );
 
-        node.body.accept(v);
+        node.body.accept(visitor);
 
         if (isParameterReferenced) continue;
 

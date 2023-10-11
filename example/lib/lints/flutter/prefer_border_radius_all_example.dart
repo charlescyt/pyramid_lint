@@ -1,15 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/painting.dart';
 
-class PreferBoarderRadiusAllExample extends StatelessWidget {
-  const PreferBoarderRadiusAllExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        // expect_lint: prefer_border_radius_all
-        borderRadius: BorderRadius.circular(8),
-      ),
-    );
-  }
-}
+// expect_lint: prefer_border_radius_all
+final borderRadius = BorderRadius.circular(8);

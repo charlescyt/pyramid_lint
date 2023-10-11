@@ -37,15 +37,13 @@ class ProperControllerDispose extends DartLintRule {
       final fieldDeclarations = node.members.fieldDeclarations;
       final controllerDeclarations = fieldDeclarations
           .where((e) {
-            final typeAnnotation = e.fields.type;
-            if (typeAnnotation is NamedType &&
-                typeAnnotation.type != null &&
-                disposableControllerChecker
-                    .isExactlyType(typeAnnotation.type!)) {
+            final type = e.fields.type?.type;
+            if (type != null &&
+                disposableControllerChecker.isExactlyType(type)) {
               return true;
             }
 
-            if (typeAnnotation == null) {
+            if (type == null) {
               final variableDeclarations = e.fields.variables;
               if (variableDeclarations.length == 1) {
                 final variableDeclaration = variableDeclarations.first;

@@ -2,8 +2,8 @@
 
 import 'package:flutter/widgets.dart';
 
-class PreferDedicatedMediaQueryExample extends StatelessWidget {
-  const PreferDedicatedMediaQueryExample({super.key});
+class Example extends StatelessWidget {
+  const Example({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -31,16 +31,12 @@ class AvoidSingleChildInFlex extends DartLintRule {
       if (type == null || !flexChecker.isAssignableFromType(type)) return;
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
-      if (childrenExpression is! ListLiteral) {
-        return;
-      }
+      if (childrenExpression is! ListLiteral) return;
 
-      if (childrenExpression.elements.length != 1) {
-        return;
-      } else {
-        final firstElement = childrenExpression.elements.first;
-        if (firstElement is SpreadElement || firstElement is ForElement) return;
-      }
+      if (childrenExpression.elements.length != 1) return;
+
+      final firstElement = childrenExpression.elements.first;
+      if (firstElement is SpreadElement || firstElement is ForElement) return;
 
       reporter.reportErrorForNode(
         code,
@@ -51,10 +47,10 @@ class AvoidSingleChildInFlex extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [AvoidSingleChildInFlexFix()];
+  List<Fix> getFixes() => [_ReplaceWithAlign(), _ReplaceWithCenter()];
 }
 
-class AvoidSingleChildInFlexFix extends DartFix {
+class _ReplaceWithAlign extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -69,30 +65,50 @@ class AvoidSingleChildInFlexFix extends DartFix {
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
       if (childrenExpression is! ListLiteral ||
-          childrenExpression.elements.length != 1) {
-        return;
-      }
+          childrenExpression.elements.length != 1) return;
 
-      final child = childrenExpression.elements.first;
-
-      var changeBuilder = reporter.createChangeBuilder(
+      final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Align',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
+        final child = childrenExpression.elements.first;
+
         builder.addSimpleReplacement(
           node.sourceRange,
           'Align(child: ${child.toSource()},)',
         );
       });
+    });
+  }
+}
 
-      changeBuilder = reporter.createChangeBuilder(
+class _ReplaceWithCenter extends DartFix {
+  @override
+  void run(
+    CustomLintResolver resolver,
+    ChangeReporter reporter,
+    CustomLintContext context,
+    AnalysisError analysisError,
+    List<AnalysisError> others,
+  ) {
+    context.registry.addInstanceCreationExpression((node) {
+      if (!analysisError.sourceRange
+          .intersects(node.constructorName.sourceRange)) return;
+
+      final childrenExpression = node.argumentList.childrenArgument?.expression;
+      if (childrenExpression is! ListLiteral ||
+          childrenExpression.elements.length != 1) return;
+
+      final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Center',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
+        final child = childrenExpression.elements.first;
+
         builder.addSimpleReplacement(
           node.sourceRange,
           'Center(child: ${child.toSource()},)',

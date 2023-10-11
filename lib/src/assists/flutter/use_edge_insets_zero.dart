@@ -17,11 +17,9 @@ class UseEdgeInsetsZero extends DartAssist {
     context.registry.addInstanceCreationExpression((node) {
       final sourceRange = switch (node.keyword) {
         null => node.sourceRange,
-        final keyword => range.startEnd(
-            keyword,
-            node,
-          ),
+        final keyword => range.startEnd(keyword, node),
       };
+
       if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show AsyncCallback;
 
 typedef A = AsyncCallback;
 // expect_lint: prefer_async_callback

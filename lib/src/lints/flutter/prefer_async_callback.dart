@@ -39,10 +39,10 @@ class PreferAsyncCallback extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [_UseAsyncCallback()];
+  List<Fix> getFixes() => [_ReplaceWithAsyncCallback()];
 }
 
-class _UseAsyncCallback extends DartFix {
+class _ReplaceWithAsyncCallback extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

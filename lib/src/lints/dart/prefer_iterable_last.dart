@@ -90,10 +90,10 @@ class PreferIterableLast extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferIterableLastFix()];
+  List<Fix> getFixes() => [_ReplaceWithIterableLast()];
 }
 
-class PreferIterableLastFix extends DartFix {
+class _ReplaceWithIterableLast extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

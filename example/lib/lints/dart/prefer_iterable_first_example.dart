@@ -1,12 +1,7 @@
-// ignore_for_file: unused_local_variable
+const numbers = [1, 2, 3];
 
-void example() {
-  const numbers = [1, 2, 3];
-  int firstNumber;
+// expect_lint: prefer_iterable_first
+final a = numbers[0];
 
-  // expect_lint: prefer_iterable_first
-  firstNumber = numbers[0];
-
-  // expect_lint: prefer_iterable_first
-  firstNumber = numbers.elementAt(0);
-}
+// expect_lint: prefer_iterable_first
+final b = numbers.elementAt(0);

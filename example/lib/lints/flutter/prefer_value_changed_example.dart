@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show ValueChanged;
 
 typedef A = ValueChanged<int>;
 // expect_lint: prefer_value_changed

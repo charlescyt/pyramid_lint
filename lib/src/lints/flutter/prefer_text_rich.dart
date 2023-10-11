@@ -35,10 +35,10 @@ class PreferTextRich extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferTextRichFix()];
+  List<Fix> getFixes() => [_ReplaceWithTextRich()];
 }
 
-class PreferTextRichFix extends DartFix {
+class _ReplaceWithTextRich extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

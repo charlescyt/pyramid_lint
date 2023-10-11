@@ -31,18 +31,17 @@ class PreferBorderFromBorderSide extends DartLintRule {
       if (type == null || !borderChecker.isExactlyType(type)) return;
 
       final constructorNameIdentifier = node.constructorName.name;
-      if (constructorNameIdentifier == null ||
-          constructorNameIdentifier.name != 'all') return;
+      if (constructorNameIdentifier?.name != 'all') return;
 
       reporter.reportErrorForNode(code, node.constructorName);
     });
   }
 
   @override
-  List<Fix> getFixes() => [PreferBorderFromBorderSideFix()];
+  List<Fix> getFixes() => [_ReplaceWithBorderFromBorderSide()];
 }
 
-class PreferBorderFromBorderSideFix extends DartFix {
+class _ReplaceWithBorderFromBorderSide extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -64,20 +63,12 @@ class PreferBorderFromBorderSideFix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final argumentList = node.argumentList;
-
         builder.addSimpleReplacement(
           constructorNameIdentifier.sourceRange,
-          'fromBorderSide',
+          'fromBorderSide(BorderSide',
         );
-
         builder.addSimpleInsertion(
-          argumentList.leftParenthesis.end,
-          'BorderSide(',
-        );
-
-        builder.addSimpleInsertion(
-          argumentList.rightParenthesis.offset,
+          node.endToken.offset,
           '),',
         );
       });

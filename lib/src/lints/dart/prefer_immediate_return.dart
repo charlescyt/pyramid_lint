@@ -49,10 +49,10 @@ class PreferImmediateReturn extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferImmediateReturnFix()];
+  List<Fix> getFixes() => [_ReplaceWithImmediateReturn()];
 }
 
-class PreferImmediateReturnFix extends DartFix {
+class _ReplaceWithImmediateReturn extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -88,7 +88,6 @@ class PreferImmediateReturnFix extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addDeletion(range.deletionRange(secondLastStatement));
-
         builder.addSimpleReplacement(
           lastStatement.sourceRange,
           'return ${variableDeclaration.initializer};',

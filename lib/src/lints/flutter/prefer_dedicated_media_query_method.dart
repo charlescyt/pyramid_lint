@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
@@ -78,10 +79,10 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferDedicatedMediaQueryFix()];
+  List<Fix> getFixes() => [_ReplaceWithDedicatedMethod()];
 }
 
-class PreferDedicatedMediaQueryFix extends DartFix {
+class _ReplaceWithDedicatedMethod extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -108,8 +109,8 @@ class PreferDedicatedMediaQueryFix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addDeletion(node.operator.sourceRange);
-        builder.addDeletion(node.propertyName.sourceRange);
+        final deletionRange = range.startEnd(node.operator, node.propertyName);
+        builder.addDeletion(deletionRange);
         builder.addSimpleReplacement(
           target.methodName.sourceRange,
           newMethodName,

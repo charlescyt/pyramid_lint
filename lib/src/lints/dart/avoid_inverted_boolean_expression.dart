@@ -89,10 +89,10 @@ class AvoidInvertedBooleanExpression extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [AvoidInvertedBooleanExpressionFix()];
+  List<Fix> getFixes() => [_ReplaceWithPositiveBooleanExpression()];
 }
 
-class AvoidInvertedBooleanExpressionFix extends DartFix {
+class _ReplaceWithPositiveBooleanExpression extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

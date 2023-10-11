@@ -64,10 +64,10 @@ class PreferDeclaringConstConstructor extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [PreferDeclaringConstConstructorFix()];
+  List<Fix> getFixes() => [_AddConst()];
 }
 
-class PreferDeclaringConstConstructorFix extends DartFix {
+class _AddConst extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,

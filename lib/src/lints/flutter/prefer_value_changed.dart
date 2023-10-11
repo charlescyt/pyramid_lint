@@ -54,10 +54,10 @@ class PreferValueChanged extends DartLintRule {
   }
 
   @override
-  List<Fix> getFixes() => [_UseValueChanged()];
+  List<Fix> getFixes() => [_ReplaceWithValueChanged()];
 }
 
-class _UseValueChanged extends DartFix {
+class _ReplaceWithValueChanged extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
