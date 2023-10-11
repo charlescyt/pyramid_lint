@@ -5,6 +5,10 @@ repository: https://github.com/charlescyt/pyramid_lint
 issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
 topics: [lints, analyzer]
 
+screenshots:
+  - description: Demostrates the proper_super_init_state lint and it's quick fix.
+    path: resources/demo.gif
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
