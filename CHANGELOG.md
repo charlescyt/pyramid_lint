@@ -2,12 +2,14 @@
 
 ## [Unreleased]
 
-## [1.0.0] - 2023-10-10
+## [1.0.0] - 2023-10-11
 
 ### Changed
 
 - **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
 - **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
+- **BREAKING**: `correct_order_for_super_init_state` is renamed to `proper_super_init_state`.
+- **BREAKING**: `correct_order_for_super_dispose` is renamed to `proper_super_dispose`.
 
 ### Fixed
 

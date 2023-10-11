@@ -19,8 +19,6 @@ import 'src/lints/dart/prefer_iterable_first.dart';
 import 'src/lints/dart/prefer_iterable_last.dart';
 import 'src/lints/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
-import 'src/lints/flutter/correct_order_for_super_dispose.dart';
-import 'src/lints/flutter/correct_order_for_super_init_state.dart';
 import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
@@ -33,6 +31,8 @@ import 'src/lints/flutter/proper_controller_dispose.dart';
 import 'src/lints/flutter/proper_edge_insets_constructor.dart';
 import 'src/lints/flutter/proper_expanded_and_flexible.dart';
 import 'src/lints/flutter/proper_from_environment.dart';
+import 'src/lints/flutter/proper_super_dispose.dart';
+import 'src/lints/flutter/proper_super_init_state.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -55,8 +55,6 @@ class _PyramidLinter extends PluginBase {
         const PreferUnderscoreForUnusedCallbackParameters(),
         // Flutter lints
         const AvoidSingleChildInFlex(),
-        const CorrectOrderForSuperDispose(),
-        const CorrectOrderForSuperInitState(),
         const PreferAsyncCallback(),
         const PreferBorderFromBorderSide(),
         const PreferBorderRadiusAll(),
@@ -69,6 +67,8 @@ class _PyramidLinter extends PluginBase {
         const ProperEdgeInsetsConstructor(),
         const ProperExpandedAndFlexible(),
         const ProperFromEnvironment(),
+        const ProperSuperDispose(),
+        const ProperSuperInitState(),
       ];
 
   @override

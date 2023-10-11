@@ -8,18 +8,18 @@ import '../../utils/class_members_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class CorrectOrderForSuperInitState extends DartLintRule {
-  const CorrectOrderForSuperInitState() : super(code: _code);
+class ProperSuperDispose extends DartLintRule {
+  const ProperSuperDispose() : super(code: _code);
 
-  static const name = 'correct_order_for_super_init_state';
+  static const name = 'proper_super_dispose';
 
   static const _code = LintCode(
     name: name,
     problemMessage:
-        'super.initState() should be called at the start of the initState method.',
+        'super.dispose() should be called at the end of the dispose method.',
     correctionMessage:
-        'Try placing super.initState() at the start of the initState method.',
-    url: '$docUrl#${CorrectOrderForSuperInitState.name}',
+        'Try placing super.dispose() at the end of the dispose method.',
+    url: '$docUrl#${ProperSuperDispose.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 
@@ -38,28 +38,28 @@ class CorrectOrderForSuperInitState extends DartLintRule {
         return;
       }
 
-      final body = node.members.findMethodDeclarationByName('initState')?.body;
+      final body = node.members.findMethodDeclarationByName('dispose')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;
       if (statements.isEmpty) return;
 
-      if (statements.first.toSource() == 'super.initState();') return;
+      if (statements.last.toSource() == 'super.dispose();') return;
 
-      final superInitStateStatement = statements.firstWhereOrNull(
-        (statement) => statement.toSource() == 'super.initState();',
+      final superDisposeStatement = statements.lastWhereOrNull(
+        (statement) => statement.toSource() == 'super.dispose();',
       );
-      if (superInitStateStatement == null) return;
+      if (superDisposeStatement == null) return;
 
-      reporter.reportErrorForNode(code, superInitStateStatement);
+      reporter.reportErrorForNode(code, superDisposeStatement);
     });
   }
 
   @override
-  List<Fix> getFixes() => [CorrectOrderForSuperInitStateFix()];
+  List<Fix> getFixes() => [_PlaceSuperDisposeAtTheEnd()];
 }
 
-class CorrectOrderForSuperInitStateFix extends DartFix {
+class _PlaceSuperDisposeAtTheEnd extends DartFix {
   @override
   void run(
     CustomLintResolver resolver,
@@ -71,38 +71,40 @@ class CorrectOrderForSuperInitStateFix extends DartFix {
     context.registry.addClassDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final body = node.members.findMethodDeclarationByName('initState')?.body;
+      final body = node.members.findMethodDeclarationByName('dispose')?.body;
       if (body == null || body is! BlockFunctionBody) return;
 
       final statements = body.block.statements;
       if (statements.isEmpty) return;
 
-      final superInitStateStatement = statements.firstWhereOrNull(
-        (statement) => statement.toSource() == 'super.initState();',
+      final superDisposeStatement = statements.lastWhereOrNull(
+        (statement) => statement.toSource() == 'super.dispose();',
       );
-      if (superInitStateStatement == null) return;
+      if (superDisposeStatement == null) return;
 
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Put super.initState() at the start of the initState method',
+        message: 'Place super.dispose() at the end of the dispose method',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final superInitStateStatementIndex = statements.indexOf(
-          superInitStateStatement,
+        final superDisposeStatementIndex = statements.indexOf(
+          superDisposeStatement,
         );
-        final firstStatement = statements.first;
+        final lastStatement = statements.last;
 
-        for (var i = superInitStateStatementIndex; i > 0; i--) {
+        for (var i = superDisposeStatementIndex;
+            i < statements.length - 1;
+            i++) {
           builder.addSimpleReplacement(
             statements[i].sourceRange,
-            statements[i - 1].toSource(),
+            statements[i + 1].toSource(),
           );
         }
 
         builder.addSimpleReplacement(
-          firstStatement.sourceRange,
-          superInitStateStatement.toSource(),
+          lastStatement.sourceRange,
+          superDisposeStatement.toSource(),
         );
       });
     });

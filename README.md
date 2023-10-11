@@ -22,8 +22,6 @@
   - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
 - [Flutter lints](#flutter-lints)
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
-  - [correct_order_for_super_dispose](#correct_order_for_super_dispose)
-  - [correct_order_for_super_init_state](#correct_order_for_super_init_state)
   - [prefer_async_callback](#prefer_async_callback)
   - [prefer_border_from_border_side](#prefer_border_from_border_side)
   - [prefer_border_radius_all](#prefer_border_radius_all)
@@ -34,6 +32,8 @@
   - [proper_edge_insets_constructor](#proper_edge_insets_constructor)
   - [proper_expanded_and_flexible](#proper_expanded_and_flexible)
   - [proper_from_environment](#proper_from_environment)
+  - [proper_super_dispose](#proper_super_dispose)
+  - [proper_super_init_state](#proper_super_init_state)
 - [Dart assists](#dart-assists)
   - [invert_boolean_expression](#invert_boolean_expression)
   - [swap_then_else_expression](#swap_then_else_expression)
@@ -386,62 +386,6 @@ Center(
 Fix
 
 ![avoid_single_child_in_flex](https://github.com/charlescyt/pyramid_lint/raw/main/resources/avoid_single_child_in_flex.gif)
-
-### correct_order_for_super_dispose
-
-super.dispose() should be called at the end of the dispose method.
-
-Bad
-
-```dart
-@override
-void dispose() {
-  super.dispose();
-  _dispose();
-}
-```
-
-Good
-
-```dart
-@override
-void dispose() {
-  _dispose();
-  super.dispose();
-}
-```
-
-Fix
-
-![correct_order_for_dispose](https://github.com/charlescyt/pyramid_lint/raw/main/resources/correct_order_for_super_dispose.gif)
-
-### correct_order_for_super_init_state
-
-super.initState() should be called at the start of the initState method.
-
-Bad
-
-```dart
-@override
-void initState() {
-  _init();
-  super.initState();
-}
-```
-
-Good
-
-```dart
-@override
-void initState() {
-  super.initState();
-  _init();
-}
-```
-
-Fix
-
-![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/raw/main/resources/correct_order_for_super_init_state.gif)
 
 ### prefer_async_callback
 
@@ -798,6 +742,62 @@ const boolean = bool.fromEnvironment('bool');
 const integer = int.fromEnvironment('int');
 const string = String.fromEnvironment('String');
 ```
+
+### proper_super_dispose
+
+super.dispose() should be called at the end of the dispose method.
+
+Bad
+
+```dart
+@override
+void dispose() {
+  super.dispose();
+  _dispose();
+}
+```
+
+Good
+
+```dart
+@override
+void dispose() {
+  _dispose();
+  super.dispose();
+}
+```
+
+Fix
+
+![correct_order_for_dispose](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_super_dispose.gif)
+
+### proper_super_init_state
+
+super.initState() should be called at the start of the initState method.
+
+Bad
+
+```dart
+@override
+void initState() {
+  _init();
+  super.initState();
+}
+```
+
+Good
+
+```dart
+@override
+void initState() {
+  super.initState();
+  _init();
+}
+```
+
+Fix
+
+![correct_order_for_init_state](https://github.com/charlescyt/pyramid_lint/raw/main/resources/proper_super_init_state.gif)
 
 ## Dart assists
 
