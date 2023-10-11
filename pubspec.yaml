@@ -1,5 +1,5 @@
 name: pyramid_lint
-description: pyramid_lint introduces a set of additional lints and fixes to enforce a consistent coding style, prevent common mistakes and enhance code readability.
+description: Linting tool for Dart and Flutter projects.
 version: 0.6.0
 repository: https://github.com/charlescyt/pyramid_lint
 issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
@@ -10,7 +10,7 @@ screenshots:
     path: resources/demo.gif
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   analyzer: ">=6.0.0 <7.0.0"
