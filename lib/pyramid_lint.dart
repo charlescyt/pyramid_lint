@@ -6,14 +6,14 @@ import 'src/assists/flutter/use_edge_insets_zero.dart';
 import 'src/assists/flutter/wrap_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
+import 'src/lints/dart/always_declare_parameter_names.dart';
 import 'src/lints/dart/avoid_duplicate_import.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
-import 'src/lints/dart/avoid_empty_block.dart';
-import 'src/lints/dart/avoid_inverted_boolean_expression.dart';
+import 'src/lints/dart/avoid_empty_blocks.dart';
+import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
-import 'src/lints/dart/prefer_declaring_const_constructor.dart';
-import 'src/lints/dart/prefer_declaring_parameter_name.dart';
+import 'src/lints/dart/prefer_declaring_const_constructors.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
 import 'src/lints/dart/prefer_iterable_first.dart';
 import 'src/lints/dart/prefer_iterable_last.dart';
@@ -41,14 +41,14 @@ class _PyramidLinter extends PluginBase {
   @override
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
         // Dart lints
+        const AlwaysDeclareParameterNames(),
         const AvoidDuplicateImport(),
         const AvoidDynamic(),
-        const AvoidEmptyBlock(),
-        const AvoidInvertedBooleanExpression(),
+        const AvoidEmptyBlocks(),
+        const AvoidInvertedBooleanExpressions(),
         MaxLinesForFile(configs),
         MaxLinesForFunction(configs),
-        const PreferDeclaringConstConstructor(),
-        const PreferDeclaringParameterName(),
+        const PreferDeclaringConstConstructors(),
         const PreferImmediateReturn(),
         const PreferIterableFirst(),
         const PreferIterableLast(),

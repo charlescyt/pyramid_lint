@@ -4,10 +4,10 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
 
-class PreferDeclaringParameterName extends DartLintRule {
-  const PreferDeclaringParameterName() : super(code: _code);
+class AlwaysDeclareParameterNames extends DartLintRule {
+  const AlwaysDeclareParameterNames() : super(code: _code);
 
-  static const name = 'prefer_declaring_parameter_name';
+  static const name = 'always_declare_parameter_names';
 
   static const _code = LintCode(
     name: name,
@@ -15,7 +15,7 @@ class PreferDeclaringParameterName extends DartLintRule {
         'Not declaring parameter name decreases code readability and '
         'the IDEs code completion will not be able to suggest the parameter name.',
     correctionMessage: 'Try declaring parameter name.',
-    url: '$docUrl#${PreferDeclaringParameterName.name}',
+    url: '$docUrl#${AlwaysDeclareParameterNames.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

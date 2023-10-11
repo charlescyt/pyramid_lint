@@ -7,10 +7,10 @@ import '../../utils/class_members_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/constructor_initializers_extensions.dart';
 
-class PreferDeclaringConstConstructor extends DartLintRule {
-  const PreferDeclaringConstConstructor() : super(code: _code);
+class PreferDeclaringConstConstructors extends DartLintRule {
+  const PreferDeclaringConstConstructors() : super(code: _code);
 
-  static const name = 'prefer_declaring_const_constructor';
+  static const name = 'prefer_declaring_const_constructors';
 
   static const _code = LintCode(
     name: name,
@@ -18,7 +18,7 @@ class PreferDeclaringConstConstructor extends DartLintRule {
         'Constructors of classes with only final fields should be declared as '
         'const constructors when possible.',
     correctionMessage: 'Try adding a const keyword to the constructor.',
-    url: '$docUrl#${PreferDeclaringConstConstructor.name}',
+    url: '$docUrl#${PreferDeclaringConstConstructors.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

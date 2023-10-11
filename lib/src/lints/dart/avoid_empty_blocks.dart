@@ -4,16 +4,16 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
 
-class AvoidEmptyBlock extends DartLintRule {
-  const AvoidEmptyBlock() : super(code: _code);
+class AvoidEmptyBlocks extends DartLintRule {
+  const AvoidEmptyBlocks() : super(code: _code);
 
-  static const name = 'avoid_empty_block';
+  static const name = 'avoid_empty_blocks';
 
   static const _code = LintCode(
     name: name,
     problemMessage: 'Empty block usually indicates a missing implementation.',
     correctionMessage: 'Try adding an implementation or a TODO comment.',
-    url: '$docUrl#${AvoidEmptyBlock.name}',
+    url: '$docUrl#${AvoidEmptyBlocks.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

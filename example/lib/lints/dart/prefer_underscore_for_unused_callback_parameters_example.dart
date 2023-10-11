@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_empty_block
+// ignore_for_file: avoid_empty_blocks
 
 import 'package:flutter/widgets.dart';
 

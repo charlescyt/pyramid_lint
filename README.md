@@ -7,14 +7,14 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Dart lints](#dart-lints)
+  - [always_declare_parameter_names](#always_declare_parameter_names)
   - [avoid_duplicate_import](#avoid_duplicate_import)
   - [avoid_dynamic](#avoid_dynamic)
-  - [avoid_empty_block](#avoid_empty_block)
-  - [avoid_inverted_boolean_expression](#avoid_inverted_boolean_expression)
+  - [avoid_empty_blocks](#avoid_empty_blocks)
+  - [avoid_inverted_boolean_expressions](#avoid_inverted_boolean_expressions)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
-  - [prefer_declaring_const_constructor](#prefer_declaring_const_constructor)
-  - [prefer_declaring_parameter_name](#prefer_declaring_parameter_name)
+  - [prefer_declaring_const_constructors](#prefer_declaring_const_constructors)
   - [prefer_immediate_return](#prefer_immediate_return)
   - [prefer_iterable_first](#prefer_iterable_first)
   - [prefer_iterable_last](#prefer_iterable_last)
@@ -89,6 +89,24 @@ custom_lint:
 
 ## Dart lints
 
+### always_declare_parameter_names
+
+Not declaring parameter name decreases code readability and the IDEs code completion will not be able to suggest the parameter name.
+
+- Severity: info
+
+Bad
+
+```dart
+typedef ItemBuilder = Widget Function(BuildContext, int);
+```
+
+Good
+
+```dart
+typedef ItemBuilder = Widget Function(BuildContext context, int index);
+```
+
 ### avoid_duplicate_import
 
 Duplicate imports can lead to confusion.
@@ -138,7 +156,7 @@ List<int> list = [1, 2, 3];
 final setLiteral = <String>{'a', 'b', 'c'};
 ```
 
-### avoid_empty_block
+### avoid_empty_blocks
 
 Empty block usually indicates a missing implementation.
 
@@ -162,7 +180,7 @@ void doSomething() {
 }
 ```
 
-### avoid_inverted_boolean_expression
+### avoid_inverted_boolean_expressions
 
 Unnecessary inverted boolean expression should be avoided since it decreases code readability.
 
@@ -199,7 +217,7 @@ A function should not exceed a certain number of lines.
 - Options:
   - max_lines: `int` (default: 100)
 
-### prefer_declaring_const_constructor
+### prefer_declaring_const_constructors
 
 Constructors of classes with only final fields should be declared as const constructors when possible.
 
@@ -234,24 +252,6 @@ class Point {
       : x = 0,
         y = 0;
 }
-```
-
-### prefer_declaring_parameter_name
-
-Not declaring parameter name decreases code readability and the IDEs code completion will not be able to suggest the parameter name.
-
-- Severity: info
-
-Bad
-
-```dart
-typedef ItemBuilder = Widget Function(BuildContext, int);
-```
-
-Good
-
-```dart
-typedef ItemBuilder = Widget Function(BuildContext context, int index);
 ```
 
 ### prefer_immediate_return

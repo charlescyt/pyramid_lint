@@ -8,17 +8,17 @@ import '../../utils/constants.dart';
 import '../../utils/token_type_extensions.dart';
 import '../../utils/utils.dart';
 
-class AvoidInvertedBooleanExpression extends DartLintRule {
-  const AvoidInvertedBooleanExpression() : super(code: _code);
+class AvoidInvertedBooleanExpressions extends DartLintRule {
+  const AvoidInvertedBooleanExpressions() : super(code: _code);
 
-  static const name = 'avoid_inverted_boolean_expression';
+  static const name = 'avoid_inverted_boolean_expressions';
 
   static const _code = LintCode(
     name: name,
     problemMessage:
         'Using inverted boolean expression decreases code readability.',
     correctionMessage: 'Consider using {0} instead.',
-    url: '$docUrl#${AvoidInvertedBooleanExpression.name}',
+    url: '$docUrl#${AvoidInvertedBooleanExpressions.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 
