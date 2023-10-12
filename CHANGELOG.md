@@ -4,6 +4,11 @@
 
 ## [1.0.0] - 2023-10-12
 
+### Added
+
+- New lint
+  - `boolean_prefix`
+
 ### Changed
 
 - **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.

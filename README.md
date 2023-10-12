@@ -20,6 +20,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [avoid_dynamic](#avoid_dynamic)
   - [avoid_empty_blocks](#avoid_empty_blocks)
   - [avoid_inverted_boolean_expressions](#avoid_inverted_boolean_expressions)
+  - [boolean_prefix](#boolean_prefix)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
   - [prefer_declaring_const_constructors](#prefer_declaring_const_constructors)
@@ -209,6 +210,62 @@ Good
 ```dart
 if (number <= 0) {}
 final text = number != 0 ? 'Not zero' : 'Zero';
+```
+
+### boolean_prefix
+
+Boolean variables, functions and getters that return a boolean value should be prefixed with specific verbs.
+
+- Severity: info
+- Options:
+  - valid_prefixes: `List<String>`
+
+Default valid prefixes:
+
+- is
+- are
+- was
+- were
+- has
+- have
+- had
+- can
+- should
+- will
+- do
+- does
+- did
+
+see: [effective-dart](https://dart.dev/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable)
+
+Bad
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get origin => x == 0 && y == 0;
+
+  bool samePoint(Point other) => x == other.x && y == other.y;
+}
+```
+
+Good
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get isOrigin => x == 0 && y == 0;
+
+  bool isSamePoint(Point other) => x == other.x && y == other.y;
+}
 ```
 
 ### max_lines_for_file
