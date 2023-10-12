@@ -15,13 +15,13 @@ analyzer:
     todo: ignore
 
   exclude:
-    - '**/*.freezed.dart'
-    - '**/*.g.dart'
-    - '**/*.gr.dart'
-    - 'bin/cache/**'
-    - 'build/**'
-    - 'lib/generated_plugin_registrant.dart'
-    - 'test/.test_coverage.dart'
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
+    - "bin/cache/**"
+    - "build/**"
+    - "lib/generated_plugin_registrant.dart"
+    - "test/.test_coverage.dart"
 
 linter:
   rules:
