@@ -42,7 +42,7 @@ class SwapThenElseExpression extends DartAssist {
     });
 
     context.registry.addConditionalExpression((node) {
-      if (!target.intersects(node.sourceRange)) return;
+      if (!node.sourceRange.covers(target)) return;
 
       final childrenConditionalExpressions =
           node.childrenConditionalExpressions;
