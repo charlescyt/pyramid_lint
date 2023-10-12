@@ -1,8 +1,6 @@
 # Changelog
 
-## [Unreleased]
-
-## [1.0.0] - 2023-10-12
+## [1.0.0] - 2023-10-13
 
 ### Added
 
@@ -12,14 +10,14 @@
 
 ### Changed
 
-- **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
-- **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
-- **BREAKING**: `correct_order_for_super_init_state` is renamed to `proper_super_init_state`.
-- **BREAKING**: `correct_order_for_super_dispose` is renamed to `proper_super_dispose`.
-- **BREAKING**: `prefer_declaring_parameter_name` is renamed to `always_declare_parameter_names`.
-- **BREAKING**: `avoid_inverted_boolean_expression` is renamed to `avoid_inverted_boolean_expressions`.
 - **BREAKING**: `avoid_empty_block` is renamed to `avoid_empty_blocks`.
+- **BREAKING**: `avoid_inverted_boolean_expression` is renamed to `avoid_inverted_boolean_expressions`.
+- **BREAKING**: `correct_order_for_super_dispose` is renamed to `proper_super_dispose`.
+- **BREAKING**: `correct_order_for_super_init_state` is renamed to `proper_super_init_state`.
+- **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
+- **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
 - **BREAKING**: `prefer_declaring_const_constructor` is renamed to `prefer_declaring_const_constructors`.
+- **BREAKING**: `prefer_declaring_parameter_name` is renamed to `always_declare_parameter_names`.
 - `proper_edge_insets_constructor` now works when arguments are variables.
 - `proper_edge_insets_constructor` is no longer triggered if all the arguments are 0 in flavor of the built-in `use_named_constants`.
 
