@@ -61,12 +61,17 @@ Run the following command to add `custom_lint` and `pyramid_lint` to your projec
 dart pub add --dev custom_lint pyramid_lint
 ```
 
-Then enable `custom_lint` in your `analysis_options.yaml` file:
+Then enable `custom_lint` in your `analysis_options.yaml` file. You can also exclude generated files from analysis.
 
 ```yaml
 analyzer:
   plugins:
     - custom_lint
+
+  exclude:
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
 ```
 
 ## Configuration
