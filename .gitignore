@@ -10,3 +10,6 @@ pubspec.lock
 
 # Conventional directory for build outputs
 build/
+
+# Exceptions to above rules.
+!.vscode/dart.code-snippets
