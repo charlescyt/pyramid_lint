@@ -29,6 +29,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [prefer_iterable_last](#prefer_iterable_last)
   - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
 - [Flutter lints](#flutter-lints)
+  - [avoid_returning_widgets](#avoid_returning_widgets)
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
   - [prefer_async_callback](#prefer_async_callback)
   - [prefer_border_from_border_side](#prefer_border_from_border_side)
@@ -423,6 +424,61 @@ itemBuilder: (_, index) {
 ```
 
 ## Flutter lints
+
+### avoid_returning_widgets
+
+Returning widgets is not recommended for performance reasons.
+
+- Severity: info
+
+Bad
+
+```dart
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _buildWidget(),
+        _buildWidget(),
+      ],
+    );
+  }
+
+  Widget _buildWidget() {
+    return ...;
+  }
+}
+```
+
+Good
+
+```dart
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        B(),
+        B(),
+      ],
+    );
+  }
+}
+
+class B extends StatelessWidget {
+  const B({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ...;
+  }
+}
+```
 
 ### avoid_single_child_in_flex
 

@@ -6,7 +6,8 @@
 
 ### Added
 
-- New lint
+- New lints
+  - `avoid_returning_widgets`
   - `boolean_prefix`
 
 ### Changed
