@@ -26,16 +26,16 @@ class ProperFromEnvironment extends DartLintRule {
     CustomLintContext context,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      final methodName = node.constructorName.name?.name;
-      if (methodName != 'fromEnvironment') return;
+      final constructorName = node.constructorName.name?.name;
+      if (constructorName != 'fromEnvironment') return;
 
-      final type = node.constructorName.type.type;
+      if (node.isConst) return;
+
+      final type = node.staticType;
       if (type == null ||
           (!type.isDartCoreBool &&
               !type.isDartCoreInt &&
               !type.isDartCoreString)) return;
-
-      if (node.isConst) return;
 
       reporter.reportErrorForNode(
         code,
