@@ -4,6 +4,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/string_extensions.dart';
 import '../../utils/visitors.dart';
 
 class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
@@ -37,7 +38,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
         if (parameterElement == null) continue;
 
         final parameterName = parameterElement.name;
-        if (containsOnlyUnderscores(parameterName)) continue;
+        if (parameterName.containsOnlyUnderscores) continue;
 
         var isParameterReferenced = false;
         final visitor = RecursiveSimpleIdentifierVisitor(
@@ -55,9 +56,5 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
         reporter.reportErrorForElement(code, parameterElement);
       }
     });
-  }
-
-  bool containsOnlyUnderscores(String input) {
-    return RegExp(r'^_+$').hasMatch(input);
   }
 }
