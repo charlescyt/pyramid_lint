@@ -59,8 +59,7 @@ class BooleanPrefix extends DartLintRule {
       if (parent is! VariableDeclaration) return;
 
       final name = parent.name.lexeme;
-      if (_defaultValidPrefixes.any(name.startsWith)) return;
-      if (validPrefixes.any(name.startsWith)) return;
+      if (isNameValid(name)) return;
 
       reporter.reportErrorForToken(
         code,
@@ -77,8 +76,7 @@ class BooleanPrefix extends DartLintRule {
       if (returnType == null || !returnType.isDartCoreBool) return;
 
       final name = node.name.lexeme;
-      if (_defaultValidPrefixes.any(name.startsWith)) return;
-      if (validPrefixes.any(name.startsWith)) return;
+      if (isNameValid(name)) return;
 
       final parameter = node.parameters;
       switch (parameter) {
@@ -108,8 +106,7 @@ class BooleanPrefix extends DartLintRule {
       if (returnType == null || !returnType.isDartCoreBool) return;
 
       final name = node.name.lexeme;
-      if (_defaultValidPrefixes.any(name.startsWith)) return;
-      if (validPrefixes.any(name.startsWith)) return;
+      if (isNameValid(name)) return;
 
       reporter.reportErrorForToken(
         code,
@@ -120,5 +117,15 @@ class BooleanPrefix extends DartLintRule {
         ],
       );
     });
+  }
+
+  bool isNameValid(String name) {
+    final nameWithoutUnderscore =
+        name.startsWith('_') ? name.substring(1) : name;
+
+    if (_defaultValidPrefixes.any(nameWithoutUnderscore.startsWith) ||
+        validPrefixes.any(nameWithoutUnderscore.startsWith)) return true;
+
+    return false;
   }
 }
