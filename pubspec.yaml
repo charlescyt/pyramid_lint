@@ -1,12 +1,14 @@
 name: pyramid_lint
-description: Linting tool for Dart and Flutter projects to encourage good coding practices.
+description: >-
+  Linting tool for Dart and Flutter projects to encourage good coding practices.
 version: 1.0.0
 repository: https://github.com/charlescyt/pyramid_lint
 issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
 topics: [lints, analyzer]
 
 screenshots:
-  - description: Demostrates the proper_super_init_state lint and it's quick fix.
+  - description: >-
+      Demonstration of the proper_super_init_state lint and its quick fix.
     path: resources/demo.gif
 
 environment:
