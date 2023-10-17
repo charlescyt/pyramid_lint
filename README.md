@@ -23,6 +23,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [boolean_prefix](#boolean_prefix)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
+  - [prefer_async_await](#prefer_async_await)
   - [prefer_declaring_const_constructors](#prefer_declaring_const_constructors)
   - [prefer_immediate_return](#prefer_immediate_return)
   - [prefer_iterable_first](#prefer_iterable_first)
@@ -290,6 +291,43 @@ A function should not exceed a certain number of lines.
 - Severity: info
 - Options:
   - max_lines: `int` (default: 100)
+
+### prefer_async_await
+
+Using async/await improves code readability.
+
+see: [effective-dart](https://dart.dev/effective-dart/usage#prefer-asyncawait-over-using-raw-futures)
+
+- Severity: info
+
+Bad
+
+```dart
+void fetchData() {
+  performAsyncOperation().then((result) {
+    print(result);
+  }).catchError((Object? error) {
+    print('Error: $error');
+  }).whenComplete(() {
+    print('Done');
+  });
+}
+```
+
+Good
+
+```dart
+Future<void> fetchData() async {
+  try {
+    final result = await performAsyncOperation();
+    print(result);
+  } catch (error) {
+    print('Error: $error');
+  } finally {
+    print('Done');
+  }
+}
+```
 
 ### prefer_declaring_const_constructors
 

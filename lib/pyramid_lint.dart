@@ -14,6 +14,7 @@ import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/boolean_prefix.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
+import 'src/lints/dart/prefer_async_await.dart';
 import 'src/lints/dart/prefer_declaring_const_constructors.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
 import 'src/lints/dart/prefer_iterable_first.dart';
@@ -52,6 +53,7 @@ class _PyramidLinter extends PluginBase {
         BooleanPrefix.fromConfigs(configs),
         MaxLinesForFile(configs),
         MaxLinesForFunction(configs),
+        const PreferAsyncAwait(),
         const PreferDeclaringConstConstructors(),
         const PreferImmediateReturn(),
         const PreferIterableFirst(),

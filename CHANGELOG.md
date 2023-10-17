@@ -2,8 +2,11 @@
 
 ## [Unreleased]
 
-- New lint
+### Added
+
+- New lints
   - `prefer_new_line_before_return`
+  - `prefer_async_await`
 
 ## [1.0.0] - 2023-10-13
 
