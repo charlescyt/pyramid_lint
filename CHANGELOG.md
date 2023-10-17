@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+- New lint
+  - `prefer_new_line_before_return`
+
 ## [1.0.0] - 2023-10-13
 
 ### Added
