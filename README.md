@@ -27,6 +27,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [prefer_immediate_return](#prefer_immediate_return)
   - [prefer_iterable_first](#prefer_iterable_first)
   - [prefer_iterable_last](#prefer_iterable_last)
+  - [prefer_new_line_before_return](#prefer_new_line_before_return)
   - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
 - [Flutter lints](#flutter-lints)
   - [avoid_returning_widgets](#avoid_returning_widgets)
@@ -397,6 +398,35 @@ Good
 ```dart
 const numbers = [1, 2, 3];
 final lastNumber = numbers.last;
+```
+
+### prefer_new_line_before_return
+
+Adding a new line before the return statement increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+if (...) {
+  ...
+  return ...;
+}
+return ...;
+```
+
+Good
+
+```dart
+if (...) {
+  ...
+
+  return ...;
+}
+
+return ...;
 ```
 
 ### prefer_underscore_for_unused_callback_parameters
