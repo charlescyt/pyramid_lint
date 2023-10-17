@@ -21,6 +21,7 @@ import 'src/lints/dart/prefer_iterable_first.dart';
 import 'src/lints/dart/prefer_iterable_last.dart';
 import 'src/lints/dart/prefer_new_line_before_return.dart';
 import 'src/lints/dart/prefer_underscore_for_unused_callback_parameters.dart';
+import 'src/lints/dart/unnecessary_nullable_return_type.dart';
 import 'src/lints/flutter/avoid_returning_widgets.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
 import 'src/lints/flutter/prefer_async_callback.dart';
@@ -60,6 +61,7 @@ class _PyramidLinter extends PluginBase {
         const PreferIterableLast(),
         const PreferNewLineBeforeReturn(),
         const PreferUnderscoreForUnusedCallbackParameters(),
+        const UnnecessaryNullableReturnType(),
         // Flutter lints
         const AvoidReturningWidgets(),
         const AvoidSingleChildInFlex(),

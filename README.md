@@ -30,6 +30,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [prefer_iterable_last](#prefer_iterable_last)
   - [prefer_new_line_before_return](#prefer_new_line_before_return)
   - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
+  - [unnecessary_nullable_return_type](#unnecessary_nullable_return_type)
 - [Flutter lints](#flutter-lints)
   - [avoid_returning_widgets](#avoid_returning_widgets)
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
@@ -488,6 +489,29 @@ Good
 ```dart
 itemBuilder: (_, index) {
   return Text('Item $index');
+}
+```
+
+### unnecessary_nullable_return_type
+
+Declaring functions or methods with a nullable return type is unnecessary when the return value is never null.
+
+- Severity: warning
+- Quick fix: ✓
+
+Bad
+
+```dart
+int? sum(int a, int b) {
+  return a + b;
+}
+```
+
+Good
+
+```dart
+int sum(int a, int b) {
+  return a + b;
 }
 ```
 

@@ -56,3 +56,15 @@ class RecursiveSimpleIdentifierVisitor extends RecursiveAstVisitor<void> {
     node.visitChildren(this);
   }
 }
+
+class RecursiveReturnStatementVisitor extends RecursiveAstVisitor<void> {
+  RecursiveReturnStatementVisitor();
+
+  final returnStatements = <ReturnStatement>[];
+
+  @override
+  void visitReturnStatement(ReturnStatement node) {
+    returnStatements.add(node);
+    node.visitChildren(this);
+  }
+}
