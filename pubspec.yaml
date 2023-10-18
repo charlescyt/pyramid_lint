@@ -1,7 +1,7 @@
 name: pyramid_lint
 description: >-
   Linting tool for Dart and Flutter projects to encourage good coding practices.
-version: 1.0.0
+version: 1.1.0
 repository: https://github.com/charlescyt/pyramid_lint
 issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
 topics: [lints, analyzer]

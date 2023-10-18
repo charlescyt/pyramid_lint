@@ -1,14 +1,18 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.0] - 2023-10-19
 
 ### Added
 
 - New lints
-  - `prefer_new_line_before_return`
-  - `prefer_async_await`
-  - `unnecessary_nullable_return_type`
   - `avoid_unused_parameters`
+  - `prefer_async_await`
+  - `prefer_new_line_before_return`
+  - `unnecessary_nullable_return_type`
+
+### Fixed
+
+- Fix pubspec.yaml description and format ([#1](https://github.com/charlescyt/pyramid_lint/pull/1) thanks to [parlough](https://github.com/parlough))
 
 ## [1.0.0] - 2023-10-13
 
