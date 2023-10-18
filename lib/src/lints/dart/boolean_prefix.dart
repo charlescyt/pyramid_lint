@@ -29,7 +29,7 @@ class BooleanPrefix extends DartLintRule {
   static const name = 'boolean_prefix';
 
   static const _code = LintCode(
-    name: 'boolean_prefix',
+    name: name,
     problemMessage: '{0} should be named with a valid prefix.',
     correctionMessage: 'Try naming your {1} with a valid prefix.',
     url: '$docUrl#${BooleanPrefix.name}',

@@ -10,7 +10,7 @@ class PreferAsyncAwait extends DartLintRule {
   static const name = 'prefer_async_await';
 
   static const _code = LintCode(
-    name: 'prefer_async_await',
+    name: name,
     problemMessage: 'Using Future.then() decreases readability.',
     correctionMessage: 'Consider using async/await instead.',
     url: '$docUrl#${PreferAsyncAwait.name}',

@@ -11,7 +11,7 @@ class AvoidReturningWidgets extends DartLintRule {
   static const name = 'avoid_returning_widgets';
 
   static const _code = LintCode(
-    name: 'avoid_returning_widgets',
+    name: name,
     problemMessage:
         'Returning widgets is not recommended for performance reasons.',
     correctionMessage: 'Try creating a separate widget instead.',

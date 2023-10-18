@@ -14,7 +14,7 @@ class UnnecessaryNullableReturnType extends DartLintRule {
   static const name = 'unnecessary_nullable_return_type';
 
   static const _code = LintCode(
-    name: 'unnecessary_nullable_return_type',
+    name: name,
     problemMessage: 'The nullable return type is unnecessary.',
     correctionMessage: 'Consider using non-nullable return type.',
     url: '$docUrl#${UnnecessaryNullableReturnType.name}',

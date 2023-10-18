@@ -12,7 +12,7 @@ class PreferNewLineBeforeReturn extends DartLintRule {
   static const name = 'prefer_new_line_before_return';
 
   static const _code = LintCode(
-    name: 'prefer_new_line_before_return',
+    name: name,
     problemMessage: 'There should be a new line before the return statement.',
     correctionMessage:
         'Consider adding a new line before the return statement.',
