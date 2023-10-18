@@ -8,6 +8,7 @@
   - `prefer_new_line_before_return`
   - `prefer_async_await`
   - `unnecessary_nullable_return_type`
+  - `avoid_unused_parameters`
 
 ## [1.0.0] - 2023-10-13
 
