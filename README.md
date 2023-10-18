@@ -20,6 +20,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [avoid_dynamic](#avoid_dynamic)
   - [avoid_empty_blocks](#avoid_empty_blocks)
   - [avoid_inverted_boolean_expressions](#avoid_inverted_boolean_expressions)
+  - [avoid_unused_parameters](#avoid_unused_parameters)
   - [boolean_prefix](#boolean_prefix)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
@@ -219,6 +220,28 @@ Good
 ```dart
 if (number <= 0) {}
 final text = number != 0 ? 'Not zero' : 'Zero';
+```
+
+### avoid_unused_parameters
+
+Unused parameters should be removed to avoid confusion.
+
+- Severity: warning
+
+Bad
+
+```dart
+void log(String a, String b) {
+  print(a);
+}
+```
+
+Good
+
+```dart
+void log(String a) {
+  print(a);
+}
 ```
 
 ### boolean_prefix
