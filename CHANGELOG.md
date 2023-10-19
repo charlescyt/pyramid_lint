@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- New lint
+  - `avoid_abbreviations_in_doc_comments`
+
 ## [1.1.0] - 2023-10-19
 
 ### Added

@@ -16,6 +16,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
 - [Configuration](#configuration)
 - [Dart lints](#dart-lints)
   - [always_declare_parameter_names](#always_declare_parameter_names)
+  - [avoid_abbreviations_in_doc_comments](#avoid_abbreviations_in_doc_comments)
   - [avoid_duplicate_import](#avoid_duplicate_import)
   - [avoid_dynamic](#avoid_dynamic)
   - [avoid_empty_blocks](#avoid_empty_blocks)
@@ -126,6 +127,41 @@ Good
 
 ```dart
 typedef ItemBuilder = Widget Function(BuildContext context, int index);
+```
+
+### avoid_abbreviations_in_doc_comments
+
+Abbreviations in doc comments should be avoided since they can be confusing.
+
+- Severity: warning
+- Options:
+  - abbreviations: `List<String>`
+
+see: [effective-dart](https://dart.dev/effective-dart/documentation#avoid-abbreviations-and-acronyms-unless-they-are-obvious)
+
+Included abbreviations:
+
+- e.g.
+- i.e.
+- etc.
+- et al.
+
+Bad
+
+```dart
+/// This is documentation.
+///
+/// e.g. ...
+int function(){}
+```
+
+Good
+
+```dart
+/// This is documentation.
+///
+/// For example ...
+int function(){}
 ```
 
 ### avoid_duplicate_import
