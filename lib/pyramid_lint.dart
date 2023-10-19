@@ -7,6 +7,7 @@ import 'src/assists/flutter/wrap_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/lints/dart/always_declare_parameter_names.dart';
+import 'src/lints/dart/avoid_abbreviations_in_doc_comments.dart';
 import 'src/lints/dart/avoid_duplicate_import.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
 import 'src/lints/dart/avoid_empty_blocks.dart';
@@ -48,6 +49,7 @@ class _PyramidLinter extends PluginBase {
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
         // Dart lints
         const AlwaysDeclareParameterNames(),
+        AvoidAbbreviationsInDocComments.fromConfigs(configs),
         const AvoidDuplicateImport(),
         const AvoidDynamic(),
         const AvoidEmptyBlocks(),

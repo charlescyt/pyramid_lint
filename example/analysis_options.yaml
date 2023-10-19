@@ -12,3 +12,5 @@ custom_lint:
       max_lines: 50
     - boolean_prefix:
       valid_prefixes: ["at"]
+    - avoid_abbreviations_in_doc_comments:
+      abbreviations: ["approx."]
