@@ -23,6 +23,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [avoid_inverted_boolean_expressions](#avoid_inverted_boolean_expressions)
   - [avoid_unused_parameters](#avoid_unused_parameters)
   - [boolean_prefix](#boolean_prefix)
+  - [doc_comments_before_annotations](#doc_comments_before_annotations)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
   - [prefer_async_await](#prefer_async_await)
@@ -334,6 +335,31 @@ class Point {
 
   bool isSamePoint(Point other) => x == other.x && y == other.y;
 }
+```
+
+### doc_comments_before_annotations
+
+Doc comments should be placed before annotations.
+
+- Severity: info
+- Quick fix: ✓
+
+see: [effective-dart](https://dart.dev/effective-dart/documentation#do-put-doc-comments-before-metadata-annotations)
+
+Bad
+
+```dart
+@immutable
+/// Some documentation.
+class A {}
+```
+
+Good
+
+```dart
+/// Some documentation.
+@immutable
+class A {}
 ```
 
 ### max_lines_for_file

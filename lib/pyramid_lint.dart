@@ -14,6 +14,7 @@ import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/avoid_unnecessary_parameters.dart';
 import 'src/lints/dart/boolean_prefix.dart';
+import 'src/lints/dart/doc_comments_before_annotations.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
 import 'src/lints/dart/prefer_async_await.dart';
@@ -56,6 +57,7 @@ class _PyramidLinter extends PluginBase {
         const AvoidInvertedBooleanExpressions(),
         AvoidUnusedParameters.fromConfigs(configs),
         BooleanPrefix.fromConfigs(configs),
+        const DocCommentsBeforeAnnotations(),
         MaxLinesForFile(configs),
         MaxLinesForFunction(configs),
         const PreferAsyncAwait(),

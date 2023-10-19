@@ -4,8 +4,9 @@
 
 ### Added
 
-- New lint
+- New lints
   - `avoid_abbreviations_in_doc_comments`
+  - `doc_comments_before_annotations`
 
 ## [1.1.0] - 2023-10-19
 
