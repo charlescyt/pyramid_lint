@@ -9,7 +9,7 @@ topics: [lints, analyzer]
 screenshots:
   - description: >-
       Demonstration of the proper_super_init_state lint and its quick fix.
-    path: resources/demo.gif
+    path: screenshots/demo.gif
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
