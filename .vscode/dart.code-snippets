@@ -16,7 +16,7 @@
 			"  static const name = '${TM_FILENAME_BASE}';",
 			"",
 			"  static const _code = LintCode(",
-			"    name: '${TM_FILENAME_BASE}',",
+			"    name: name,",
 			"    problemMessage: '${1:The problem message of this lint}',",
 			"    correctionMessage: '${2:The correction message of this lint}',",
 			"    url: '\\$docUrl#${${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.name}',"
