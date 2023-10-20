@@ -31,6 +31,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [prefer_immediate_return](#prefer_immediate_return)
   - [prefer_iterable_first](#prefer_iterable_first)
   - [prefer_iterable_last](#prefer_iterable_last)
+  - [prefer_library_prefixes](#prefer_library_prefixes)
   - [prefer_new_line_before_return](#prefer_new_line_before_return)
   - [prefer_underscore_for_unused_callback_parameters](#prefer_underscore_for_unused_callback_parameters)
   - [unnecessary_nullable_return_type](#unnecessary_nullable_return_type)
@@ -522,6 +523,54 @@ Good
 ```dart
 const numbers = [1, 2, 3];
 final lastNumber = numbers.last;
+```
+
+### prefer_library_prefixes
+
+Use library prefixes to avoid name conflicts and increase code readability.
+
+- Severity: info
+- Quick fix: ✓
+- Options:
+  - include_default_libraries: `bool` (default: true)
+  - libraries: `List<String>`
+
+Default libraries:
+
+- 'dart:developer'
+- 'dart:math'
+
+Bad
+
+```dart
+import 'dart:developer';
+import 'dart:math';
+
+print(log(e));
+log('message');
+```
+
+```dart
+import 'package:http/http.dart';
+
+final response = await post(...);
+```
+
+Good
+
+```dart
+import 'dart:developer' as developer;
+import 'dart:math' as math;
+
+print(math.log(math.e));
+developer.log('message');
+
+```
+
+```dart
+import 'package:http/http.dart' as http;
+
+final response = await http.post(...);
 ```
 
 ### prefer_new_line_before_return

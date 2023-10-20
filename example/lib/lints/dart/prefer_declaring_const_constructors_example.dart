@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_library_prefixes
+
 import 'dart:math' show cos, sin;
 
 class Point {

@@ -7,6 +7,7 @@
 - New lints
   - `avoid_abbreviations_in_doc_comments`
   - `doc_comments_before_annotations`
+  - `prefer_library_prefixes`
 
 ## [1.1.0] - 2023-10-19
 

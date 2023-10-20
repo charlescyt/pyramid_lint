@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, prefer_library_prefixes
 
 // expect_lint: avoid_duplicate_import
 import 'dart:math' as math show max;
