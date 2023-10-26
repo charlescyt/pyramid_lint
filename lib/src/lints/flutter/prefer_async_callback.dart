@@ -3,6 +3,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/pubspec_extensions.dart';
 
 class PreferAsyncCallback extends DartLintRule {
   const PreferAsyncCallback() : super(code: _code);
@@ -24,6 +25,8 @@ class PreferAsyncCallback extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addGenericFunctionType((node) {
       final returnType = node.returnType?.type;
       if (returnType?.isDartAsyncFuture != true) return;

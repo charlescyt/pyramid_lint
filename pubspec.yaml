@@ -19,3 +19,4 @@ dependencies:
   analyzer_plugin: ^0.11.2
   collection: ^1.17.1
   custom_lint_builder: ^0.5.3
+  pubspec_parse: ^1.2.3

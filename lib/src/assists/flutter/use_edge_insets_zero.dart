@@ -4,6 +4,7 @@ import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
+import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class UseEdgeInsetsZero extends DartAssist {
@@ -14,6 +15,8 @@ class UseEdgeInsetsZero extends DartAssist {
     CustomLintContext context,
     SourceRange target,
   ) async {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addInstanceCreationExpression((node) {
       final sourceRange = switch (node.keyword) {
         null => node.sourceRange,

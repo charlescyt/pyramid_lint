@@ -3,6 +3,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/pubspec_extensions.dart';
 
 class ProperFromEnvironment extends DartLintRule {
   const ProperFromEnvironment() : super(code: _code);
@@ -25,6 +26,8 @@ class ProperFromEnvironment extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addInstanceCreationExpression((node) {
       final constructorName = node.constructorName.name?.name;
       if (constructorName != 'fromEnvironment') return;

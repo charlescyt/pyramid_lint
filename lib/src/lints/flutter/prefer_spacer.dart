@@ -5,6 +5,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/argument_list_extensions.dart';
 import '../../utils/constants.dart';
+import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class PreferSpacer extends DartLintRule {
@@ -26,6 +27,8 @@ class PreferSpacer extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addInstanceCreationExpression((node) {
       final type = node.staticType;
       if (type == null || !expandedChecker.isExactlyType(type)) return;

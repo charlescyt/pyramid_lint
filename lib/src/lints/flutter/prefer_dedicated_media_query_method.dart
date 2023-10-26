@@ -5,6 +5,7 @@ import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/pubspec_extensions.dart';
 import '../../utils/string_extensions.dart';
 
 const List<String> _properties = [
@@ -48,6 +49,8 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addPropertyAccess((node) {
       final propertyName = node.propertyName.name;
       if (!_properties.contains(propertyName)) return;

@@ -6,6 +6,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/class_members_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/lint_code_extensions.dart';
+import '../../utils/pubspec_extensions.dart';
 import '../../utils/statements_extensions.dart';
 import '../../utils/type_checker.dart';
 
@@ -28,6 +29,8 @@ class ProperControllerDispose extends DartLintRule {
     ErrorReporter reporter,
     CustomLintContext context,
   ) {
+    if (!context.pubspec.isFlutterProject) return;
+
     context.registry.addClassDeclaration((node) {
       final type = node.extendsClause?.superclass.type;
       if (type == null || !widgetStateChecker.isAssignableFromType(type)) {
