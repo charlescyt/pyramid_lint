@@ -5,5 +5,7 @@ import 'package:flutter/foundation.dart' show VoidCallback;
 typedef A = VoidCallback;
 // expect_lint: prefer_void_callback
 typedef B = void Function();
-typedef C = void Function(int index);
-typedef D = void Function({required int index});
+// expect_lint: prefer_void_callback
+typedef C = void Function()?;
+typedef D = void Function(int index);
+typedef E = void Function({required int index});

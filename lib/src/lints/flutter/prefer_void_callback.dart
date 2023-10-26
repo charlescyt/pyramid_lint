@@ -57,15 +57,18 @@ class _ReplaceWithVoidCallBack extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
+      final replacement =
+          node.question == null ? 'VoidCallback' : 'VoidCallback?';
+
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Replace with VoidCallback',
+        message: 'Replace with $replacement',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addSimpleReplacement(
           node.sourceRange,
-          'VoidCallback',
+          replacement,
         );
       });
     });

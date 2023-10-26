@@ -57,15 +57,18 @@ class _ReplaceWithAsyncCallback extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
+      final replacement =
+          node.question == null ? 'AsyncCallback' : 'AsyncCallback?';
+
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Replace with AsyncCallback',
+        message: 'Replace with $replacement',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addSimpleReplacement(
           node.sourceRange,
-          'AsyncCallback',
+          replacement,
         );
       });
     });

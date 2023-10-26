@@ -81,15 +81,19 @@ class _ReplaceWithValueChanged extends DartFix {
       final firstParameterType = firstParameter.type?.type;
       if (firstParameterType == null) return;
 
+      final replacement = node.question == null
+          ? 'ValueChanged<${firstParameter.type}>'
+          : 'ValueChanged<${firstParameter.type}>?';
+
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Replace with ValueChanged<${firstParameter.type}>',
+        message: 'Replace with $replacement',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addSimpleReplacement(
           node.sourceRange,
-          'ValueChanged<${firstParameter.type}>',
+          replacement,
         );
       });
     });

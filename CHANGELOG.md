@@ -13,6 +13,10 @@
 
 - Disable Flutter lints and assists for Dart projects.
 
+### Fixed
+
+- Fix the quick fix for `prefer_void_callback`, `prefer_async_callback` and `prefer_value_changed` when the function is nullable.
+
 ## [1.1.0] - 2023-10-19
 
 ### Added
