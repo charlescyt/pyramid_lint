@@ -9,7 +9,13 @@ topics: [lints, analyzer]
 screenshots:
   - description: >-
       Demonstration of the proper_super_init_state lint and its quick fix.
-    path: screenshots/demo.gif
+    path: screenshots/proper_super_init_state_demo.gif
+  - description: >-
+      Demonstration of the prefer_dedicated_media_query_method_demo lint and its quick fix.
+    path: screenshots/prefer_dedicated_media_query_method_demo.gif
+  - description: >-
+      Demonstration of the wrap_with_layout_builder assist.
+    path: screenshots/wrap_with_layout_builder_demo.gif
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
