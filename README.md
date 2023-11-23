@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/screenshots/demo.gif" width="800" />
+  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/screenshots/proper_super_init_state_demo.gif" width="800" />
 </p>
 
 <p align="center">
