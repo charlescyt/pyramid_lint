@@ -16,7 +16,8 @@ class PreferBorderFromBorderSide extends DartLintRule {
     problemMessage:
         'Border.all is not a const constructor and it uses const constructor '
         'Border.fromBorderSide internally.',
-    correctionMessage: 'Consider replacing Border.all with Border.fromBorderSide.',
+    correctionMessage:
+        'Consider replacing Border.all with Border.fromBorderSide.',
     url: '$docUrl#${PreferBorderFromBorderSide.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
