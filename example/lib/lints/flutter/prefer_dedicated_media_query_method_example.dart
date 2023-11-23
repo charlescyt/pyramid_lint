@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 
@@ -28,6 +28,8 @@ class Example extends StatelessWidget {
     // expect_lint: prefer_dedicated_media_query_method
     final navigationMode = MediaQuery.of(context).navigationMode;
     // expect_lint: prefer_dedicated_media_query_method
+    final onOffSwitchLabels = MediaQuery.of(context).onOffSwitchLabels;
+    // expect_lint: prefer_dedicated_media_query_method
     final orientation = MediaQuery.of(context).orientation;
     // expect_lint: prefer_dedicated_media_query_method
     final padding = MediaQuery.of(context).padding;
@@ -39,6 +41,8 @@ class Example extends StatelessWidget {
     final systemGestureInsets = MediaQuery.of(context).systemGestureInsets;
     // expect_lint: prefer_dedicated_media_query_method
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    // expect_lint: prefer_dedicated_media_query_method
+    final textScaler = MediaQuery.of(context).textScaler;
     // expect_lint: prefer_dedicated_media_query_method
     final viewInsets = MediaQuery.of(context).viewInsets;
     // expect_lint: prefer_dedicated_media_query_method

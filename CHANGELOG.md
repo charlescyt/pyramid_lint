@@ -14,6 +14,7 @@
 - Disable Flutter lints and assists for Dart projects.
 - Improve lints' messages.
 - Improve documentation.
+- `prefer_dedicated_media_query_method` now supports `onOffSwitchLabels` and `textScaler`.
 
 ### Fixed
 

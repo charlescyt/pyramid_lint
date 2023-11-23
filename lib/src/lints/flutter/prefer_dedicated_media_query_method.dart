@@ -19,12 +19,15 @@ const List<String> _properties = [
   'highContrast',
   'invertColors',
   'navigationMode',
+  'onOffSwitchLabels',
   'orientation',
   'padding',
   'platformBrightness',
   'size',
   'systemGestureInsets',
+  // TODO(Charles): Remove textScaleFactor later since it was deprecated.
   'textScaleFactor',
+  'textScaler',
   'viewInsets',
   'viewPadding',
 ];

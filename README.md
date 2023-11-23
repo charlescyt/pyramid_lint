@@ -888,12 +888,14 @@ Properties:
 - highContrast
 - invertColors
 - navigationMode
+- onOffSwitchLabels
 - orientation
 - padding
 - platformBrightness
 - size
 - systemGestureInsets
-- textScaleFactor
+- textScaleFactor (deprecated after v3.12.0-2.0.pre)
+- textScaler
 - viewInsets
 - viewPadding
 
