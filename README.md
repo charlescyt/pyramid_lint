@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/resources/demo.gif" width="800" />
+  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/screenshots/demo.gif" width="800" />
 </p>
 
 <p align="center">
@@ -115,29 +115,42 @@ custom_lint:
 
 ### always_declare_parameter_names
 
-Not declaring parameter name decreases code readability and the IDEs code completion will not be able to suggest the parameter name.
+Parameter names should always be declared to enhance code readability and enable IDEs to provide code completion suggestions.
 
 - Severity: info
 
 Bad
 
 ```dart
-typedef ItemBuilder = Widget Function(BuildContext, int);
+typedef ItemBuilder = Widget? Function(BuildContext, int);
+
+// IDE's code completion with default parameter names p0, p1, ...
+itemBuilder: (p0, p1) {},
 ```
 
 Good
 
 ```dart
-typedef ItemBuilder = Widget Function(BuildContext context, int index);
+typedef ItemBuilder = Widget? Function(BuildContext context, int index);
+
+// IDE's code completion with descriptive parameter names
+itemBuilder: (context, index) {},
 ```
 
 ### avoid_abbreviations_in_doc_comments
 
-Abbreviations in doc comments should be avoided since they can be confusing.
+Avoid using abbreviations in doc comments as they can hinder readability and cause confusion for readers.
 
 - Severity: warning
 - Options:
   - abbreviations: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_abbreviations_in_doc_comments:
+      abbreviations: ['approx.']
+```
 
 see: [effective-dart](https://dart.dev/effective-dart/documentation#avoid-abbreviations-and-acronyms-unless-they-are-obvious)
 
@@ -193,7 +206,7 @@ final b = math.min(1, 10);
 
 ### avoid_dynamic
 
-While dynamic can be useful in certain scenarios, it sacrifices the benefits of static typing and can decrease code readability. Using `dynamic` with `Map` will not trigger this lint.
+While the `dynamic` type can be useful in certain scenarios, it sacrifices the benefits of static typing and decreases code readability. Using `dynamic` with `Map` will not trigger this lint.
 
 - Severity: info
 
@@ -265,6 +278,15 @@ final text = number != 0 ? 'Not zero' : 'Zero';
 Unused parameters should be removed to avoid confusion.
 
 - Severity: warning
+- Options:
+  - excluded_parameters: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_unused_parameters:
+      excluded_parameters: ['ref']
+```
 
 Bad
 
@@ -289,6 +311,13 @@ Boolean variables, functions and getters that return a boolean value should be p
 - Severity: info
 - Options:
   - valid_prefixes: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix:
+      valid_prefixes: ['...']
+```
 
 Default valid prefixes:
 
@@ -371,6 +400,13 @@ A file should not exceed a certain number of lines.
 - Options:
   - max_lines: `int` (default: 200)
 
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_file:
+      max_lines: 500
+```
+
 ### max_lines_for_function
 
 A function should not exceed a certain number of lines.
@@ -378,6 +414,13 @@ A function should not exceed a certain number of lines.
 - Severity: info
 - Options:
   - max_lines: `int` (default: 100)
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_function:
+      max_lines: 200
+```
 
 ### prefer_async_await
 
@@ -534,6 +577,14 @@ Use library prefixes to avoid name conflicts and increase code readability.
 - Options:
   - include_default_libraries: `bool` (default: true)
   - libraries: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_library_prefixes:
+      include_default_libraries: false
+      libraries: ['package:http/http.dart']
+```
 
 Default libraries:
 
@@ -856,7 +907,7 @@ final orientation = MediaQuery.maybeOf(context)?.orientation;
 Good
 
 ```dart
-final size = MediaQuery.of(context).size;
+final size = MediaQuery.sizeOf(context);
 final orientation = MediaQuery.maybeOrientationOf(context);
 ```
 

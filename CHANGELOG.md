@@ -13,12 +13,13 @@
 
 - Disable Flutter lints and assists for Dart projects.
 - Improve lints' messages.
+- Improve documentation.
 
 ### Fixed
 
 - Fix the quick fix for `prefer_void_callback`, `prefer_async_callback` and `prefer_value_changed` when the function is nullable.
 
-## [1.1.0] - 2023-10-19
+## 1.1.0 - 2023-10-19
 
 ### Added
 
@@ -32,7 +33,7 @@
 
 - Fix pubspec.yaml description and format ([#1](https://github.com/charlescyt/pyramid_lint/pull/1) thanks to [parlough](https://github.com/parlough))
 
-## [1.0.0] - 2023-10-13
+## 1.0.0 - 2023-10-13
 
 ### Added
 
@@ -57,7 +58,7 @@
 
 - Fix `prefer_underscore_for_unused_callback_parameters` false positive on unused parameters in function declarations.
 
-## [0.6.0] - 2023-10-10
+## 0.6.0 - 2023-10-10
 
 ### Added
 
@@ -68,7 +69,7 @@
   - `prefer_void_callback`
   - `prefer_underscore_for_unused_callback_parameters`
 
-## [0.5.0] - 2023-10-05
+## 0.5.0 - 2023-10-05
 
 ### Added
 
@@ -86,7 +87,7 @@
 
 - Fix a bug where the fix for `correct_order_for_super_dispose` is not working.
 
-## [0.4.0] - 2023-09-26
+## 0.4.0 - 2023-09-26
 
 ### Added
 
@@ -95,7 +96,7 @@
   - `max_lines_for_file`
   - `max_lines_for_function`
 
-## [0.3.0] - 2023-09-25
+## 0.3.0 - 2023-09-25
 
 ### Added
 
@@ -106,7 +107,7 @@
   - `invert_boolean_expression`
   - `swap_then_else_expression`
 
-## [0.2.0] - 2023-09-21
+## 0.2.0 - 2023-09-21
 
 ### Added
 
@@ -115,10 +116,10 @@
   - `proper_controller_dispose`
   - `proper_edge_insets_constructor`
 
-## [0.1.1] - 2023-09-18
+## 0.1.1 - 2023-09-18
 
 - Fix README.md image links.
 
-## [0.1.0] - 2023-09-17
+## 0.1.0 - 2023-09-17
 
 - Initial release.
