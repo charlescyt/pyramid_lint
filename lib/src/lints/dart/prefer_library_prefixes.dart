@@ -4,13 +4,13 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
 
-final _defaultLibraries = [
+const _defaultLibraries = [
   'dart:developer',
   'dart:math',
 ];
 
 class PreferLibraryPrefixes extends DartLintRule {
-  const PreferLibraryPrefixes({
+  const PreferLibraryPrefixes._({
     this.libraries = const {},
   }) : super(code: _code);
 
@@ -19,7 +19,7 @@ class PreferLibraryPrefixes extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: 'Prefix should be used for this library.',
-    correctionMessage: 'Try adding a prefix to this library.',
+    correctionMessage: 'Consider adding a prefix to this library.',
     url: '$docUrl#${PreferLibraryPrefixes.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
@@ -37,7 +37,7 @@ class PreferLibraryPrefixes extends DartLintRule {
       ...?customLibraries,
     };
 
-    return PreferLibraryPrefixes(libraries: libraries);
+    return PreferLibraryPrefixes._(libraries: libraries);
   }
 
   @override

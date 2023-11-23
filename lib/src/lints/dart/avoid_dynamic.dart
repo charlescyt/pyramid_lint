@@ -13,8 +13,10 @@ class AvoidDynamic extends DartLintRule {
 
   static const _code = LintCode(
     name: name,
-    problemMessage: 'Avoid using dynamic type.',
-    correctionMessage: 'Consider specifying a type other than dynamic.',
+    problemMessage:
+        'Avoid using dynamic type as it reduces type safety and can '
+        'lead to potential runtime errors.',
+    correctionMessage: 'Consider specifying a type instead of using dynamic.',
     url: '$docUrl#${AvoidDynamic.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

@@ -16,7 +16,7 @@ class PreferIterableLast extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: '{0} is more verbose than iterable.last.',
-    correctionMessage: 'Try replacing {1} with {2}.',
+    correctionMessage: 'Consider replacing {1} with {2}.',
     url: '$docUrl#${PreferIterableLast.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

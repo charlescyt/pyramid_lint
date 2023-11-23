@@ -91,8 +91,10 @@ class _PyramidLinter extends PluginBase {
 
   @override
   List<Assist> getAssists() => [
+        // Dart assists
         InvertBooleanExpression(),
         SwapThenElseExpression(),
+        // Flutter assists
         UseEdgeInsetsZero(),
         WrapWithExpanded(),
         WrapWithLayoutBuilder(),

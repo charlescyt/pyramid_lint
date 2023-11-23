@@ -14,7 +14,7 @@ class PreferAsyncCallback extends DartLintRule {
     name: name,
     problemMessage: 'There is a typedef AsyncCallback defined in flutter.',
     correctionMessage:
-        'Try using AsyncCallback instead of Future<void> Function().',
+        'Consider using AsyncCallback instead of Future<void> Function().',
     url: '$docUrl#${PreferAsyncCallback.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

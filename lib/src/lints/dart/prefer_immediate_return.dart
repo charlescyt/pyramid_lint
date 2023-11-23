@@ -15,7 +15,7 @@ class PreferImmediateReturn extends DartLintRule {
     name: name,
     problemMessage: 'Declaring a variable to return it on the next line is '
         'unnecessary.',
-    correctionMessage: 'Return the value immediately.',
+    correctionMessage: 'Consider returning the value immediately.',
     url: '$docUrl#${PreferImmediateReturn.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

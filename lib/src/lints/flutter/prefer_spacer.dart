@@ -16,7 +16,7 @@ class PreferSpacer extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
-    correctionMessage: 'Try replacing Expanded with Spacer.',
+    correctionMessage: 'Consider replacing Expanded with Spacer.',
     url: '$docUrl#${PreferSpacer.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

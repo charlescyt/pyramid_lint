@@ -4,7 +4,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
 
-final _defaultAbbreviations = [
+const _defaultAbbreviations = [
   'e.g.',
   'i.e.',
   'etc.',
@@ -12,32 +12,33 @@ final _defaultAbbreviations = [
 ];
 
 class AvoidAbbreviationsInDocComments extends DartLintRule {
-  const AvoidAbbreviationsInDocComments({
-    this.abbreviations = const [],
+  const AvoidAbbreviationsInDocComments._({
+    this.abbreviations = const {},
   }) : super(code: _code);
 
   static const name = 'avoid_abbreviations_in_doc_comments';
 
   static const _code = LintCode(
     name: name,
-    problemMessage: 'Using abbreviations in doc comments can be confusing.',
-    correctionMessage: 'Try using the full word instead.',
+    problemMessage:
+        'Avoid using abbreviations in doc comments as they can hinder '
+        'readability and cause confusion.',
+    correctionMessage: 'Consider using the full word instead.',
     url: '$docUrl#${AvoidAbbreviationsInDocComments.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 
-  final List<String> abbreviations;
+  final Set<String> abbreviations;
 
   factory AvoidAbbreviationsInDocComments.fromConfigs(
     CustomLintConfigs configs,
   ) {
     final options = configs.rules[AvoidAbbreviationsInDocComments.name];
-    final jsonList = options?.json['abbreviations'] as List<Object?>?;
-    final abbreviations = jsonList?.cast<String>() ?? [];
+    final customAbbreviations =
+        (options?.json['abbreviations'] as List<Object?>?)?.cast<String>();
+    final abbreviations = {..._defaultAbbreviations, ...?customAbbreviations};
 
-    return AvoidAbbreviationsInDocComments(
-      abbreviations: [..._defaultAbbreviations, ...abbreviations],
-    );
+    return AvoidAbbreviationsInDocComments._(abbreviations: abbreviations);
   }
 
   @override

@@ -17,7 +17,7 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
-    correctionMessage: 'Replace with {0}.',
+    correctionMessage: 'Consider replacing with {0}.',
     url: '$docUrl#${ProperEdgeInsetsConstructor.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

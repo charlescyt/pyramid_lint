@@ -16,7 +16,7 @@ class PreferValueChanged extends DartLintRule {
     name: name,
     problemMessage: 'There is a typedef ValueChanged<T> defined in flutter.',
     correctionMessage:
-        'Try using ValueChanged<{0}> instead of void Function({1}).',
+        'Consider using ValueChanged<{0}> instead of void Function({1}).',
     url: '$docUrl#${PreferValueChanged.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

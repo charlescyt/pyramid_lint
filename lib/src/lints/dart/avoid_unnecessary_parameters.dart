@@ -16,7 +16,7 @@ class AvoidUnusedParameters extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: 'Unused parameter should be removed.',
-    correctionMessage: 'Try removing the unused parameter.',
+    correctionMessage: 'Consider removing the unused parameter.',
     url: '$docUrl#${AvoidUnusedParameters.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );

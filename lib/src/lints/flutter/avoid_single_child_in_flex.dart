@@ -16,7 +16,7 @@ class AvoidSingleChildInFlex extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: 'Using {0} to position a single widget is inefficient.',
-    correctionMessage: 'Try replacing {0} with Align or Center.',
+    correctionMessage: 'Consider replacing {0} with Align or Center.',
     url: '$docUrl#${AvoidSingleChildInFlex.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

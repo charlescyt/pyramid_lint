@@ -16,7 +16,7 @@ class PreferTextRich extends DartLintRule {
     name: name,
     problemMessage:
         'RichText does not inherit TextStyle from DefaultTextStyle.',
-    correctionMessage: 'Try replacing RichText with Text.rich.',
+    correctionMessage: 'Consider replacing RichText with Text.rich.',
     url: '$docUrl#${PreferTextRich.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

@@ -17,7 +17,7 @@ class PreferDeclaringConstConstructors extends DartLintRule {
     problemMessage:
         'Constructors of classes with only final fields should be declared as '
         'const constructors when possible.',
-    correctionMessage: 'Try adding a const keyword to the constructor.',
+    correctionMessage: 'Consider adding a const keyword to the constructor.',
     url: '$docUrl#${PreferDeclaringConstConstructors.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

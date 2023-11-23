@@ -12,6 +12,7 @@
 ### Changed
 
 - Disable Flutter lints and assists for Dart projects.
+- Improve lints' messages.
 
 ### Fixed
 

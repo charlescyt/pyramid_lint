@@ -17,7 +17,7 @@ class PreferBorderRadiusAll extends DartLintRule {
         'BorderRadius.circular is not a const constructor and it uses const '
         'constructor BorderRadius.all internally.',
     correctionMessage:
-        'Try replacing BorderRadius.circular with BorderRadius.all.',
+        'Consider replacing BorderRadius.circular with BorderRadius.all.',
     url: '$docUrl#${PreferBorderRadiusAll.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

@@ -15,7 +15,7 @@ class PreferIterableFirst extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage: '{0} is more verbose than iterable.first.',
-    correctionMessage: 'Try replacing {1} with {2}.',
+    correctionMessage: 'Consider replacing {1} with {2}.',
     url: '$docUrl#${PreferIterableFirst.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

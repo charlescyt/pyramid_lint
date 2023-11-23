@@ -12,9 +12,9 @@ class AlwaysDeclareParameterNames extends DartLintRule {
   static const _code = LintCode(
     name: name,
     problemMessage:
-        'Not declaring parameter name decreases code readability and '
-        'the IDEs code completion will not be able to suggest the parameter name.',
-    correctionMessage: 'Try declaring parameter name.',
+        'Parameter names should always be declared to enhance code readability and '
+        'enable IDEs to provide code completion suggestions.',
+    correctionMessage: 'Consider declaring a descriptive parameter name.',
     url: '$docUrl#${AlwaysDeclareParameterNames.name}',
     errorSeverity: ErrorSeverity.INFO,
   );

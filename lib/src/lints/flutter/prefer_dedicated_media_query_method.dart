@@ -38,7 +38,7 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     name: name,
     problemMessage:
         'Using MediaQuery.of(context).{0} will cause unnecessary rebuilds.',
-    correctionMessage: 'Use MediaQuery.{1}(context) instead.',
+    correctionMessage: 'Consider using MediaQuery.{1}(context) instead.',
     url: '$docUrl#${PreferDedicatedMediaQueryMethod.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
