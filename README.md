@@ -26,6 +26,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
   - [doc_comments_before_annotations](#doc_comments_before_annotations)
   - [max_lines_for_file](#max_lines_for_file)
   - [max_lines_for_function](#max_lines_for_function)
+  - [no_self_comparisons](#no_self_comparisons)
   - [prefer_async_await](#prefer_async_await)
   - [prefer_declaring_const_constructors](#prefer_declaring_const_constructors)
   - [prefer_immediate_return](#prefer_immediate_return)
@@ -420,6 +421,26 @@ custom_lint:
   rules:
     - max_lines_for_function:
       max_lines: 200
+```
+
+### no_self_comparisons
+
+Self comparison is usually a mistake.
+
+- Severity: warning
+
+Bad
+
+```dart
+if (foo == foo) {}
+if (foo.property == foo.property) {}
+```
+
+Good
+
+```dart
+if (foo == bar) {}
+if (foo.property == bar.property) {}
 ```
 
 ### prefer_async_await

@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Add new lint `no_self_comparisons`
+
 ## 1.2.0 - 2023-11-24
 
 ### Added
