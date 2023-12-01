@@ -5,6 +5,7 @@
 ### Added
 
 - Add new lint `no_self_comparisons`
+- Add new lint `avoid_widget_state_public_members`
 
 ## 1.2.0 - 2023-11-24
 

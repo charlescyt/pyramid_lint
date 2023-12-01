@@ -39,6 +39,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
 - [Flutter lints](#flutter-lints)
   - [avoid_returning_widgets](#avoid_returning_widgets)
   - [avoid_single_child_in_flex](#avoid_single_child_in_flex)
+  - [avoid_widget_state_public_members](#avoid_widget_state_public_members)
   - [prefer_async_callback](#prefer_async_callback)
   - [prefer_border_from_border_side](#prefer_border_from_border_side)
   - [prefer_border_radius_all](#prefer_border_radius_all)
@@ -807,6 +808,56 @@ Align(
 Center(
   child: Placeholder(),
 )
+```
+
+### avoid_widget_state_public_members
+
+Avoid declaring public members in widget state classes.
+
+- Severity: info
+
+Bad
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  int counter = 0;
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      onPressed: increment,
+      child: Text('$counter'),
+    );
+  }
+}
+```
+
+Good
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      onPressed: _increment,
+      child: Text('$_counter'),
+    );
+  }
+}
 ```
 
 ### prefer_async_callback
