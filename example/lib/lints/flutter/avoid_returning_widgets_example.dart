@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_widget_state_public_members
+
 import 'package:flutter/material.dart';
 
 class A extends StatelessWidget {
