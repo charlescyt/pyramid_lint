@@ -39,9 +39,8 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
 
   static const _code = LintCode(
     name: name,
-    problemMessage:
-        'Using MediaQuery.of(context).{0} will cause unnecessary rebuilds.',
-    correctionMessage: 'Consider using MediaQuery.{1}(context) instead.',
+    problemMessage: 'Using {0} will cause unnecessary rebuilds.',
+    correctionMessage: 'Consider using {1} instead.',
     url: '$docUrl#${PreferDedicatedMediaQueryMethod.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
@@ -53,6 +52,33 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
+
+    context.registry.addPrefixedIdentifier((node) {
+      final targetType = node.prefix.staticType;
+
+      const mediaQueryDataChecker = TypeChecker.fromName(
+        'MediaQueryData',
+        packageName: 'flutter',
+      );
+
+      if (targetType == null ||
+          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+
+      final propertyName = node.identifier.name;
+      if (!_properties.contains(propertyName)) return;
+
+      final actual = node.toSource();
+      final expected = 'MediaQuery.${propertyName}Of(context)';
+
+      reporter.reportErrorForNode(
+        code,
+        node,
+        [
+          actual,
+          expected,
+        ],
+      );
+    });
 
     context.registry.addPropertyAccess((node) {
       final propertyName = node.propertyName.name;
@@ -77,8 +103,8 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
         code,
         node,
         [
-          propertyName,
-          newMethodName,
+          'MediaQuery.of(context).$propertyName',
+          'MediaQuery.$newMethodName()',
         ],
       );
     });
@@ -97,6 +123,26 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     AnalysisError analysisError,
     List<AnalysisError> others,
   ) {
+    context.registry.addPrefixedIdentifier((node) {
+      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+
+      final methodName = node.identifier.name;
+
+      final dedicatedMethod = 'MediaQuery.${methodName}Of(context)';
+
+      final changeBuilder = reporter.createChangeBuilder(
+        message: 'Use $dedicatedMethod',
+        priority: 80,
+      );
+
+      changeBuilder.addDartFileEdit((builder) {
+        builder.addSimpleReplacement(
+          node.sourceRange,
+          dedicatedMethod,
+        );
+      });
+    });
+
     context.registry.addPropertyAccess((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
