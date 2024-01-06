@@ -54,16 +54,20 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addPrefixedIdentifier((node) {
-      final initializer = node;
+      final targetType = node.prefix.staticType;
 
-      final typeName = initializer.prefix.staticType
-          ?.getDisplayString(withNullability: false);
-      if (typeName != 'MediaQueryData') return;
+      const mediaQueryDataChecker = TypeChecker.fromName(
+        'MediaQueryData',
+        packageName: 'flutter',
+      );
 
-      final propertyName = initializer.identifier.name;
+      if (targetType == null ||
+          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+
+      final propertyName = node.identifier.name;
       if (!_properties.contains(propertyName)) return;
 
-      final actual = initializer.toString();
+      final actual = node.toSource();
       final expected = 'MediaQuery.${propertyName}Of(context)';
 
       reporter.reportErrorForNode(
@@ -122,23 +126,19 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     context.registry.addPrefixedIdentifier((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final typeName =
-          node.prefix.staticType?.getDisplayString(withNullability: false);
-      if (typeName != 'MediaQueryData') return;
-
       final methodName = node.identifier.name;
 
-      final expected = 'MediaQuery.${methodName}Of(context)';
+      final dedicatedMethod = 'MediaQuery.${methodName}Of(context)';
 
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Use $expected',
+        message: 'Use $dedicatedMethod',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addSimpleReplacement(
           node.sourceRange,
-          expected,
+          dedicatedMethod,
         );
       });
     });
