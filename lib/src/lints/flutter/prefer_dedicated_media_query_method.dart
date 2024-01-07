@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -63,6 +64,11 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
 
       if (targetType == null ||
           !mediaQueryDataChecker.isExactlyType(targetType)) return;
+
+      /// Lint should only work if the mediaQueryData variable is declared locally.
+      if (node.prefix.staticElement! is! LocalVariableElement) {
+        return;
+      }
 
       final propertyName = node.identifier.name;
       if (!_properties.contains(propertyName)) return;

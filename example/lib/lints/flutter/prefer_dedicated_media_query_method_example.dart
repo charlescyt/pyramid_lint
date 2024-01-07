@@ -1,6 +1,6 @@
-// ignore_for_file: unused_local_variable, deprecated_member_use, max_lines_for_function
+// ignore_for_file: unused_local_variable, deprecated_member_use, max_lines_for_function, max_lines_for_file
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class Example extends StatelessWidget {
   const Example({super.key});
@@ -91,6 +91,15 @@ class Example extends StatelessWidget {
     // expect_lint: prefer_dedicated_media_query_method
     final viewPadding = MediaQuery.of(context).viewPadding;
 
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        // expect_lint: prefer_dedicated_media_query_method
+        height: mq.size.height,
+      ),
+    );
+  }
+
+  void fn(MediaQueryData mq) {
+    final size = mq.size;
   }
 }
