@@ -41,9 +41,11 @@ class ProperControllerDispose extends DartLintRule {
       final controllerDeclarations = fieldDeclarations
           .where((e) {
             final type = e.fields.type?.type;
-            if (type != null &&
-                disposableControllerChecker.isExactlyType(type)) {
-              return true;
+            if (type != null) {
+              if (disposableControllerChecker.isExactlyType(type) ||
+                  changeNotifierChecker.isSuperTypeOf(type)) {
+                return true;
+              }
             }
 
             if (type == null) {
@@ -51,10 +53,14 @@ class ProperControllerDispose extends DartLintRule {
               if (variableDeclarations.length == 1) {
                 final variableDeclaration = variableDeclarations.first;
                 final initializer = variableDeclaration.initializer;
-                if (initializer is InstanceCreationExpression &&
-                    disposableControllerChecker
-                        .isExactlyType(initializer.staticType!)) {
-                  return true;
+
+                if (initializer is InstanceCreationExpression) {
+                  final staticType = initializer.staticType!;
+
+                  if (disposableControllerChecker.isExactlyType(staticType) ||
+                      changeNotifierChecker.isSuperTypeOf(staticType)) {
+                    return true;
+                  }
                 }
               }
             }

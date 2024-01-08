@@ -124,14 +124,14 @@ const undoHistoryControllerChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const changeNotifierChecker = TypeChecker.fromName(
+  'ChangeNotifier',
+  packageName: 'flutter',
+);
+
+// Controllers that do not extend ChangeNotifier class
 const disposableControllerChecker = TypeChecker.any(
   [
     animationControllerChecker,
-    pageControllerChecker,
-    scrollControllerChecker,
-    searchControllerChecker,
-    tabControllerChecker,
-    textEditingControllerChecker,
-    undoHistoryControllerChecker,
   ],
 );
