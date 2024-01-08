@@ -66,7 +66,7 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
           !mediaQueryDataChecker.isExactlyType(targetType)) return;
 
       /// Lint should only work if the mediaQueryData variable is declared locally.
-      if (node.prefix.staticElement! is! LocalVariableElement) {
+      if (node.prefix.staticElement is! LocalVariableElement) {
         return;
       }
 
