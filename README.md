@@ -1088,20 +1088,10 @@ final VoidCallback cb;
 
 ### proper_controller_dispose
 
-Controllers should be disposed in dispose method to avoid memory leaks.
+Controllers should be disposed in `Widget`'s `dispose` method to avoid memory leaks. This lint checks for `AnimationController` and all `ChangeNotifier` subclasses such as `TextEditingController`, `ScrollController` and `TabController`.
 
 - Severity: error
 - Quick fix: ✓
-
-Controllers:
-
-- AnimationController
-- PageController
-- ScrollController
-- SearchController
-- TabController
-- TextEditingController
-- UndoHistoryController
 
 Bad
 
