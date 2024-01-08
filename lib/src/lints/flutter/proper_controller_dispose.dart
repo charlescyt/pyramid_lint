@@ -55,12 +55,13 @@ class ProperControllerDispose extends DartLintRule {
                 final initializer = variableDeclaration.initializer;
 
                 if (initializer is InstanceCreationExpression) {
-                  final staticType = initializer.staticType!;
-
-                  if (disposableControllerChecker.isExactlyType(staticType) ||
-                      changeNotifierChecker.isSuperTypeOf(staticType)) {
-                    return true;
-                  }
+                  final staticType = initializer.staticType;
+                  return switch (staticType) {
+                    null => false,
+                    final type =>
+                      disposableControllerChecker.isExactlyType(type) ||
+                          changeNotifierChecker.isSuperTypeOf(type),
+                  };
                 }
               }
             }
