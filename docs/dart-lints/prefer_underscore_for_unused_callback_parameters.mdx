@@ -1,0 +1,23 @@
+# prefer_underscore_for_unused_callback_parameters
+
+Using `_` for unused callback parameters clearly convey that the parameter is intentionally ignored within the code block. If the function has multiple unused parameters, use additional underscores such as `__`, `___`.
+
+see: [effective-dart](https://dart.dev/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters)
+
+- Severity: info
+
+Bad
+
+```dart
+itemBuilder: (context, index) {
+  return Text('Item $index');
+}
+```
+
+Good
+
+```dart
+itemBuilder: (_, index) {
+  return Text('Item $index');
+}
+```

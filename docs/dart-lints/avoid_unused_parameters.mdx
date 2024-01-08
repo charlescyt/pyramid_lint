@@ -1,0 +1,30 @@
+# avoid_unused_parameters
+
+Unused parameters should be removed to avoid confusion.
+
+- Severity: warning
+- Options:
+  - excluded_parameters: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_unused_parameters:
+      excluded_parameters: ['ref']
+```
+
+Bad
+
+```dart
+void log(String a, String b) {
+  print(a);
+}
+```
+
+Good
+
+```dart
+void log(String a) {
+  print(a);
+}
+```

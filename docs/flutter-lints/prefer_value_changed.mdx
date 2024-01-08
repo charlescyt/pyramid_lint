@@ -1,0 +1,18 @@
+# prefer_value_changed
+
+Using the built-in typedef `ValueChanged` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+final void Function(int) cb;
+```
+
+Good
+
+```dart
+final ValueChanged<int> cb;
+```

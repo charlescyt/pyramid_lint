@@ -1,0 +1,30 @@
+# avoid_single_child_in_flex
+
+Using Column or Row with only one child is inefficient.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+Row(
+  children: [
+    Placeholder(),
+  ],
+)
+```
+
+Good
+
+```dart
+Align(
+  child: Placeholder(),
+)
+
+// or
+
+Center(
+  child: Placeholder(),
+)
+```

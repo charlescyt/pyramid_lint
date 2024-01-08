@@ -1,0 +1,23 @@
+# prefer_iterable_last
+
+Using `iterable.last` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+const numbers = [1, 2, 3];
+
+final lastNumber = numbers[numbers.length - 1];
+// or
+final lastNumber = numbers.elementAt(numbers.length - 1);
+```
+
+Good
+
+```dart
+const numbers = [1, 2, 3];
+final lastNumber = numbers.last;
+```

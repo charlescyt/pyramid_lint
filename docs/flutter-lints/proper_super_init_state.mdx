@@ -1,0 +1,26 @@
+# proper_super_init_state
+
+`super.initState()` should be called at the start of the initState method.
+
+- Severity: error
+- Quick fix: ✓
+
+Bad
+
+```dart
+@override
+void initState() {
+  _init();
+  super.initState();
+}
+```
+
+Good
+
+```dart
+@override
+void initState() {
+  super.initState();
+  _init();
+}
+```

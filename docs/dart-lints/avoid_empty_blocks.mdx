@@ -1,0 +1,23 @@
+# avoid_empty_blocks
+
+Empty block usually indicates a missing implementation.
+
+- Severity: warning
+
+Bad
+
+```dart
+void doSomething() {}
+```
+
+Good
+
+```dart
+void doSomething() {
+  actuallyDoSomething();
+}
+
+void doSomething() {
+  // TODO: implement doSomething
+}
+```

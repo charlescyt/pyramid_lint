@@ -1,0 +1,24 @@
+# avoid_duplicate_import
+
+Duplicate imports can lead to confusion.
+
+- Severity: warning
+
+Bad
+
+```dart
+import 'dart:math' as math show max;
+import 'dart:math';
+
+final a = math.max(1, 10);
+final b = min(1, 10);
+```
+
+Good
+
+```dart
+import 'dart:math' as math show max, min;
+
+final a = math.max(1, 10);
+final b = math.min(1, 10);
+```

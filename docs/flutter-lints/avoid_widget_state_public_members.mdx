@@ -1,0 +1,49 @@
+# avoid_widget_state_public_members
+
+Avoid declaring public members in widget state classes.
+
+- Severity: info
+
+Bad
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  int counter = 0;
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      onPressed: increment,
+      child: Text('$counter'),
+    );
+  }
+}
+```
+
+Good
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      onPressed: _increment,
+      child: Text('$_counter'),
+    );
+  }
+}
+```

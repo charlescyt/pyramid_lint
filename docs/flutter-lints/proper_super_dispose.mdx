@@ -1,0 +1,26 @@
+# proper_super_dispose
+
+`super.dispose()` should be called at the end of the dispose method.
+
+- Severity: error
+- Quick fix: ✓
+
+Bad
+
+```dart
+@override
+void dispose() {
+  super.dispose();
+  _dispose();
+}
+```
+
+Good
+
+```dart
+@override
+void dispose() {
+  _dispose();
+  super.dispose();
+}
+```

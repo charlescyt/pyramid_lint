@@ -1,0 +1,29 @@
+# prefer_spacer
+
+Using Expanded with an empty Container or SizedBox is inefficient.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+Column(
+  children: [
+    Expanded(
+      flex: 2,
+      child: SizedBox(),
+    ),
+  ],
+)
+```
+
+Good
+
+```dart
+Column(
+  children: [
+    Spacer(flex: 2),
+  ],
+)
+```

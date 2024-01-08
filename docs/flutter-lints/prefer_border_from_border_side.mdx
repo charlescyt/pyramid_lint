@@ -1,0 +1,34 @@
+# prefer_border_from_border_side
+
+`Border.all` is not a const constructor and it uses const constructor `Border.fromBorderSide` internally.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+DecoratedBox(
+  decoration: BoxDecoration(
+    border: Border.all(
+      width: 1,
+      style: BorderStyle.solid,
+    ),
+  ),
+)
+```
+
+Good
+
+```dart
+const DecoratedBox(
+  decoration: BoxDecoration(
+    border: Border.fromBorderSide(
+      BorderSide(
+        width: 1,
+        style: BorderStyle.solid,
+      ),
+    ),
+  ),
+)
+```

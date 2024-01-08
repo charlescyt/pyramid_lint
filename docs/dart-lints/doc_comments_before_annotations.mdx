@@ -1,0 +1,24 @@
+# doc_comments_before_annotations
+
+Doc comments should be placed before annotations.
+
+- Severity: info
+- Quick fix: ✓
+
+see: [effective-dart](https://dart.dev/effective-dart/documentation#do-put-doc-comments-before-metadata-annotations)
+
+Bad
+
+```dart
+@immutable
+/// Some documentation.
+class A {}
+```
+
+Good
+
+```dart
+/// Some documentation.
+@immutable
+class A {}
+```

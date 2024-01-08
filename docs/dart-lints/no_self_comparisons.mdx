@@ -1,0 +1,19 @@
+# no_self_comparisons
+
+Self comparison is usually a mistake.
+
+- Severity: warning
+
+Bad
+
+```dart
+if (foo == foo) {}
+if (foo.property == foo.property) {}
+```
+
+Good
+
+```dart
+if (foo == bar) {}
+if (foo.property == bar.property) {}
+```

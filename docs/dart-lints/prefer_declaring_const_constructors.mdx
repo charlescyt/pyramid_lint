@@ -1,0 +1,36 @@
+# prefer_declaring_const_constructors
+
+Constructors of classes with only final fields should be declared as const constructors when possible.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  Point(this.x, this.y);
+
+  Point.origin()
+      : x = 0,
+        y = 0;
+}
+```
+
+Good
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  const Point.origin()
+      : x = 0,
+        y = 0;
+}
+```

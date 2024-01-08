@@ -1,0 +1,62 @@
+# boolean_prefix
+
+Boolean variables, functions and getters that return a boolean value should be prefixed with specific verbs.
+
+- Severity: info
+- Options:
+  - valid_prefixes: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix:
+      valid_prefixes: ['...']
+```
+
+Default valid prefixes:
+
+- is
+- are
+- was
+- were
+- has
+- have
+- had
+- can
+- should
+- will
+- do
+- does
+- did
+
+see: [effective-dart](https://dart.dev/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable)
+
+Bad
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get origin => x == 0 && y == 0;
+
+  bool samePoint(Point other) => x == other.x && y == other.y;
+}
+```
+
+Good
+
+```dart
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get isOrigin => x == 0 && y == 0;
+
+  bool isSamePoint(Point other) => x == other.x && y == other.y;
+}
+```

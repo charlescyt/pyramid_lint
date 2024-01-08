@@ -1,0 +1,38 @@
+# proper_controller_dispose
+
+Controllers should be disposed in `Widget`'s `dispose` method to avoid memory leaks. This lint checks for `AnimationController` and all `ChangeNotifier` subclasses such as `TextEditingController`, `ScrollController` and `TabController`.
+
+- Severity: error
+- Quick fix: ✓
+
+Bad
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  final _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Placeholder();
+  }
+}
+```
+
+Good
+
+```dart
+class _MyWidgetState extends State<MyWidget> {
+  final _textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Placeholder();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+}
+```

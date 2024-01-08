@@ -1,0 +1,55 @@
+# prefer_library_prefixes
+
+Use library prefixes to avoid name conflicts and increase code readability.
+
+- Severity: info
+- Quick fix: ✓
+- Options:
+  - include_default_libraries: `bool` (default: true)
+  - libraries: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_library_prefixes:
+      include_default_libraries: false
+      libraries: ['package:http/http.dart']
+```
+
+Default libraries:
+
+- 'dart:developer'
+- 'dart:math'
+
+Bad
+
+```dart
+import 'dart:developer';
+import 'dart:math';
+
+print(log(e));
+log('message');
+```
+
+```dart
+import 'package:http/http.dart';
+
+final response = await post(...);
+```
+
+Good
+
+```dart
+import 'dart:developer' as developer;
+import 'dart:math' as math;
+
+print(math.log(math.e));
+developer.log('message');
+
+```
+
+```dart
+import 'package:http/http.dart' as http;
+
+final response = await http.post(...);
+```

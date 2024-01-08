@@ -1,0 +1,23 @@
+# avoid_dynamic
+
+While the `dynamic` type can be useful in certain scenarios, it sacrifices the benefits of static typing and decreases code readability. Using `dynamic` with `Map` will not trigger this lint.
+
+- Severity: info
+
+Bad
+
+```dart
+dynamic thing = 'text';
+void log(dynamic something) => print(something);
+List<dynamic> list = [1, 2, 3];
+final setLiteral = <dynamic>{'a', 'b', 'c'};
+```
+
+Good
+
+```dart
+String thing = 'text';
+void log(String something) => print(something);
+List<int> list = [1, 2, 3];
+final setLiteral = <String>{'a', 'b', 'c'};
+```

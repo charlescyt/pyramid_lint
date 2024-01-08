@@ -1,0 +1,41 @@
+# avoid_abbreviations_in_doc_comments
+
+Avoid using abbreviations in doc comments as they can hinder readability and cause confusion for readers.
+
+- Severity: warning
+- Options:
+  - abbreviations: `List<String>`
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_abbreviations_in_doc_comments:
+      abbreviations: ['approx.']
+```
+
+see: [effective-dart](https://dart.dev/effective-dart/documentation#avoid-abbreviations-and-acronyms-unless-they-are-obvious)
+
+Included abbreviations:
+
+- e.g.
+- i.e.
+- etc.
+- et al.
+
+Bad
+
+```dart
+/// This is documentation.
+///
+/// e.g. ...
+int function(){}
+```
+
+Good
+
+```dart
+/// This is documentation.
+///
+/// For example ...
+int function(){}
+```

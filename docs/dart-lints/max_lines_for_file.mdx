@@ -1,0 +1,14 @@
+# max_lines_for_file
+
+A file should not exceed a certain number of lines.
+
+- Severity: info
+- Options:
+  - max_lines: `int` (default: 200)
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_file:
+      max_lines: 500
+```

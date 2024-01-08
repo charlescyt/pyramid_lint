@@ -1,0 +1,26 @@
+# prefer_border_radius_all
+
+`BorderRadius.all` is not a const constructor and it uses const constructor `BorderRadius.circular` internally.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+DecoratedBox(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(8),
+  ),
+)
+```
+
+Good
+
+```dart
+const DecoratedBox(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+  ),
+)
+```

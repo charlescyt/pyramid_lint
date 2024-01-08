@@ -1,0 +1,28 @@
+# prefer_new_line_before_return
+
+Adding a new line before the return statement increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+if (...) {
+  ...
+  return ...;
+}
+return ...;
+```
+
+Good
+
+```dart
+if (...) {
+  ...
+
+  return ...;
+}
+
+return ...;
+```

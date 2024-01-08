@@ -1,0 +1,41 @@
+# proper_edge_insets_constructor
+
+Using correct EdgeInsets constructor increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+padding = const EdgeInsets.fromLTRB(8, 8, 8, 8);
+padding = const EdgeInsets.fromLTRB(8, 0, 8, 0);
+padding = const EdgeInsets.fromLTRB(8, 4, 8, 4);
+padding = const EdgeInsets.fromLTRB(8, 4, 8, 0);
+
+padding = const EdgeInsets.only(left: 8, top: 8, right: 8, bottom: 8);
+padding = const EdgeInsets.only(left: 8, top: 0, right: 8, bottom: 0);
+padding = const EdgeInsets.only(left: 8, top: 4, right: 8, bottom: 4);
+padding = const EdgeInsets.only(left: 2, top: 4, right: 6, bottom: 8);
+
+padding = const EdgeInsets.symmetric(horizontal: 0, vertical: 0);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 0);
+```
+
+Good
+
+```dart
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
+padding = const EdgeInsets.only(left: 8, top: 4, right: 8);
+
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
+padding = const EdgeInsets.fromLTRB(2, 4, 6, 8);
+
+padding = const EdgeInsets.all(8);
+padding = const EdgeInsets.symmetric(horizontal: 8);
+```

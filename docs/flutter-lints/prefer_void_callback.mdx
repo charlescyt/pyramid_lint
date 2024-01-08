@@ -1,0 +1,18 @@
+# prefer_void_callback
+
+Using the built-in typedef `VoidCallback` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+final void Function() cb;
+```
+
+Good
+
+```dart
+final VoidCallback cb;
+```

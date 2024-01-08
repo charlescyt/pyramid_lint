@@ -1,0 +1,27 @@
+# proper_expanded_and_flexible
+
+Expanded and Flexible should be placed inside a Row, Column, or Flex.
+
+- Severity: error
+
+Bad
+
+```dart
+Center(
+  child: Expanded(
+    child: Container(),
+  ),
+)
+```
+
+Good
+
+```dart
+Row(
+  children: [
+    Expanded(
+      child: Container(),
+    ),
+  ],
+)
+```

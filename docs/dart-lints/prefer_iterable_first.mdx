@@ -1,0 +1,23 @@
+# prefer_iterable_first
+
+Using `iterable.first` increases code readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+const numbers = [1, 2, 3];
+
+final firstNumber = numbers[0];
+// or
+final firstNumber = numbers.elementAt(0);
+```
+
+Good
+
+```dart
+const numbers = [1, 2, 3];
+final firstNumber = numbers.first;
+```

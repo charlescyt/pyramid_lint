@@ -1,0 +1,24 @@
+# proper_from_environment
+
+The constructors `bool.fromEnvironment`, `int.fromEnvironment` and `String.fromEnvironment` are only guaranteed to work when invoked as a `const` constructor.
+
+see: [dart-lang-issue](https://github.com/dart-lang/sdk/issues/42177)
+
+- Severity: error
+- Quick fix: ✓
+
+Bad
+
+```dart
+final boolean = bool.fromEnvironment('bool');
+int integer = int.fromEnvironment('int');
+var string = String.fromEnvironment('String');
+```
+
+Good
+
+```dart
+const boolean = bool.fromEnvironment('bool');
+const integer = int.fromEnvironment('int');
+const string = String.fromEnvironment('String');
+```

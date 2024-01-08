@@ -1,0 +1,22 @@
+# unnecessary_nullable_return_type
+
+Declaring functions or methods with a nullable return type is unnecessary when the return value is never null.
+
+- Severity: warning
+- Quick fix: ✓
+
+Bad
+
+```dart
+int? sum(int a, int b) {
+  return a + b;
+}
+```
+
+Good
+
+```dart
+int sum(int a, int b) {
+  return a + b;
+}
+```

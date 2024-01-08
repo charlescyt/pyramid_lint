@@ -1,0 +1,14 @@
+# max_lines_for_function
+
+A function should not exceed a certain number of lines.
+
+- Severity: info
+- Options:
+  - max_lines: `int` (default: 100)
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_function:
+      max_lines: 200
+```

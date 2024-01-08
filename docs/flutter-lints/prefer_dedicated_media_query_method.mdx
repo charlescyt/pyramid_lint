@@ -1,0 +1,43 @@
+# prefer_dedicated_media_query_method
+
+Using MediaQuery.of(context) to access below properties will cause unnecessary rebuilds.
+
+- Severity: info
+- Quick fix: ✓
+
+Properties:
+
+- accessibleNavigation
+- alwaysUse24HourFormat
+- boldText
+- devicePixelRatio
+- disableAnimations
+- displayFeatures
+- gestureSettings
+- highContrast
+- invertColors
+- navigationMode
+- onOffSwitchLabels
+- orientation
+- padding
+- platformBrightness
+- size
+- systemGestureInsets
+- textScaleFactor (deprecated after v3.12.0-2.0.pre)
+- textScaler
+- viewInsets
+- viewPadding
+
+Bad
+
+```dart
+final size = MediaQuery.of(context).size;
+final orientation = MediaQuery.maybeOf(context)?.orientation;
+```
+
+Good
+
+```dart
+final size = MediaQuery.sizeOf(context);
+final orientation = MediaQuery.maybeOrientationOf(context);
+```

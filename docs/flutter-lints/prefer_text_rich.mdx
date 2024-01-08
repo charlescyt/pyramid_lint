@@ -1,0 +1,32 @@
+# prefer_text_rich
+
+`RichText` does not inherit TextStyle from DefaultTextStyle.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+RichText(
+  text: const TextSpan(
+    text: 'Pyramid',
+    children: [
+      TextSpan(text: 'Lint'),
+    ],
+  ),
+)
+```
+
+Good
+
+```dart
+const Text.rich(
+  TextSpan(
+    text: 'Pyramid',
+    children: [
+      TextSpan(text: 'Lint'),
+    ],
+  ),
+)
+```

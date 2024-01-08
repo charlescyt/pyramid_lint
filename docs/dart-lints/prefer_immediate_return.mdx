@@ -1,0 +1,23 @@
+# prefer_immediate_return
+
+By directly returning the expression instead of assigning it to a variable and then returning the variable, you can simplify the code and improve readability.
+
+- Severity: info
+- Quick fix: ✓
+
+Bad
+
+```dart
+int add(int a, int b) {
+  final result = a + b;
+  return result;
+}
+```
+
+Good
+
+```dart
+int add(int a, int b) {
+  return a + b;
+}
+```
