@@ -1,5 +1,7 @@
+import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer/dart/element/element.dart';
 
 bool isZeroExpression(Expression e) {
   if (e is IntegerLiteral) return e.value == 0;
@@ -17,4 +19,19 @@ TokenType? getInvertedOperator(TokenType operator) {
     TokenType.LT_EQ => TokenType.GT,
     _ => null,
   };
+}
+
+AstNode? getAstNodeFromElement(Element element) {
+  final session = element.session;
+  if (session == null) return null;
+
+  final elementLibrary = element.library;
+  if (elementLibrary == null) return null;
+
+  final parsedLibraryResult =
+      session.getParsedLibraryByElement(elementLibrary) as ParsedLibraryResult;
+  final elementDeclarationResult =
+      parsedLibraryResult.getElementDeclaration(element);
+
+  return elementDeclarationResult?.node;
 }

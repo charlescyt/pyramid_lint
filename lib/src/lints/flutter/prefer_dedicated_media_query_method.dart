@@ -9,6 +9,7 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/string_extensions.dart';
 import '../../utils/type_checker.dart';
+import '../../utils/utils.dart';
 
 const List<String> _properties = [
   'accessibleNavigation',
@@ -128,9 +129,28 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     context.registry.addPrefixedIdentifier((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final methodName = node.identifier.name;
+      final prefixElement = node.prefix.staticElement;
+      if (prefixElement is! LocalVariableElement) return;
 
-      final dedicatedMethod = 'MediaQuery.${methodName}Of(context)';
+      final prefixNode = getAstNodeFromElement(prefixElement);
+      if (prefixNode is! VariableDeclaration) return;
+
+      final initializer = prefixNode.initializer;
+      if (initializer is! MethodInvocation) return;
+      if (initializer.methodName.name != 'of') return;
+
+      final initializerType = initializer.realTarget?.staticType;
+      if (initializerType != null &&
+          mediaQueryChecker.isExactlyType(initializerType)) return;
+
+      if (initializer.argumentList.arguments.length != 1) return;
+
+      final argument = initializer.argumentList.arguments.first;
+      if (argument is! SimpleIdentifier) return;
+
+      final methodName = node.identifier.name;
+      final argumentName = argument.name;
+      final dedicatedMethod = 'MediaQuery.${methodName}Of($argumentName)';
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Use $dedicatedMethod',
