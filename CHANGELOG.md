@@ -7,6 +7,10 @@
 - Add new lint `no_self_comparisons`
 - Add new lint `avoid_widget_state_public_members`
 
+### Changed
+
+- `prefer_dedicated_media_query_method` now supports indirect calls to `MediaQuery.of(context)` and `MediaQuery.maybeOf(context)` ([#13](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg](https://github.com/imsamgarg))
+
 ## 1.2.0 - 2023-11-24
 
 ### Added

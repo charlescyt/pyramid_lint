@@ -2,7 +2,6 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
-import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
@@ -57,28 +56,31 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addPrefixedIdentifier((node) {
-      final targetType = node.prefix.staticType;
-
-      if (targetType == null ||
-          !mediaQueryDataChecker.isExactlyType(targetType)) return;
-
-      /// Lint should only work if the mediaQueryData variable is declared locally.
-      if (node.prefix.staticElement is! LocalVariableElement) {
-        return;
-      }
-
       final propertyName = node.identifier.name;
       if (!_properties.contains(propertyName)) return;
 
-      final actual = node.toSource();
-      final expected = 'MediaQuery.${propertyName}Of(context)';
+      final targetType = node.prefix.staticType;
+      if (targetType == null ||
+          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+
+      final prefixElement = node.prefix.staticElement;
+
+      // Lint should only work if the MediaQueryData variable is declared locally
+      // and initialized with MediaQuery.of(context).
+      if (prefixElement is! LocalVariableElement) return;
+
+      final prefixNode = getAstNodeFromElement(prefixElement);
+      if (prefixNode is! VariableDeclaration) return;
+      if (!_isInitializedWithMediaQueryOfOrMaybeOf(prefixNode)) return;
+
+      final dedicatedMethod = 'MediaQuery.${propertyName}Of';
 
       reporter.reportErrorForNode(
         code,
         node,
         [
-          actual,
-          expected,
+          'MediaQuery.of and accessing $propertyName',
+          dedicatedMethod,
         ],
       );
     });
@@ -88,28 +90,51 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
       if (!_properties.contains(propertyName)) return;
 
       final target = node.realTarget;
-      if (target is! MethodInvocation) return;
+      final targetType = target.staticType;
+      if (targetType == null ||
+          !mediaQueryDataChecker.isExactlyType(targetType)) return;
 
-      final methodTarget = target.realTarget;
-      if (methodTarget is! Identifier || methodTarget.name != 'MediaQuery') {
-        return;
+      if (target is SimpleIdentifier) {
+        final prefixElement = target.staticElement;
+
+        // Lint should only work if the MediaQueryData variable is declared locally
+        // and initialized with MediaQuery.maybeOf(context).
+        if (prefixElement is! LocalVariableElement) return;
+
+        final prefixNode = getAstNodeFromElement(prefixElement);
+        if (prefixNode is! VariableDeclaration) return;
+        if (!_isInitializedWithMediaQueryOfOrMaybeOf(prefixNode)) return;
+
+        final dedicatedMethod =
+            'MediaQuery.maybe${propertyName.capitalize()}Of';
+
+        reporter.reportErrorForNode(
+          code,
+          node,
+          [
+            'MediaQuery.maybeOf and accessing $propertyName',
+            dedicatedMethod,
+          ],
+        );
       }
 
-      final methodName = target.methodName.name;
-      if (methodName != 'of' && methodName != 'maybeOf') return;
+      if (target is MethodInvocation) {
+        final methodName = target.methodName.name;
+        if (methodName != 'of' && methodName != 'maybeOf') return;
 
-      final newMethodName = methodName == 'of'
-          ? '${propertyName}Of'
-          : 'maybe${propertyName.capitalize()}Of';
+        final dedicatedMethod = methodName == 'of'
+            ? 'MediaQuery.${propertyName}Of'
+            : 'MediaQuery.maybe${propertyName.capitalize()}Of';
 
-      reporter.reportErrorForNode(
-        code,
-        node,
-        [
-          'MediaQuery.of(context).$propertyName',
-          'MediaQuery.$newMethodName()',
-        ],
-      );
+        reporter.reportErrorForNode(
+          code,
+          node,
+          [
+            node.toSource(),
+            dedicatedMethod,
+          ],
+        );
+      }
     });
   }
 
@@ -153,7 +178,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
       final dedicatedMethod = 'MediaQuery.${methodName}Of($argumentName)';
 
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Use $dedicatedMethod',
+        message: 'Replace with $dedicatedMethod',
         priority: 80,
       );
 
@@ -169,27 +194,93 @@ class _ReplaceWithDedicatedMethod extends DartFix {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       final target = node.realTarget;
-      if (target is! MethodInvocation) return;
 
-      final propertyName = node.propertyName.name;
-      final methodName = target.methodName.name;
-      final newMethodName = methodName == 'of'
-          ? '${propertyName}Of'
-          : 'maybe${propertyName.capitalize()}Of';
+      if (target is SimpleIdentifier) {
+        final targetElement = target.staticElement;
 
-      final changeBuilder = reporter.createChangeBuilder(
-        message: 'Use MediaQuery.$newMethodName(context)',
-        priority: 80,
-      );
+        // Lint should only work if the MediaQueryData variable is declared locally
+        // and initialized with MediaQuery.maybeOf(context).
+        if (targetElement is! LocalVariableElement) return;
 
-      changeBuilder.addDartFileEdit((builder) {
-        final deletionRange = range.startEnd(node.operator, node.propertyName);
-        builder.addDeletion(deletionRange);
-        builder.addSimpleReplacement(
-          target.methodName.sourceRange,
-          newMethodName,
+        final prefixNode = getAstNodeFromElement(targetElement);
+        if (prefixNode is! VariableDeclaration) return;
+
+        final initializer = prefixNode.initializer;
+        if (initializer is! MethodInvocation) return;
+        if (initializer.methodName.name != 'maybeOf') return;
+
+        final initializerType = initializer.realTarget?.staticType;
+        if (initializerType != null &&
+            mediaQueryChecker.isExactlyType(initializerType)) return;
+
+        if (initializer.argumentList.arguments.length != 1) return;
+
+        final argument = initializer.argumentList.arguments.first;
+        if (argument is! SimpleIdentifier) return;
+
+        final methodName = node.propertyName.name;
+        final argumentName = argument.name;
+        final dedicatedMethod = 'MediaQuery.${methodName}Of($argumentName)';
+
+        final changeBuilder = reporter.createChangeBuilder(
+          message: 'Replace with $dedicatedMethod',
+          priority: 80,
         );
-      });
+
+        changeBuilder.addDartFileEdit((builder) {
+          builder.addSimpleReplacement(
+            node.sourceRange,
+            dedicatedMethod,
+          );
+        });
+      }
+
+      if (target is MethodInvocation) {
+        final propertyName = node.propertyName.name;
+        final methodName = target.methodName.name;
+
+        if (target.argumentList.arguments.length != 1) return;
+        final argumentName = target.argumentList.arguments.first.toSource();
+
+        final newMethodName = methodName == 'of'
+            ? '${propertyName}Of'
+            : 'maybe${propertyName.capitalize()}Of';
+
+        final dedicatedMethod = 'MediaQuery.$newMethodName($argumentName)';
+
+        final changeBuilder = reporter.createChangeBuilder(
+          message: 'Replace with $dedicatedMethod',
+          priority: 80,
+        );
+
+        changeBuilder.addDartFileEdit((builder) {
+          builder.addSimpleReplacement(
+            node.sourceRange,
+            dedicatedMethod,
+          );
+        });
+      }
     });
   }
+}
+
+/// Check if the VariableDeclaration is initialized with MediaQuery.of(context)
+/// or MediaQuery.maybeOf(context).
+bool _isInitializedWithMediaQueryOfOrMaybeOf(VariableDeclaration node) {
+  final initializer = node.initializer;
+  if (initializer is! MethodInvocation) return false;
+
+  final initializerType = initializer.realTarget?.staticType;
+  if (initializerType != null &&
+      !mediaQueryChecker.isExactlyType(initializerType)) return false;
+
+  if (initializer.methodName.name != 'of' &&
+      initializer.methodName.name != 'maybeOf') return false;
+
+  if (initializer.argumentList.arguments.length != 1) return false;
+
+  final argument = initializer.argumentList.arguments.first;
+  if (argument is! SimpleIdentifier) return false;
+
+  return true;
 }
