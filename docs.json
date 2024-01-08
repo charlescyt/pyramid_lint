@@ -29,30 +29,30 @@
       ]],
       ["Flutter Lints", [
         ["avoid_returning_widgets", "/flutter-lints/avoid_returning_widgets"],
-        ["avoid_single_child_in_flex", "flutter-lints/avoid_single_child_in_flex"],
-        ["avoid_widget_state_public_members", "flutter-lints/avoid_widget_state_public_members"],
-        ["prefer_async_callback", "flutter-lints/prefer_async_callback"],
-        ["prefer_border_from_border_side", "flutter-lints/prefer_border_from_border_side"],
-        ["prefer_border_radius_all", "flutter-lints/prefer_border_radius_all"],
-        ["prefer_dedicated_media_query_method", "flutter-lints/prefer_dedicated_media_query_method"],
-        ["prefer_spacer", "flutter-lints/prefer_spacer"],
-        ["prefer_text_rich", "flutter-lints/prefer_text_rich"],
-        ["proper_controller_dispose", "flutter-lints/proper_controller_dispose"],
-        ["proper_edge_insets_constructor", "flutter-lints/proper_edge_insets_constructor"],
-        ["proper_expanded_and_flexible", "flutter-lints/proper_expanded_and_flexible"],
-        ["proper_from_environment", "flutter-lints/proper_from_environment"],
-        ["proper_super_dispose", "flutter-lints/proper_super_dispose"],
-        ["proper_super_init_state", "flutter-lints/proper_super_init_state"]
+        ["avoid_single_child_in_flex", "/flutter-lints/avoid_single_child_in_flex"],
+        ["avoid_widget_state_public_members", "/flutter-lints/avoid_widget_state_public_members"],
+        ["prefer_async_callback", "/flutter-lints/prefer_async_callback"],
+        ["prefer_border_from_border_side", "/flutter-lints/prefer_border_from_border_side"],
+        ["prefer_border_radius_all", "/flutter-lints/prefer_border_radius_all"],
+        ["prefer_dedicated_media_query_method", "/flutter-lints/prefer_dedicated_media_query_method"],
+        ["prefer_spacer", "/flutter-lints/prefer_spacer"],
+        ["prefer_text_rich", "/flutter-lints/prefer_text_rich"],
+        ["proper_controller_dispose", "/flutter-lints/proper_controller_dispose"],
+        ["proper_edge_insets_constructor", "/flutter-lints/proper_edge_insets_constructor"],
+        ["proper_expanded_and_flexible", "/flutter-lints/proper_expanded_and_flexible"],
+        ["proper_from_environment", "/flutter-lints/proper_from_environment"],
+        ["proper_super_dispose", "/flutter-lints/proper_super_dispose"],
+        ["proper_super_init_state", "/flutter-lints/proper_super_init_state"]
       ]],
       ["Dart Assists", [
-        ["invert_boolean_expression", "dart-assists/invert_boolean_expression"],
-        ["swap_then_else_expression", "dart-assists/swap_then_else_expression"]
+        ["invert_boolean_expression", "/dart-assists/invert_boolean_expression"],
+        ["swap_then_else_expression", "/dart-assists/swap_then_else_expression"]
       ]],
       ["Flutter Assists", [
-          ["use_edge_insets_zero", "flutter-assists/use_edge_insets_zero"],
-          ["wrap_with_expanded", "flutter-assists/wrap_with_expanded"],
-          ["wrap_with_layout_builder", "flutter-assists/wrap_with_layout_builder"],
-          ["wrap_with_stack", "flutter-assists/wrap_with_stack"]
+          ["use_edge_insets_zero", "/flutter-assists/use_edge_insets_zero"],
+          ["wrap_with_expanded", "/flutter-assists/wrap_with_expanded"],
+          ["wrap_with_layout_builder", "/flutter-assists/wrap_with_layout_builder"],
+          ["wrap_with_stack", "/flutter-assists/wrap_with_stack"]
         ]
       ]
     ]
