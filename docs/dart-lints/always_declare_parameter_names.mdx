@@ -1,0 +1,23 @@
+# always_declare_parameter_names
+
+Parameter names should always be declared to enhance code readability and enable IDEs to provide code completion suggestions.
+
+- Severity: info
+
+Bad
+
+```dart
+typedef ItemBuilder = Widget? Function(BuildContext, int);
+
+// IDE's code completion with default parameter names p0, p1, ...
+itemBuilder: (p0, p1) {},
+```
+
+Good
+
+```dart
+typedef ItemBuilder = Widget? Function(BuildContext context, int index);
+
+// IDE's code completion with descriptive parameter names
+itemBuilder: (context, index) {},
+```

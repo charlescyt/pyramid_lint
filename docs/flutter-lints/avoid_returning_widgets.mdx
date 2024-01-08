@@ -1,0 +1,54 @@
+# avoid_returning_widgets
+
+Returning widgets is not recommended for performance reasons.
+
+- Severity: info
+
+Bad
+
+```dart
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _buildWidget(),
+        _buildWidget(),
+      ],
+    );
+  }
+
+  Widget _buildWidget() {
+    return ...;
+  }
+}
+```
+
+Good
+
+```dart
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        B(),
+        B(),
+      ],
+    );
+  }
+}
+
+class B extends StatelessWidget {
+  const B({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ...;
+  }
+}
+```

@@ -16,3 +16,5 @@ build/
 
 # Additional rules to gitignore
 /resources
+/docs
+docs.json

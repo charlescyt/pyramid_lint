@@ -12,10 +12,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
 
 ## Table of contents
 
-- [Installation](#installation)
-- [Configuration](#configuration)
 - [Dart lints](#dart-lints)
-  - [always_declare_parameter_names](#always_declare_parameter_names)
   - [avoid_abbreviations_in_doc_comments](#avoid_abbreviations_in_doc_comments)
   - [avoid_duplicate_import](#avoid_duplicate_import)
   - [avoid_dynamic](#avoid_dynamic)
@@ -63,81 +60,7 @@ Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of addi
 - [Contributing](#contributing)
 - [License](#license)
 
-## Installation
-
-Run the following command to add `custom_lint` and `pyramid_lint` to your project's dev dependencies:
-
-```sh
-dart pub add --dev custom_lint pyramid_lint
-```
-
-Then enable `custom_lint` in your `analysis_options.yaml` file. You can also exclude generated files from analysis.
-
-```yaml
-analyzer:
-  plugins:
-    - custom_lint
-
-  exclude:
-    - "**.freezed.dart"
-    - "**.g.dart"
-    - "**.gr.dart"
-```
-
-## Configuration
-
-By default, all lints are enabled. To disable a specific lint, add the following to your `analysis_options.yaml` file:
-
-```yaml
-custom_lint:
-  rules:
-    - specific_lint_rule: false # disable specific_lint_rule
-```
-
-If you prefer to disable all lints and only enable specific ones, you can edit your analysis_options.yaml file as below:
-
-```yaml
-custom_lint:
-  enable_all_lint_rules: false # disable all lints
-  rules:
-    - specific_lint_rule # enable specific_lint_rule
-```
-
-Some lints are configurable. To configure a lint, follow the example below:
-
-```yaml
-custom_lint:
-  rules:
-    - configurable_lint_rule:
-      option1: value1
-      option2: value2
-```
-
 ## Dart lints
-
-### always_declare_parameter_names
-
-Parameter names should always be declared to enhance code readability and enable IDEs to provide code completion suggestions.
-
-- Severity: info
-
-Bad
-
-```dart
-typedef ItemBuilder = Widget? Function(BuildContext, int);
-
-// IDE's code completion with default parameter names p0, p1, ...
-itemBuilder: (p0, p1) {},
-```
-
-Good
-
-```dart
-typedef ItemBuilder = Widget? Function(BuildContext context, int index);
-
-// IDE's code completion with descriptive parameter names
-itemBuilder: (context, index) {},
-```
 
 ### avoid_abbreviations_in_doc_comments
 
@@ -723,61 +646,6 @@ int sum(int a, int b) {
 ```
 
 ## Flutter lints
-
-### avoid_returning_widgets
-
-Returning widgets is not recommended for performance reasons.
-
-- Severity: info
-
-Bad
-
-```dart
-class A extends StatelessWidget {
-  const A({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildWidget(),
-        _buildWidget(),
-      ],
-    );
-  }
-
-  Widget _buildWidget() {
-    return ...;
-  }
-}
-```
-
-Good
-
-```dart
-class A extends StatelessWidget {
-  const A({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        B(),
-        B(),
-      ],
-    );
-  }
-}
-
-class B extends StatelessWidget {
-  const B({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ...;
-  }
-}
-```
 
 ### avoid_single_child_in_flex
 

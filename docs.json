@@ -1,0 +1,14 @@
+{
+    "name": "Pyramid Lint",
+    "theme": "#F7A035",
+    "sidebar": [
+      ["Home", "/"],
+      ["Getting started", "/getting-started"],
+      ["Dart Lints", [
+        ["always_declare_parameter_names", "/dart-lints/always_declare_parameter_names"]
+      ]],
+      ["Flutter Lints", [
+        ["avoid_returning_widgets", "/flutter-lints/avoid_returning_widgets"]
+     ]]
+    ]
+  }
