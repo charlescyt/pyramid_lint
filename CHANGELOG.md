@@ -9,7 +9,8 @@
 
 ### Changed
 
-- `prefer_dedicated_media_query_method` now supports indirect calls to `MediaQuery.of(context)` and `MediaQuery.maybeOf(context)` ([#13](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg](https://github.com/imsamgarg))
+- `prefer_dedicated_media_query_method` now supports indirect calls to `MediaQuery.of(context)` and `MediaQuery.maybeOf(context)` ([#13](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
+- `proper_controller_dispose` now supports `ChangeNotifier`'s subclasses ([#14](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
 
 ## 1.2.0 - 2023-11-24
 
@@ -43,7 +44,7 @@
 
 ### Fixed
 
-- Fix pubspec.yaml description and format ([#1](https://github.com/charlescyt/pyramid_lint/pull/1) thanks to [parlough](https://github.com/parlough))
+- Fix pubspec.yaml description and format ([#1](https://github.com/charlescyt/pyramid_lint/pull/1) thanks to [parlough])
 
 ## 1.0.0 - 2023-10-13
 
@@ -135,3 +136,6 @@
 ## 0.1.0 - 2023-09-17
 
 - Initial release.
+
+[parlough]: https://github.com/parlough
+[imsamgarg]: https://github.com/imsamgarg
