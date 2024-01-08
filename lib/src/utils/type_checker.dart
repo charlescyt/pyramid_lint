@@ -84,6 +84,11 @@ const mediaQueryChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const mediaQueryDataChecker = TypeChecker.fromName(
+  'MediaQueryData',
+  packageName: 'flutter',
+);
+
 const animationControllerChecker = TypeChecker.fromName(
   'AnimationController',
   packageName: 'flutter',

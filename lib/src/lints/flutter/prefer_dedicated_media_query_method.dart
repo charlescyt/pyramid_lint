@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -7,6 +8,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/string_extensions.dart';
+import '../../utils/type_checker.dart';
 
 const List<String> _properties = [
   'accessibleNavigation',
@@ -39,9 +41,8 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
 
   static const _code = LintCode(
     name: name,
-    problemMessage:
-        'Using MediaQuery.of(context).{0} will cause unnecessary rebuilds.',
-    correctionMessage: 'Consider using MediaQuery.{1}(context) instead.',
+    problemMessage: 'Using {0} will cause unnecessary rebuilds.',
+    correctionMessage: 'Consider using {1} instead.',
     url: '$docUrl#${PreferDedicatedMediaQueryMethod.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
@@ -53,6 +54,33 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
+
+    context.registry.addPrefixedIdentifier((node) {
+      final targetType = node.prefix.staticType;
+
+      if (targetType == null ||
+          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+
+      /// Lint should only work if the mediaQueryData variable is declared locally.
+      if (node.prefix.staticElement is! LocalVariableElement) {
+        return;
+      }
+
+      final propertyName = node.identifier.name;
+      if (!_properties.contains(propertyName)) return;
+
+      final actual = node.toSource();
+      final expected = 'MediaQuery.${propertyName}Of(context)';
+
+      reporter.reportErrorForNode(
+        code,
+        node,
+        [
+          actual,
+          expected,
+        ],
+      );
+    });
 
     context.registry.addPropertyAccess((node) {
       final propertyName = node.propertyName.name;
@@ -77,8 +105,8 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
         code,
         node,
         [
-          propertyName,
-          newMethodName,
+          'MediaQuery.of(context).$propertyName',
+          'MediaQuery.$newMethodName()',
         ],
       );
     });
@@ -97,6 +125,26 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     AnalysisError analysisError,
     List<AnalysisError> others,
   ) {
+    context.registry.addPrefixedIdentifier((node) {
+      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+
+      final methodName = node.identifier.name;
+
+      final dedicatedMethod = 'MediaQuery.${methodName}Of(context)';
+
+      final changeBuilder = reporter.createChangeBuilder(
+        message: 'Use $dedicatedMethod',
+        priority: 80,
+      );
+
+      changeBuilder.addDartFileEdit((builder) {
+        builder.addSimpleReplacement(
+          node.sourceRange,
+          dedicatedMethod,
+        );
+      });
+    });
+
     context.registry.addPropertyAccess((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 

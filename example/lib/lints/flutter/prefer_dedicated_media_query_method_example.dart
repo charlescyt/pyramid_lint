@@ -1,12 +1,55 @@
-// ignore_for_file: unused_local_variable, deprecated_member_use
+// ignore_for_file: unused_local_variable, deprecated_member_use, max_lines_for_function, max_lines_for_file
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class Example extends StatelessWidget {
   const Example({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context);
+
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqaccessibleNavigation = mq.accessibleNavigation;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqalwaysUse24HourFormat = mq.alwaysUse24HourFormat;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqboldText = mq.boldText;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqdevicePixelRatio = mq.devicePixelRatio;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqdisableAnimations = mq.disableAnimations;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqdisplayFeatures = mq.displayFeatures;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqgestureSettings = mq.gestureSettings;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqhighContrast = mq.highContrast;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqinvertColors = mq.invertColors;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqnavigationMode = mq.navigationMode;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqonOffSwitchLabels = mq.onOffSwitchLabels;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqorientation = mq.orientation;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqpadding = mq.padding;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqplatformBrightness = mq.platformBrightness;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqsize = mq.size;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqsystemGestureInsets = mq.systemGestureInsets;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqtextScaleFactor = mq.textScaleFactor;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqtextScaler = mq.textScaler;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqviewInsets = mq.viewInsets;
+    // expect_lint: prefer_dedicated_media_query_method
+    final mqviewPadding = mq.viewPadding.bottom;
+
     // expect_lint: prefer_dedicated_media_query_method
     final accessibleNavigation = MediaQuery.of(context).accessibleNavigation;
     // expect_lint: prefer_dedicated_media_query_method
@@ -48,6 +91,15 @@ class Example extends StatelessWidget {
     // expect_lint: prefer_dedicated_media_query_method
     final viewPadding = MediaQuery.of(context).viewPadding;
 
-    return const Placeholder();
+    return Scaffold(
+      body: Container(
+        // expect_lint: prefer_dedicated_media_query_method
+        height: mq.size.height,
+      ),
+    );
+  }
+
+  void fn(MediaQueryData mq) {
+    final size = mq.size;
   }
 }
