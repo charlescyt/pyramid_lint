@@ -8,6 +8,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/string_extensions.dart';
+import '../../utils/type_checker.dart';
 
 const List<String> _properties = [
   'accessibleNavigation',
@@ -56,11 +57,6 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
 
     context.registry.addPrefixedIdentifier((node) {
       final targetType = node.prefix.staticType;
-
-      const mediaQueryDataChecker = TypeChecker.fromName(
-        'MediaQueryData',
-        packageName: 'flutter',
-      );
 
       if (targetType == null ||
           !mediaQueryDataChecker.isExactlyType(targetType)) return;
