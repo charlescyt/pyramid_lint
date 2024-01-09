@@ -1,12 +1,14 @@
 # avoid_returning_widgets
 
-Returning widgets is not recommended for performance reasons.
+- Severity: info ℹ️
 
-- Severity: info
+## Details
 
-Bad
+**Avoid** returning widgets from methods.
 
-```dart
+<YouTube id="IOyq-eTRhvo" />
+
+```dart title="Bad"
 class A extends StatelessWidget {
   const A({super.key});
 
@@ -26,9 +28,7 @@ class A extends StatelessWidget {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 class A extends StatelessWidget {
   const A({super.key});
 
@@ -51,4 +51,14 @@ class B extends StatelessWidget {
     return ...;
   }
 }
+```
+
+## Usage
+
+To enable the `avoid_returning_widgets` rule, add `avoid_returning_widgets` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_returning_widgets
 ```

@@ -1,13 +1,15 @@
 # prefer_border_from_border_side
 
-`Border.all` is not a const constructor and it uses const constructor `Border.fromBorderSide` internally.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**PREFER** using `Border.fromBorderSide` instead of `Border.all`.
 
-```dart
+Using `Border.fromBorderSide` is more efficient than `Border.all` because of possible const constructor usage.
+
+```dart title="Bad"
 DecoratedBox(
   decoration: BoxDecoration(
     border: Border.all(
@@ -18,9 +20,7 @@ DecoratedBox(
 )
 ```
 
-Good
-
-```dart
+```dart title="Good"
 const DecoratedBox(
   decoration: BoxDecoration(
     border: Border.fromBorderSide(
@@ -31,4 +31,14 @@ const DecoratedBox(
     ),
   ),
 )
+```
+
+## Usage
+
+To enable the `prefer_border_from_border_side` rule, add `prefer_border_from_border_side` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_border_from_border_side
 ```

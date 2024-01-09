@@ -1,12 +1,12 @@
 # proper_expanded_and_flexible
 
-Expanded and Flexible should be placed inside a Row, Column, or Flex.
+- Severity: error ❌
 
-- Severity: error
+## Details
 
-Bad
+**DO** place Expanded and Flexible widgets inside a Row, Column, or Flex.
 
-```dart
+```dart title="Bad"
 Center(
   child: Expanded(
     child: Container(),
@@ -14,9 +14,7 @@ Center(
 )
 ```
 
-Good
-
-```dart
+```dart title="Good"
 Row(
   children: [
     Expanded(
@@ -24,4 +22,14 @@ Row(
     ),
   ],
 )
+```
+
+## Usage
+
+To enable the `proper_expanded_and_flexible` rule, add `proper_expanded_and_flexible` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_expanded_and_flexible
 ```

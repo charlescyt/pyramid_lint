@@ -1,13 +1,13 @@
 # proper_super_init_state
 
-`super.initState()` should be called at the start of the initState method.
+- Severity: error ❌
+- Quick fix: ✅
 
-- Severity: error
-- Quick fix: ✓
+## Details
 
-Bad
+**DO** call `super.initState()` at the start of the initState method.
 
-```dart
+```dart title="Bad"
 @override
 void initState() {
   _init();
@@ -15,12 +15,20 @@ void initState() {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 @override
 void initState() {
   super.initState();
   _init();
 }
+```
+
+## Usage
+
+To enable the `proper_super_init_state` rule, add `proper_super_init_state` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_super_init_state
 ```

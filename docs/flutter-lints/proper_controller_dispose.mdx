@@ -1,13 +1,16 @@
 # proper_controller_dispose
 
-Controllers should be disposed in `Widget`'s `dispose` method to avoid memory leaks. This lint checks for `AnimationController` and all `ChangeNotifier` subclasses such as `TextEditingController`, `ScrollController` and `TabController`.
+- Severity: error ❌
 
-- Severity: error
-- Quick fix: ✓
+## Details
 
-Bad
+**DO** dispose `AnimationController` and all `ChangeNotifier` subclasses such as `TextEditingController`, `ScrollController` and `TabController`.
 
-```dart
+Controllers should be disposed in `Widget`'s `dispose` method to avoid memory leaks.
+
+<Info>This lint supports custom controllers that extend `ChangeNotifier`.</Info>
+
+```dart title="Bad"
 class _MyWidgetState extends State<MyWidget> {
   final _textEditingController = TextEditingController();
 
@@ -18,9 +21,7 @@ class _MyWidgetState extends State<MyWidget> {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 class _MyWidgetState extends State<MyWidget> {
   final _textEditingController = TextEditingController();
 
@@ -35,4 +36,14 @@ class _MyWidgetState extends State<MyWidget> {
     super.dispose();
   }
 }
+```
+
+## Usage
+
+To enable the `proper_controller_dispose` rule, add `proper_controller_dispose` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_controller_dispose
 ```

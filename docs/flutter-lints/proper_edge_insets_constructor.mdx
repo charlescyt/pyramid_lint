@@ -1,13 +1,13 @@
 # proper_edge_insets_constructor
 
-Using correct EdgeInsets constructor increases code readability.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**PREFER** using correct EdgeInsets constructor.
 
-```dart
+```dart title="Bad"
 padding = const EdgeInsets.fromLTRB(8, 8, 8, 8);
 padding = const EdgeInsets.fromLTRB(8, 0, 8, 0);
 padding = const EdgeInsets.fromLTRB(8, 4, 8, 4);
@@ -23,9 +23,7 @@ padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 8);
 padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 0);
 ```
 
-Good
-
-```dart
+```dart title="Good"
 padding = const EdgeInsets.all(8);
 padding = const EdgeInsets.symmetric(horizontal: 8);
 padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 4);
@@ -38,4 +36,14 @@ padding = const EdgeInsets.fromLTRB(2, 4, 6, 8);
 
 padding = const EdgeInsets.all(8);
 padding = const EdgeInsets.symmetric(horizontal: 8);
+```
+
+## Usage
+
+To enable the `proper_edge_insets_constructor` rule, add `proper_edge_insets_constructor` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_edge_insets_constructor
 ```

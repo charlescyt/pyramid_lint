@@ -1,13 +1,13 @@
 # prefer_spacer
 
-Using Expanded with an empty Container or SizedBox is inefficient.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**PREFER** using `Spacer` instead of `Expanded` with an empty Container or SizedBox.
 
-```dart
+```dart title="Bad"
 Column(
   children: [
     Expanded(
@@ -18,12 +18,20 @@ Column(
 )
 ```
 
-Good
-
-```dart
+```dart title="Good"
 Column(
   children: [
     Spacer(flex: 2),
   ],
 )
+```
+
+## Usage
+
+To enable the `prefer_spacer` rule, add `prefer_spacer` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_spacer
 ```

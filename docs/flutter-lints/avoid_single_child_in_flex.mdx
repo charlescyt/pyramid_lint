@@ -1,13 +1,13 @@
 # avoid_single_child_in_flex
 
-Using Column or Row with only one child is inefficient.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**Avoid** using Column or Row with only one child.
 
-```dart
+```dart title="Bad"
 Row(
   children: [
     Placeholder(),
@@ -15,9 +15,7 @@ Row(
 )
 ```
 
-Good
-
-```dart
+```dart title="Good"
 Align(
   child: Placeholder(),
 )
@@ -27,4 +25,14 @@ Align(
 Center(
   child: Placeholder(),
 )
+```
+
+## Usage
+
+To enable the `avoid_single_child_in_flex` rule, add `avoid_single_child_in_flex` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_single_child_in_flex
 ```

@@ -1,13 +1,13 @@
 # proper_super_dispose
 
-`super.dispose()` should be called at the end of the dispose method.
+- Severity: error ❌
+- Quick fix: ✅
 
-- Severity: error
-- Quick fix: ✓
+## Details
 
-Bad
+**DO** call `super.dispose()` at the end of the dispose method.
 
-```dart
+```dart title="Bad"
 @override
 void dispose() {
   super.dispose();
@@ -15,12 +15,20 @@ void dispose() {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 @override
 void dispose() {
   _dispose();
   super.dispose();
 }
+```
+
+## Usage
+
+To enable the `proper_super_dispose` rule, add `proper_super_dispose` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_super_dispose
 ```

@@ -1,13 +1,15 @@
 # prefer_text_rich
 
-`RichText` does not inherit TextStyle from DefaultTextStyle.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**PREFER** using `Text.rich` instead of `RichText`.
 
-```dart
+Using `Text.rich` is more efficient than `RichText` because of possible const constructor usage.
+
+```dart title="Bad"
 RichText(
   text: const TextSpan(
     text: 'Pyramid',
@@ -18,9 +20,7 @@ RichText(
 )
 ```
 
-Good
-
-```dart
+```dart title="Good"
 const Text.rich(
   TextSpan(
     text: 'Pyramid',
@@ -29,4 +29,14 @@ const Text.rich(
     ],
   ),
 )
+```
+
+## Usage
+
+To enable the `prefer_text_rich` rule, add `prefer_text_rich` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_text_rich
 ```

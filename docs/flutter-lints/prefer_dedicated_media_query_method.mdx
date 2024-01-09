@@ -1,9 +1,13 @@
 # prefer_dedicated_media_query_method
 
-Using MediaQuery.of(context) to access below properties will cause unnecessary rebuilds.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
+
+**PREFER** using dedicated MediaQuery methods instead of accessing the properties from MediaQuery.of(context) or MediaQuery.maybeOf(context).
+
+Using MediaQuery.of(context) or MediaQuery.maybeOf(context) to access below properties will cause unnecessary rebuilds.
 
 Properties:
 
@@ -28,16 +32,29 @@ Properties:
 - viewInsets
 - viewPadding
 
-Bad
-
-```dart
+```dart title="Bad"
 final size = MediaQuery.of(context).size;
 final orientation = MediaQuery.maybeOf(context)?.orientation;
+
+final mediaQuery = MediaQuery.of(context);
+final platformBrightness = mediaQuery.platformBrightness;
 ```
 
 Good
 
-```dart
+```dart title="Good"
 final size = MediaQuery.sizeOf(context);
 final orientation = MediaQuery.maybeOrientationOf(context);
+
+final platformBrightness = MediaQuery.platformBrightnessOf(context);
+```
+
+## Usage
+
+To enable the `prefer_dedicated_media_query_method` rule, add `prefer_dedicated_media_query_method` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_dedicated_media_query_method
 ```
