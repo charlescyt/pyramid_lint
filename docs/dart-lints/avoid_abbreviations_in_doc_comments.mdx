@@ -1,17 +1,12 @@
 # avoid_abbreviations_in_doc_comments
 
-Avoid using abbreviations in doc comments as they can hinder readability and cause confusion for readers.
-
-- Severity: warning
+- Severity: Warning ⚠️
 - Options:
   - abbreviations: `List<String>`
 
-```yaml
-custom_lint:
-  rules:
-    - avoid_abbreviations_in_doc_comments:
-      abbreviations: ['approx.']
-```
+## Details
+
+**DO** avoid using abbreviations in doc comments as they can hinder readability and cause confusion for readers.
 
 see: [effective-dart](https://dart.dev/effective-dart/documentation#avoid-abbreviations-and-acronyms-unless-they-are-obvious)
 
@@ -22,20 +17,35 @@ Included abbreviations:
 - etc.
 - et al.
 
-Bad
-
-```dart
+```dart title="Bad"
 /// This is documentation.
 ///
 /// e.g. ...
 int function(){}
 ```
 
-Good
-
-```dart
+```dart title="Good"
 /// This is documentation.
 ///
 /// For example ...
 int function(){}
+```
+
+## Usage
+
+To enable the `avoid_abbreviations_in_doc_comments` rule, add `avoid_abbreviations_in_doc_comments` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_abbreviations_in_doc_comments
+```
+
+To configure the list of abbreviations, add a list of strings to the `abbreviations` option:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_abbreviations_in_doc_comments:
+        abbreviations: ['approx.']
 ```
