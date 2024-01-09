@@ -1,6 +1,9 @@
 {
     "name": "Pyramid Lint",
+    "description": "Linting tool for Dart and Flutter projects.",
     "theme": "#F7A035",
+    "logo": "./resources/icon.png",
+    "logoDark": "./resources/icon.png",
     "sidebar": [
       ["Home", "/"],
       ["Getting started", "/getting-started"],
