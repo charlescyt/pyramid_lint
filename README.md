@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/screenshots/proper_super_init_state_demo.gif" width="800" />
+  <img src="https://github.com/charlescyt/pyramid_lint/raw/doc-page/resources/logo-192x192.png" alt="logo" />
 </p>
 
 <p align="center">
@@ -10,10 +10,7 @@
 
 Pyramid Lint is a linting tool built with [custom_lint]. It offers a set of additional lints and quick fixes to help developers enforce a consistent coding style, prevent common mistakes and enhance code readability.
 
-## Table of contents
-
-- [Contributing](#contributing)
-- [License](#license)
+For more information, please visit the [documentation][website].
 
 ## Contributing
 
@@ -32,5 +29,6 @@ Pyramid Lint is licensed under the [MIT License][license_link].
 <!-- Links -->
 
 [custom_lint]: https://pub.dev/packages/custom_lint
+[website]: https://docs.page/charlescyt/pyramid_lint~doc-page
 [contributing_link]: https://github.com/charlescyt/pyramid_lint/blob/main/CONTRIBUTING.md
 [license_link]: https://github.com/charlescyt/pyramid_lint/blob/main/LICENSE
