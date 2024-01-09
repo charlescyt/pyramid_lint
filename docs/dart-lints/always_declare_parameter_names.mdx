@@ -19,3 +19,13 @@ typedef ItemBuilder = Widget? Function(BuildContext context, int index);
 // IDE's code completion with descriptive parameter names
 itemBuilder: (context, index) {},
 ```
+
+## Usage
+
+To enable the `always_declare_parameter_names` rule, add `always_declare_parameter_names` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - always_declare_parameter_names
+```
