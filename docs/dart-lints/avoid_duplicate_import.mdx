@@ -1,12 +1,12 @@
 # avoid_duplicate_import
 
-Duplicate imports can lead to confusion.
+- Severity: warning ⚠️
 
-- Severity: warning
+## Details
 
-Bad
+**DO** avoid duplicate imports as they can lead to confusion.
 
-```dart
+```dart title="Bad"
 import 'dart:math' as math show max;
 import 'dart:math';
 
@@ -14,11 +14,19 @@ final a = math.max(1, 10);
 final b = min(1, 10);
 ```
 
-Good
-
-```dart
+```dart title="Good"
 import 'dart:math' as math show max, min;
 
 final a = math.max(1, 10);
 final b = math.min(1, 10);
+```
+
+## Usage
+
+To enable the `avoid_duplicate_import` rule, add `avoid_duplicate_import` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_duplicate_import
 ```
