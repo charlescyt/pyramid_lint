@@ -1,17 +1,14 @@
 # boolean_prefix
 
-Boolean variables, functions and getters that return a boolean value should be prefixed with specific verbs.
-
-- Severity: info
+- Severity: info ℹ️
 - Options:
   - valid_prefixes: `List<String>`
 
-```yaml
-custom_lint:
-  rules:
-    - boolean_prefix:
-      valid_prefixes: ['...']
-```
+## Details
+
+**DO** prefix boolean variables, functions and getters with specific verbs.
+
+see: [effective-dart](https://dart.dev/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable)
 
 Default valid prefixes:
 
@@ -29,11 +26,7 @@ Default valid prefixes:
 - does
 - did
 
-see: [effective-dart](https://dart.dev/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable)
-
-Bad
-
-```dart
+```dart title="Bad"
 class Point {
   final double x;
   final double y;
@@ -46,9 +39,7 @@ class Point {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 class Point {
   final double x;
   final double y;
@@ -59,4 +50,23 @@ class Point {
 
   bool isSamePoint(Point other) => x == other.x && y == other.y;
 }
+```
+
+## Usage
+
+To enable the `boolean_prefix` rule, add `boolean_prefix` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix
+```
+
+To configure the list of valid prefixes, add a list of strings to the `valid_prefixes` option:
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix:
+        valid_prefixes: ['is', 'has']
 ```

@@ -1,30 +1,42 @@
 # avoid_unused_parameters
 
-Unused parameters should be removed to avoid confusion.
-
-- Severity: warning
+- Severity: warning ⚠️
 - Options:
   - excluded_parameters: `List<String>`
 
-```yaml
-custom_lint:
-  rules:
-    - avoid_unused_parameters:
-      excluded_parameters: ['ref']
-```
+## Details
 
-Bad
+**DO** avoid unused parameters.
 
-```dart
+Unused parameters should be removed to avoid confusion.
+
+```dart title="Bad"
 void log(String a, String b) {
   print(a);
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 void log(String a) {
   print(a);
 }
+```
+
+## Usage
+
+To enable the `avoid_unused_parameters` rule, add `avoid_unused_parameters` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_unused_parameters
+```
+
+To configure the list of excluded parameters, add a list of strings to the `excluded_parameters` option:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_unused_parameters:
+        excluded_parameters: ['ref']
 ```
