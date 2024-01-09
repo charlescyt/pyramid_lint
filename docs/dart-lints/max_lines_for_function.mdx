@@ -1,10 +1,24 @@
 # max_lines_for_function
 
-A function should not exceed a certain number of lines.
-
-- Severity: info
+- Severity: info ℹ️
 - Options:
   - max_lines: `int` (default: 100)
+
+## Details
+
+A function should not exceed a certain number of lines.
+
+## Usage
+
+To enable the `max_lines_for_function` rule, add `max_lines_for_function` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_function
+```
+
+To configure the maximum number of lines, add an `int` to the `max_lines` option:
 
 ```yaml
 custom_lint:

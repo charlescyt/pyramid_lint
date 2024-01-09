@@ -1,13 +1,13 @@
 # prefer_declaring_const_constructors
 
-Constructors of classes with only final fields should be declared as const constructors when possible.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**DO** declare constructors as const when possible.
 
-```dart
+```dart title="Bad"
 class Point {
   final double x;
   final double y;
@@ -20,9 +20,7 @@ class Point {
 }
 ```
 
-Good
-
-```dart
+```dart title="Good"
 class Point {
   final double x;
   final double y;
@@ -33,4 +31,14 @@ class Point {
       : x = 0,
         y = 0;
 }
+```
+
+## Usage
+
+To enable the `prefer_declaring_const_constructors` rule, add `prefer_declaring_const_constructors` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_declaring_const_constructors
 ```

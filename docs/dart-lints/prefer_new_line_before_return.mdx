@@ -1,13 +1,13 @@
 # prefer_new_line_before_return
 
-Adding a new line before the return statement increases code readability.
+- Severity: info ℹ️
+- Quick fix: ✅
 
-- Severity: info
-- Quick fix: ✓
+## Details
 
-Bad
+**DO** add a new line before the return statement.
 
-```dart
+```dart title="Bad"
 if (...) {
   ...
   return ...;
@@ -15,9 +15,7 @@ if (...) {
 return ...;
 ```
 
-Good
-
-```dart
+```dart title="Good"
 if (...) {
   ...
 
@@ -25,4 +23,14 @@ if (...) {
 }
 
 return ...;
+```
+
+## Usage
+
+To enable the `prefer_new_line_before_return` rule, add `prefer_new_line_before_return` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_new_line_before_return
 ```

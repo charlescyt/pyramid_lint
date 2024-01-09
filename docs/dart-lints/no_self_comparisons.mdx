@@ -1,19 +1,27 @@
 # no_self_comparisons
 
-Self comparison is usually a mistake.
+- Severity: warning ⚠️
 
-- Severity: warning
+## Details
 
-Bad
+**DO** avoid self comparisons.
 
-```dart
+```dart title="Bad"
 if (foo == foo) {}
 if (foo.property == foo.property) {}
 ```
 
-Good
-
-```dart
+```dart title="Good"
 if (foo == bar) {}
 if (foo.property == bar.property) {}
+```
+
+## Usage
+
+To enable the `no_self_comparisons` rule, add `no_self_comparisons` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - no_self_comparisons
 ```
