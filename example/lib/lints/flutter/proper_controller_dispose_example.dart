@@ -15,8 +15,8 @@ class Example extends StatefulWidget {
   State<Example> createState() => _ExampleState();
 }
 
-// expect_lint: proper_controller_dispose
 class _ExampleState extends State<Example> {
+// expect_lint: proper_controller_dispose
   final _textEditingController = TextEditingController();
 
   @override
