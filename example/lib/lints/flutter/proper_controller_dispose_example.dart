@@ -41,7 +41,7 @@ class _Example2State extends State<Example2>
     with SingleTickerProviderStateMixin {
   // The lint is triggered here because _controller2 is not disposed.
   // expect_lint: proper_controller_dispose
-  late AnimationController _controller1, _controller2;
+  late final AnimationController _controller1, _controller2;
   // expect_lint: proper_controller_dispose
   late final ScrollController _scrollController;
   // expect_lint: proper_controller_dispose

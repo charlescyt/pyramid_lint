@@ -101,86 +101,108 @@ class _ProperControllerDisposeFix extends DartFix {
 
       final parent = node.parent! as ClassDeclaration;
 
-      final disposeFunctionBody =
-          parent.members.findMethodDeclarationByName('dispose')?.body;
-
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Dispose controller',
         priority: 80,
       );
 
-      final controllerDeclarations = node.fields.variables.where(
-        (e) {
-          final variableType = e.declaredElement?.type;
-          if (variableType == null) return false;
-          return disposableControllerChecker.isAssignableFromType(variableType);
-        },
+      final controllerToBeDisposed = node.fields.variables.firstWhereOrNull(
+        (e) => analysisError.sourceRange.intersects(e.sourceRange),
       );
-
-      final controllerToBeDisposed = controllerDeclarations.firstWhereOrNull(
-        (e) => e.name.sourceRange == analysisError.sourceRange,
-      );
-
       if (controllerToBeDisposed == null) return;
 
+      final disposeMethod =
+          parent.members.findMethodDeclarationByName('dispose');
       final toBeDisposedControllerName = controllerToBeDisposed.name.lexeme;
 
-      if (disposeFunctionBody == null) {
-        final initStateMethod = parent.members.findMethodDeclarationByName(
-          'initState',
-        );
+      switch (disposeMethod?.body) {
+        case null:
+          _handleNullFunctionBody(
+            parent,
+            node,
+            toBeDisposedControllerName,
+            changeBuilder,
+          );
+        case final BlockFunctionBody body:
+          _handleBlockFunctionBody(
+            body,
+            toBeDisposedControllerName,
+            changeBuilder,
+          );
+        case final ExpressionFunctionBody body:
+          _handleExpressionFunctionBody(
+            body,
+            toBeDisposedControllerName,
+            changeBuilder,
+          );
+        case EmptyFunctionBody() || NativeFunctionBody():
+      }
+    });
+  }
 
-        final buildMethod = parent.members.findMethodDeclarationByName('build');
+  void _handleNullFunctionBody(
+    ClassDeclaration parent,
+    FieldDeclaration node,
+    String toBeDisposedControllerName,
+    ChangeBuilder changeBuilder,
+  ) {
+    final initStateMethod = parent.members.findMethodDeclarationByName(
+      'initState',
+    );
 
-        final (int offset, bool addNewLineAtTheStart, bool addNewLineAtTheEnd) =
-            switch ((initStateMethod, buildMethod)) {
-          (null, null) => (node.end, true, false),
-          (null, final buildMethod?) => (buildMethod.offset, true, true),
-          (final initStateMethod?, null) => (initStateMethod.end, true, false),
-          (final _?, final buildMethod?) => (buildMethod.offset, false, true),
-        };
+    final buildMethod = parent.members.findMethodDeclarationByName('build');
 
-        changeBuilder.addDartFileEdit((builder) {
-          builder.addInsertion(offset, (builder) {
-            if (addNewLineAtTheStart) builder.write('\n');
-            builder.write('  @override\n');
-            builder.write('  void dispose() {\n');
-            builder.write('    $toBeDisposedControllerName.dispose();\n');
-            builder.write('    super.dispose();\n');
-            builder.write('  }\n');
-            if (addNewLineAtTheEnd) builder.write('\n');
-          });
+    final (int offset, bool addNewLineAtTheStart, bool addNewLineAtTheEnd) =
+        switch ((initStateMethod, buildMethod)) {
+      (null, null) => (node.end, true, false),
+      (null, final buildMethod?) => (buildMethod.offset, true, true),
+      (final initStateMethod?, null) => (initStateMethod.end, true, false),
+      (final _?, final buildMethod?) => (buildMethod.offset, false, true),
+    };
+
+    changeBuilder.addDartFileEdit((builder) {
+      builder.addInsertion(offset, (builder) {
+        if (addNewLineAtTheStart) builder.write('\n');
+        builder.write('  @override\n');
+        builder.write('  void dispose() {\n');
+        builder.write('    $toBeDisposedControllerName.dispose();\n');
+        builder.write('    super.dispose();\n');
+        builder.write('  }\n');
+        if (addNewLineAtTheEnd) builder.write('\n');
+      });
+    });
+  }
+
+  void _handleBlockFunctionBody(
+    BlockFunctionBody disposeFunctionBody,
+    String toBeDisposedControllerName,
+    ChangeBuilder changeBuilder,
+  ) {
+    final statements = disposeFunctionBody.block.statements;
+    final disposeStatementTargetNames =
+        _getDisposeStatementTargetNames(statements);
+
+    if (!disposeStatementTargetNames.contains(toBeDisposedControllerName)) {
+      changeBuilder.addDartFileEdit((builder) {
+        builder.addInsertion(disposeFunctionBody.beginToken.end, (builder) {
+          builder.write('\n    $toBeDisposedControllerName.dispose();');
         });
+      });
+    }
+  }
 
-        return;
-      }
-
-      if (disposeFunctionBody is BlockFunctionBody) {
-        final statements = disposeFunctionBody.block.statements;
-        final disposeStatementTargetNames =
-            _getDisposeStatementTargetNames(statements);
-
-        if (!disposeStatementTargetNames.contains(toBeDisposedControllerName)) {
-          changeBuilder.addDartFileEdit((builder) {
-            builder.addInsertion(disposeFunctionBody.beginToken.end, (builder) {
-              builder.write('\n    $toBeDisposedControllerName.dispose();');
-            });
-          });
-        }
-
-        return;
-      }
-
-      if (disposeFunctionBody is ExpressionFunctionBody) {
-        changeBuilder.addDartFileEdit((builder) {
-          builder.addReplacement(disposeFunctionBody.sourceRange, (builder) {
-            builder.write('{\n');
-            builder.write('    $toBeDisposedControllerName.dispose();\n');
-            builder.write('    super.dispose();\n');
-            builder.write('  }\n');
-          });
-        });
-      }
+  void _handleExpressionFunctionBody(
+    ExpressionFunctionBody disposeFunctionBody,
+    String toBeDisposedControllerName,
+    ChangeBuilder changeBuilder,
+  ) {
+    changeBuilder.addDartFileEdit((builder) {
+      builder.addReplacement(disposeFunctionBody.sourceRange, (builder) {
+        builder.writeln('{');
+        builder.writeln('    $toBeDisposedControllerName.dispose();');
+        builder.writeln('    ${disposeFunctionBody.expression.toSource()};');
+        builder.write('  }');
+      });
     });
   }
 }
