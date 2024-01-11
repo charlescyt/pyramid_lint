@@ -20,7 +20,7 @@ class PreferLibraryPrefixes extends DartLintRule {
     name: name,
     problemMessage: 'Prefix should be used for this library.',
     correctionMessage: 'Consider adding a prefix to this library.',
-    url: '$docUrl#${PreferLibraryPrefixes.name}',
+    url: '$dartLintDocUrl/${PreferLibraryPrefixes.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

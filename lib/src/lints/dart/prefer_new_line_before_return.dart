@@ -16,7 +16,7 @@ class PreferNewLineBeforeReturn extends DartLintRule {
     problemMessage: 'There should be a new line before the return statement.',
     correctionMessage:
         'Consider adding a new line before the return statement.',
-    url: '$docUrl#${PreferNewLineBeforeReturn.name}',
+    url: '$dartLintDocUrl/${PreferNewLineBeforeReturn.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

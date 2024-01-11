@@ -18,7 +18,7 @@ class MaxLinesForFile extends DartLintRule {
     name: name,
     problemMessage: 'There are too many lines in this file.',
     correctionMessage: 'Consider reducing the number of lines to {0} or less.',
-    url: '$docUrl#${MaxLinesForFile.name}',
+    url: '$dartLintDocUrl/${MaxLinesForFile.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

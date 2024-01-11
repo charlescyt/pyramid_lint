@@ -16,7 +16,7 @@ class PreferVoidCallback extends DartLintRule {
     problemMessage: 'There is a typedef VoidCallback defined in flutter.',
     correctionMessage:
         'Consider using VoidCallback instead of void Function().',
-    url: '$docUrl#${PreferVoidCallback.name}',
+    url: '$flutterLintDocUrl/${PreferVoidCallback.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

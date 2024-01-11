@@ -32,7 +32,7 @@ class BooleanPrefix extends DartLintRule {
     name: name,
     problemMessage: '{0} should be named with a valid prefix.',
     correctionMessage: 'Try naming your {1} with a valid prefix.',
-    url: '$docUrl#${BooleanPrefix.name}',
+    url: '$dartLintDocUrl/${BooleanPrefix.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

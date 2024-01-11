@@ -17,7 +17,7 @@ class PreferSpacer extends DartLintRule {
     name: name,
     problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
     correctionMessage: 'Consider replacing Expanded with Spacer.',
-    url: '$docUrl#${PreferSpacer.name}',
+    url: '$flutterLintDocUrl/${PreferSpacer.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

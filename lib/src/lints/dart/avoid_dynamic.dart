@@ -17,7 +17,7 @@ class AvoidDynamic extends DartLintRule {
         'Avoid using dynamic type as it reduces type safety and can '
         'lead to potential runtime errors.',
     correctionMessage: 'Consider specifying a type instead of using dynamic.',
-    url: '$docUrl#${AvoidDynamic.name}',
+    url: '$dartLintDocUrl/${AvoidDynamic.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

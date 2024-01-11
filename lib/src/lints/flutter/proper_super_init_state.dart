@@ -20,7 +20,7 @@ class ProperSuperInitState extends DartLintRule {
         'super.initState() should be called at the start of the initState method.',
     correctionMessage:
         'Try placing super.initState() at the start of the initState method.',
-    url: '$docUrl#${ProperSuperInitState.name}',
+    url: '$flutterLintDocUrl/${ProperSuperInitState.name}',
     errorSeverity: ErrorSeverity.ERROR,
   );
 

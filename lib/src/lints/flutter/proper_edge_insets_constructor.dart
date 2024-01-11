@@ -18,7 +18,7 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
     name: name,
     problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
     correctionMessage: 'Consider replacing with {0}.',
-    url: '$docUrl#${ProperEdgeInsetsConstructor.name}',
+    url: '$flutterLintDocUrl/${ProperEdgeInsetsConstructor.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

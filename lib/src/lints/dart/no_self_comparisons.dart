@@ -14,7 +14,7 @@ class NoSelfComparisons extends DartLintRule {
     name: name,
     problemMessage: 'Self comparison is usually a mistake.',
     correctionMessage: 'Consider changing the comparison to something else.',
-    url: '$docUrl#${NoSelfComparisons.name}',
+    url: '$dartLintDocUrl/${NoSelfComparisons.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

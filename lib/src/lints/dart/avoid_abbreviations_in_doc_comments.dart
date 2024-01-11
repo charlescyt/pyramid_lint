@@ -24,7 +24,7 @@ class AvoidAbbreviationsInDocComments extends DartLintRule {
         'Avoid using abbreviations in doc comments as they can hinder '
         'readability and cause confusion.',
     correctionMessage: 'Consider using the full word instead.',
-    url: '$docUrl#${AvoidAbbreviationsInDocComments.name}',
+    url: '$dartLintDocUrl/${AvoidAbbreviationsInDocComments.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

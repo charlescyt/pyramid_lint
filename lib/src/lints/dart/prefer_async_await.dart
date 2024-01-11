@@ -13,7 +13,7 @@ class PreferAsyncAwait extends DartLintRule {
     name: name,
     problemMessage: 'Using Future.then() decreases readability.',
     correctionMessage: 'Consider using async/await instead.',
-    url: '$docUrl#${PreferAsyncAwait.name}',
+    url: '$dartLintDocUrl/${PreferAsyncAwait.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

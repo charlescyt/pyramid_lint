@@ -18,7 +18,7 @@ class PreferBorderFromBorderSide extends DartLintRule {
         'Border.fromBorderSide internally.',
     correctionMessage:
         'Consider replacing Border.all with Border.fromBorderSide.',
-    url: '$docUrl#${PreferBorderFromBorderSide.name}',
+    url: '$flutterLintDocUrl/${PreferBorderFromBorderSide.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

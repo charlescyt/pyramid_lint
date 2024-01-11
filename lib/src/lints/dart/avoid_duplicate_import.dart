@@ -15,7 +15,7 @@ class AvoidDuplicateImport extends DartLintRule {
     name: name,
     problemMessage: 'Duplicate imports can lead to confusion.',
     correctionMessage: 'Consider combining or removing the duplicate imports.',
-    url: '$docUrl#${AvoidDuplicateImport.name}',
+    url: '$dartLintDocUrl/${AvoidDuplicateImport.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

@@ -16,7 +16,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
     name: name,
     problemMessage: 'The callback parameter is not used.',
     correctionMessage: 'Consider using underscores for the unused parameter.',
-    url: '$docUrl#${PreferUnderscoreForUnusedCallbackParameters.name}',
+    url: '$dartLintDocUrl/${PreferUnderscoreForUnusedCallbackParameters.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

@@ -15,7 +15,7 @@ class AlwaysDeclareParameterNames extends DartLintRule {
         'Parameter names should always be declared to enhance code readability and '
         'enable IDEs to provide code completion suggestions.',
     correctionMessage: 'Consider declaring a descriptive parameter name.',
-    url: '$docUrl#${AlwaysDeclareParameterNames.name}',
+    url: '$dartLintDocUrl/${AlwaysDeclareParameterNames.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

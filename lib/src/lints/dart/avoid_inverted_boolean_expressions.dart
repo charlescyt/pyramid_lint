@@ -18,7 +18,7 @@ class AvoidInvertedBooleanExpressions extends DartLintRule {
     problemMessage:
         'Using inverted boolean expression decreases code readability.',
     correctionMessage: 'Consider using {0} instead.',
-    url: '$docUrl#${AvoidInvertedBooleanExpressions.name}',
+    url: '$dartLintDocUrl/${AvoidInvertedBooleanExpressions.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

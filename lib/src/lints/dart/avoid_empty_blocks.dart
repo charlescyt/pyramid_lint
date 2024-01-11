@@ -13,7 +13,7 @@ class AvoidEmptyBlocks extends DartLintRule {
     name: name,
     problemMessage: 'Empty block usually indicates a missing implementation.',
     correctionMessage: 'Consider adding an implementation or a TODO comment.',
-    url: '$docUrl#${AvoidEmptyBlocks.name}',
+    url: '$dartLintDocUrl/${AvoidEmptyBlocks.name}',
     errorSeverity: ErrorSeverity.WARNING,
   );
 

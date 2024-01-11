@@ -16,7 +16,7 @@ class AvoidReturningWidgets extends DartLintRule {
     problemMessage:
         'Returning widgets is not recommended for performance reasons.',
     correctionMessage: 'Consider creating a separate widget instead.',
-    url: '$docUrl#${AvoidReturningWidgets.name}',
+    url: '$flutterLintDocUrl/${AvoidReturningWidgets.name}',
     errorSeverity: ErrorSeverity.INFO,
   );
 

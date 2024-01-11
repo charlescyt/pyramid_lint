@@ -1,1 +1,3 @@
-const docUrl = 'https://github.com/charlescyt/pyramid_lint/blob/main/README.md';
+const docUrl = 'https://docs.page/charlescyt/pyramid_lint';
+const dartLintDocUrl = '$docUrl/dart-lints';
+const flutterLintDocUrl = '$docUrl/flutter-lints';
