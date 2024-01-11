@@ -133,5 +133,6 @@ const changeNotifierChecker = TypeChecker.fromName(
 const disposableControllerChecker = TypeChecker.any(
   [
     animationControllerChecker,
+    changeNotifierChecker,
   ],
 );

@@ -1,11 +1,11 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
+import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/class_members_extensions.dart';
 import '../../utils/constants.dart';
-import '../../utils/lint_code_extensions.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/statements_extensions.dart';
 import '../../utils/type_checker.dart';
@@ -31,93 +31,178 @@ class ProperControllerDispose extends DartLintRule {
   ) {
     if (!context.pubspec.isFlutterProject) return;
 
-    context.registry.addClassDeclaration((node) {
-      final type = node.extendsClause?.superclass.type;
-      if (type == null || !widgetStateChecker.isAssignableFromType(type)) {
+    context.registry.addFieldDeclaration((node) {
+      final parent = node.parent;
+
+      if (parent is! ClassDeclaration) {
         return;
       }
 
-      final fieldDeclarations = node.members.fieldDeclarations;
-      final controllerDeclarations = fieldDeclarations
-          .where((e) {
-            final type = e.fields.type?.type;
-            if (type != null) {
-              if (disposableControllerChecker.isExactlyType(type) ||
-                  changeNotifierChecker.isSuperTypeOf(type)) {
-                return true;
-              }
-            }
+      final superClassType = parent.extendsClause?.superclass.type;
+      if (superClassType == null ||
+          !widgetStateChecker.isAssignableFromType(superClassType)) return;
 
-            if (type == null) {
-              final variableDeclarations = e.fields.variables;
-              if (variableDeclarations.length == 1) {
-                final variableDeclaration = variableDeclarations.first;
-                final initializer = variableDeclaration.initializer;
+      final disposeFunctionBody =
+          parent.members.findMethodDeclarationByName('dispose')?.body;
 
-                if (initializer is InstanceCreationExpression) {
-                  final staticType = initializer.staticType;
-                  return switch (staticType) {
-                    null => false,
-                    final type =>
-                      disposableControllerChecker.isExactlyType(type) ||
-                          changeNotifierChecker.isSuperTypeOf(type),
-                  };
-                }
-              }
-            }
+      final controllerDeclarations = node.fields.variables.where(
+        (e) {
+          final variableType = e.declaredElement?.type;
+          if (variableType == null) return false;
+          return disposableControllerChecker.isAssignableFromType(variableType);
+        },
+      );
 
-            return false;
-          })
-          .map((e) => e.fields.variables)
-          .expand((e) => e);
-
-      if (controllerDeclarations.isEmpty) return;
-
-      final disposeMethodDeclaration =
-          node.members.findMethodDeclarationByName('dispose');
-      if (disposeMethodDeclaration == null) {
-        reporter.reportErrorForToken(
-          code.copyWith(
-            problemMessage:
-                'There is no dispose method to dispose controllers.',
-            correctionMessage: 'Add dispose method.',
-          ),
-          node.name,
-        );
+      if (disposeFunctionBody == null ||
+          disposeFunctionBody is! BlockFunctionBody) {
+        for (final controller in controllerDeclarations) {
+          final controllerName = controller.name.lexeme;
+          reporter.reportErrorForToken(
+            code,
+            controller.name,
+            [controllerName],
+          );
+        }
         return;
       }
 
-      final body = disposeMethodDeclaration.body;
-      if (body is! BlockFunctionBody) {
-        reporter.reportErrorForNode(code, body);
-        return;
-      }
-
-      final statements = body.block.statements;
-      final disposeStatementTargetNames = statements.expressionStatements
-          .map((e) {
-            final expression = e.expression;
-            if (expression is MethodInvocation) {
-              final target = expression.target;
-              if (target is SimpleIdentifier) {
-                return target.name;
-              }
-            }
-            return null;
-          })
-          .whereType<String>()
-          .toList();
+      final statements = disposeFunctionBody.block.statements;
+      final disposeStatementTargetNames =
+          _getDisposeStatementTargetNames(statements);
 
       for (final controllerDeclaration in controllerDeclarations) {
-        if (!disposeStatementTargetNames
-            .contains(controllerDeclaration.name.lexeme)) {
-          reporter.reportErrorForElement(
+        final controllerName = controllerDeclaration.name.lexeme;
+        if (!disposeStatementTargetNames.contains(controllerName)) {
+          reporter.reportErrorForToken(
             code,
-            controllerDeclaration.declaredElement!,
-            [controllerDeclaration.name.lexeme],
+            controllerDeclaration.name,
+            [controllerName],
           );
         }
       }
     });
   }
+
+  @override
+  List<Fix> getFixes() => [_ProperControllerDisposeFix()];
+}
+
+class _ProperControllerDisposeFix extends DartFix {
+  @override
+  void run(
+    CustomLintResolver resolver,
+    ChangeReporter reporter,
+    CustomLintContext context,
+    AnalysisError analysisError,
+    List<AnalysisError> others,
+  ) {
+    context.registry.addFieldDeclaration((node) {
+      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+
+      final parent = node.parent! as ClassDeclaration;
+
+      final disposeFunctionBody =
+          parent.members.findMethodDeclarationByName('dispose')?.body;
+
+      final changeBuilder = reporter.createChangeBuilder(
+        message: 'Dispose controller',
+        priority: 80,
+      );
+
+      final controllerDeclarations = node.fields.variables.where(
+        (e) {
+          final variableType = e.declaredElement?.type;
+          if (variableType == null) return false;
+          return disposableControllerChecker.isAssignableFromType(variableType);
+        },
+      );
+
+      final controllerToBeDisposed = controllerDeclarations.firstWhereOrNull(
+        (e) => e.name.sourceRange == analysisError.sourceRange,
+      );
+
+      if (controllerToBeDisposed == null) return;
+
+      final toBeDisposedControllerName = controllerToBeDisposed.name.lexeme;
+
+      if (disposeFunctionBody == null) {
+        final initStateMethod = parent.members.findMethodDeclarationByName(
+          'initState',
+        );
+
+        final buildMethod = parent.members.findMethodDeclarationByName('build');
+
+        final (int offset, bool addNewLineAtTheStart, bool addNewLineAtTheEnd) =
+            switch ((initStateMethod, buildMethod)) {
+          (null, null) => (node.end, true, false),
+          (null, final buildMethod?) => (buildMethod.offset, true, true),
+          (final initStateMethod?, null) => (initStateMethod.end, true, false),
+          (final _?, final buildMethod?) => (buildMethod.offset, false, true),
+        };
+
+        changeBuilder.addDartFileEdit((builder) {
+          builder.addInsertion(offset, (builder) {
+            if (addNewLineAtTheStart) builder.write('\n');
+            builder.write('  @override\n');
+            builder.write('  void dispose() {\n');
+            builder.write('    $toBeDisposedControllerName.dispose();\n');
+            builder.write('    super.dispose();\n');
+            builder.write('  }\n');
+            if (addNewLineAtTheEnd) builder.write('\n');
+          });
+        });
+
+        return;
+      }
+
+      if (disposeFunctionBody is BlockFunctionBody) {
+        final statements = disposeFunctionBody.block.statements;
+        final disposeStatementTargetNames =
+            _getDisposeStatementTargetNames(statements);
+
+        if (!disposeStatementTargetNames.contains(toBeDisposedControllerName)) {
+          changeBuilder.addDartFileEdit((builder) {
+            builder.addInsertion(disposeFunctionBody.beginToken.end, (builder) {
+              builder.write('\n    $toBeDisposedControllerName.dispose();');
+            });
+          });
+        }
+
+        return;
+      }
+
+      if (disposeFunctionBody is ExpressionFunctionBody) {
+        changeBuilder.addDartFileEdit((builder) {
+          builder.addReplacement(disposeFunctionBody.sourceRange, (builder) {
+            builder.write('{\n');
+            builder.write('    $toBeDisposedControllerName.dispose();\n');
+            builder.write('    super.dispose();\n');
+            builder.write('  }\n');
+          });
+        });
+      }
+    });
+  }
+}
+
+Iterable<String> _getDisposeStatementTargetNames(
+  NodeList<Statement> statements,
+) {
+  return statements.expressionStatements
+      .map((e) => e.expression)
+      .whereType<MethodInvocation>()
+      .map(_getTargetNameOfDisposeMethodInvocation)
+      .whereNotNull();
+}
+
+String? _getTargetNameOfDisposeMethodInvocation(
+  MethodInvocation invocation,
+) {
+  final target = invocation.target;
+  if (target is! SimpleIdentifier) return null;
+
+  final methodName = invocation.methodName.name;
+  if (methodName != 'dispose') return null;
+
+  return target.name;
 }
