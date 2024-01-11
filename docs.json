@@ -60,5 +60,10 @@
       ]
     ],
     ["Contributing", "/contributing"]
-  ]
+  ],
+  "docsearch": {
+    "appId": "89JN6YZ47Y",
+    "apiKey": "0069249597328d625b415ad2849acfb0",
+    "indexName": "pyramid_lint"
+  }
 }
