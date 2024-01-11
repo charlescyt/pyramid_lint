@@ -1,0 +1,31 @@
+# prefer_immediate_return
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** return the result of an expression directly instead of assigning it to a variable and then returning the variable.
+
+```dart title="Bad"
+int add(int a, int b) {
+  final result = a + b;
+  return result;
+}
+```
+
+```dart title="Good"
+int add(int a, int b) {
+  return a + b;
+}
+```
+
+## Usage
+
+To enable the `prefer_immediate_return` rule, add `prefer_immediate_return` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_immediate_return
+```

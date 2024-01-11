@@ -1,0 +1,26 @@
+# prefer_async_callback
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using the built-in typedef `AsyncCallback` instead of declaring a custom one.
+
+```dart title="Bad"
+final Future<void> Function() cb;
+```
+
+```dart title="Good"
+final AsyncCallback cb;
+```
+
+## Usage
+
+To enable the `prefer_async_callback` rule, add `prefer_async_callback` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_async_callback
+```

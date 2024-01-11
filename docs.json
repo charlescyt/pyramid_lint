@@ -1,0 +1,69 @@
+{
+  "name": "Pyramid Lint",
+  "description": "Linting tool for Dart and Flutter projects.",
+  "theme": "#F7A035",
+  "logo": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png",
+  "logoDark": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png",
+  "favicon": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/favicon.ico",
+  "sidebar": [
+    ["Overview", "/"],
+    ["Getting started", "/getting-started"],
+    ["Dart Lints", [
+      ["always_declare_parameter_names", "/dart-lints/always_declare_parameter_names"],
+      ["avoid_abbreviations_in_doc_comments", "/dart-lints/avoid_abbreviations_in_doc_comments"],
+      ["avoid_duplicate_import", "/dart-lints/avoid_duplicate_import"],
+      ["avoid_dynamic", "/dart-lints/avoid_dynamic"],
+      ["avoid_empty_blocks", "/dart-lints/avoid_empty_blocks"],
+      ["avoid_inverted_boolean_expressions", "/dart-lints/avoid_inverted_boolean_expressions"],
+      ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
+      ["boolean_prefix", "/dart-lints/boolean_prefix"],
+      ["doc_comments_before_annotations", "/dart-lints/doc_comments_before_annotations"],
+      ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
+      ["max_lines_for_function", "/dart-lints/max_lines_for_function"],
+      ["no_self_comparisons", "/dart-lints/no_self_comparisons"],
+      ["prefer_async_await", "/dart-lints/prefer_async_await"],
+      ["prefer_declaring_const_constructors", "/dart-lints/prefer_declaring_const_constructors"],
+      ["prefer_immediate_return", "/dart-lints/prefer_immediate_return"],
+      ["prefer_iterable_first", "/dart-lints/prefer_iterable_first"],
+      ["prefer_iterable_last", "/dart-lints/prefer_iterable_last"],
+      ["prefer_library_prefixes", "/dart-lints/prefer_library_prefixes"],
+      ["prefer_new_line_before_return", "/dart-lints/prefer_new_line_before_return"],
+      ["prefer_underscore_for_unused_callback_parameters", "/dart-lints/prefer_underscore_for_unused_callback_parameters"],
+      ["unnecessary_nullable_return_type", "/dart-lints/unnecessary_nullable_return_type"]
+    ]],
+    ["Flutter Lints", [
+      ["avoid_returning_widgets", "/flutter-lints/avoid_returning_widgets"],
+      ["avoid_single_child_in_flex", "/flutter-lints/avoid_single_child_in_flex"],
+      ["avoid_widget_state_public_members", "/flutter-lints/avoid_widget_state_public_members"],
+      ["prefer_async_callback", "/flutter-lints/prefer_async_callback"],
+      ["prefer_border_from_border_side", "/flutter-lints/prefer_border_from_border_side"],
+      ["prefer_border_radius_all", "/flutter-lints/prefer_border_radius_all"],
+      ["prefer_dedicated_media_query_method", "/flutter-lints/prefer_dedicated_media_query_method"],
+      ["prefer_spacer", "/flutter-lints/prefer_spacer"],
+      ["prefer_text_rich", "/flutter-lints/prefer_text_rich"],
+      ["proper_controller_dispose", "/flutter-lints/proper_controller_dispose"],
+      ["proper_edge_insets_constructor", "/flutter-lints/proper_edge_insets_constructor"],
+      ["proper_expanded_and_flexible", "/flutter-lints/proper_expanded_and_flexible"],
+      ["proper_from_environment", "/flutter-lints/proper_from_environment"],
+      ["proper_super_dispose", "/flutter-lints/proper_super_dispose"],
+      ["proper_super_init_state", "/flutter-lints/proper_super_init_state"]
+    ]],
+    ["Dart Assists", [
+      ["invert_boolean_expression", "/dart-assists/invert_boolean_expression"],
+      ["swap_then_else_expression", "/dart-assists/swap_then_else_expression"]
+    ]],
+    ["Flutter Assists", [
+        ["use_edge_insets_zero", "/flutter-assists/use_edge_insets_zero"],
+        ["wrap_with_expanded", "/flutter-assists/wrap_with_expanded"],
+        ["wrap_with_layout_builder", "/flutter-assists/wrap_with_layout_builder"],
+        ["wrap_with_stack", "/flutter-assists/wrap_with_stack"]
+      ]
+    ],
+    ["Contributing", "/contributing"]
+  ],
+  "docsearch": {
+    "appId": "89JN6YZ47Y",
+    "apiKey": "8b069d0160111cc3b312656e0c3561ec",
+    "indexName": "pyramid_lint"
+  }
+}

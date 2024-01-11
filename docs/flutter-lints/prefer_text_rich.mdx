@@ -1,0 +1,42 @@
+# prefer_text_rich
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using `Text.rich` instead of `RichText`.
+
+Using `Text.rich` is more efficient than `RichText` because of possible const constructor usage.
+
+```dart title="Bad"
+RichText(
+  text: const TextSpan(
+    text: 'Pyramid',
+    children: [
+      TextSpan(text: 'Lint'),
+    ],
+  ),
+)
+```
+
+```dart title="Good"
+const Text.rich(
+  TextSpan(
+    text: 'Pyramid',
+    children: [
+      TextSpan(text: 'Lint'),
+    ],
+  ),
+)
+```
+
+## Usage
+
+To enable the `prefer_text_rich` rule, add `prefer_text_rich` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_text_rich
+```

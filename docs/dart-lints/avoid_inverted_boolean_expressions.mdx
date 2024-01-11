@@ -1,0 +1,30 @@
+# avoid_inverted_boolean_expressions
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** avoid using inverted boolean expressions unnecessarily.
+
+Unnecessary inverted boolean expression should be avoided since it decreases code readability.
+
+```dart title="Bad"
+if (!(number > 0)) {}
+final text = !(number == 0) ? 'Not zero' : 'Zero';
+```
+
+```dart title="Good"
+if (number <= 0) {}
+final text = number != 0 ? 'Not zero' : 'Zero';
+```
+
+## Usage
+
+To enable the `avoid_inverted_boolean_expressions` rule, add `avoid_inverted_boolean_expressions` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_inverted_boolean_expressions
+```

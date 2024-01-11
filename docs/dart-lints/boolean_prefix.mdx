@@ -1,0 +1,72 @@
+# boolean_prefix
+
+- Severity: info ℹ️
+- Options:
+  - valid_prefixes: `List<String>`
+
+## Details
+
+**DO** prefix boolean variables, functions and getters with specific verbs.
+
+see: [effective-dart](https://dart.dev/effective-dart/design#prefer-a-non-imperative-verb-phrase-for-a-boolean-property-or-variable)
+
+Default valid prefixes:
+
+- is
+- are
+- was
+- were
+- has
+- have
+- had
+- can
+- should
+- will
+- do
+- does
+- did
+
+```dart title="Bad"
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get origin => x == 0 && y == 0;
+
+  bool samePoint(Point other) => x == other.x && y == other.y;
+}
+```
+
+```dart title="Good"
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get isOrigin => x == 0 && y == 0;
+
+  bool isSamePoint(Point other) => x == other.x && y == other.y;
+}
+```
+
+## Usage
+
+To enable the `boolean_prefix` rule, add `boolean_prefix` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix
+```
+
+To configure the list of valid prefixes, add a list of strings to the `valid_prefixes` option:
+
+```yaml
+custom_lint:
+  rules:
+    - boolean_prefix:
+        valid_prefixes: ['is', 'has']
+```

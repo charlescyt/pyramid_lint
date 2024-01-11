@@ -1,0 +1,53 @@
+# prefer_library_prefixes
+
+- Severity: info ℹ️
+- Quick fix: ✅
+- Options:
+  - include_default_libraries: `bool` (default: true)
+  - libraries: `List<String>`
+
+## Details
+
+**DO** use library prefixes to avoid name conflicts and increase code readability.
+
+Default libraries:
+
+- 'dart:developer'
+- 'dart:math'
+
+```dart title="Bad"
+import 'dart:developer';
+import 'dart:math';
+
+print(log(e));
+log('message');
+```
+
+```dart title="Good"
+import 'dart:developer' as developer;
+import 'dart:math' as math;
+
+print(math.log(math.e));
+developer.log('message');
+
+```
+
+## Usage
+
+To enable the `prefer_library_prefixes` rule, add `prefer_library_prefixes` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_library_prefixes
+```
+
+To configure the rule, add the optional `include_default_libraries` and `libraries` parameters:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_library_prefixes:
+        include_default_libraries: false
+        libraries: ['package:http/http.dart']
+```

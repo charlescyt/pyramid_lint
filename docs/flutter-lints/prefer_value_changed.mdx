@@ -1,0 +1,26 @@
+# prefer_value_changed
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using the built-in typedef `ValueChanged` instead of declaring a custom one.
+
+```dart title="Bad"
+final void Function(int) cb;
+```
+
+```dart title="Good"
+final ValueChanged<int> cb;
+```
+
+## Usage
+
+To enable the `prefer_value_changed` rule, add `prefer_value_changed` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_value_changed
+```

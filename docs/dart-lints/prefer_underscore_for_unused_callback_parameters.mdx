@@ -1,0 +1,33 @@
+# prefer_underscore_for_unused_callback_parameters
+
+- Severity: info ℹ️
+
+## Details
+
+**DO** use `_` for unused callback parameters.
+
+<Info>If the function has multiple unused parameters, use additional underscores such as `__`, `___`.</Info>
+
+see: [effective-dart](https://dart.dev/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters)
+
+```dart title="Bad"
+itemBuilder: (context, index) {
+  return Text('Item $index');
+}
+```
+
+```dart title="Good"
+itemBuilder: (_, index) {
+  return Text('Item $index');
+}
+```
+
+## Usage
+
+To enable the `prefer_underscore_for_unused_callback_parameters` rule, add `prefer_underscore_for_unused_callback_parameters` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_underscore_for_unused_callback_parameters
+```

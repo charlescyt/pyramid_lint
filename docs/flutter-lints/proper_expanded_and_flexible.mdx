@@ -1,0 +1,35 @@
+# proper_expanded_and_flexible
+
+- Severity: error ❌
+
+## Details
+
+**DO** place Expanded and Flexible widgets inside a Row, Column, or Flex.
+
+```dart title="Bad"
+Center(
+  child: Expanded(
+    child: Container(),
+  ),
+)
+```
+
+```dart title="Good"
+Row(
+  children: [
+    Expanded(
+      child: Container(),
+    ),
+  ],
+)
+```
+
+## Usage
+
+To enable the `proper_expanded_and_flexible` rule, add `proper_expanded_and_flexible` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_expanded_and_flexible
+```

@@ -1,0 +1,32 @@
+# doc_comments_before_annotations
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** place doc comments before metadata annotations.
+
+see: [effective-dart](https://dart.dev/effective-dart/documentation#do-put-doc-comments-before-metadata-annotations)
+
+```dart title="Bad"
+@immutable
+/// Some documentation.
+class A {}
+```
+
+```dart title="Good"
+/// Some documentation.
+@immutable
+class A {}
+```
+
+## Usage
+
+To enable the `doc_comments_before_annotations` rule, add `doc_comments_before_annotations` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - doc_comments_before_annotations
+```

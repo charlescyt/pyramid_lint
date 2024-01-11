@@ -1,0 +1,30 @@
+# unnecessary_nullable_return_type
+
+- Severity: warning ⚠️
+- Quick fix: ✅
+
+## Details
+
+**AVOID** declaring functions or methods with a nullable return type when the return value is never null.
+
+```dart title="Bad"
+int? sum(int a, int b) {
+  return a + b;
+}
+```
+
+```dart title="Good"
+int sum(int a, int b) {
+  return a + b;
+}
+```
+
+## Usage
+
+To enable the `unnecessary_nullable_return_type` rule, add `unnecessary_nullable_return_type` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - unnecessary_nullable_return_type
+```

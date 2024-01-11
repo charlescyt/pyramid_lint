@@ -1,0 +1,64 @@
+# avoid_returning_widgets
+
+- Severity: info ℹ️
+
+## Details
+
+**Avoid** returning widgets from methods.
+
+<YouTube id="IOyq-eTRhvo" />
+
+```dart title="Bad"
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _buildWidget(),
+        _buildWidget(),
+      ],
+    );
+  }
+
+  Widget _buildWidget() {
+    return ...;
+  }
+}
+```
+
+```dart title="Good"
+class A extends StatelessWidget {
+  const A({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        B(),
+        B(),
+      ],
+    );
+  }
+}
+
+class B extends StatelessWidget {
+  const B({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ...;
+  }
+}
+```
+
+## Usage
+
+To enable the `avoid_returning_widgets` rule, add `avoid_returning_widgets` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_returning_widgets
+```

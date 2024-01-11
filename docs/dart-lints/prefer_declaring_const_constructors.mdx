@@ -1,0 +1,44 @@
+# prefer_declaring_const_constructors
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** declare constructors as const when possible.
+
+```dart title="Bad"
+class Point {
+  final double x;
+  final double y;
+
+  Point(this.x, this.y);
+
+  Point.origin()
+      : x = 0,
+        y = 0;
+}
+```
+
+```dart title="Good"
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  const Point.origin()
+      : x = 0,
+        y = 0;
+}
+```
+
+## Usage
+
+To enable the `prefer_declaring_const_constructors` rule, add `prefer_declaring_const_constructors` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_declaring_const_constructors
+```

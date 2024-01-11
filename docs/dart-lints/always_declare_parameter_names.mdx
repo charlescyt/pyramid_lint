@@ -1,0 +1,31 @@
+# always_declare_parameter_names
+
+- Severity: info ℹ️
+
+## Details
+
+**DO** specify parameter names in function types to enhance code readability and enable IDEs to provide code completion suggestions.
+
+```dart title="Bad"
+typedef ItemBuilder = Widget? Function(BuildContext, int);
+
+// IDE's code completion with default parameter names p0, p1, ...
+itemBuilder: (p0, p1) {},
+```
+
+```dart title="Good"
+typedef ItemBuilder = Widget? Function(BuildContext context, int index);
+
+// IDE's code completion with descriptive parameter names
+itemBuilder: (context, index) {},
+```
+
+## Usage
+
+To enable the `always_declare_parameter_names` rule, add `always_declare_parameter_names` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - always_declare_parameter_names
+```

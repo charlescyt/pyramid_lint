@@ -1,0 +1,26 @@
+# prefer_void_callback
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using the built-in typedef `VoidCallback` instead of declaring a custom one.
+
+```dart title="Bad"
+final void Function() cb;
+```
+
+```dart title="Good"
+final VoidCallback cb;
+```
+
+## Usage
+
+To enable the `prefer_void_callback` rule, add `prefer_void_callback` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_void_callback
+```

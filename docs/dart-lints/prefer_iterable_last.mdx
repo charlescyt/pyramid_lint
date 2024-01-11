@@ -1,0 +1,31 @@
+# prefer_iterable_last
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** use `iterable.last` instead of `iterable[iterable.length - 1]` or `iterable.elementAt(iterable.length - 1)`.
+
+```dart title="Bad"
+const numbers = [1, 2, 3];
+
+final lastNumber = numbers[numbers.length - 1];
+// or
+final lastNumber = numbers.elementAt(numbers.length - 1);
+```
+
+```dart title="Good"
+const numbers = [1, 2, 3];
+final lastNumber = numbers.last;
+```
+
+## Usage
+
+To enable the `prefer_iterable_last` rule, add `prefer_iterable_last` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_iterable_last
+```

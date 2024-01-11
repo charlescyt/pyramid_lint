@@ -1,0 +1,44 @@
+# prefer_border_from_border_side
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using `Border.fromBorderSide` instead of `Border.all`.
+
+Using `Border.fromBorderSide` is more efficient than `Border.all` because of possible const constructor usage.
+
+```dart title="Bad"
+DecoratedBox(
+  decoration: BoxDecoration(
+    border: Border.all(
+      width: 1,
+      style: BorderStyle.solid,
+    ),
+  ),
+)
+```
+
+```dart title="Good"
+const DecoratedBox(
+  decoration: BoxDecoration(
+    border: Border.fromBorderSide(
+      BorderSide(
+        width: 1,
+        style: BorderStyle.solid,
+      ),
+    ),
+  ),
+)
+```
+
+## Usage
+
+To enable the `prefer_border_from_border_side` rule, add `prefer_border_from_border_side` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_border_from_border_side
+```

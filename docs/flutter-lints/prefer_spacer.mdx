@@ -1,0 +1,37 @@
+# prefer_spacer
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using `Spacer` instead of `Expanded` with an empty Container or SizedBox.
+
+```dart title="Bad"
+Column(
+  children: [
+    Expanded(
+      flex: 2,
+      child: SizedBox(),
+    ),
+  ],
+)
+```
+
+```dart title="Good"
+Column(
+  children: [
+    Spacer(flex: 2),
+  ],
+)
+```
+
+## Usage
+
+To enable the `prefer_spacer` rule, add `prefer_spacer` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_spacer
+```

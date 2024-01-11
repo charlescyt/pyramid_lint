@@ -1,0 +1,34 @@
+# proper_super_dispose
+
+- Severity: error ❌
+- Quick fix: ✅
+
+## Details
+
+**DO** call `super.dispose()` at the end of the dispose method.
+
+```dart title="Bad"
+@override
+void dispose() {
+  super.dispose();
+  _dispose();
+}
+```
+
+```dart title="Good"
+@override
+void dispose() {
+  _dispose();
+  super.dispose();
+}
+```
+
+## Usage
+
+To enable the `proper_super_dispose` rule, add `proper_super_dispose` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - proper_super_dispose
+```

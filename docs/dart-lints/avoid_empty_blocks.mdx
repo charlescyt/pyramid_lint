@@ -1,0 +1,31 @@
+# avoid_empty_blocks
+
+- Severity: warning ⚠️
+
+## Details
+
+**DO** avoid empty blocks as they are usually a sign of missing implementation.
+
+```dart title="Bad"
+void doSomething() {}
+```
+
+```dart title="Good"
+void doSomething() {
+  actuallyDoSomething();
+}
+
+void doSomething() {
+  // TODO: implement doSomething
+}
+```
+
+## Usage
+
+To enable the `avoid_empty_blocks` rule, add `avoid_empty_blocks` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_empty_blocks
+```

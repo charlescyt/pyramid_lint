@@ -1,0 +1,28 @@
+# max_lines_for_file
+
+- Severity: info ℹ️
+- Options:
+  - max_lines: `int` (default: 200)
+
+## Details
+
+**DO** limit the number of lines in a file.
+
+## Usage
+
+To enable the `max_lines_for_file` rule, add `max_lines_for_file` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_file
+```
+
+To configure the maximum number of lines, add an `int` to the `max_lines` option:
+
+```yaml
+custom_lint:
+  rules:
+    - max_lines_for_file:
+      max_lines: 500
+```

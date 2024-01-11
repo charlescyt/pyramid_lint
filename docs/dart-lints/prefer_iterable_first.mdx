@@ -1,0 +1,31 @@
+# prefer_iterable_first
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** use `iterable.first` instead of `iterable[0]` or `iterable.elementAt(0)`.
+
+```dart title="Bad"
+const numbers = [1, 2, 3];
+
+final firstNumber = numbers[0];
+// or
+final firstNumber = numbers.elementAt(0);
+```
+
+```dart title="Good"
+const numbers = [1, 2, 3];
+final firstNumber = numbers.first;
+```
+
+## Usage
+
+To enable the `prefer_iterable_first` rule, add `prefer_iterable_first` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_iterable_first
+```

@@ -1,0 +1,36 @@
+# prefer_border_radius_all
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**PREFER** using `BorderRadius.all` instead of `BorderRadius.circular`.
+
+Using `BorderRadius.all` is more efficient than `BorderRadius.circular` because of possible const constructor usage.
+
+```dart title="Bad"
+DecoratedBox(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(8),
+  ),
+)
+```
+
+```dart title="Good"
+const DecoratedBox(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+  ),
+)
+```
+
+## Usage
+
+To enable the `prefer_border_radius_all` rule, add `prefer_border_radius_all` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_border_radius_all
+```

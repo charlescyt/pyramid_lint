@@ -1,0 +1,36 @@
+# prefer_new_line_before_return
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** add a new line before the return statement.
+
+```dart title="Bad"
+if (...) {
+  ...
+  return ...;
+}
+return ...;
+```
+
+```dart title="Good"
+if (...) {
+  ...
+
+  return ...;
+}
+
+return ...;
+```
+
+## Usage
+
+To enable the `prefer_new_line_before_return` rule, add `prefer_new_line_before_return` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_new_line_before_return
+```

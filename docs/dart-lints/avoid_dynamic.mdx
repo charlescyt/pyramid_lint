@@ -1,0 +1,35 @@
+# avoid_dynamic
+
+- Severity: info ℹ️
+
+## Details
+
+**DO** avoid using the `dynamic` type unnecessarily.
+
+While the `dynamic` type can be useful in certain scenarios, it sacrifices the benefits of static typing and decreases code readability.
+
+<Info>Using `dynamic` with `Map` will not trigger the lint.</Info>
+
+```dart title="Bad"
+dynamic thing = 'text';
+void log(dynamic something) => print(something);
+List<dynamic> list = [1, 2, 3];
+final setLiteral = <dynamic>{'a', 'b', 'c'};
+```
+
+```dart title="Good"
+String thing = 'text';
+void log(String something) => print(something);
+List<int> list = [1, 2, 3];
+final setLiteral = <String>{'a', 'b', 'c'};
+```
+
+## Usage
+
+To enable the `avoid_dynamic` rule, add `avoid_dynamic` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_dynamic
+```

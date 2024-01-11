@@ -1,0 +1,51 @@
+# Getting Started
+
+## Installation
+
+Run the following command to add `custom_lint` and `pyramid_lint` to your project's dev dependencies:
+
+```sh
+dart pub add --dev custom_lint pyramid_lint
+```
+
+Then enable `custom_lint` in your `analysis_options.yaml` file. You can also exclude generated files from analysis.
+
+```yaml
+analyzer:
+  plugins:
+    - custom_lint
+
+  exclude:
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
+```
+
+## Configuration
+
+By default, all lints are enabled. To disable a specific lint, add the following to your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - specific_lint_rule: false # disable specific_lint_rule
+```
+
+If you prefer to disable all lints and only enable specific ones, you can edit your analysis_options.yaml file as below:
+
+```yaml
+custom_lint:
+  enable_all_lint_rules: false # disable all lints
+  rules:
+    - specific_lint_rule # enable specific_lint_rule
+```
+
+Some lints are configurable. To configure a lint, follow the example below:
+
+```yaml
+custom_lint:
+  rules:
+    - configurable_lint_rule:
+      option1: value1
+      option2: value2
+```
