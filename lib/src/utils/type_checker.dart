@@ -15,11 +15,6 @@ const statefulWidgetChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
-const stateChecker = TypeChecker.fromName(
-  'State',
-  packageName: 'flutter',
-);
-
 const widgetStateChecker = TypeChecker.fromName(
   'State',
   packageName: 'flutter',
@@ -138,5 +133,6 @@ const changeNotifierChecker = TypeChecker.fromName(
 const disposableControllerChecker = TypeChecker.any(
   [
     animationControllerChecker,
+    changeNotifierChecker,
   ],
 );
