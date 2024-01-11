@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/charlescyt/pyramid_lint/raw/doc-page/resources/logo-192x192.png" alt="logo" />
+  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png" alt="logo" />
 </p>
 
 <p align="center">
@@ -29,6 +29,6 @@ Pyramid Lint is licensed under the [MIT License][license_link].
 <!-- Links -->
 
 [custom_lint]: https://pub.dev/packages/custom_lint
-[website]: https://docs.page/charlescyt/pyramid_lint~doc-page
+[website]: https://docs.page/charlescyt/pyramid_lint
 [contributing_link]: https://github.com/charlescyt/pyramid_lint/blob/main/CONTRIBUTING.md
 [license_link]: https://github.com/charlescyt/pyramid_lint/blob/main/LICENSE
