@@ -1,3 +1,5 @@
+import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -28,8 +30,8 @@ class PreferAsyncCallback extends DartLintRule {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addGenericFunctionType((node) {
-      final returnType = node.returnType?.type;
-      if (returnType?.isDartAsyncFuture != true) return;
+      final returnType = node.returnType;
+      if (returnType == null || !_isFutureVoid(returnType)) return;
 
       final parameters = node.parameters.parameters;
       if (parameters.isNotEmpty) return;
@@ -39,6 +41,20 @@ class PreferAsyncCallback extends DartLintRule {
 
       reporter.reportErrorForNode(code, node);
     });
+  }
+
+  bool _isFutureVoid(TypeAnnotation typeAnnotation) {
+    final type = typeAnnotation.type;
+    if (type == null || !type.isDartAsyncFuture) return false;
+
+    // Since we know it's a Future, we can safely cast it to NamedType.
+    typeAnnotation as NamedType;
+    final typeArgs = typeAnnotation.typeArguments?.arguments;
+
+    return switch (typeArgs) {
+      [final NamedType type] when type.type is VoidType => true,
+      _ => false,
+    };
   }
 
   @override
