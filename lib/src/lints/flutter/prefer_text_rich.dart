@@ -8,18 +8,19 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class PreferTextRich extends DartLintRule {
-  const PreferTextRich() : super(code: _code);
+  const PreferTextRich()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'RichText does not inherit TextStyle from DefaultTextStyle.',
+            correctionMessage: 'Consider replacing RichText with Text.rich.',
+            url: '$flutterLintDocUrl/${PreferTextRich.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_text_rich';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'RichText does not inherit TextStyle from DefaultTextStyle.',
-    correctionMessage: 'Consider replacing RichText with Text.rich.',
-    url: '$flutterLintDocUrl/${PreferTextRich.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

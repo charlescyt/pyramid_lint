@@ -7,20 +7,21 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class PreferBorderRadiusAll extends DartLintRule {
-  const PreferBorderRadiusAll() : super(code: _code);
+  const PreferBorderRadiusAll()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'BorderRadius.circular is not a const constructor and it uses const '
+                'constructor BorderRadius.all internally.',
+            correctionMessage:
+                'Consider replacing BorderRadius.circular with BorderRadius.all.',
+            url: '$flutterLintDocUrl/${PreferBorderRadiusAll.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_border_radius_all';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'BorderRadius.circular is not a const constructor and it uses const '
-        'constructor BorderRadius.all internally.',
-    correctionMessage:
-        'Consider replacing BorderRadius.circular with BorderRadius.all.',
-    url: '$flutterLintDocUrl/${PreferBorderRadiusAll.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

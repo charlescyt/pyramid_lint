@@ -6,17 +6,19 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 
 class NoSelfComparisons extends DartLintRule {
-  const NoSelfComparisons() : super(code: _code);
+  const NoSelfComparisons()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Self comparison is usually a mistake.',
+            correctionMessage:
+                'Consider changing the comparison to something else.',
+            url: '$dartLintDocUrl/${NoSelfComparisons.name}',
+            errorSeverity: ErrorSeverity.WARNING,
+          ),
+        );
 
   static const name = 'no_self_comparisons';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Self comparison is usually a mistake.',
-    correctionMessage: 'Consider changing the comparison to something else.',
-    url: '$dartLintDocUrl/${NoSelfComparisons.name}',
-    errorSeverity: ErrorSeverity.WARNING,
-  );
 
   @override
   void run(

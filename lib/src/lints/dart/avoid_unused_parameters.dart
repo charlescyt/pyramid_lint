@@ -9,17 +9,17 @@ import '../../utils/visitors.dart';
 class AvoidUnusedParameters extends DartLintRule {
   const AvoidUnusedParameters({
     this.excludedParameters = const [],
-  }) : super(code: _code);
+  }) : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Unused parameter should be removed.',
+            correctionMessage: 'Consider removing the unused parameter.',
+            url: '$dartLintDocUrl/${AvoidUnusedParameters.name}',
+            errorSeverity: ErrorSeverity.WARNING,
+          ),
+        );
 
   static const name = 'avoid_unused_parameters';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Unused parameter should be removed.',
-    correctionMessage: 'Consider removing the unused parameter.',
-    url: '$dartLintDocUrl/${AvoidUnusedParameters.name}',
-    errorSeverity: ErrorSeverity.WARNING,
-  );
 
   final List<String> excludedParameters;
 

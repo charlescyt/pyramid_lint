@@ -10,19 +10,20 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class ProperSuperInitState extends DartLintRule {
-  const ProperSuperInitState() : super(code: _code);
+  const ProperSuperInitState()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'super.initState() should be called at the start of the initState method.',
+            correctionMessage:
+                'Try placing super.initState() at the start of the initState method.',
+            url: '$flutterLintDocUrl/${ProperSuperInitState.name}',
+            errorSeverity: ErrorSeverity.ERROR,
+          ),
+        );
 
   static const name = 'proper_super_init_state';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'super.initState() should be called at the start of the initState method.',
-    correctionMessage:
-        'Try placing super.initState() at the start of the initState method.',
-    url: '$flutterLintDocUrl/${ProperSuperInitState.name}',
-    errorSeverity: ErrorSeverity.ERROR,
-  );
 
   @override
   void run(

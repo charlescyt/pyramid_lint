@@ -10,19 +10,20 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class ProperSuperDispose extends DartLintRule {
-  const ProperSuperDispose() : super(code: _code);
+  const ProperSuperDispose()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'super.dispose() should be called at the end of the dispose method.',
+            correctionMessage:
+                'Try placing super.dispose() at the end of the dispose method.',
+            url: '$flutterLintDocUrl/${ProperSuperDispose.name}',
+            errorSeverity: ErrorSeverity.ERROR,
+          ),
+        );
 
   static const name = 'proper_super_dispose';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'super.dispose() should be called at the end of the dispose method.',
-    correctionMessage:
-        'Try placing super.dispose() at the end of the dispose method.',
-    url: '$flutterLintDocUrl/${ProperSuperDispose.name}',
-    errorSeverity: ErrorSeverity.ERROR,
-  );
 
   @override
   void run(

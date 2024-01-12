@@ -12,17 +12,17 @@ const _defaultLibraries = [
 class PreferLibraryPrefixes extends DartLintRule {
   const PreferLibraryPrefixes._({
     this.libraries = const {},
-  }) : super(code: _code);
+  }) : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Prefix should be used for this library.',
+            correctionMessage: 'Consider adding a prefix to this library.',
+            url: '$dartLintDocUrl/${PreferLibraryPrefixes.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_library_prefixes';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Prefix should be used for this library.',
-    correctionMessage: 'Consider adding a prefix to this library.',
-    url: '$dartLintDocUrl/${PreferLibraryPrefixes.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   final Set<String> libraries;
 

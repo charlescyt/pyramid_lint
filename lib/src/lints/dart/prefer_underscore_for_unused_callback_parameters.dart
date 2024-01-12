@@ -8,17 +8,20 @@ import '../../utils/string_extensions.dart';
 import '../../utils/visitors.dart';
 
 class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
-  const PreferUnderscoreForUnusedCallbackParameters() : super(code: _code);
+  const PreferUnderscoreForUnusedCallbackParameters()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'The callback parameter is not used.',
+            correctionMessage:
+                'Consider using underscores for the unused parameter.',
+            url:
+                '$dartLintDocUrl/${PreferUnderscoreForUnusedCallbackParameters.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_underscore_for_unused_callback_parameters';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'The callback parameter is not used.',
-    correctionMessage: 'Consider using underscores for the unused parameter.',
-    url: '$dartLintDocUrl/${PreferUnderscoreForUnusedCallbackParameters.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

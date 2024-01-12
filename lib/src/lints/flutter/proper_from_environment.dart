@@ -6,19 +6,22 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 
 class ProperFromEnvironment extends DartLintRule {
-  const ProperFromEnvironment() : super(code: _code);
+  const ProperFromEnvironment()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'The {0}.fromEnvironment constructor should be invoked '
+                'as a const constructor.',
+            correctionMessage:
+                'Try invoking the {0}.fromEnvironment constructor as a '
+                'const constructor.',
+            url: '$flutterLintDocUrl/${ProperFromEnvironment.name}',
+            errorSeverity: ErrorSeverity.ERROR,
+          ),
+        );
 
   static const name = 'proper_from_environment';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'The {0}.fromEnvironment constructor should be invoked '
-        'as a const constructor.',
-    correctionMessage: 'Try invoking the {0}.fromEnvironment constructor as a '
-        'const constructor.',
-    url: '$flutterLintDocUrl/${ProperFromEnvironment.name}',
-    errorSeverity: ErrorSeverity.ERROR,
-  );
 
   @override
   void run(

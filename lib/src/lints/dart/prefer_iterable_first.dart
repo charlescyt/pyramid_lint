@@ -8,17 +8,18 @@ import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferIterableFirst extends DartLintRule {
-  const PreferIterableFirst() : super(code: _code);
+  const PreferIterableFirst()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: '{0} is more verbose than iterable.first.',
+            correctionMessage: 'Consider replacing {1} with {2}.',
+            url: '$dartLintDocUrl/${PreferIterableFirst.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_iterable_first';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: '{0} is more verbose than iterable.first.',
-    correctionMessage: 'Consider replacing {1} with {2}.',
-    url: '$dartLintDocUrl/${PreferIterableFirst.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

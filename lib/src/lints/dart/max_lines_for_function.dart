@@ -6,7 +6,17 @@ import '../../utils/constants.dart';
 import '../../utils/custom_lint_resolver_extension.dart';
 
 class MaxLinesForFunction extends DartLintRule {
-  MaxLinesForFunction(this.configs) : super(code: _code) {
+  MaxLinesForFunction(this.configs)
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'There are too many lines in this function.',
+            correctionMessage:
+                'Consider reducing the number of lines to {0} or less.',
+            url: '$dartLintDocUrl/${MaxLinesForFunction.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        ) {
     init(configs);
   }
 
@@ -14,14 +24,6 @@ class MaxLinesForFunction extends DartLintRule {
   late final int maxLines;
 
   static const name = 'max_lines_for_function';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There are too many lines in this function.',
-    correctionMessage: 'Consider reducing the number of lines to {0} or less.',
-    url: '$dartLintDocUrl/${MaxLinesForFunction.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   void init(CustomLintConfigs configs) {
     final options = configs.rules[MaxLinesForFunction.name];

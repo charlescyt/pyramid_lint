@@ -5,7 +5,17 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 
 class MaxLinesForFile extends DartLintRule {
-  MaxLinesForFile(this.configs) : super(code: _code) {
+  MaxLinesForFile(this.configs)
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'There are too many lines in this file.',
+            correctionMessage:
+                'Consider reducing the number of lines to {0} or less.',
+            url: '$dartLintDocUrl/${MaxLinesForFile.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        ) {
     init(configs);
   }
 
@@ -13,14 +23,6 @@ class MaxLinesForFile extends DartLintRule {
   late final int maxLines;
 
   static const name = 'max_lines_for_file';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There are too many lines in this file.',
-    correctionMessage: 'Consider reducing the number of lines to {0} or less.',
-    url: '$dartLintDocUrl/${MaxLinesForFile.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   void init(CustomLintConfigs configs) {
     final options = configs.rules[MaxLinesForFile.name];

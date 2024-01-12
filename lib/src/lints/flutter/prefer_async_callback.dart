@@ -8,18 +8,20 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 
 class PreferAsyncCallback extends DartLintRule {
-  const PreferAsyncCallback() : super(code: _code);
+  const PreferAsyncCallback()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'There is a typedef AsyncCallback defined in flutter.',
+            correctionMessage:
+                'Consider using AsyncCallback instead of Future<void> Function().',
+            url: '$flutterLintDocUrl/${PreferAsyncCallback.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_async_callback';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There is a typedef AsyncCallback defined in flutter.',
-    correctionMessage:
-        'Consider using AsyncCallback instead of Future<void> Function().',
-    url: '$flutterLintDocUrl/${PreferAsyncCallback.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

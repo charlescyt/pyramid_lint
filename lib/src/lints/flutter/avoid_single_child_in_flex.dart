@@ -9,17 +9,19 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class AvoidSingleChildInFlex extends DartLintRule {
-  const AvoidSingleChildInFlex() : super(code: _code);
+  const AvoidSingleChildInFlex()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Using {0} to position a single widget is inefficient.',
+            correctionMessage: 'Consider replacing {0} with Align or Center.',
+            url: '$flutterLintDocUrl/${AvoidSingleChildInFlex.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'avoid_single_child_in_flex';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Using {0} to position a single widget is inefficient.',
-    correctionMessage: 'Consider replacing {0} with Align or Center.',
-    url: '$flutterLintDocUrl/${AvoidSingleChildInFlex.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

@@ -7,17 +7,18 @@ import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class AvoidWidgetStatePublicMembers extends DartLintRule {
-  const AvoidWidgetStatePublicMembers() : super(code: _code);
+  const AvoidWidgetStatePublicMembers()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Avoid public members in widget state classes.',
+            correctionMessage: 'Consider using private members.',
+            url: '$flutterLintDocUrl/${AvoidWidgetStatePublicMembers.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'avoid_widget_state_public_members';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Avoid public members in widget state classes.',
-    correctionMessage: 'Consider using private members.',
-    url: '$flutterLintDocUrl/${AvoidWidgetStatePublicMembers.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

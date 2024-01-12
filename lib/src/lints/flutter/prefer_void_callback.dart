@@ -7,18 +7,20 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 
 class PreferVoidCallback extends DartLintRule {
-  const PreferVoidCallback() : super(code: _code);
+  const PreferVoidCallback()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'There is a typedef VoidCallback defined in flutter.',
+            correctionMessage:
+                'Consider using VoidCallback instead of void Function().',
+            url: '$flutterLintDocUrl/${PreferVoidCallback.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_void_callback';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There is a typedef VoidCallback defined in flutter.',
-    correctionMessage:
-        'Consider using VoidCallback instead of void Function().',
-    url: '$flutterLintDocUrl/${PreferVoidCallback.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

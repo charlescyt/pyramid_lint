@@ -7,18 +7,19 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class AvoidReturningWidgets extends DartLintRule {
-  const AvoidReturningWidgets() : super(code: _code);
+  const AvoidReturningWidgets()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Returning widgets is not recommended for performance reasons.',
+            correctionMessage: 'Consider creating a separate widget instead.',
+            url: '$flutterLintDocUrl/${AvoidReturningWidgets.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'avoid_returning_widgets';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'Returning widgets is not recommended for performance reasons.',
-    correctionMessage: 'Consider creating a separate widget instead.',
-    url: '$flutterLintDocUrl/${AvoidReturningWidgets.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

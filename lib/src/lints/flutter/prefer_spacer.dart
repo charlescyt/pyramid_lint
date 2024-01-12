@@ -9,17 +9,18 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class PreferSpacer extends DartLintRule {
-  const PreferSpacer() : super(code: _code);
+  const PreferSpacer()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
+            correctionMessage: 'Consider replacing Expanded with Spacer.',
+            url: '$flutterLintDocUrl/${PreferSpacer.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_spacer';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
-    correctionMessage: 'Consider replacing Expanded with Spacer.',
-    url: '$flutterLintDocUrl/${PreferSpacer.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

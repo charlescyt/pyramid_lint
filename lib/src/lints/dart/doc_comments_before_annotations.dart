@@ -8,17 +8,19 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 
 class DocCommentsBeforeAnnotations extends DartLintRule {
-  const DocCommentsBeforeAnnotations() : super(code: _code);
+  const DocCommentsBeforeAnnotations()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Doc comments should be placed before annotations.',
+            correctionMessage:
+                'Consider moving the doc comment before the annotation.',
+            url: '$dartLintDocUrl/${DocCommentsBeforeAnnotations.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'doc_comments_before_annotations';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Doc comments should be placed before annotations.',
-    correctionMessage: 'Consider moving the doc comment before the annotation.',
-    url: '$dartLintDocUrl/${DocCommentsBeforeAnnotations.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

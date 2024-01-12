@@ -10,17 +10,19 @@ import '../../utils/type_checker.dart';
 import '../../utils/utils.dart';
 
 class ProperEdgeInsetsConstructor extends DartLintRule {
-  const ProperEdgeInsetsConstructor() : super(code: _code);
+  const ProperEdgeInsetsConstructor()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Using incorrect EdgeInsets constructor and arguments.',
+            correctionMessage: 'Consider replacing with {0}.',
+            url: '$flutterLintDocUrl/${ProperEdgeInsetsConstructor.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'proper_edge_insets_constructor';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
-    correctionMessage: 'Consider replacing with {0}.',
-    url: '$flutterLintDocUrl/${ProperEdgeInsetsConstructor.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

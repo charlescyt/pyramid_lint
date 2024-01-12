@@ -8,18 +8,20 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 
 class PreferValueChanged extends DartLintRule {
-  const PreferValueChanged() : super(code: _code);
+  const PreferValueChanged()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'There is a typedef ValueChanged<T> defined in flutter.',
+            correctionMessage:
+                'Consider using ValueChanged<{0}> instead of void Function({1}).',
+            url: '$flutterLintDocUrl/${PreferValueChanged.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_value_changed';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There is a typedef ValueChanged<T> defined in flutter.',
-    correctionMessage:
-        'Consider using ValueChanged<{0}> instead of void Function({1}).',
-    url: '$flutterLintDocUrl/${PreferValueChanged.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

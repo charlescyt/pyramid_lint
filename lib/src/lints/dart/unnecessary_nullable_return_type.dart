@@ -9,17 +9,18 @@ import '../../utils/dart_type_extensions.dart';
 import '../../utils/visitors.dart';
 
 class UnnecessaryNullableReturnType extends DartLintRule {
-  const UnnecessaryNullableReturnType() : super(code: _code);
+  const UnnecessaryNullableReturnType()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'The nullable return type is unnecessary.',
+            correctionMessage: 'Consider using non-nullable return type.',
+            url: '$dartLintDocUrl/${UnnecessaryNullableReturnType.name}',
+            errorSeverity: ErrorSeverity.WARNING,
+          ),
+        );
 
   static const name = 'unnecessary_nullable_return_type';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'The nullable return type is unnecessary.',
-    correctionMessage: 'Consider using non-nullable return type.',
-    url: '$dartLintDocUrl/${UnnecessaryNullableReturnType.name}',
-    errorSeverity: ErrorSeverity.WARNING,
-  );
 
   @override
   void run(

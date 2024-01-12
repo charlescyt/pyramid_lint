@@ -35,17 +35,18 @@ const List<String> _properties = [
 ];
 
 class PreferDedicatedMediaQueryMethod extends DartLintRule {
-  const PreferDedicatedMediaQueryMethod() : super(code: _code);
+  const PreferDedicatedMediaQueryMethod()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Using {0} will cause unnecessary rebuilds.',
+            correctionMessage: 'Consider using {1} instead.',
+            url: '$flutterLintDocUrl/${PreferDedicatedMediaQueryMethod.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_dedicated_media_query_method';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Using {0} will cause unnecessary rebuilds.',
-    correctionMessage: 'Consider using {1} instead.',
-    url: '$flutterLintDocUrl/${PreferDedicatedMediaQueryMethod.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

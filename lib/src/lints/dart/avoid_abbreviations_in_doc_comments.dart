@@ -14,19 +14,19 @@ const _defaultAbbreviations = [
 class AvoidAbbreviationsInDocComments extends DartLintRule {
   const AvoidAbbreviationsInDocComments._({
     this.abbreviations = const {},
-  }) : super(code: _code);
+  }) : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Avoid using abbreviations in doc comments as they can hinder '
+                'readability and cause confusion.',
+            correctionMessage: 'Consider using the full word instead.',
+            url: '$dartLintDocUrl/${AvoidAbbreviationsInDocComments.name}',
+            errorSeverity: ErrorSeverity.WARNING,
+          ),
+        );
 
   static const name = 'avoid_abbreviations_in_doc_comments';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'Avoid using abbreviations in doc comments as they can hinder '
-        'readability and cause confusion.',
-    correctionMessage: 'Consider using the full word instead.',
-    url: '$dartLintDocUrl/${AvoidAbbreviationsInDocComments.name}',
-    errorSeverity: ErrorSeverity.WARNING,
-  );
 
   final Set<String> abbreviations;
 

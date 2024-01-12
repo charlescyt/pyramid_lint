@@ -5,17 +5,18 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 
 class PreferAsyncAwait extends DartLintRule {
-  const PreferAsyncAwait() : super(code: _code);
+  const PreferAsyncAwait()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Using Future.then() decreases readability.',
+            correctionMessage: 'Consider using async/await instead.',
+            url: '$dartLintDocUrl/${PreferAsyncAwait.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_async_await';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Using Future.then() decreases readability.',
-    correctionMessage: 'Consider using async/await instead.',
-    url: '$dartLintDocUrl/${PreferAsyncAwait.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

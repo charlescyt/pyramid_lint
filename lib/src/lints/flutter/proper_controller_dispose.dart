@@ -11,17 +11,20 @@ import '../../utils/statements_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class ProperControllerDispose extends DartLintRule {
-  const ProperControllerDispose() : super(code: _code);
+  const ProperControllerDispose()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Controller should be disposed in the dispose method.',
+            correctionMessage:
+                'Try adding {0}.dispose() in the dispose method.',
+            url: '$flutterLintDocUrl/${ProperControllerDispose.name}',
+            errorSeverity: ErrorSeverity.ERROR,
+          ),
+        );
 
   static const name = 'proper_controller_dispose';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Controller should be disposed in the dispose method.',
-    correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
-    url: '$flutterLintDocUrl/${ProperControllerDispose.name}',
-    errorSeverity: ErrorSeverity.ERROR,
-  );
 
   @override
   void run(

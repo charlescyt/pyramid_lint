@@ -9,17 +9,18 @@ import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
 class PreferIterableLast extends DartLintRule {
-  const PreferIterableLast() : super(code: _code);
+  const PreferIterableLast()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: '{0} is more verbose than iterable.last.',
+            correctionMessage: 'Consider replacing {1} with {2}.',
+            url: '$dartLintDocUrl/${PreferIterableLast.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_iterable_last';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: '{0} is more verbose than iterable.last.',
-    correctionMessage: 'Consider replacing {1} with {2}.',
-    url: '$dartLintDocUrl/${PreferIterableLast.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

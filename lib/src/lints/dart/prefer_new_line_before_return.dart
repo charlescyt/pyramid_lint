@@ -7,18 +7,20 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/constants.dart';
 
 class PreferNewLineBeforeReturn extends DartLintRule {
-  const PreferNewLineBeforeReturn() : super(code: _code);
+  const PreferNewLineBeforeReturn()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'There should be a new line before the return statement.',
+            correctionMessage:
+                'Consider adding a new line before the return statement.',
+            url: '$dartLintDocUrl/${PreferNewLineBeforeReturn.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_new_line_before_return';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'There should be a new line before the return statement.',
-    correctionMessage:
-        'Consider adding a new line before the return statement.',
-    url: '$dartLintDocUrl/${PreferNewLineBeforeReturn.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

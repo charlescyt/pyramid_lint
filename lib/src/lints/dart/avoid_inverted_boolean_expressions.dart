@@ -9,18 +9,19 @@ import '../../utils/token_type_extensions.dart';
 import '../../utils/utils.dart';
 
 class AvoidInvertedBooleanExpressions extends DartLintRule {
-  const AvoidInvertedBooleanExpressions() : super(code: _code);
+  const AvoidInvertedBooleanExpressions()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Using inverted boolean expression decreases code readability.',
+            correctionMessage: 'Consider using {0} instead.',
+            url: '$dartLintDocUrl/${AvoidInvertedBooleanExpressions.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'avoid_inverted_boolean_expressions';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'Using inverted boolean expression decreases code readability.',
-    correctionMessage: 'Consider using {0} instead.',
-    url: '$dartLintDocUrl/${AvoidInvertedBooleanExpressions.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

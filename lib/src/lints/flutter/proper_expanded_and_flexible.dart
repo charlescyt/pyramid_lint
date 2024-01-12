@@ -8,18 +8,20 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class ProperExpandedAndFlexible extends DartLintRule {
-  const ProperExpandedAndFlexible() : super(code: _code);
+  const ProperExpandedAndFlexible()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                '{0} should be placed inside a Row, Column, or Flex.',
+            correctionMessage:
+                'Try placing {0} inside a Row, Column, or Flex, or remove it.',
+            url: '$flutterLintDocUrl/${ProperExpandedAndFlexible.name}',
+            errorSeverity: ErrorSeverity.ERROR,
+          ),
+        );
 
   static const name = 'proper_expanded_and_flexible';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
-    correctionMessage:
-        'Try placing {0} inside a Row, Column, or Flex, or remove it.',
-    url: '$flutterLintDocUrl/${ProperExpandedAndFlexible.name}',
-    errorSeverity: ErrorSeverity.ERROR,
-  );
 
   @override
   void run(

@@ -7,17 +7,19 @@ import '../../utils/constants.dart';
 import '../../utils/iterable_extensions.dart';
 
 class AvoidDuplicateImport extends DartLintRule {
-  const AvoidDuplicateImport() : super(code: _code);
+  const AvoidDuplicateImport()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: 'Duplicate imports can lead to confusion.',
+            correctionMessage:
+                'Consider combining or removing the duplicate imports.',
+            url: '$dartLintDocUrl/${AvoidDuplicateImport.name}',
+            errorSeverity: ErrorSeverity.WARNING,
+          ),
+        );
 
   static const name = 'avoid_duplicate_import';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: 'Duplicate imports can lead to confusion.',
-    correctionMessage: 'Consider combining or removing the duplicate imports.',
-    url: '$dartLintDocUrl/${AvoidDuplicateImport.name}',
-    errorSeverity: ErrorSeverity.WARNING,
-  );
 
   @override
   void run(

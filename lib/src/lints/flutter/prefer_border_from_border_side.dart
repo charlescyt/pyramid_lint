@@ -7,20 +7,21 @@ import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
 class PreferBorderFromBorderSide extends DartLintRule {
-  const PreferBorderFromBorderSide() : super(code: _code);
+  const PreferBorderFromBorderSide()
+      : super(
+          code: const LintCode(
+            name: name,
+            problemMessage:
+                'Border.all is not a const constructor and it uses const constructor '
+                'Border.fromBorderSide internally.',
+            correctionMessage:
+                'Consider replacing Border.all with Border.fromBorderSide.',
+            url: '$flutterLintDocUrl/${PreferBorderFromBorderSide.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'prefer_border_from_border_side';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage:
-        'Border.all is not a const constructor and it uses const constructor '
-        'Border.fromBorderSide internally.',
-    correctionMessage:
-        'Consider replacing Border.all with Border.fromBorderSide.',
-    url: '$flutterLintDocUrl/${PreferBorderFromBorderSide.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   @override
   void run(

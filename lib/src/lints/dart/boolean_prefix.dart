@@ -24,17 +24,17 @@ const _defaultValidPrefixes = [
 class BooleanPrefix extends DartLintRule {
   const BooleanPrefix({
     this.validPrefixes = const [],
-  }) : super(code: _code);
+  }) : super(
+          code: const LintCode(
+            name: name,
+            problemMessage: '{0} should be named with a valid prefix.',
+            correctionMessage: 'Try naming your {1} with a valid prefix.',
+            url: '$dartLintDocUrl/${BooleanPrefix.name}',
+            errorSeverity: ErrorSeverity.INFO,
+          ),
+        );
 
   static const name = 'boolean_prefix';
-
-  static const _code = LintCode(
-    name: name,
-    problemMessage: '{0} should be named with a valid prefix.',
-    correctionMessage: 'Try naming your {1} with a valid prefix.',
-    url: '$dartLintDocUrl/${BooleanPrefix.name}',
-    errorSeverity: ErrorSeverity.INFO,
-  );
 
   final List<String> validPrefixes;
 
