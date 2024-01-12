@@ -1,5 +1,7 @@
+import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
+import 'package:analyzer/src/dart/ast/ast.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
@@ -36,6 +38,15 @@ class PreferAsyncCallback extends DartLintRule {
 
       final typeParameters = node.typeParameters?.typeParameters;
       if (typeParameters != null) return;
+
+      final returnTypeArgs =
+          (node.returnType! as NamedType).typeArguments?.arguments;
+      switch (returnTypeArgs) {
+        case [final NamedType type] when type.type is VoidType:
+          break;
+        case _:
+          return;
+      }
 
       reporter.reportErrorForNode(code, node);
     });
