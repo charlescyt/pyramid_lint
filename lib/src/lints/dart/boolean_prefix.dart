@@ -74,7 +74,9 @@ class BooleanPrefix extends DartLintRule {
     context.registry.addMethodDeclaration((node) {
       final returnType = node.returnType?.type;
       if (returnType == null || !returnType.isDartCoreBool) return;
-      if (node.declaredElement?.hasOverride ?? true) return;
+
+      final element = node.declaredElement;
+      if (element == null || element.hasOverride) return;
 
       final name = node.name.lexeme;
       if (isNameValid(name)) return;
