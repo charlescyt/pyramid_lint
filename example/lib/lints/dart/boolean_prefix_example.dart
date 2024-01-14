@@ -14,7 +14,16 @@ class Point {
   bool get origin => x == 0 && y == 0;
 
   // expect_lint: boolean_prefix
-  bool samePoint(Point other) => x == other.x && y == other.y;
+  bool samePoint(covariant Point other) => x == other.x && y == other.y;
+}
+
+class Point3D extends Point {
+  final double z;
+
+  const Point3D(super.x, super.y, this.z);
+
+  @override
+  bool samePoint(Point3D other) => super.samePoint(other) && z == other.z;
 }
 
 // expect_lint: boolean_prefix
