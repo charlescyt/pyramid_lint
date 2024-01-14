@@ -1,33 +1,56 @@
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/constants.dart';
 import '../../utils/custom_lint_resolver_extension.dart';
 
+@immutable
+class MaxLinesForFunctionOptions {
+  const MaxLinesForFunctionOptions({
+    int? maxLines,
+  }) : maxLines = maxLines ?? defaultMaxLines;
+
+  static const defaultMaxLines = 100;
+
+  final int maxLines;
+
+  factory MaxLinesForFunctionOptions.fromJson(Map<String, dynamic>? json) {
+    final maxLines = switch (json?['max_lines']) {
+      final int maxLines => maxLines,
+      _ => null,
+    };
+
+    return MaxLinesForFunctionOptions(
+      maxLines: maxLines,
+    );
+  }
+}
+
 class MaxLinesForFunction extends DartLintRule {
-  MaxLinesForFunction(this.configs)
+  const MaxLinesForFunction._(this.options)
       : super(
           code: const LintCode(
             name: name,
-            problemMessage: 'There are too many lines in this function.',
+            problemMessage: 'There are too many lines in this {0}.',
             correctionMessage:
-                'Consider reducing the number of lines to {0} or less.',
+                'Consider reducing the number of lines to {1} or less.',
             url: '$dartLintDocUrl/${MaxLinesForFunction.name}',
             errorSeverity: ErrorSeverity.INFO,
           ),
-        ) {
-    init(configs);
-  }
-
-  final CustomLintConfigs configs;
-  late final int maxLines;
+        );
 
   static const name = 'max_lines_for_function';
 
-  void init(CustomLintConfigs configs) {
-    final options = configs.rules[MaxLinesForFunction.name];
-    maxLines = options?.json['max_lines'] as int? ?? 100;
+  final MaxLinesForFunctionOptions options;
+
+  factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
+    final options = MaxLinesForFunctionOptions.fromJson(
+      configs.rules[MaxLinesForFunction.name]?.json,
+    );
+
+    return MaxLinesForFunction._(options);
   }
 
   @override
@@ -39,23 +62,23 @@ class MaxLinesForFunction extends DartLintRule {
     context.registry.addFunctionDeclaration((node) {
       final lineCount =
           resolver.getLineCountForNode(node.functionExpression.body);
-      if (lineCount <= maxLines) return;
+      if (lineCount <= options.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        [maxLines],
+        ['function', options.maxLines],
       );
     });
 
     context.registry.addMethodDeclaration((node) {
       final lineCount = resolver.getLineCountForNode(node.body);
-      if (lineCount <= maxLines) return;
+      if (lineCount <= options.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        [maxLines],
+        ['method', options.maxLines],
       );
     });
   }

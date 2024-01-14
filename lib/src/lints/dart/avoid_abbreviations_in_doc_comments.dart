@@ -1,20 +1,48 @@
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
+import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
 
-const _defaultAbbreviations = [
-  'e.g.',
-  'i.e.',
-  'etc.',
-  'et al.',
-];
+@immutable
+class AvoidAbbreviationsInDocCommentsOptions {
+  const AvoidAbbreviationsInDocCommentsOptions({
+    List<String>? abbreviations,
+  }) : _abbreviations = abbreviations;
+
+  static const defaultAbbreviations = [
+    'e.g.',
+    'i.e.',
+    'etc.',
+    'et al.',
+  ];
+
+  final List<String>? _abbreviations;
+
+  List<String> get abbreviations => [
+        ...defaultAbbreviations,
+        ...?_abbreviations,
+      ];
+
+  factory AvoidAbbreviationsInDocCommentsOptions.fromJson(
+    Map<String, dynamic>? json,
+  ) {
+    final abbreviations = switch (json?['abbreviations']) {
+      final YamlList abbreviations => abbreviations.cast<String>(),
+      _ => null,
+    };
+
+    return AvoidAbbreviationsInDocCommentsOptions(
+      abbreviations: abbreviations,
+    );
+  }
+}
 
 class AvoidAbbreviationsInDocComments extends DartLintRule {
-  const AvoidAbbreviationsInDocComments._({
-    this.abbreviations = const {},
-  }) : super(
+  const AvoidAbbreviationsInDocComments._(this.options)
+      : super(
           code: const LintCode(
             name: name,
             problemMessage:
@@ -28,17 +56,16 @@ class AvoidAbbreviationsInDocComments extends DartLintRule {
 
   static const name = 'avoid_abbreviations_in_doc_comments';
 
-  final Set<String> abbreviations;
+  final AvoidAbbreviationsInDocCommentsOptions options;
 
   factory AvoidAbbreviationsInDocComments.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final options = configs.rules[AvoidAbbreviationsInDocComments.name];
-    final customAbbreviations =
-        (options?.json['abbreviations'] as List<Object?>?)?.cast<String>();
-    final abbreviations = {..._defaultAbbreviations, ...?customAbbreviations};
+    final options = AvoidAbbreviationsInDocCommentsOptions.fromJson(
+      configs.rules[AvoidAbbreviationsInDocComments.name]?.json,
+    );
 
-    return AvoidAbbreviationsInDocComments._(abbreviations: abbreviations);
+    return AvoidAbbreviationsInDocComments._(options);
   }
 
   @override
@@ -53,7 +80,7 @@ class AvoidAbbreviationsInDocComments extends DartLintRule {
       for (final comment in comments) {
         final commentText = comment.lexeme;
 
-        for (final abbreviation in abbreviations) {
+        for (final abbreviation in options.abbreviations) {
           if (!commentText.contains(abbreviation)) continue;
 
           final index = commentText.indexOf(abbreviation);

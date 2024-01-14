@@ -1,11 +1,34 @@
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/constants.dart';
 
+@immutable
+class MaxLinesForFileOptions {
+  const MaxLinesForFileOptions({
+    int? maxLines,
+  }) : maxLines = maxLines ?? defaultMaxLines;
+
+  static const defaultMaxLines = 200;
+
+  final int maxLines;
+
+  factory MaxLinesForFileOptions.fromJson(Map<String, dynamic>? json) {
+    final maxLines = switch (json?['max_lines']) {
+      final int maxLines => maxLines,
+      _ => null,
+    };
+
+    return MaxLinesForFileOptions(
+      maxLines: maxLines,
+    );
+  }
+}
+
 class MaxLinesForFile extends DartLintRule {
-  MaxLinesForFile(this.configs)
+  const MaxLinesForFile._(this.options)
       : super(
           code: const LintCode(
             name: name,
@@ -15,18 +38,18 @@ class MaxLinesForFile extends DartLintRule {
             url: '$dartLintDocUrl/${MaxLinesForFile.name}',
             errorSeverity: ErrorSeverity.INFO,
           ),
-        ) {
-    init(configs);
-  }
-
-  final CustomLintConfigs configs;
-  late final int maxLines;
+        );
 
   static const name = 'max_lines_for_file';
 
-  void init(CustomLintConfigs configs) {
-    final options = configs.rules[MaxLinesForFile.name];
-    maxLines = options?.json['max_lines'] as int? ?? 200;
+  final MaxLinesForFileOptions options;
+
+  factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
+    final options = MaxLinesForFileOptions.fromJson(
+      configs.rules[MaxLinesForFile.name]?.json,
+    );
+
+    return MaxLinesForFile._(options);
   }
 
   @override
@@ -37,12 +60,12 @@ class MaxLinesForFile extends DartLintRule {
   ) {
     context.registry.addCompilationUnit((node) {
       final lineCount = node.lineInfo.lineCount;
-      if (lineCount <= maxLines) return;
+      if (lineCount <= options.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        [maxLines],
+        [options.maxLines],
       );
     });
   }

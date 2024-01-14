@@ -2,29 +2,55 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
+import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
 
-const _defaultValidPrefixes = [
-  'is',
-  'are',
-  'was',
-  'were',
-  'has',
-  'have',
-  'had',
-  'can',
-  'should',
-  'will',
-  'do',
-  'does',
-  'did',
-];
+@immutable
+class BooleanPrefixOptions {
+  const BooleanPrefixOptions({
+    List<String>? validPrefixes,
+  }) : _validPrefixes = validPrefixes;
+
+  static const defaultValidPrefixes = [
+    'is',
+    'are',
+    'was',
+    'were',
+    'has',
+    'have',
+    'had',
+    'can',
+    'should',
+    'will',
+    'do',
+    'does',
+    'did',
+  ];
+
+  final List<String>? _validPrefixes;
+
+  List<String> get validPrefixes => [
+        ...defaultValidPrefixes,
+        ...?_validPrefixes,
+      ];
+
+  factory BooleanPrefixOptions.fromJson(Map<String, dynamic>? json) {
+    final validPrefixes = switch (json?['valid_prefixes']) {
+      final YamlList validPrefixes => validPrefixes.cast<String>(),
+      _ => null,
+    };
+
+    return BooleanPrefixOptions(
+      validPrefixes: validPrefixes,
+    );
+  }
+}
 
 class BooleanPrefix extends DartLintRule {
-  const BooleanPrefix({
-    this.validPrefixes = const [],
-  }) : super(
+  const BooleanPrefix._(this.options)
+      : super(
           code: const LintCode(
             name: name,
             problemMessage: '{0} should be named with a valid prefix.',
@@ -36,16 +62,14 @@ class BooleanPrefix extends DartLintRule {
 
   static const name = 'boolean_prefix';
 
-  final List<String> validPrefixes;
+  final BooleanPrefixOptions options;
 
   factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
-    final options = configs.rules[BooleanPrefix.name];
-    final jsonList = options?.json['valid_prefixes'] as List<Object?>?;
-    final validPrefixes = jsonList?.cast<String>() ?? [];
-
-    return BooleanPrefix(
-      validPrefixes: validPrefixes,
+    final options = BooleanPrefixOptions.fromJson(
+      configs.rules[BooleanPrefix.name]?.json,
     );
+
+    return BooleanPrefix._(options);
   }
 
   @override
@@ -126,8 +150,9 @@ class BooleanPrefix extends DartLintRule {
     final nameWithoutUnderscore =
         name.startsWith('_') ? name.substring(1) : name;
 
-    if (_defaultValidPrefixes.any(nameWithoutUnderscore.startsWith) ||
-        validPrefixes.any(nameWithoutUnderscore.startsWith)) return true;
+    if (options.validPrefixes.any(nameWithoutUnderscore.startsWith)) {
+      return true;
+    }
 
     return false;
   }

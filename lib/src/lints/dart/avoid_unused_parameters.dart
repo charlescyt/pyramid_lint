@@ -2,14 +2,39 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
+import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
 import '../../utils/visitors.dart';
 
+@immutable
+class AvoidUnusedParametersOptions {
+  const AvoidUnusedParametersOptions({
+    List<String>? excludedParameters,
+  }) : _excludedParameters = excludedParameters;
+
+  final List<String>? _excludedParameters;
+
+  List<String> get excludedParameters => [
+        ...?_excludedParameters,
+      ];
+
+  factory AvoidUnusedParametersOptions.fromJson(Map<String, dynamic>? json) {
+    final excludedParameters = switch (json?['excluded_parameters']) {
+      final YamlList excludedParameters => excludedParameters.cast<String>(),
+      _ => null,
+    };
+
+    return AvoidUnusedParametersOptions(
+      excludedParameters: excludedParameters,
+    );
+  }
+}
+
 class AvoidUnusedParameters extends DartLintRule {
-  const AvoidUnusedParameters({
-    this.excludedParameters = const [],
-  }) : super(
+  const AvoidUnusedParameters._(this.options)
+      : super(
           code: const LintCode(
             name: name,
             problemMessage: 'Unused parameter should be removed.',
@@ -21,16 +46,14 @@ class AvoidUnusedParameters extends DartLintRule {
 
   static const name = 'avoid_unused_parameters';
 
-  final List<String> excludedParameters;
+  final AvoidUnusedParametersOptions options;
 
   factory AvoidUnusedParameters.fromConfigs(CustomLintConfigs configs) {
-    final options = configs.rules[AvoidUnusedParameters.name];
-    final jsonList = options?.json['excluded_parameters'] as List<Object?>?;
-    final excludedParameters = jsonList?.cast<String>() ?? [];
-
-    return AvoidUnusedParameters(
-      excludedParameters: excludedParameters,
+    final options = AvoidUnusedParametersOptions.fromJson(
+      configs.rules[AvoidUnusedParameters.name]?.json,
     );
+
+    return AvoidUnusedParameters._(options);
   }
 
   @override
@@ -52,7 +75,9 @@ class AvoidUnusedParameters extends DartLintRule {
       body.accept(visitor);
 
       for (final parameter in parameters) {
-        if (excludedParameters.contains(parameter.name?.lexeme)) continue;
+        if (options.excludedParameters.contains(parameter.name?.lexeme)) {
+          continue;
+        }
 
         final parameterElement = parameter.declaredElement;
         if (parameterElement == null) continue;
