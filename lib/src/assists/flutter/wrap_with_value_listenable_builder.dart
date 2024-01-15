@@ -1,8 +1,9 @@
+import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../../utils/ast_node_extensions.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
@@ -29,7 +30,14 @@ class WrapWithValueListenableBuilder extends DartAssist {
       final type = node.staticType;
       if (type == null || !widgetChecker.isSuperTypeOf(type)) return;
 
-      final listenableVariable = node.valueNotifierIdentifier;
+      SimpleIdentifier? listenableVariable;
+      node.visitChildren(
+        _SingleLevelValueNotifierIdentifierVisitor(
+          onVisitNotifierIdentifier: (identifier) =>
+              listenableVariable = identifier,
+        ),
+      );
+
       if (listenableVariable == null) return;
 
       final changeBuilder = reporter.createChangeBuilder(
@@ -42,7 +50,7 @@ class WrapWithValueListenableBuilder extends DartAssist {
           node.offset,
           (builder) {
             builder.write('ValueListenableBuilder(');
-            builder.write('valueListenable: ${listenableVariable.name},');
+            builder.write('valueListenable: ${listenableVariable!.name},');
             builder.write('builder: (context, value, child) { return ');
           },
         );
@@ -50,5 +58,36 @@ class WrapWithValueListenableBuilder extends DartAssist {
         builder.addSimpleInsertion(node.end, '; },)');
       });
     });
+  }
+}
+
+class _SingleLevelValueNotifierIdentifierVisitor
+    extends RecursiveAstVisitor<void> {
+  const _SingleLevelValueNotifierIdentifierVisitor({
+    required this.onVisitNotifierIdentifier,
+  });
+
+  final void Function(SimpleIdentifier node) onVisitNotifierIdentifier;
+
+  @override
+  void visitNamedExpression(NamedExpression node) {
+    // We only want to traverse the current node not the node's child subtree
+    if (node.name.label.name == 'child' &&
+        node.expression is InstanceCreationExpression) {
+      return;
+    }
+
+    node.visitChildren(this);
+  }
+
+  @override
+  void visitSimpleIdentifier(SimpleIdentifier node) {
+    if (node.staticType != null &&
+        valueNotifierChecker.isAssignableFromType(node.staticType!)) {
+      onVisitNotifierIdentifier(node);
+      return;
+    }
+
+    node.visitChildren(this);
   }
 }

@@ -49,18 +49,4 @@ extension AstNodeExtensions on AstNode {
 
     return binaryExpressions;
   }
-
-  /// Returns a single [SimpleIdentifier] instance with staticType assignable
-  /// to ValueNotifier that is the child of this [AstNode].
-  SimpleIdentifier? get valueNotifierIdentifier {
-    SimpleIdentifier? identifier;
-
-    visitChildren(
-      SingleLevelValueNotifierIdentifierVisitor(
-        onVisitNotifierIdentifier: (node) => identifier = node,
-      ),
-    );
-
-    return identifier;
-  }
 }
