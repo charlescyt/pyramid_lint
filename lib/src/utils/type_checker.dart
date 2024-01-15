@@ -129,6 +129,11 @@ const changeNotifierChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const valueNotifierChecker = TypeChecker.fromName(
+  'ValueNotifier',
+  packageName: 'flutter',
+);
+
 // Controllers that do not extend ChangeNotifier class
 const disposableControllerChecker = TypeChecker.any(
   [
