@@ -4,14 +4,20 @@
 
 ### Added
 
-- Add new lint `no_self_comparisons`
-- Add new lint `avoid_widget_state_public_members`
+- Add new lint `no_self_comparisons` ([#9](https://github.com/charlescyt/pyramid_lint/pull/9))
+- Add new lint `avoid_widget_state_public_members` ([#10](https://github.com/charlescyt/pyramid_lint/pull/10))
+- Add new assist `wrap_with_value_listenable_builder` ([#16](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
 
 ### Changed
 
 - `prefer_dedicated_media_query_method` now supports indirect calls to `MediaQuery.of(context)` and `MediaQuery.maybeOf(context)` ([#13](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
 - `proper_controller_dispose` now supports `ChangeNotifier`'s subclasses ([#14](https://github.com/charlescyt/pyramid_lint/pull/14) thanks to [imsamgarg])
-- Add quick fixes for `proper_controller_dispose`([#15](https://github.com/charlescyt/pyramid_lint/pull/15) thanks to [imsamgarg])
+- Add quick fixes for `proper_controller_dispose` ([#15](https://github.com/charlescyt/pyramid_lint/pull/15) thanks to [imsamgarg])
+
+### Fixed
+
+- Fix `boolean_prefix` false positive on overridden methods ([#18](https://github.com/charlescyt/pyramid_lint/pull/18) thanks to [imsamgarg])
+- Fix `prefer_async_callback` to handle cases where the type is not `void` ([#19](https://github.com/charlescyt/pyramid_lint/pull/19) thanks to [imsamgarg])
 
 ## 1.2.0 - 2023-11-24
 
