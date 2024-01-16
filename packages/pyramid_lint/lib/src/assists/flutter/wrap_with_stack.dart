@@ -19,8 +19,8 @@ class WrapWithStack extends DartAssist {
       final sourceRange = node.keywordAndConstructorNameSourceRange;
       if (!sourceRange.covers(target)) return;
 
-      final type = node.staticType;
-      if (type == null || !widgetChecker.isSuperTypeOf(type)) return;
+      final typeElement = node.staticType?.element;
+      if (typeElement == null || !widgetChecker.isSuperOf(typeElement)) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Wrap with Stack',
