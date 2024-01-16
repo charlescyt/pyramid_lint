@@ -14,7 +14,7 @@ class AlwaysDeclareParameterNames extends DartLintRule {
                 'enable IDEs to provide code completion suggestions.',
             correctionMessage:
                 'Consider declaring a descriptive parameter name.',
-            url: '$dartLintDocUrl${AlwaysDeclareParameterNames.name}',
+            url: '$dartLintDocUrl/${AlwaysDeclareParameterNames.name}',
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
