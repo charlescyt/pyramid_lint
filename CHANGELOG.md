@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- `avoid_returning_widgets` now ignores static and overridden methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24))
+
 ## 1.3.0 - 2024-01-15
 
 ### Added

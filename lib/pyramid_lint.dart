@@ -75,7 +75,7 @@ class _PyramidLinter extends PluginBase {
         const PreferUnderscoreForUnusedCallbackParameters(),
         const UnnecessaryNullableReturnType(),
         // Flutter lints
-        const AvoidReturningWidgets(),
+        AvoidReturningWidgets.fromConfigs(configs),
         const AvoidSingleChildInFlex(),
         const AvoidWidgetStatePublicMembers(),
         const PreferAsyncCallback(),

@@ -1,13 +1,39 @@
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:meta/meta.dart' show immutable;
+import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
+@immutable
+class AvoidReturningWidgetsOptions {
+  const AvoidReturningWidgetsOptions({
+    List<String>? ignoredMethodNames,
+  }) : _ignoredMethodNames = ignoredMethodNames;
+
+  final List<String>? _ignoredMethodNames;
+
+  List<String> get ignoredMethods => [...?_ignoredMethodNames];
+
+  factory AvoidReturningWidgetsOptions.fromJson(
+    Map<String, dynamic>? json,
+  ) {
+    final ignoredMethodNames = switch (json?['ignored_method_names']) {
+      final YamlList ignoredMethodNames => ignoredMethodNames.cast<String>(),
+      _ => null,
+    };
+
+    return AvoidReturningWidgetsOptions(
+      ignoredMethodNames: ignoredMethodNames,
+    );
+  }
+}
+
 class AvoidReturningWidgets extends DartLintRule {
-  const AvoidReturningWidgets()
+  const AvoidReturningWidgets._(this.options)
       : super(
           code: const LintCode(
             name: name,
@@ -21,6 +47,18 @@ class AvoidReturningWidgets extends DartLintRule {
 
   static const name = 'avoid_returning_widgets';
 
+  final AvoidReturningWidgetsOptions options;
+
+  factory AvoidReturningWidgets.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
+    final options = AvoidReturningWidgetsOptions.fromJson(
+      configs.rules[AvoidReturningWidgets.name]?.json,
+    );
+
+    return AvoidReturningWidgets._(options);
+  }
+
   @override
   void run(
     CustomLintResolver resolver,
@@ -31,64 +69,28 @@ class AvoidReturningWidgets extends DartLintRule {
 
     context.registry.addMethodDeclaration((node) {
       final returnType = node.returnType?.type;
-      if (returnType == null) return;
-
-      if (!widgetChecker.isAssignableFromType(returnType)) return;
-
-      if (node.name.lexeme == 'build' || node.name.lexeme == 'createState') {
+      if (returnType == null ||
+          !widgetChecker.isAssignableFromType(returnType)) {
         return;
       }
 
-      // if (isWidgetBuildMethod(node)) return;
-      // if (isStatefulWidgetCreateStateMethod(node)) return;
+      if (node.declaredElement?.hasOverride == true) return;
+      if (node.declaredElement?.isStatic == true) return;
+      if (options.ignoredMethods.contains(node.name.lexeme)) return;
 
       reporter.reportErrorForNode(code, node);
     });
 
     context.registry.addFunctionDeclaration((node) {
       final returnType = node.returnType?.type;
-      if (returnType == null) return;
+      if (returnType == null ||
+          !widgetChecker.isAssignableFromType(returnType)) {
+        return;
+      }
 
-      if (!widgetChecker.isAssignableFromType(returnType)) return;
+      if (options.ignoredMethods.contains(node.name.lexeme)) return;
 
       reporter.reportErrorForNode(code, node);
     });
   }
-
-  // bool isWidgetBuildMethod(MethodDeclaration node) {
-  //   final methodName = node.name.lexeme;
-  //   if (methodName != 'build') return false;
-
-  //   final classDeclaration = node.thisOrAncestorOfType<ClassDeclaration>();
-  //   if (classDeclaration == null) return false;
-
-  //   final extendsClause = classDeclaration.extendsClause;
-  //   if (extendsClause == null) return false;
-
-  //   final type = extendsClause.superclass.type;
-  //   if (type == null) return false;
-
-  //   if (!statelessWidgetChecker.isAssignableFromType(type) &&
-  //       !widgetStateChecker.isAssignableFromType(type)) return false;
-
-  //   return true;
-  // }
-
-  // bool isStatefulWidgetCreateStateMethod(MethodDeclaration node) {
-  //   final methodName = node.name.lexeme;
-  //   if (methodName != 'createState') return false;
-
-  //   final classDeclaration = node.thisOrAncestorOfType<ClassDeclaration>();
-  //   if (classDeclaration == null) return false;
-
-  //   final extendsClause = classDeclaration.extendsClause;
-  //   if (extendsClause == null) return false;
-
-  //   final type = extendsClause.superclass.type;
-  //   if (type == null) return false;
-
-  //   if (!statefulWidgetChecker.isAssignableFromType(type)) return false;
-
-  //   return true;
-  // }
 }

@@ -14,3 +14,5 @@ custom_lint:
       valid_prefixes: ["at"]
     - avoid_abbreviations_in_doc_comments:
       abbreviations: ["approx."]
+    - avoid_returning_widgets:
+      ignored_method_names: ['myMethod']
