@@ -1,10 +1,14 @@
 # avoid_returning_widgets
 
 - Severity: info ℹ️
+- Options:
+  - ignored_method_names: `List<String>`
 
 ## Details
 
 **Avoid** returning widgets from methods.
+
+<Info> Static and overridden methods are ignored. </Info>
 
 <YouTube id="IOyq-eTRhvo" />
 
@@ -61,4 +65,13 @@ To enable the `avoid_returning_widgets` rule, add `avoid_returning_widgets` unde
 custom_lint:
   rules:
     - avoid_returning_widgets
+```
+
+To configure the list of ignored method names, add a list of strings to the `ignored_method_names` option:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_returning_widgets:
+        ignored_method_names: ['myMethod']
 ```

@@ -46,3 +46,22 @@ Widget buildWidget() => const Placeholder();
 
 // expect_lint: avoid_returning_widgets
 Widget get myWidget => const Placeholder();
+
+class MyInheritedWidget extends InheritedWidget {
+  const MyInheritedWidget({
+    super.key,
+    required super.child,
+  });
+
+  @override
+  bool updateShouldNotify(MyInheritedWidget oldWidget) => false;
+
+  // Static methods are ignored.
+  static MyInheritedWidget? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
+  }
+}
+
+Widget myMethod() {
+  return const Placeholder();
+}
