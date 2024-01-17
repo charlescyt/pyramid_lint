@@ -6,13 +6,13 @@
 
 - `avoid_returning_widgets` now ignores static and overridden methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24))
 
-## 1.3.0 - 2024-01-15
+## [1.3.0] - 2024-01-15
 
 ### Added
 
-- Add new lint `no_self_comparisons` ([#9](https://github.com/charlescyt/pyramid_lint/pull/9))
-- Add new lint `avoid_widget_state_public_members` ([#10](https://github.com/charlescyt/pyramid_lint/pull/10))
-- Add new assist `wrap_with_value_listenable_builder` ([#16](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
+- Lint: `no_self_comparisons` ([#9](https://github.com/charlescyt/pyramid_lint/pull/9))
+- Lint: `avoid_widget_state_public_members` ([#10](https://github.com/charlescyt/pyramid_lint/pull/10))
+- Assist: `wrap_with_value_listenable_builder` ([#16](https://github.com/charlescyt/pyramid_lint/pull/13) thanks to [imsamgarg])
 
 ### Changed
 
@@ -25,14 +25,13 @@
 - Fix `boolean_prefix` false positive on overridden methods ([#18](https://github.com/charlescyt/pyramid_lint/pull/18) thanks to [imsamgarg])
 - Fix `prefer_async_callback` to handle cases where the type is not `void` ([#19](https://github.com/charlescyt/pyramid_lint/pull/19) thanks to [imsamgarg])
 
-## 1.2.0 - 2023-11-24
+## [1.2.0] - 2023-11-24
 
 ### Added
 
-- New lints
-  - `avoid_abbreviations_in_doc_comments`
-  - `doc_comments_before_annotations`
-  - `prefer_library_prefixes`
+- Lint: `avoid_abbreviations_in_doc_comments`
+- Lint: `doc_comments_before_annotations`
+- Lint: `prefer_library_prefixes`
 
 ### Changed
 
@@ -45,27 +44,25 @@
 
 - Fix the quick fix for `prefer_void_callback`, `prefer_async_callback` and `prefer_value_changed` when the function is nullable.
 
-## 1.1.0 - 2023-10-19
+## [1.1.0] - 2023-10-19
 
 ### Added
 
-- New lints
-  - `avoid_unused_parameters`
-  - `prefer_async_await`
-  - `prefer_new_line_before_return`
-  - `unnecessary_nullable_return_type`
+- Lint: avoid_unused_parameters`
+- Lint: prefer_async_await`
+- Lint: prefer_new_line_before_return`
+- Lint: unnecessary_nullable_return_type`
 
 ### Fixed
 
 - Fix pubspec.yaml description and format ([#1](https://github.com/charlescyt/pyramid_lint/pull/1) thanks to [parlough])
 
-## 1.0.0 - 2023-10-13
+## [1.0.0] - 2023-10-13
 
 ### Added
 
-- New lints
-  - `avoid_returning_widgets`
-  - `boolean_prefix`
+- Lint: `avoid_returning_widgets`
+- Lint: `boolean_prefix`
 
 ### Changed
 
@@ -84,26 +81,22 @@
 
 - Fix `prefer_underscore_for_unused_callback_parameters` false positive on unused parameters in function declarations.
 
-## 0.6.0 - 2023-10-10
+## [0.6.0] - 2023-10-10
 
 ### Added
 
-- New lints
-  - `avoid_dynamic`
-  - `prefer_async_callback`
-  - `prefer_value_changed`
-  - `prefer_void_callback`
-  - `prefer_underscore_for_unused_callback_parameters`
+- Lint: `avoid_dynamic`
+- Lint: `prefer_async_callback`
+- Lint: `prefer_value_changed`
+- Lint: `prefer_void_callback`
+- Lint: `prefer_underscore_for_unused_callback_parameters`
 
-## 0.5.0 - 2023-10-05
+## [0.5.0] - 2023-10-05
 
 ### Added
 
-- New Assist
-  - `wrap_with_layout_builder`
-
-- New lint
-  - `proper_usage_of_from_environment`
+- Lint: `proper_usage_of_from_environment`
+- Assist: `wrap_with_layout_builder`
 
 ### Changed
 
@@ -113,42 +106,52 @@
 
 - Fix a bug where the fix for `correct_order_for_super_dispose` is not working.
 
-## 0.4.0 - 2023-09-26
+## [0.4.0] - 2023-09-26
 
 ### Added
 
-- New lints
-  - `avoid_duplicate_import`
-  - `max_lines_for_file`
-  - `max_lines_for_function`
+- Lint: `avoid_duplicate_import`
+- Lint: `max_lines_for_file`
+- Lint: `max_lines_for_function`
 
-## 0.3.0 - 2023-09-25
-
-### Added
-
-- New lints
-  - `avoid_inverted_boolean_expression`
-
-- New assists
-  - `invert_boolean_expression`
-  - `swap_then_else_expression`
-
-## 0.2.0 - 2023-09-21
+## [0.3.0] - 2023-09-25
 
 ### Added
 
-- New lints
-  - `prefer_dedicated_media_query_method`
-  - `proper_controller_dispose`
-  - `proper_edge_insets_constructor`
+- Lint: `avoid_inverted_boolean_expression`
+- Assist: `invert_boolean_expression`
+- Assist: `swap_then_else_expression`
 
-## 0.1.1 - 2023-09-18
+## [0.2.0] - 2023-09-21
 
-- Fix README.md image links.
+### Added
 
-## 0.1.0 - 2023-09-17
+- Lint: `prefer_dedicated_media_query_method`
+- Lint: `proper_controller_dispose`
+- Lint: `proper_edge_insets_constructor`
+
+## [0.1.1] - 2023-09-18
+
+### Fixed
+
+- README.md image links.
+
+## [0.1.0] - 2023-09-17
 
 - Initial release.
 
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
+
+[unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.6.0...v1.0.0
+[0.6.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/charlescyt/pyramid_lint/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/charlescyt/pyramid_lint/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/charlescyt/pyramid_lint/releases/tag/v0.1.0
