@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Lint: `avoid_nested_if` ([#25](https://github.com/charlescyt/pyramid_lint/pull/25))
+
 ### Changed
 
 - `avoid_returning_widgets` now ignores static and overridden methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24))

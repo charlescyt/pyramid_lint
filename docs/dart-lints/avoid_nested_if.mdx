@@ -1,0 +1,47 @@
+# avoid_nested_if
+
+- Severity: warning ⚠️
+- Options:
+  - max_nesting_level: `int` (default: 2)
+
+## Details
+
+**DO** avoid too many nested `if` statements.
+
+```dart title="Bad"
+if (x) {
+  if (y) {
+    if (z) {
+      doSomething();
+    }
+  }
+}
+```
+
+**GOOD:**
+
+```dart title="Good"
+if (!x) return;
+if (!y) return;
+if (!z) return;
+doSomething();
+```
+
+## Usage
+
+To enable the `avoid_nested_if` rule, add `avoid_nested_if` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_nested_if
+```
+
+To configure the max nesting level, add an integer to the `max_nesting_level` option:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_nested_if:
+      max_nesting_level: 3
+```
