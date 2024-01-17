@@ -15,6 +15,7 @@
       ["avoid_dynamic", "/dart-lints/avoid_dynamic"],
       ["avoid_empty_blocks", "/dart-lints/avoid_empty_blocks"],
       ["avoid_inverted_boolean_expressions", "/dart-lints/avoid_inverted_boolean_expressions"],
+      ["avoid_nested_if", "/dart-lints/avoid_nested_if"],
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
       ["boolean_prefix", "/dart-lints/boolean_prefix"],
       ["doc_comments_before_annotations", "/dart-lints/doc_comments_before_annotations"],
