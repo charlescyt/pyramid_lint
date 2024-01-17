@@ -2,22 +2,16 @@ import 'package:analyzer/dart/ast/ast.dart';
 
 import 'visitors.dart';
 
-extension AstNodeExtensions on AstNode {
-  /// Returns the nearest [InstanceCreationExpression] that is an ancestor
-  /// of this [AstNode], or `null` if there is none.
-  InstanceCreationExpression? get parentInstanceCreationExpression =>
-      parent?.thisOrAncestorOfType<InstanceCreationExpression>();
-
+extension AstNodeExtension on AstNode {
   /// Returns an iterable of all the [IfStatement] that are
   /// children of this [AstNode].
   Iterable<IfStatement> get childrenIfStatements {
     final ifStatements = <IfStatement>[];
-
-    visitChildren(
-      RecursiveIfStatementVisitor(
-        onVisitIfStatement: ifStatements.add,
-      ),
+    final visitor = RecursiveIfStatementVisitor(
+      onVisitIfStatement: ifStatements.add,
     );
+
+    visitChildren(visitor);
 
     return ifStatements;
   }
@@ -26,12 +20,11 @@ extension AstNodeExtensions on AstNode {
   /// children of this [AstNode].
   Iterable<ConditionalExpression> get childrenConditionalExpressions {
     final conditionalExpressions = <ConditionalExpression>[];
-
-    visitChildren(
-      RecursiveConditionalExpressionVisitor(
-        onVisitConditionalExpression: conditionalExpressions.add,
-      ),
+    final visitor = RecursiveConditionalExpressionVisitor(
+      onVisitConditionalExpression: conditionalExpressions.add,
     );
+
+    visitChildren(visitor);
 
     return conditionalExpressions;
   }
@@ -40,12 +33,11 @@ extension AstNodeExtensions on AstNode {
   /// children of this [AstNode].
   Iterable<BinaryExpression> get childrenBinaryExpressions {
     final binaryExpressions = <BinaryExpression>[];
-
-    visitChildren(
-      RecursiveBinaryExpressionVisitor(
-        onVisitBinaryExpression: binaryExpressions.add,
-      ),
+    final visitor = RecursiveBinaryExpressionVisitor(
+      onVisitBinaryExpression: binaryExpressions.add,
     );
+
+    visitChildren(visitor);
 
     return binaryExpressions;
   }
