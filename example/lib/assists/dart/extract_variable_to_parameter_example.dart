@@ -1,11 +1,23 @@
-class Temp {
-  final double temp;
+class LogoutController {
+  Future<void> logout() {
+    final authRepo = AuthRepository();
+    final storageRepo = StorageRepository();
 
-  const Temp(this.temp);
+    return Future.wait([
+      authRepo.logout(),
+      storageRepo.clearTokens(),
+    ]);
+  }
+}
 
-  void hello() {
-    const a = '';
-    const b = '';
-    const c = '';
+class AuthRepository {
+  Future<void> logout() {
+    return Future.value();
+  }
+}
+
+class StorageRepository {
+  Future<void> clearTokens() {
+    return Future.value();
   }
 }
