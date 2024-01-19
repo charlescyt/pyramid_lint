@@ -1,7 +1,7 @@
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import 'src/assists/dart/extract_variable_to_parameter.dart';
 import 'src/assists/dart/invert_boolean_expression.dart';
-import 'src/assists/dart/move_variable_to_parameter_list.dart';
 import 'src/assists/dart/swap_then_else_expression.dart';
 import 'src/assists/flutter/use_edge_insets_zero.dart';
 import 'src/assists/flutter/wrap_all_children_with_expanded.dart';
@@ -103,8 +103,8 @@ class _PyramidLinter extends PluginBase {
   @override
   List<Assist> getAssists() => [
         // Dart assists
+        ExtractVariableToParameter(),
         InvertBooleanExpression(),
-        MoveVariableToParameterList(),
         SwapThenElseExpression(),
         // Flutter assists
         UseEdgeInsetsZero(),
