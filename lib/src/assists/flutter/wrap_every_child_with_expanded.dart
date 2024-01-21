@@ -7,7 +7,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
-class ExpandAllChildren extends DartAssist {
+class WrapEveryChildWithExpanded extends DartAssist {
   @override
   Future<void> run(
     CustomLintResolver resolver,
@@ -53,7 +53,7 @@ class ExpandAllChildren extends DartAssist {
       if (nonExpandedChildren.isEmpty) return;
 
       final changeBuilder = reporter.createChangeBuilder(
-        message: 'Expand all children',
+        message: 'Wrap every child with Expanded',
         priority: 26,
       );
 

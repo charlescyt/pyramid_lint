@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class ExpandAllChildrenExample extends StatelessWidget {
-  const ExpandAllChildrenExample({super.key});
+class WrapEveryChildWithExpandedExample extends StatelessWidget {
+  const WrapEveryChildWithExpandedExample({super.key});
 
   @override
   Widget build(BuildContext context) {
