@@ -65,3 +65,10 @@ class MyInheritedWidget extends InheritedWidget {
 Widget myMethod() {
   return const Placeholder();
 }
+
+extension WidgetExtension on Widget {
+  // Extension methods are ignored.
+  Widget extensionMethod() {
+    return const Placeholder();
+  }
+}

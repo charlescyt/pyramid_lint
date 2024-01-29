@@ -1,3 +1,4 @@
+import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -68,14 +69,17 @@ class AvoidReturningWidgets extends DartLintRule {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addMethodDeclaration((node) {
+      final element = node.declaredElement;
+      if (element?.enclosingElement.kind == ElementKind.EXTENSION) return;
+      if (element?.hasOverride == true) return;
+      if (element?.isStatic == true) return;
+
       final returnType = node.returnType?.type;
       if (returnType == null ||
           !widgetChecker.isAssignableFromType(returnType)) {
         return;
       }
 
-      if (node.declaredElement?.hasOverride == true) return;
-      if (node.declaredElement?.isStatic == true) return;
       if (options.ignoredMethods.contains(node.name.lexeme)) return;
 
       reporter.reportErrorForNode(code, node);
