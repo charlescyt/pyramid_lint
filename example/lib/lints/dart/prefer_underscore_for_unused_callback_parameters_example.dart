@@ -12,7 +12,7 @@ class Example extends StatelessWidget {
       itemBuilder: (
         // expect_lint: prefer_underscore_for_unused_callback_parameters
         context,
-        // the lint should not be triggered if the parameter is used.
+        // Used parameter will not trigger the lint.
         index,
       ) {
         return Text('Item $index');
@@ -21,5 +21,5 @@ class Example extends StatelessWidget {
   }
 }
 
-// function declaration will not trigger the lint.
+// Function declarations will not trigger the lint.
 void log(String message) {}

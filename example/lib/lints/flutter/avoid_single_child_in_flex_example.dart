@@ -7,14 +7,14 @@ const singleChild = Column(
   ],
 );
 
-// No Lint for spread elements
+// Spread elements will not trigger the lint.
 final spread = Row(
   children: [
     ...[1, 2, 3].map((e) => Text('$e')),
   ],
 );
 
-// No Lint for collection for elements
+// Collection for will not trigger the lint.
 final collectionFor = Flex(
   direction: Axis.vertical,
   children: [

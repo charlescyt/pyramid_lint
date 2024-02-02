@@ -16,7 +16,7 @@ class Example extends StatefulWidget {
 }
 
 class _ExampleState extends State<Example> {
-// expect_lint: proper_controller_dispose
+  // expect_lint: proper_controller_dispose
   final _textEditingController = TextEditingController();
 
   @override
@@ -53,7 +53,7 @@ class _Example2State extends State<Example2>
   // expect_lint: proper_controller_dispose
   late final UndoHistoryController _undoHistoryController;
 
-  // It also works for custom controllers
+  // The lint also handles custom controllers that extends ChangeNotifier.
   // expect_lint: proper_controller_dispose
   late final _CustomController _customController;
   // expect_lint: proper_controller_dispose

@@ -1,7 +1,7 @@
 // expect_lint: boolean_prefix
 const debugMode = true;
 
-// "at" is a valid prefix since we specified it in the analysis_options.yaml
+// "at" is a valid prefix since we specified it in the analysis_options.yaml.
 const atOrigin = true;
 
 class Point {
