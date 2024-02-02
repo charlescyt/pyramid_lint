@@ -94,36 +94,6 @@ const animationControllerChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
-const pageControllerChecker = TypeChecker.fromName(
-  'PageController',
-  packageName: 'flutter',
-);
-
-const scrollControllerChecker = TypeChecker.fromName(
-  'ScrollController',
-  packageName: 'flutter',
-);
-
-const searchControllerChecker = TypeChecker.fromName(
-  'SearchController',
-  packageName: 'flutter',
-);
-
-const tabControllerChecker = TypeChecker.fromName(
-  'TabController',
-  packageName: 'flutter',
-);
-
-const textEditingControllerChecker = TypeChecker.fromName(
-  'TextEditingController',
-  packageName: 'flutter',
-);
-
-const undoHistoryControllerChecker = TypeChecker.fromName(
-  'UndoHistoryController',
-  packageName: 'flutter',
-);
-
 const changeNotifierChecker = TypeChecker.fromName(
   'ChangeNotifier',
   packageName: 'flutter',
@@ -134,7 +104,6 @@ const valueNotifierChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
-// Controllers that do not extend ChangeNotifier class
 const disposableControllerChecker = TypeChecker.any(
   [
     animationControllerChecker,
