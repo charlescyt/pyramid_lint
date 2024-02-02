@@ -3,9 +3,8 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../../utils/class_members_extensions.dart';
+import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
-import '../../utils/constructor_initializers_extensions.dart';
 
 class PreferDeclaringConstConstructors extends DartLintRule {
   const PreferDeclaringConstConstructors()

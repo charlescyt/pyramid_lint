@@ -6,7 +6,7 @@ import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
-import '../../utils/pubspec_extensions.dart';
+import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
 @immutable

@@ -5,7 +5,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
-import '../../utils/pubspec_extensions.dart';
+import '../../utils/pubspec_extension.dart';
 
 class PreferAsyncCallback extends DartLintRule {
   const PreferAsyncCallback()

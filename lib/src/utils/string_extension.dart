@@ -1,4 +1,4 @@
-extension StringExtensions on String {
+extension StringExtension on String {
   /// Capitalizes the first letter of this string.
   String capitalize() => switch (length) {
         0 => this,

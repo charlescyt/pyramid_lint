@@ -1,4 +1,4 @@
-extension IterableExtensions<T> on Iterable<T> {
+extension IterableExtension<T> on Iterable<T> {
   Iterable<T> get duplicates {
     return removeAll(toSet());
   }

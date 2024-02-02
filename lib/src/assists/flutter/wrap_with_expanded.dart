@@ -3,7 +3,7 @@ import 'package:analyzer/source/source_range.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import '../../utils/pubspec_extensions.dart';
+import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
 class WrapWithExpanded extends DartAssist {

@@ -1,6 +1,6 @@
 import 'package:analyzer/dart/ast/token.dart';
 
-extension TokenTypeExtensions on TokenType {
+extension TokenTypeExtension on TokenType {
   bool get isLogicalOperator {
     return this == TokenType.AMPERSAND_AMPERSAND || this == TokenType.BAR_BAR;
   }

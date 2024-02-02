@@ -1,7 +1,7 @@
 import 'package:analyzer/error/error.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-extension LintCodeExtensions on LintCode {
+extension LintCodeExtension on LintCode {
   LintCode copyWith({
     String? name,
     String? problemMessage,

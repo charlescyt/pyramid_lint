@@ -5,7 +5,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
-import '../../utils/dart_type_extensions.dart';
+import '../../utils/dart_type_extension.dart';
 import '../../utils/visitors.dart';
 
 class UnnecessaryNullableReturnType extends DartLintRule {

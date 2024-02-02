@@ -4,7 +4,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/constants.dart';
-import '../../utils/string_extensions.dart';
+import '../../utils/string_extension.dart';
 import '../../utils/visitors.dart';
 
 class PreferUnderscoreForUnusedCallbackParameters extends DartLintRule {
