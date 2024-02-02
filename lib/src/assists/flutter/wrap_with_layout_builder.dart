@@ -1,7 +1,7 @@
 import 'package:analyzer/source/source_range.dart';
-import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/ast_node_extensions.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
@@ -16,13 +16,7 @@ class WrapWithLayoutBuilder extends DartAssist {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addInstanceCreationExpression((node) {
-      final sourceRange = switch (node.keyword) {
-        null => node.constructorName.sourceRange,
-        final keyword => range.startEnd(
-            keyword,
-            node.constructorName,
-          ),
-      };
+      final sourceRange = node.keywordAndConstructorNameSourceRange;
       if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;

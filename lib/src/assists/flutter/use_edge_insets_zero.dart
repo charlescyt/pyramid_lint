@@ -1,6 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/source_range.dart';
-import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 import '../../utils/ast_node_extensions.dart';
@@ -18,11 +17,7 @@ class UseEdgeInsetsZero extends DartAssist {
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addInstanceCreationExpression((node) {
-      final sourceRange = switch (node.keyword) {
-        null => node.sourceRange,
-        final keyword => range.startEnd(keyword, node),
-      };
-
+      final sourceRange = node.keywordAndConstructorNameSourceRange;
       if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;
