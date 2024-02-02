@@ -8,7 +8,11 @@
 
 ### Changed
 
-- `avoid_returning_widgets` now ignores static and overridden methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24))
+- `avoid_returning_widgets` now ignores static, overridden and extension methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24) [#28](https://github.com/charlescyt/pyramid_lint/pull/28))
+
+### Fixed
+
+- Fix false positive for `prefer_declaring_const_constructors` when redirecting/super constructor is not a const constructor. ([#29](https://github.com/charlescyt/pyramid_lint/pull/29))
 
 ## [1.3.0] - 2024-01-15
 
