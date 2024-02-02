@@ -19,6 +19,7 @@ import 'src/lints/dart/boolean_prefix.dart';
 import 'src/lints/dart/doc_comments_before_annotations.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
+import 'src/lints/dart/max_switch_cases.dart';
 import 'src/lints/dart/no_self_comparisons.dart';
 import 'src/lints/dart/prefer_async_await.dart';
 import 'src/lints/dart/prefer_declaring_const_constructors.dart';
@@ -66,6 +67,7 @@ class _PyramidLinter extends PluginBase {
         const DocCommentsBeforeAnnotations(),
         MaxLinesForFile.fromConfigs(configs),
         MaxLinesForFunction.fromConfigs(configs),
+        MaxSwitchCases.fromConfigs(configs),
         const NoSelfComparisons(),
         const PreferAsyncAwait(),
         const PreferDeclaringConstConstructors(),

@@ -1,0 +1,28 @@
+# max_switch_cases
+
+- Severity: warning ⚠️
+- Options:
+  - max_cases: `int` (default: 10)
+
+## Details
+
+**DO** limit the number of cases in a switch statement or switch expression.
+
+## Usage
+
+To enable the `max_switch_cases` rule, add `max_switch_cases` under `rules` in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - max_switch_cases
+```
+
+To configure the maximum number of cases, add an `int` to the `max_cases` option:
+
+```yaml
+custom_lint:
+  rules:
+    - max_switch_cases:
+      max_cases: 5
+```

@@ -16,3 +16,5 @@ custom_lint:
       abbreviations: ["approx."]
     - avoid_returning_widgets:
       ignored_method_names: ['myMethod']
+    - max_switch_cases:
+      max_cases: 5

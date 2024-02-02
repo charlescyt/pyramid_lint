@@ -5,6 +5,7 @@
 ### Added
 
 - Lint: `avoid_nested_if` ([#25](https://github.com/charlescyt/pyramid_lint/pull/25))
+- Lint: `max_switch_cases` ([#30](https://github.com/charlescyt/pyramid_lint/pull/30))
 
 ### Changed
 

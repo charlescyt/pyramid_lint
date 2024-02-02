@@ -21,6 +21,7 @@
       ["doc_comments_before_annotations", "/dart-lints/doc_comments_before_annotations"],
       ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
       ["max_lines_for_function", "/dart-lints/max_lines_for_function"],
+      ["max_switch_cases", "/dart-lints/max_switch_cases"],
       ["no_self_comparisons", "/dart-lints/no_self_comparisons"],
       ["prefer_async_await", "/dart-lints/prefer_async_await"],
       ["prefer_declaring_const_constructors", "/dart-lints/prefer_declaring_const_constructors"],
