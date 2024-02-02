@@ -12,8 +12,7 @@ class PreferDeclaringConstConstructors extends DartLintRule {
           code: const LintCode(
             name: name,
             problemMessage:
-                'Constructors of classes with only final fields should be declared as '
-                'const constructors when possible.',
+                'Constructors should be declared as const constructors when possible.',
             correctionMessage:
                 'Consider adding a const keyword to the constructor.',
             url: '$dartLintDocUrl/${PreferDeclaringConstConstructors.name}',
@@ -35,11 +34,14 @@ class PreferDeclaringConstConstructors extends DartLintRule {
       final parent = node.parent;
       if (parent is! ClassDeclaration) return;
 
-      final fieldDeclarations = parent.members.fieldDeclarations;
-      if (fieldDeclarations.isEmpty) return;
+      if (!_areAllFieldsFinal(parent)) return;
+      if (!_areAllRedirectingConstructorInvocationsConst(node)) return;
+      if (!_areAllSuperConstructorInvocationsConst(node)) return;
 
-      final hasNonFinalField = fieldDeclarations.any((e) => !e.fields.isFinal);
-      if (hasNonFinalField) return;
+      // TODO: need to check if the super constructor is a const constructor when using super parameters.
+      final superParameters =
+          node.parameters.parameters.whereType<SuperFormalParameter>();
+      if (superParameters.isNotEmpty) return;
 
       final fieldInitializers = node.initializers.constructorFieldInitializers;
       if (fieldInitializers.isNotEmpty) {
@@ -62,6 +64,24 @@ class PreferDeclaringConstConstructors extends DartLintRule {
 
       reporter.reportErrorForNode(code, node);
     });
+  }
+
+  bool _areAllFieldsFinal(ClassDeclaration node) {
+    return node.members.fieldDeclarations.every((e) => e.fields.isFinal);
+  }
+
+  bool _areAllRedirectingConstructorInvocationsConst(
+    ConstructorDeclaration node,
+  ) {
+    return node.initializers.redirectingConstructorInvocations
+        .every((e) => e.staticElement?.isConst == true);
+  }
+
+  bool _areAllSuperConstructorInvocationsConst(
+    ConstructorDeclaration node,
+  ) {
+    return node.initializers.superConstructorInvocations
+        .every((e) => e.staticElement?.isConst == true);
   }
 
   @override
