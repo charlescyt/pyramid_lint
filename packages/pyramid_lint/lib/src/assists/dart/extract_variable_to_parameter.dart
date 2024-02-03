@@ -3,7 +3,7 @@ import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:analyzer_plugin/utilities/change_builder/change_builder_dart.dart';
-import 'package:collection/collection.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 class ExtractVariableToParameter extends DartAssist {
@@ -21,13 +21,10 @@ class ExtractVariableToParameter extends DartAssist {
       if (paramList == null) return;
 
       final variableName = node.name.lexeme;
-      final paramAlreadyExists = paramList.parameters
-              .firstWhereOrNull((e) => e.name?.lexeme == variableName) !=
-          null;
-      if (paramAlreadyExists) return;
 
-      final varDeclarationStatement =
-          node.thisOrAncestorOfType<VariableDeclarationStatement>()!;
+      final paramAlreadyExists =
+          paramList.parameters.any((e) => e.name?.lexeme == variableName);
+      if (paramAlreadyExists) return;
 
       final positionalParamChangeBuilder = reporter.createChangeBuilder(
         message: 'Extract variable as parameter',
@@ -47,57 +44,64 @@ class ExtractVariableToParameter extends DartAssist {
 
       positionalParamChangeBuilder.addDartFileEdit((builder) {
         int offset;
-        var addPreceedingComma = false;
+        var addPrecedingComma = false;
         var addSucceedingComma = false;
 
         if (positionalParams.isEmpty) {
           offset = paramList.leftParenthesis.end;
           addSucceedingComma = namedParams.isNotEmpty;
         } else {
-          addPreceedingComma = true;
+          addPrecedingComma = true;
           offset = positionalParams.last.endToken.next!.offset;
         }
 
         builder.addInsertion(offset, (builder) {
-          if (addPreceedingComma) builder.write(',');
+          if (addPrecedingComma) builder.write(',');
           builder.write('$variableTypeName $variableName');
           if (addSucceedingComma) builder.write(',');
         });
 
-        _deleteOriginalVariable(varDeclarationStatement, builder, node);
+        _deleteOriginalVariable(node, builder);
       });
 
       namedParamChangeBuilder.addDartFileEdit((builder) {
         int offset;
-        var addBracketPreceedingComma = false;
-        var addEnclosingBrackets = false;
-        var addPreceedingComma = false;
+        bool addBracketPrecedingComma;
+        bool addEnclosingBrackets;
+        bool addPrecedingComma;
 
         if (namedParams.isEmpty && positionalParams.isEmpty) {
-          addEnclosingBrackets = true;
           offset = paramList.leftParenthesis.end;
+          addBracketPrecedingComma = false;
+          addEnclosingBrackets = true;
+          addPrecedingComma = false;
         } else if (namedParams.isEmpty && positionalParams.isNotEmpty) {
           final param = positionalParams.last;
-          addEnclosingBrackets = true;
-          addBracketPreceedingComma =
-              param.endToken.next!.type != TokenType.COMMA;
+
           offset = param.end;
+          addBracketPrecedingComma =
+              param.endToken.next!.type != TokenType.COMMA;
+          addEnclosingBrackets = true;
+          addPrecedingComma = false;
         } else {
           final param = namedParams.last;
-          addPreceedingComma = param.endToken.next!.type != TokenType.COMMA;
+
           offset = param.end;
+          addBracketPrecedingComma = false;
+          addEnclosingBrackets = false;
+          addPrecedingComma = param.endToken.next!.type != TokenType.COMMA;
         }
 
         builder.addInsertion(offset, (builder) {
-          if (addBracketPreceedingComma) builder.write(',');
+          if (addBracketPrecedingComma) builder.write(',');
           if (addEnclosingBrackets) builder.write('{');
-          if (addPreceedingComma) builder.write(',');
+          if (addPrecedingComma) builder.write(',');
           if (!variableTypeName.endsWith('?')) builder.write('required ');
           builder.write('$variableTypeName $variableName');
           if (addEnclosingBrackets) builder.write('}');
         });
 
-        _deleteOriginalVariable(varDeclarationStatement, builder, node);
+        _deleteOriginalVariable(node, builder);
       });
     });
   }
@@ -119,27 +123,33 @@ class ExtractVariableToParameter extends DartAssist {
   }
 
   void _deleteOriginalVariable(
-    VariableDeclarationStatement varDeclarationStatement,
-    DartFileEditBuilder builder,
     VariableDeclaration node,
+    DartFileEditBuilder builder,
   ) {
+    final varDeclarationStatement =
+        node.thisOrAncestorOfType<VariableDeclarationStatement>()!;
+
     final variables = varDeclarationStatement.variables.variables;
+
+    final rangeFactory = RangeFactory();
 
     // Delete the entire expression if there's only one variable
     if (variables.length == 1) {
-      builder.addDeletion(varDeclarationStatement.sourceRange);
+      final deletionRange = rangeFactory.deletionRange(varDeclarationStatement);
+      builder.addDeletion(deletionRange);
     } else {
       // We need to also delete the comma in case of multiple variables.
       SourceRange range;
 
       // If the next token is "comma" means the variable is in the middle or
       // at the begining.
-      if (node.endToken.next?.type == TokenType.COMMA) {
-        range = node.sourceRange.getUnion(node.endToken.next!.sourceRange);
+      final nextToken = node.endToken.next!;
+      if (nextToken.type == TokenType.COMMA) {
+        range = rangeFactory.startEnd(node, nextToken);
       } else {
         // Variable is at the last.
-        range =
-            node.sourceRange.getUnion(node.beginToken.previous!.sourceRange);
+        final previousToken = node.beginToken.previous!;
+        range = rangeFactory.startEnd(previousToken, node);
       }
 
       builder.addDeletion(range);
