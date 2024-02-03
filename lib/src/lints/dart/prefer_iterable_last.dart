@@ -104,7 +104,7 @@ class _ReplaceWithIterableLast extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addIndexExpression((node) {
-      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+      if (!analysisError.sourceRange.covers(node.sourceRange)) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with iterable.last',
@@ -121,7 +121,7 @@ class _ReplaceWithIterableLast extends DartFix {
     });
 
     context.registry.addMethodInvocation((node) {
-      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+      if (!analysisError.sourceRange.covers(node.sourceRange)) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with iterable.last',
