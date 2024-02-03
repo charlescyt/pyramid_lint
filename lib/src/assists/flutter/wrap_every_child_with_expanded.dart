@@ -4,6 +4,7 @@ import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../utils/argument_list_extensions.dart';
 import '../../utils/pubspec_extensions.dart';
 import '../../utils/type_checker.dart';
 
@@ -28,26 +29,19 @@ class WrapEveryChildWithExpanded extends DartAssist {
       if (!sourceRange.covers(target)) return;
 
       final type = node.staticType;
-      if (type == null ||
-          !widgetChecker.isSuperTypeOf(type) ||
-          !flexChecker.isAssignableFromType(type)) return;
+      if (type == null || !flexChecker.isAssignableFromType(type)) return;
 
-      final args = node.argumentList.arguments;
-
-      final childrenArg = args
-          .whereType<NamedExpression>()
-          .where((NamedExpression e) => e.name.label.name == 'children')
-          .where((e) => e.expression is ListLiteral)
-          .firstOrNull;
-
+      final childrenArg = node.argumentList.childrenArgument;
       if (childrenArg == null) return;
 
-      final childrenExpression = childrenArg.expression as ListLiteral;
+      final childrenExpression = childrenArg.expression;
+      if (childrenExpression is! ListLiteral) return;
 
       final childrenElements =
           childrenExpression.elements.whereType<InstanceCreationExpression>();
 
       final nonExpandedChildren = childrenElements
+          .where((e) => e.staticType != null)
           .whereNot((e) => expandedChecker.isAssignableFromType(e.staticType!));
 
       if (nonExpandedChildren.isEmpty) return;
@@ -60,9 +54,9 @@ class WrapEveryChildWithExpanded extends DartAssist {
       changeBuilder.addDartFileEdit((builder) {
         for (final child in nonExpandedChildren) {
           if (flexibleChecker.isExactlyType(child.staticType!)) {
-            builder.addReplacement(
+            builder.addSimpleReplacement(
               child.constructorName.sourceRange,
-              (builder) => builder.write('Expanded'),
+              'Expanded',
             );
           } else {
             builder.addSimpleInsertion(
