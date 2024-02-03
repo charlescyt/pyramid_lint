@@ -1,3 +1,4 @@
+import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -13,16 +14,23 @@ class SwapThenElseExpression extends DartAssist {
     SourceRange target,
   ) async {
     context.registry.addIfStatement((node) {
-      if (!node.sourceRange.covers(target)) return;
-
-      final childrenIfStatements = node.childrenIfStatements;
-      final isTargetInsideChildrenIfStatements =
-          childrenIfStatements.any((e) => e.sourceRange.intersects(target));
-      if (isTargetInsideChildrenIfStatements) return;
+      final elseKeyword = node.elseKeyword;
+      if (elseKeyword == null) return;
 
       final thenStatement = node.thenStatement;
       final elseStatement = node.elseStatement;
       if (elseStatement == null) return;
+
+      if (!_isTargetOverIfConditionOrElseKeyword(
+        target: target,
+        node: node,
+      )) return;
+
+      final childrenIfStatements = node.childrenIfStatements;
+      if (_isTargetInsideChildrenIfStatements(
+        target: target,
+        childrenIfStatements: childrenIfStatements,
+      )) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Swap then and else expression',
@@ -38,6 +46,7 @@ class SwapThenElseExpression extends DartAssist {
           elseStatement.sourceRange,
           thenStatement.toSource(),
         );
+        builder.format(node.sourceRange);
       });
     });
 
@@ -46,10 +55,10 @@ class SwapThenElseExpression extends DartAssist {
 
       final childrenConditionalExpressions =
           node.childrenConditionalExpressions;
-      final isTargetInsideChildrenConditionalExpressions =
-          childrenConditionalExpressions
-              .any((e) => e.sourceRange.intersects(target));
-      if (isTargetInsideChildrenConditionalExpressions) return;
+      if (_isTargetInsideChildrenConditionalExpressions(
+        target: target,
+        childrenConditionalExpressions: childrenConditionalExpressions,
+      )) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Swap then and else expression',
@@ -58,13 +67,36 @@ class SwapThenElseExpression extends DartAssist {
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addSimpleReplacement(
-          range.startOffsetEndOffset(
-            node.thenExpression.offset,
-            node.elseExpression.end,
-          ),
+          range.startEnd(node.thenExpression, node.elseExpression),
           '${node.elseExpression.toSource()} : ${node.thenExpression.toSource()}',
         );
       });
     });
+  }
+
+  bool _isTargetOverIfConditionOrElseKeyword({
+    required SourceRange target,
+    required IfStatement node,
+  }) {
+    final ifConditionSourceRange =
+        range.startEnd(node.ifKeyword, node.rightParenthesis);
+    final elseKeywordSourceRange = node.elseKeyword?.sourceRange;
+    return ifConditionSourceRange.covers(target) ||
+        elseKeywordSourceRange?.covers(target) == true;
+  }
+
+  bool _isTargetInsideChildrenIfStatements({
+    required SourceRange target,
+    required Iterable<IfStatement> childrenIfStatements,
+  }) {
+    return childrenIfStatements.any((e) => e.sourceRange.intersects(target));
+  }
+
+  bool _isTargetInsideChildrenConditionalExpressions({
+    required SourceRange target,
+    required Iterable<ConditionalExpression> childrenConditionalExpressions,
+  }) {
+    return childrenConditionalExpressions
+        .any((e) => e.sourceRange.intersects(target));
   }
 }
