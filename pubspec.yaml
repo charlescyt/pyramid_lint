@@ -24,7 +24,7 @@ dependencies:
   analyzer: ">=6.0.0 <7.0.0"
   analyzer_plugin: ^0.11.2
   collection: ^1.17.1
-  custom_lint_builder: ^0.5.3
+  custom_lint_builder: ^0.6.0
   meta: ^1.9.1
   pubspec_parse: ^1.2.3
   yaml: ^3.1.2
