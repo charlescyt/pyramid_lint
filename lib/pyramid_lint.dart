@@ -106,8 +106,8 @@ class _PyramidLinter extends PluginBase {
         SwapThenElseExpression(),
         // Flutter assists
         UseEdgeInsetsZero(),
-        WrapAllChildrenWithExpanded(),
         WrapWithExpanded(),
+        WrapAllChildrenWithExpanded(),
         WrapWithLayoutBuilder(),
         WrapWithStack(),
         WrapWithValueListenableBuilder(),

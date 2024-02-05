@@ -17,9 +17,7 @@ class WrapAllChildrenWithExpandedExample extends StatelessWidget {
         ),
         Row(
           children: [
-            Flexible(
-              child: Text('Is'),
-            ),
+            Text('Is'),
             Text('Great'),
           ],
         ),
