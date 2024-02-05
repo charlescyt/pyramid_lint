@@ -3,6 +3,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'src/assists/dart/invert_boolean_expression.dart';
 import 'src/assists/dart/swap_then_else_expression.dart';
 import 'src/assists/flutter/use_edge_insets_zero.dart';
+import 'src/assists/flutter/wrap_all_children_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
@@ -106,6 +107,7 @@ class _PyramidLinter extends PluginBase {
         // Flutter assists
         UseEdgeInsetsZero(),
         WrapWithExpanded(),
+        WrapAllChildrenWithExpanded(),
         WrapWithLayoutBuilder(),
         WrapWithStack(),
         WrapWithValueListenableBuilder(),
