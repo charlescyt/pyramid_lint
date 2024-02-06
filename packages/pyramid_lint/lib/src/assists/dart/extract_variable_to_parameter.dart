@@ -110,14 +110,14 @@ class ExtractVariableToParameter extends DartAssist {
     final elem = node.declaredElement;
     if (elem == null || elem is! LocalVariableElement) return null;
 
-    final functionDeclaration = node.thisOrAncestorMatching(
+    final declaration = node.thisOrAncestorMatching(
       (e) => e is MethodDeclaration || e is FunctionDeclaration,
     );
 
-    return switch (functionDeclaration) {
-      MethodDeclaration() => functionDeclaration.parameters,
-      FunctionDeclaration() =>
-        functionDeclaration.functionExpression.parameters,
+    return switch (declaration) {
+      MethodDeclaration(:final parameters) => parameters,
+      FunctionDeclaration(:final functionExpression) =>
+        functionExpression.parameters,
       _ => null
     };
   }
