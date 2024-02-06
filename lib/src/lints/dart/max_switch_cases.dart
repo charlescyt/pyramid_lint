@@ -5,6 +5,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class MaxSwitchCasesOptions {
@@ -16,8 +17,8 @@ class MaxSwitchCasesOptions {
 
   final int maxCases;
 
-  factory MaxSwitchCasesOptions.fromJson(Map<String, dynamic>? json) {
-    final maxSwitchCases = switch (json?['max_cases']) {
+  factory MaxSwitchCasesOptions.fromJson(Json json) {
+    final maxSwitchCases = switch (json['max_cases']) {
       final int maxSwitchCases => maxSwitchCases,
       _ => null,
     };
@@ -45,9 +46,8 @@ class MaxSwitchCases extends DartLintRule {
   final MaxSwitchCasesOptions options;
 
   factory MaxSwitchCases.fromConfigs(CustomLintConfigs configs) {
-    final options = MaxSwitchCasesOptions.fromJson(
-      configs.rules[MaxSwitchCases.name]?.json,
-    );
+    final json = configs.rules[MaxSwitchCases.name]?.json ?? {};
+    final options = MaxSwitchCasesOptions.fromJson(json);
 
     return MaxSwitchCases._(options);
   }

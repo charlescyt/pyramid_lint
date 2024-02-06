@@ -4,6 +4,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class MaxLinesForFileOptions {
@@ -15,8 +16,8 @@ class MaxLinesForFileOptions {
 
   final int maxLines;
 
-  factory MaxLinesForFileOptions.fromJson(Map<String, dynamic>? json) {
-    final maxLines = switch (json?['max_lines']) {
+  factory MaxLinesForFileOptions.fromJson(Json json) {
+    final maxLines = switch (json['max_lines']) {
       final int maxLines => maxLines,
       _ => null,
     };
@@ -45,9 +46,8 @@ class MaxLinesForFile extends DartLintRule {
   final MaxLinesForFileOptions options;
 
   factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
-    final options = MaxLinesForFileOptions.fromJson(
-      configs.rules[MaxLinesForFile.name]?.json,
-    );
+    final json = configs.rules[MaxLinesForFile.name]?.json ?? {};
+    final options = MaxLinesForFileOptions.fromJson(json);
 
     return MaxLinesForFile._(options);
   }

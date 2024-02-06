@@ -5,6 +5,7 @@ import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/constants.dart';
 import '../../utils/custom_lint_resolver_extension.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class MaxLinesForFunctionOptions {
@@ -16,8 +17,8 @@ class MaxLinesForFunctionOptions {
 
   final int maxLines;
 
-  factory MaxLinesForFunctionOptions.fromJson(Map<String, dynamic>? json) {
-    final maxLines = switch (json?['max_lines']) {
+  factory MaxLinesForFunctionOptions.fromJson(Json json) {
+    final maxLines = switch (json['max_lines']) {
       final int maxLines => maxLines,
       _ => null,
     };
@@ -46,9 +47,8 @@ class MaxLinesForFunction extends DartLintRule {
   final MaxLinesForFunctionOptions options;
 
   factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
-    final options = MaxLinesForFunctionOptions.fromJson(
-      configs.rules[MaxLinesForFunction.name]?.json,
-    );
+    final json = configs.rules[MaxLinesForFunction.name]?.json ?? {};
+    final options = MaxLinesForFunctionOptions.fromJson(json);
 
     return MaxLinesForFunction._(options);
   }

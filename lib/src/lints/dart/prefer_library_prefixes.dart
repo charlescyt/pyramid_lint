@@ -5,6 +5,7 @@ import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class PreferLibraryPrefixesOptions {
@@ -27,14 +28,13 @@ class PreferLibraryPrefixesOptions {
         ..._libraries,
       ];
 
-  factory PreferLibraryPrefixesOptions.fromJson(Map<String, dynamic>? json) {
-    final includeDefaultLibraries =
-        switch (json?['include_default_libraries']) {
+  factory PreferLibraryPrefixesOptions.fromJson(Json json) {
+    final includeDefaultLibraries = switch (json['include_default_libraries']) {
       final bool includeDefaultLibraries => includeDefaultLibraries,
       _ => null,
     };
 
-    final libraries = switch (json?['libraries']) {
+    final libraries = switch (json['libraries']) {
       final YamlList libraries => libraries.cast<String>(),
       _ => null,
     };
@@ -63,9 +63,8 @@ class PreferLibraryPrefixes extends DartLintRule {
   final PreferLibraryPrefixesOptions options;
 
   factory PreferLibraryPrefixes.fromConfigs(CustomLintConfigs configs) {
-    final options = PreferLibraryPrefixesOptions.fromJson(
-      configs.rules[PreferLibraryPrefixes.name]?.json,
-    );
+    final json = configs.rules[PreferLibraryPrefixes.name]?.json ?? {};
+    final options = PreferLibraryPrefixesOptions.fromJson(json);
 
     return PreferLibraryPrefixes._(options);
   }

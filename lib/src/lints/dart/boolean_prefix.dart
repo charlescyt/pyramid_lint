@@ -6,6 +6,7 @@ import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class BooleanPrefixOptions {
@@ -36,8 +37,8 @@ class BooleanPrefixOptions {
         ...?_validPrefixes,
       ];
 
-  factory BooleanPrefixOptions.fromJson(Map<String, dynamic>? json) {
-    final validPrefixes = switch (json?['valid_prefixes']) {
+  factory BooleanPrefixOptions.fromJson(Json json) {
+    final validPrefixes = switch (json['valid_prefixes']) {
       final YamlList validPrefixes => validPrefixes.cast<String>(),
       _ => null,
     };
@@ -65,9 +66,8 @@ class BooleanPrefix extends DartLintRule {
   final BooleanPrefixOptions options;
 
   factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
-    final options = BooleanPrefixOptions.fromJson(
-      configs.rules[BooleanPrefix.name]?.json,
-    );
+    final json = configs.rules[BooleanPrefix.name]?.json ?? {};
+    final options = BooleanPrefixOptions.fromJson(json);
 
     return BooleanPrefix._(options);
   }

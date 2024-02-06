@@ -6,6 +6,7 @@ import 'package:meta/meta.dart' show immutable;
 
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class AvoidNestedIfOptions {
@@ -17,8 +18,11 @@ class AvoidNestedIfOptions {
 
   final int maxNestingLevel;
 
-  factory AvoidNestedIfOptions.fromJson(Map<String, dynamic>? json) {
-    final maxNestingLevel = json?['max_nesting_level'] as int?;
+  factory AvoidNestedIfOptions.fromJson(Json json) {
+    final maxNestingLevel = switch (json['max_nesting_level']) {
+      final int maxNestingLevel => maxNestingLevel,
+      _ => null,
+    };
 
     return AvoidNestedIfOptions(maxNestingLevel: maxNestingLevel);
   }
@@ -43,8 +47,8 @@ class AvoidNestedIf extends DartLintRule {
   final AvoidNestedIfOptions options;
 
   factory AvoidNestedIf.fromConfigs(CustomLintConfigs configs) {
-    final options =
-        AvoidNestedIfOptions.fromJson(configs.rules[AvoidNestedIf.name]?.json);
+    final json = configs.rules[AvoidNestedIf.name]?.json ?? {};
+    final options = AvoidNestedIfOptions.fromJson(json);
 
     return AvoidNestedIf._(options);
   }

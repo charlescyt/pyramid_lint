@@ -8,6 +8,7 @@ import 'package:yaml/yaml.dart' show YamlList;
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class AvoidReturningWidgetsOptions {
@@ -19,10 +20,8 @@ class AvoidReturningWidgetsOptions {
 
   List<String> get ignoredMethods => [...?_ignoredMethodNames];
 
-  factory AvoidReturningWidgetsOptions.fromJson(
-    Map<String, dynamic>? json,
-  ) {
-    final ignoredMethodNames = switch (json?['ignored_method_names']) {
+  factory AvoidReturningWidgetsOptions.fromJson(Json json) {
+    final ignoredMethodNames = switch (json['ignored_method_names']) {
       final YamlList ignoredMethodNames => ignoredMethodNames.cast<String>(),
       _ => null,
     };
@@ -53,9 +52,8 @@ class AvoidReturningWidgets extends DartLintRule {
   factory AvoidReturningWidgets.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final options = AvoidReturningWidgetsOptions.fromJson(
-      configs.rules[AvoidReturningWidgets.name]?.json,
-    );
+    final json = configs.rules[AvoidReturningWidgets.name]?.json ?? {};
+    final options = AvoidReturningWidgetsOptions.fromJson(json);
 
     return AvoidReturningWidgets._(options);
   }

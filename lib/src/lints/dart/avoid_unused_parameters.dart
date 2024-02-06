@@ -6,6 +6,7 @@ import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 import '../../utils/visitors.dart';
 
 @immutable
@@ -20,8 +21,8 @@ class AvoidUnusedParametersOptions {
         ...?_excludedParameters,
       ];
 
-  factory AvoidUnusedParametersOptions.fromJson(Map<String, dynamic>? json) {
-    final excludedParameters = switch (json?['excluded_parameters']) {
+  factory AvoidUnusedParametersOptions.fromJson(Json json) {
+    final excludedParameters = switch (json['excluded_parameters']) {
       final YamlList excludedParameters => excludedParameters.cast<String>(),
       _ => null,
     };
@@ -49,9 +50,8 @@ class AvoidUnusedParameters extends DartLintRule {
   final AvoidUnusedParametersOptions options;
 
   factory AvoidUnusedParameters.fromConfigs(CustomLintConfigs configs) {
-    final options = AvoidUnusedParametersOptions.fromJson(
-      configs.rules[AvoidUnusedParameters.name]?.json,
-    );
+    final json = configs.rules[AvoidUnusedParameters.name]?.json ?? {};
+    final options = AvoidUnusedParametersOptions.fromJson(json);
 
     return AvoidUnusedParameters._(options);
   }

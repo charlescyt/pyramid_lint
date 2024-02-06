@@ -5,6 +5,7 @@ import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
 import '../../utils/constants.dart';
+import '../../utils/typedef.dart';
 
 @immutable
 class AvoidAbbreviationsInDocCommentsOptions {
@@ -26,10 +27,8 @@ class AvoidAbbreviationsInDocCommentsOptions {
         ...?_abbreviations,
       ];
 
-  factory AvoidAbbreviationsInDocCommentsOptions.fromJson(
-    Map<String, dynamic>? json,
-  ) {
-    final abbreviations = switch (json?['abbreviations']) {
+  factory AvoidAbbreviationsInDocCommentsOptions.fromJson(Json json) {
+    final abbreviations = switch (json['abbreviations']) {
       final YamlList abbreviations => abbreviations.cast<String>(),
       _ => null,
     };
@@ -61,9 +60,9 @@ class AvoidAbbreviationsInDocComments extends DartLintRule {
   factory AvoidAbbreviationsInDocComments.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final options = AvoidAbbreviationsInDocCommentsOptions.fromJson(
-      configs.rules[AvoidAbbreviationsInDocComments.name]?.json,
-    );
+    final json =
+        configs.rules[AvoidAbbreviationsInDocComments.name]?.json ?? {};
+    final options = AvoidAbbreviationsInDocCommentsOptions.fromJson(json);
 
     return AvoidAbbreviationsInDocComments._(options);
   }
