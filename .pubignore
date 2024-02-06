@@ -15,6 +15,5 @@ build/
 !.vscode/dart.code-snippets
 
 # Additional rules to gitignore
-/resources
 /docs
 docs.json

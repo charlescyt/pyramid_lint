@@ -2,9 +2,17 @@
   "name": "Pyramid Lint",
   "description": "Linting tool for Dart and Flutter projects.",
   "theme": "#F7A035",
-  "logo": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png",
-  "logoDark": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png",
-  "favicon": "https://github.com/charlescyt/pyramid_lint/raw/main/resources/favicon.ico",
+  "logo": "/assets/logo-192x192.png",
+  "logoDark": "/assets/logo-192x192.png",
+  "favicon": "/assets/favicon.ico",
+  "zoomImages": "true",
+  "anchors": [
+    {
+      "title": "pub.dev",
+      "icon": "globe",
+      "link": "https://pub.dev/packages/pyramid_lint"
+    }
+  ],
   "sidebar": [
     ["Overview", "/"],
     ["Getting started", "/getting-started"],

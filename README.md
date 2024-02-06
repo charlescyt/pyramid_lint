@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/charlescyt/pyramid_lint/raw/main/resources/logo-192x192.png" alt="logo" />
+  <img src="https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/logo-192x192.png" alt="logo" />
 </p>
 
 <p align="center">
