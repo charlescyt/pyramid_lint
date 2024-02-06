@@ -1,0 +1,14 @@
+include: ../analysis_options.yaml
+
+analyzer:
+  plugins:
+    - custom_lint
+
+custom_lint:
+  rules:
+    - max_lines_for_file:
+      max_lines: 100
+    - max_lines_for_function:
+      max_lines: 50
+    - avoid_returning_widgets:
+      ignored_method_names: ['myMethod']
