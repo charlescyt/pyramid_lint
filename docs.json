@@ -58,9 +58,11 @@
     ]],
     ["Flutter Assists", [
         ["use_edge_insets_zero", "/flutter-assists/use_edge_insets_zero"],
+        ["wrap_all_children_with_expanded", "/flutter-assists/wrap_all_children_with_expanded"],
         ["wrap_with_expanded", "/flutter-assists/wrap_with_expanded"],
         ["wrap_with_layout_builder", "/flutter-assists/wrap_with_layout_builder"],
-        ["wrap_with_stack", "/flutter-assists/wrap_with_stack"]
+        ["wrap_with_stack", "/flutter-assists/wrap_with_stack"],
+        ["wrap_with_value_listenable_builder", "/flutter-assists/wrap_with_value_listenable_builder"]
       ]
     ],
     ["Contributing", "/contributing"]
