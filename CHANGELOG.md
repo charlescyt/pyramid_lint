@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.4.0] - 2024-02-07
 
 ### Added
 
@@ -16,7 +16,7 @@
 ### Fixed
 
 - Fix false positive for `prefer_declaring_const_constructors` when redirecting/super constructor is not a const constructor. ([#29](https://github.com/charlescyt/pyramid_lint/pull/29))
-- Fix incorrect quick fix for prefer_iterable_first and prefer_iterable_last on 2D list. ([#33](https://github.com/charlescyt/pyramid_lint/pull/33))
+- Fix incorrect quick fix for `prefer_iterable_first` and `prefer_iterable_last` on 2D list. ([#33](https://github.com/charlescyt/pyramid_lint/pull/33))
 
 ## [1.3.0] - 2024-01-15
 
