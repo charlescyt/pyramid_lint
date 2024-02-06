@@ -6,14 +6,17 @@
 
 - Lint: `avoid_nested_if` ([#25](https://github.com/charlescyt/pyramid_lint/pull/25))
 - Lint: `max_switch_cases` ([#30](https://github.com/charlescyt/pyramid_lint/pull/30))
+- Assist: `wrap_all_children_with_expanded` ([#27](https://github.com/charlescyt/pyramid_lint/pull/27))
 
 ### Changed
 
 - `avoid_returning_widgets` now ignores static, overridden and extension methods and supports `ignored_method_names` option. ([#24](https://github.com/charlescyt/pyramid_lint/pull/24) [#28](https://github.com/charlescyt/pyramid_lint/pull/28))
+- Bump the minimum custom lint version to 0.6.0.
 
 ### Fixed
 
 - Fix false positive for `prefer_declaring_const_constructors` when redirecting/super constructor is not a const constructor. ([#29](https://github.com/charlescyt/pyramid_lint/pull/29))
+- Fix incorrect quick fix for prefer_iterable_first and prefer_iterable_last on 2D list. ([#33](https://github.com/charlescyt/pyramid_lint/pull/33))
 
 ## [1.3.0] - 2024-01-15
 
