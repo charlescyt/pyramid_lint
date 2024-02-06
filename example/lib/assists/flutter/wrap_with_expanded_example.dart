@@ -8,6 +8,7 @@ class WrapWithExpandedExample extends StatelessWidget {
     return const Row(
       children: [
         Text('Pyramid'),
+        Spacer(),
         Text('Lint'),
       ],
     );

@@ -65,10 +65,23 @@ const flexibleChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const spacerChecker = TypeChecker.fromName(
+  'Spacer',
+  packageName: 'flutter',
+);
+
 const expandedOrFlexibleChecker = TypeChecker.any(
   [
     expandedChecker,
     flexibleChecker,
+  ],
+);
+
+const expandedOrFlexibleOrSpacerChecker = TypeChecker.any(
+  [
+    expandedChecker,
+    flexibleChecker,
+    spacerChecker,
   ],
 );
 

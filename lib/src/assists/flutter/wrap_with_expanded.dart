@@ -22,7 +22,7 @@ class WrapWithExpanded extends DartAssist {
 
       final type = node.staticType;
       if (type == null ||
-          expandedOrFlexibleChecker.isExactlyType(type) ||
+          expandedOrFlexibleOrSpacerChecker.isExactlyType(type) ||
           !widgetChecker.isSuperTypeOf(type)) return;
 
       final parentInstanceCreationExpression =

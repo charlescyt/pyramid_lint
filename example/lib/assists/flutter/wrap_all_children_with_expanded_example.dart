@@ -18,6 +18,7 @@ class WrapAllChildrenWithExpandedExample extends StatelessWidget {
         Row(
           children: [
             Text('Is'),
+            Spacer(),
             Text('Great'),
           ],
         ),

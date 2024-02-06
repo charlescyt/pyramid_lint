@@ -40,10 +40,13 @@ class WrapAllChildrenWithExpanded extends DartAssist {
       final childrenElements =
           childrenExpression.elements.whereType<InstanceCreationExpression>();
 
-      final nonExpandedChildren = childrenElements
+      final expandableChildren = childrenElements
           .where((e) => e.staticType != null)
-          .whereNot((e) => expandedChecker.isAssignableFromType(e.staticType!));
-      if (nonExpandedChildren.isEmpty) return;
+          .whereNot(
+            (e) =>
+                expandedOrFlexibleOrSpacerChecker.isExactlyType(e.staticType!),
+          );
+      if (expandableChildren.isEmpty) return;
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Wrap all children with Expanded',
@@ -51,20 +54,16 @@ class WrapAllChildrenWithExpanded extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        for (final child in nonExpandedChildren) {
-          if (flexibleChecker.isExactlyType(child.staticType!)) {
-            continue;
-          } else {
-            builder.addSimpleInsertion(
-              child.offset,
-              'Expanded(child: ',
-            );
+        for (final child in expandableChildren) {
+          builder.addSimpleInsertion(
+            child.offset,
+            'Expanded(child: ',
+          );
 
-            builder.addSimpleInsertion(
-              child.end,
-              ')',
-            );
-          }
+          builder.addSimpleInsertion(
+            child.end,
+            ')',
+          );
         }
       });
     });
