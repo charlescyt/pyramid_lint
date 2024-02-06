@@ -42,13 +42,13 @@ jobs:
         run: flutter pub outdated
 
       - name: Check formating
-        run: dart format --output=none --set-exit-if-changed ./lib ./example
+        run: dart format --output=none --set-exit-if-changed ./lib ./test
 
       - name: Analyze
-        run: flutter analyze ./lib ./example
+        run: flutter analyze ./lib ./test
 
       - name: Install custom_lint
         run: dart pub global activate custom_lint
 
       - name: Run custom_lint
-        run: custom_lint ./example
+        run: custom_lint ./test

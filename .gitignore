@@ -13,3 +13,6 @@ build/
 
 # Exceptions to above rules.
 !.vscode/dart.code-snippets
+
+# Log files
+*.log
