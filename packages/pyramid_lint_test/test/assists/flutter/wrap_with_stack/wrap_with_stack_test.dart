@@ -9,8 +9,7 @@ void main() {
   testGolden(
     'Wrap with Stack',
     'assists/flutter/wrap_with_stack/wrap_with_stack.diff',
-    sourcePath:
-        'test/assists/flutter/wrap_with_stack/wrap_with_stack.dart',
+    sourcePath: 'test/assists/flutter/wrap_with_stack/wrap_with_stack.dart',
     (result) async {
       final assist = WrapWithStack();
       final pubspec = Pubspec(
