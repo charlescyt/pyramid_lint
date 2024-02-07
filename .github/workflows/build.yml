@@ -14,9 +14,12 @@ on:
       - "**.md"
 
 jobs:
-  build:
+  pyramid_lint:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ./packages/pyramid_lint
 
     steps:
       - name: Git Checkout
@@ -36,21 +39,64 @@ jobs:
         run: flutter --version
 
       - name: Install Dependencies
-        run: |
-          flutter pub get
-          flutter pub get --directory=test
+        run: flutter pub get
 
       - name: Show outdated packages
         run: flutter pub outdated
 
       - name: Check formating
-        run: dart format --output=none --set-exit-if-changed ./lib ./test
+        run: dart format --output=none --set-exit-if-changed ./lib
 
       - name: Analyze
-        run: flutter analyze ./lib ./test
+        run: flutter analyze
 
       - name: Install custom_lint
         run: dart pub global activate custom_lint
 
       - name: Run custom_lint
         run: custom_lint ./test
+
+  pyramid_lint_test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ./packages/pyramid_lint_test
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Flutter and Dart SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Show Dart SDK version
+        run: dart --version
+
+      - name: Show Flutter SDK version
+        run: flutter --version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Show outdated packages
+        run: flutter pub outdated
+
+      - name: Check formating
+        run: dart format --output=none --set-exit-if-changed ./test
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Install custom_lint
+        run: dart pub global activate custom_lint
+
+      - name: Run custom_lint
+        run: custom_lint
+
+      # - name: Run tests
+      #   run: dart test

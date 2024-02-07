@@ -33,7 +33,7 @@ Suggestions and requests for improving the documentation are welcome! If you hav
 - Make your changes and commit them to your branch.
 - Check formatting with `dart format .`.
 - Analyze your code with `dart analyze .`.
-- Analyze your code with `dart run custom_lint example`.
+- Analyze your code with `dart run custom_lint .`.
 - Commit and push your changes to your fork.
 - Create a pull request to the `main` branch of the repository.
 
