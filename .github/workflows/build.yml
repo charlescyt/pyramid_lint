@@ -50,12 +50,6 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
-      - name: Install custom_lint
-        run: dart pub global activate custom_lint
-
-      - name: Run custom_lint
-        run: custom_lint ./test
-
   pyramid_lint_test:
     runs-on: ubuntu-latest
     timeout-minutes: 30
