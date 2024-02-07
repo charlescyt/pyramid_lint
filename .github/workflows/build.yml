@@ -92,5 +92,5 @@ jobs:
       - name: Run custom_lint
         run: custom_lint
 
-      # - name: Run tests
-      #   run: dart test
+      - name: Run tests
+        run: dart test

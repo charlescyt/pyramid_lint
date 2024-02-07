@@ -1,0 +1,24 @@
+Message: `Invert boolean expression`
+Priority: 80
+Diff for file `test/assists/dart/invert_boolean_expression/invert_boolean_expression.dart:4`:
+```
+
+void example(int number) {
+-   if (number == 0) {
++   if (number != 0) {
+    print('The number is zero');
+  }
+```
+---
+Message: `Invert boolean expression`
+Priority: 80
+Diff for file `test/assists/dart/invert_boolean_expression/invert_boolean_expression.dart:8`:
+```
+  }
+
+-   if (number > 0) {
++   if (number <= 0) {
+    print('The number is positive');
+  }
+```
+---

@@ -1,0 +1,58 @@
+Message: `Wrap with ValueListenableBuilder`
+Priority: 29
+Diff for file `test/assists/flutter/wrap_with_value_listenable_builder/wrap_with_value_listenable_builder.dart:21`:
+```
+  @override
+  Widget build(BuildContext context) {
+-     return Column(
+-       children: [
+-         Text(
+-           _nameController.value,
+-           style: const TextStyle(
+-             fontSize: 20,
+-             fontWeight: FontWeight.bold,
+-           ),
+-         ),
+-         const Text('Lint'),
+-       ],
+-     );
++     return ValueListenableBuilder(valueListenable: _nameController,builder: (context, value, child) { return Column(
++       children: [
++         Text(
++           _nameController.value,
++           style: const TextStyle(
++             fontSize: 20,
++             fontWeight: FontWeight.bold,
++           ),
++         ),
++         const Text('Lint'),
++       ],
++     ); },);
+  }
+}
+```
+---
+Message: `Wrap with ValueListenableBuilder`
+Priority: 29
+Diff for file `test/assists/flutter/wrap_with_value_listenable_builder/wrap_with_value_listenable_builder.dart:23`:
+```
+    return Column(
+      children: [
+-         Text(
+-           _nameController.value,
+-           style: const TextStyle(
+-             fontSize: 20,
+-             fontWeight: FontWeight.bold,
+-           ),
+-         ),
++         ValueListenableBuilder(valueListenable: _nameController,builder: (context, value, child) { return Text(
++           _nameController.value,
++           style: const TextStyle(
++             fontSize: 20,
++             fontWeight: FontWeight.bold,
++           ),
++         ); },),
+        const Text('Lint'),
+      ],
+```
+---

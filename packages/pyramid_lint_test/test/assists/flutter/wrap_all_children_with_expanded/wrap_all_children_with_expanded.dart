@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class WrapAllChildrenWithExpandedExample extends StatelessWidget {
-  const WrapAllChildrenWithExpandedExample({super.key});
+class A extends StatelessWidget {
+  const A({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +12,7 @@ class WrapAllChildrenWithExpandedExample extends StatelessWidget {
             Flexible(
               child: Text('Pyramid'),
             ),
+            Spacer(),
             Text('Lint'),
           ],
         ),

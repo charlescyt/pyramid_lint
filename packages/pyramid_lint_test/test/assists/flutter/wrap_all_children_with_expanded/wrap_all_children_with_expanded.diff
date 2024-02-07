@@ -1,0 +1,54 @@
+Message: `Wrap all children with Expanded`
+Priority: 27
+Diff for file `test/assists/flutter/wrap_all_children_with_expanded/wrap_all_children_with_expanded.dart:10`:
+```
+    return const Column(
+      children: [
+-         Row(
+-           children: [
+-             Flexible(
+-               child: Text('Pyramid'),
+-             ),
+-             Spacer(),
+-             Text('Lint'),
+-           ],
+-         ),
+-         Row(
+-           children: [
+-             Text('Is'),
+-             Spacer(),
+-             Text('Great'),
+-           ],
+-         ),
++         Expanded(child: Row(
++           children: [
++             Flexible(
++               child: Text('Pyramid'),
++             ),
++             Spacer(),
++             Text('Lint'),
++           ],
++         )),
++         Expanded(child: Row(
++           children: [
++             Text('Is'),
++             Spacer(),
++             Text('Great'),
++           ],
++         )),
+      ],
+    );
+```
+---
+Message: `Wrap all children with Expanded`
+Priority: 27
+Diff for file `test/assists/flutter/wrap_all_children_with_expanded/wrap_all_children_with_expanded.dart:16`:
+```
+            ),
+            Spacer(),
+-             Text('Lint'),
++             Expanded(child: Text('Lint')),
+          ],
+        ),
+```
+---

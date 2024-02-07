@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class WrapWithStackExample extends StatelessWidget {
-  const WrapWithStackExample({super.key});
+class A extends StatelessWidget {
+  const A({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,27 @@
+Message: `Swap then and else expression`
+Priority: 80
+Diff for file `test/assists/dart/swap_then_else_expression/swap_then_else_expression.dart:5`:
+```
+void example(bool condition) {
+  if (condition) {
+-     print('then');
+-   } else {
+-     print('else');
++     print('else');
++   } else {
++     print('then');
+  }
+
+```
+---
+Message: `Swap then and else expression`
+Priority: 80
+Diff for file `test/assists/dart/swap_then_else_expression/swap_then_else_expression.dart:10`:
+```
+  }
+
+-   final text = condition ? 'then' : 'else';
++   final text = condition ? 'else' : 'then';
+}
+```
+---

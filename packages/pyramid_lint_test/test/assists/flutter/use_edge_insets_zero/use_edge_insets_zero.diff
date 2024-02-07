@@ -1,0 +1,45 @@
+Message: `Replace with EdgeInsets.zero`
+Priority: 80
+Diff for file `test/assists/flutter/use_edge_insets_zero/use_edge_insets_zero.dart:5`:
+```
+import 'package:flutter/painting.dart';
+
+- const edgeInsets1 = EdgeInsets.all(0);
++ const edgeInsets1 = EdgeInsets.zero;
+const edgeInsets2 = EdgeInsets.fromLTRB(0, 0, 0, 0);
+const edgeInsets4 = EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
+```
+---
+Message: `Replace with EdgeInsets.zero`
+Priority: 80
+Diff for file `test/assists/flutter/use_edge_insets_zero/use_edge_insets_zero.dart:6`:
+```
+
+const edgeInsets1 = EdgeInsets.all(0);
+- const edgeInsets2 = EdgeInsets.fromLTRB(0, 0, 0, 0);
++ const edgeInsets2 = EdgeInsets.zero;
+const edgeInsets4 = EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
+const edgeInsets3 = EdgeInsets.symmetric(vertical: 0, horizontal: 0);
+```
+---
+Message: `Replace with EdgeInsets.zero`
+Priority: 80
+Diff for file `test/assists/flutter/use_edge_insets_zero/use_edge_insets_zero.dart:7`:
+```
+const edgeInsets1 = EdgeInsets.all(0);
+const edgeInsets2 = EdgeInsets.fromLTRB(0, 0, 0, 0);
+- const edgeInsets4 = EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
++ const edgeInsets4 = EdgeInsets.zero;
+const edgeInsets3 = EdgeInsets.symmetric(vertical: 0, horizontal: 0);
+```
+---
+Message: `Replace with EdgeInsets.zero`
+Priority: 80
+Diff for file `test/assists/flutter/use_edge_insets_zero/use_edge_insets_zero.dart:8`:
+```
+const edgeInsets2 = EdgeInsets.fromLTRB(0, 0, 0, 0);
+const edgeInsets4 = EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 0);
+- const edgeInsets3 = EdgeInsets.symmetric(vertical: 0, horizontal: 0);
++ const edgeInsets3 = EdgeInsets.zero;
+```
+---

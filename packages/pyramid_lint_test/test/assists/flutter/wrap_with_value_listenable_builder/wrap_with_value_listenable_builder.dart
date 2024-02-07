@@ -1,15 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-class WrapWithValueListenableBuilderExample extends StatefulWidget {
-  const WrapWithValueListenableBuilderExample({super.key});
+class A extends StatefulWidget {
+  const A({super.key});
 
   @override
-  State<WrapWithValueListenableBuilderExample> createState() =>
-      _WrapWithValueListenableBuilderExampleState();
+  State<A> createState() => _AState();
 }
 
-class _WrapWithValueListenableBuilderExampleState
-    extends State<WrapWithValueListenableBuilderExample> {
+class _AState extends State<A> {
   late final _nameController = ValueNotifier<String>('Pyramid');
 
   @override

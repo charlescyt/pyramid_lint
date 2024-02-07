@@ -1,0 +1,12 @@
+Message: `Wrap with Expanded`
+Priority: 27
+Diff for file `test/assists/flutter/wrap_with_expanded/wrap_with_expanded.dart:10`:
+```
+    return const Row(
+      children: [
+-         Text('Pyramid'),
++         Expanded(child: Text('Pyramid'),),
+        Spacer(),
+        Text('Lint'),
+```
+---
