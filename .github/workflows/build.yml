@@ -36,7 +36,9 @@ jobs:
         run: flutter --version
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
+          flutter pub get --directory=test
 
       - name: Show outdated packages
         run: flutter pub outdated
