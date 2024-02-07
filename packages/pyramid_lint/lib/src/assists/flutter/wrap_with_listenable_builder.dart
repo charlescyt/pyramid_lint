@@ -3,6 +3,7 @@ import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
@@ -17,7 +18,16 @@ class WrapWithListenableBuilder extends DartAssist {
   ) async {
     if (!context.pubspec.isFlutterProject) return;
 
-    //TODO(Sam): Check for flutter version. ListenableBuilder is only available after version 3.10
+    // Its not neccessary to have flutter mentioned in the sdk block.
+    final flutterVersion = context.pubspec.environment?['flutter'];
+    final minimumRequiredVersion = Version(3, 10, 0);
+
+    switch (flutterVersion) {
+      case final Version version when version < minimumRequiredVersion:
+      case VersionRange(:final min)
+          when min != null && min < minimumRequiredVersion:
+        return;
+    }
 
     context.registry.addInstanceCreationExpression((node) {
       final sourceRange = switch (node.keyword) {
