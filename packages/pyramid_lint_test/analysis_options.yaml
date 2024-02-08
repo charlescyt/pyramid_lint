@@ -20,3 +20,5 @@ custom_lint:
       ignored_method_names: ['myMethod']
     - max_switch_cases:
       max_cases: 5
+    - prefer_library_prefixes:
+      libraries: ["dart:io"]

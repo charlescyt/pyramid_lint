@@ -1,0 +1,13 @@
+Message: `Return the value immediately.`
+Priority: 80
+Diff for file `test/lints/dart/prefer_immediate_return/fix/prefer_immediate_return.dart:2`:
+```
+int sum(int a, int b) {
+-   final sum = a + b;
+-   // expect_lint: prefer_immediate_return
+-   return sum;
++   // expect_lint: prefer_immediate_return
++   return a + b;
+}
+```
+---

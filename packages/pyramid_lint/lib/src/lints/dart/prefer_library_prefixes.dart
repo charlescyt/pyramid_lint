@@ -47,7 +47,7 @@ class PreferLibraryPrefixesOptions {
 }
 
 class PreferLibraryPrefixes extends DartLintRule {
-  const PreferLibraryPrefixes._(this.options)
+  const PreferLibraryPrefixes(this.options)
       : super(
           code: const LintCode(
             name: name,
@@ -66,7 +66,7 @@ class PreferLibraryPrefixes extends DartLintRule {
     final json = configs.rules[PreferLibraryPrefixes.name]?.json ?? {};
     final options = PreferLibraryPrefixesOptions.fromJson(json);
 
-    return PreferLibraryPrefixes._(options);
+    return PreferLibraryPrefixes(options);
   }
 
   @override

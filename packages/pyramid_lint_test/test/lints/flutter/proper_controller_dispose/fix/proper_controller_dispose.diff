@@ -1,0 +1,123 @@
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:22`:
+```
+  final _textEditingController = TextEditingController();
+
+-   @override
++   
++   @override
++   void dispose() {
++     _textEditingController.dispose();
++     super.dispose();
++   }
++ 
++ @override
+  Widget build(BuildContext context) {
+    return Container();
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _controller2.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _scrollController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _pageController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _tabController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _searchController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _undoHistoryController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _customController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+```
+  @override
+  void dispose() {
+-     _controller1.dispose();
++     _customCounterController.dispose();
++     _controller1.dispose();
+    super.dispose();
+  }
+```
+---

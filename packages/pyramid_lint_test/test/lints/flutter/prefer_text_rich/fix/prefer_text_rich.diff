@@ -1,0 +1,14 @@
+Message: `Replace with Text.rich`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_text_rich/fix/prefer_text_rich.dart:4`:
+```
+
+// expect_lint: prefer_text_rich
+- final text = RichText(
+-   text: const TextSpan(
++ final text = Text.rich(
++    const TextSpan(
+    text: 'Pyramid',
+    children: [
+```
+---

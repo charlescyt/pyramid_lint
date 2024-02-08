@@ -1,0 +1,10 @@
+Message: `Add const keyword`
+Priority: 80
+Diff for file `test/lints/flutter/proper_from_environment/fix/proper_from_environment.dart:4`:
+```
+
+// expect_lint: proper_from_environment
+- final string = String.fromEnvironment('String');
++ final string = const String.fromEnvironment('String');
+```
+---

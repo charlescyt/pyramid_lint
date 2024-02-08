@@ -1,0 +1,21 @@
+Message: `Replace with VoidCallback`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_void_callback/fix/prefer_void_callback.dart:2`:
+```
+// expect_lint: prefer_void_callback
+- typedef A = void Function();
++ typedef A = VoidCallback;
+
+// expect_lint: prefer_void_callback
+```
+---
+Message: `Replace with VoidCallback?`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_void_callback/fix/prefer_void_callback.dart:5`:
+```
+
+// expect_lint: prefer_void_callback
+- typedef B = void Function()?;
++ typedef B = VoidCallback?;
+```
+---

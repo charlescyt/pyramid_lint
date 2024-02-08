@@ -1,0 +1,23 @@
+Message: `Replace with non-nullable type`
+Priority: 80
+Diff for file `test/lints/dart/unnecessary_nullable_return_type/fix/unnecessary_nullable_return_type.dart:2`:
+```
+// expect_lint: unnecessary_nullable_return_type
+- int? sum(int a, int b) {
++ int sum(int a, int b) {
+  return a + b;
+}
+```
+---
+Message: `Replace with non-nullable type`
+Priority: 80
+Diff for file `test/lints/dart/unnecessary_nullable_return_type/fix/unnecessary_nullable_return_type.dart:8`:
+```
+class A {
+  // expect_lint: unnecessary_nullable_return_type
+-   int? sum(int a, int b) => a + b;
++   int sum(int a, int b) => a + b;
+
+  String? method(bool isNull) {
+```
+---

@@ -1,0 +1,13 @@
+Message: `Add new line before return statement.`
+Priority: 80
+Diff for file `test/lints/dart/prefer_new_line_before_return/fix/prefer_new_line_before_return.dart:4`:
+```
+  if (isTrue) {
+    return 'true';
+-   } // expect_lint: prefer_new_line_before_return
++   }
++  // expect_lint: prefer_new_line_before_return
+  return 'false';
+}
+```
+---

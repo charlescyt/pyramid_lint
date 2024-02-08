@@ -1,0 +1,10 @@
+Message: `Replace with BorderRadius.all`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_border_radius_all/fix/prefer_border_radius_all.dart:4`:
+```
+
+// expect_lint: prefer_border_radius_all
+- final borderRadius = BorderRadius.circular(8);
++ final borderRadius = BorderRadius.all(Radius.circular(8));
+```
+---

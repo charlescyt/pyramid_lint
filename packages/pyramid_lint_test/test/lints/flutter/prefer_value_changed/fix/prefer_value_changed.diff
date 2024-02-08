@@ -1,0 +1,21 @@
+Message: `Replace with ValueChanged<int>`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_value_changed/fix/prefer_value_changed.dart:2`:
+```
+// expect_lint: prefer_value_changed
+- typedef A = void Function(int index);
++ typedef A = ValueChanged<int>;
+// expect_lint: prefer_value_changed
+typedef B = void Function(int index)?;
+```
+---
+Message: `Replace with ValueChanged<int>?`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_value_changed/fix/prefer_value_changed.dart:4`:
+```
+typedef A = void Function(int index);
+// expect_lint: prefer_value_changed
+- typedef B = void Function(int index)?;
++ typedef B = ValueChanged<int>?;
+```
+---

@@ -1,0 +1,18 @@
+Message: `Place super.dispose() at the end of the dispose method`
+Priority: 80
+Diff for file `test/lints/flutter/proper_super_dispose/fix/proper_super_dispose.dart:16`:
+```
+  void dispose() {
+    // expect_lint: proper_super_dispose
+-     super.dispose();
+-     _dispose();
+-     _dispose2();
+-     _dispose3();
++     _dispose();
++     _dispose2();
++     _dispose3();
++     super.dispose();
+  }
+
+```
+---

@@ -1,0 +1,13 @@
+Message: `Replace with Align`
+Priority: 80
+Diff for file `test/lints/flutter/avoid_single_child_in_flex/fix/avoid_single_child_in_flex.dart:4`:
+```
+
+// expect_lint: avoid_single_child_in_flex
+- const singleChild = Column(
+-   children: [
+-     Placeholder(),
+-   ],
++ const singleChild = Align(child: Placeholder(),);
+```
+---

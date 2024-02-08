@@ -1,0 +1,34 @@
+Message: `Add prefix to the library`
+Priority: 80
+Diff for file `test/lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.dart:4`:
+```
+
+// expect_lint: prefer_library_prefixes
+- import 'dart:developer';
++ import 'dart:developer' as developer;
+// expect_lint: prefer_library_prefixes
+import 'dart:io';
+```
+---
+Message: `Add prefix to the library`
+Priority: 80
+Diff for file `test/lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.dart:6`:
+```
+import 'dart:developer';
+// expect_lint: prefer_library_prefixes
+- import 'dart:io';
++ import 'dart:io' as io;
+// expect_lint: prefer_library_prefixes
+import 'dart:math';
+```
+---
+Message: `Add prefix to the library`
+Priority: 80
+Diff for file `test/lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.dart:8`:
+```
+import 'dart:io';
+// expect_lint: prefer_library_prefixes
+- import 'dart:math';
++ import 'dart:math' as math;
+```
+---

@@ -1,0 +1,29 @@
+Message: `Replace with Spacer`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_spacer/fix/prefer_spacer.dart:6`:
+```
+  children: [
+    // expect_lint: prefer_spacer
+-     const Expanded(
+-       child: SizedBox(),
+-     ),
++     const Spacer(),
+    // expect_lint: prefer_spacer
+    Expanded(
+```
+---
+Message: `Replace with Spacer`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_spacer/fix/prefer_spacer.dart:10`:
+```
+    ),
+    // expect_lint: prefer_spacer
+-     Expanded(
+-       flex: 2,
+-       child: Container(),
+-     ),
++     Spacer(flex: 2),
+  ],
+);
+```
+---

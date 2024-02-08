@@ -1,0 +1,34 @@
+Message: `Put doc comment before annotations.`
+Priority: 80
+Diff for file `test/lints/dart/doc_comments_before_annotations/fix/doc_comments_before_annotations.dart:3`:
+```
+import 'package:flutter/foundation.dart' show immutable;
+
+- @immutable
+- // expect_lint: doc_comments_before_annotations
+- /// Some documentation.
++ /// Some documentation.
++ @immutable
+class A {}
+
+```
+---
+Message: `Put doc comment before annotations.`
+Priority: 80
+Diff for file `test/lints/dart/doc_comments_before_annotations/fix/doc_comments_before_annotations.dart:8`:
+```
+class A {}
+
+- @immutable
+- // expect_lint: doc_comments_before_annotations
+- /// Some documentation.
+- ///
+- /// More documentation.
++ /// Some documentation.
++ ///
++ /// More documentation.
++ @immutable
+@Deprecated('Use A instead')
+class B {}
+```
+---

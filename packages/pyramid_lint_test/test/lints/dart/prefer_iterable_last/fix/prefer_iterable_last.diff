@@ -1,0 +1,35 @@
+Message: `Replace with iterable.last`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_last/fix/prefer_iterable_last.dart:6`:
+```
+
+// expect_lint: prefer_iterable_last
+- final a = numbers[numbers.length - 1];
++ final a = numbers.last;
+
+// expect_lint: prefer_iterable_last
+```
+---
+Message: `Replace with iterable.last`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_last/fix/prefer_iterable_last.dart:9`:
+```
+
+// expect_lint: prefer_iterable_last
+- final b = numbers.elementAt(numbers.length - 1);
++ final b = numbers.last;
+
+final listOfLists = [
+```
+---
+Message: `Replace with iterable.last`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_last/fix/prefer_iterable_last.dart:19`:
+```
+void fn() {
+  // expect_lint: prefer_iterable_last
+-   final value = listOfLists[listOfLists.length - 1][1];
++   final value = listOfLists.last[1];
+}
+```
+---

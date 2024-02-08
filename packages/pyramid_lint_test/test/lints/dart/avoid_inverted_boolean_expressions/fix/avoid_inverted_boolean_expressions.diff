@@ -1,0 +1,35 @@
+Message: `Replace with positive boolean expression`
+Priority: 80
+Diff for file `test/lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.dart:5`:
+```
+void example(int number) {
+  // expect_lint: avoid_inverted_boolean_expressions
+-   if (!(number == 0)) {}
++   if (number != 0) {}
+
+  // expect_lint: avoid_inverted_boolean_expressions
+```
+---
+Message: `Replace with positive boolean expression`
+Priority: 80
+Diff for file `test/lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.dart:8`:
+```
+
+  // expect_lint: avoid_inverted_boolean_expressions
+-   if (!(number > 0)) {}
++   if (number <= 0) {}
+
+  // expect_lint: avoid_inverted_boolean_expressions
+```
+---
+Message: `Replace with positive boolean expression`
+Priority: 80
+Diff for file `test/lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.dart:11`:
+```
+
+  // expect_lint: avoid_inverted_boolean_expressions
+-   final anotherNumber = !(number == 0) ? 1 : 2;
++   final anotherNumber = number != 0 ? 2 : 1;
+}
+```
+---

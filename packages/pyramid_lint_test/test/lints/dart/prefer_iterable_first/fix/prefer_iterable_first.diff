@@ -1,0 +1,35 @@
+Message: `Replace with iterable.first`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_first/fix/prefer_iterable_first.dart:6`:
+```
+
+// expect_lint: prefer_iterable_first
+- final a = numbers[0];
++ final a = numbers.first;
+
+// expect_lint: prefer_iterable_first
+```
+---
+Message: `Replace with iterable.first`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_first/fix/prefer_iterable_first.dart:9`:
+```
+
+// expect_lint: prefer_iterable_first
+- final b = numbers.elementAt(0);
++ final b = numbers.first;
+
+final listOfLists = [
+```
+---
+Message: `Replace with iterable.first`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_first/fix/prefer_iterable_first.dart:19`:
+```
+void fn() {
+  // expect_lint: prefer_iterable_first
+-   final value = listOfLists[0][1];
++   final value = listOfLists.first[1];
+}
+```
+---

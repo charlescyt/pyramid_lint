@@ -1,0 +1,15 @@
+Message: `Replace with Border.fromBorderSide`
+Priority: 80
+Diff for file `test/lints/flutter/prefer_border_from_border_side/fix/prefer_border_from_border_side.dart:4`:
+```
+
+// expect_lint: prefer_border_from_border_side
+- final border = Border.all(
+-   width: 1,
+-   style: BorderStyle.solid,
++ final border = Border.fromBorderSide(BorderSide(
++   width: 1,
++   style: BorderStyle.solid,
++ ),);
+```
+---

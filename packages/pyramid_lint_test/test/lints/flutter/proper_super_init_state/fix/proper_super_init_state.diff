@@ -1,0 +1,20 @@
+Message: `Put super.initState() at the start of the initState method`
+Priority: 80
+Diff for file `test/lints/flutter/proper_super_init_state/fix/proper_super_init_state.dart:15`:
+```
+  @override
+  void initState() {
+-     _init();
+-     _init2();
+-     _init3();
+-     // expect_lint: proper_super_init_state
+-     super.initState();
++     super.initState();
++     _init();
++     _init2();
++     // expect_lint: proper_super_init_state
++     _init3();
+  }
+
+```
+---
