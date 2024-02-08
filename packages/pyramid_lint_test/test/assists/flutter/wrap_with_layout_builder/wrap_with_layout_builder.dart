@@ -5,6 +5,12 @@ class A extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return LayoutBuilder(
+      builder: (_, __) {
+        return const Center(
+          child: Placeholder(),
+        );
+      },
+    );
   }
 }

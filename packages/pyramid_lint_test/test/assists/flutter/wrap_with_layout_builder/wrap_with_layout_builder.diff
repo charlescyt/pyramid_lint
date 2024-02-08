@@ -1,12 +1,12 @@
 Message: `Wrap with LayoutBuilder`
 Priority: 29
-Diff for file `test/assists/flutter/wrap_with_layout_builder/wrap_with_layout_builder.dart:8`:
+Diff for file `test/assists/flutter/wrap_with_layout_builder/wrap_with_layout_builder.dart:11`:
 ```
-  @override
-  Widget build(BuildContext context) {
--     return Container();
-+     return LayoutBuilder(builder: (context, constraints) { return Container(); },);
-  }
-}
+      builder: (_, __) {
+        return const Center(
+-           child: Placeholder(),
++           child: LayoutBuilder(builder: (context, constraints) { return Placeholder(); },),
+        );
+      },
 ```
 ---

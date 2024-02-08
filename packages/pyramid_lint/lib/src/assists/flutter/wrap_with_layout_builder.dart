@@ -4,6 +4,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
+import '../../utils/utils.dart';
 
 class WrapWithLayoutBuilder extends DartAssist {
   @override
@@ -21,6 +22,17 @@ class WrapWithLayoutBuilder extends DartAssist {
 
       final type = node.staticType;
       if (type == null || !widgetChecker.isSuperTypeOf(type)) return;
+
+      if (layoutBuilderChecker.isExactlyType(type)) return;
+
+      final parentWidget = findParentWidget(node);
+      if (parentWidget != null) {
+        final parentType = parentWidget.staticType;
+        if (parentType != null &&
+            layoutBuilderChecker.isExactlyType(parentType)) {
+          return;
+        }
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Wrap with LayoutBuilder',

@@ -50,6 +50,11 @@ const borderRadiusChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const layoutBuilderChecker = TypeChecker.fromName(
+  'LayoutBuilder',
+  packageName: 'flutter',
+);
+
 const flexChecker = TypeChecker.fromName(
   'Flex',
   packageName: 'flutter',

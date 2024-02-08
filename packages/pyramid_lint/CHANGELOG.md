@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- `wrap_with_layout_builder` will not be available if the selected widget is a `LayoutBuilder` or already wrapped with a `LayoutBuilder`.
+
 ## [1.4.0] - 2024-02-07
 
 ### Added
@@ -155,6 +161,7 @@
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
 
+[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...HEAD
 [1.4.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.1.0...v1.2.0

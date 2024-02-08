@@ -19,10 +19,24 @@ void main() {
       );
 
       final changes = [
-        // Container
+        // LayoutBuilder
         ...await assist.testRun(
           result,
           const SourceRange(166, 0),
+          pubspec: pubspec,
+        ),
+
+        // Center
+        ...await assist.testRun(
+          result,
+          const SourceRange(225, 0),
+          pubspec: pubspec,
+        ),
+
+        // Placeholder
+        ...await assist.testRun(
+          result,
+          const SourceRange(252, 0),
           pubspec: pubspec,
         ),
       ];
