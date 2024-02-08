@@ -3,6 +3,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/element.dart';
 
+import 'type_checker.dart';
+
 bool isZeroExpression(Expression e) {
   if (e is IntegerLiteral) return e.value == 0;
   if (e is DoubleLiteral) return e.value == 0.0;
@@ -34,4 +36,17 @@ AstNode? getAstNodeFromElement(Element element) {
       parsedLibraryResult.getElementDeclaration(element);
 
   return elementDeclarationResult?.node;
+}
+
+InstanceCreationExpression? findParentWidget(InstanceCreationExpression expr) {
+  final parentExpr =
+      expr.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
+  if (parentExpr == null) return null;
+
+  final parentType = parentExpr.staticType;
+  if (parentType == null || !widgetChecker.isSuperTypeOf(parentType)) {
+    return null;
+  }
+
+  return parentExpr;
 }
