@@ -1,15 +1,15 @@
 # Changelog
 
-## [Unreleased]
+## [1.5.0] - 2024-02-14
 
 ### Added
 
-- Lint: `prefer_iterable_any`
-- Lint: `prefer_iterable_every`
+- Lint: `prefer_iterable_any` ([#36](https://github.com/charlescyt/pyramid_lint/pull/36))
+- Lint: `prefer_iterable_every` ([#36](https://github.com/charlescyt/pyramid_lint/pull/36))
 
 ### Changed
 
-- `wrap_with_layout_builder` will not be available if the selected widget is a `LayoutBuilder` or already wrapped with a `LayoutBuilder`.
+- `wrap_with_layout_builder` will not be available if the selected widget is a `LayoutBuilder` or already wrapped with a `LayoutBuilder`. ([#35](https://github.com/charlescyt/pyramid_lint/pull/35))
 
 ## [1.4.0] - 2024-02-07
 
@@ -71,10 +71,10 @@
 
 ### Added
 
-- Lint: avoid_unused_parameters`
-- Lint: prefer_async_await`
-- Lint: prefer_new_line_before_return`
-- Lint: unnecessary_nullable_return_type`
+- Lint: `avoid_unused_parameters`
+- Lint: `prefer_async_await`
+- Lint: `prefer_new_line_before_return`
+- Lint: `unnecessary_nullable_return_type`
 
 ### Fixed
 
@@ -166,7 +166,7 @@
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
 
-[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...HEAD
+[1.5.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.1.0...v1.2.0
