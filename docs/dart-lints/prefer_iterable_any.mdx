@@ -1,0 +1,28 @@
+# prefer_iterable_any
+
+- Severity: info ℹ️
+- Quick fix: ✅
+
+## Details
+
+**DO** use `iterable.any` instead of `iterable.where().isNotEmpty`.
+
+```dart title="Bad"
+const numbers = [1, 2, 3];
+final hasPositiveNumber = numbers.where((number) => number > 0).isNotEmpty;
+```
+
+```dart title="Good"
+const numbers = [1, 2, 3];
+final hasPositiveNumber = numbers.any((number) => number > 0);
+```
+
+## Usage
+
+To enable the `prefer_iterable_any` rule, add `prefer_iterable_any` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_iterable_any
+```

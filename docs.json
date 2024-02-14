@@ -34,6 +34,8 @@
       ["prefer_async_await", "/dart-lints/prefer_async_await"],
       ["prefer_declaring_const_constructors", "/dart-lints/prefer_declaring_const_constructors"],
       ["prefer_immediate_return", "/dart-lints/prefer_immediate_return"],
+      ["prefer_iterable_any", "/dart-lints/prefer_iterable_any"],
+      ["prefer_iterable_every"], "/dart-lints/prefer_iterable_every",
       ["prefer_iterable_first", "/dart-lints/prefer_iterable_first"],
       ["prefer_iterable_last", "/dart-lints/prefer_iterable_last"],
       ["prefer_library_prefixes", "/dart-lints/prefer_library_prefixes"],

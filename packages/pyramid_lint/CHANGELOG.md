@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Lint: `prefer_iterable_any`
+- Lint: `prefer_iterable_every`
+
 ### Changed
 
 - `wrap_with_layout_builder` will not be available if the selected widget is a `LayoutBuilder` or already wrapped with a `LayoutBuilder`.
