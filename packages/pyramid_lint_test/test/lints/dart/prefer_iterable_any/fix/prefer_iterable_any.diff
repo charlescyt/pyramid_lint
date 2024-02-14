@@ -1,0 +1,152 @@
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:5`:
+```
+void fn(Iterable<int> numbers) {
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) => n.isEven).isNotEmpty;
++   numbers.any((n) => n.isEven);
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:8`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) => n == 0).isNotEmpty;
++   numbers.any((n) => n == 0);
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:11`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) => n > 0).isNotEmpty;
++   numbers.any((n) => n > 0);
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:14`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) => n % 3 == 0).isNotEmpty;
++   numbers.any((n) => n % 3 == 0);
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:17`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) => isMultipleOfThree(n)).isNotEmpty;
++   numbers.any((n) => isMultipleOfThree(n));
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:20`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where(isMultipleOfThree).isNotEmpty;
++   numbers.any(isMultipleOfThree);
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:23`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((item) {
+-     return item.isEven;
+-   }).isNotEmpty;
++   numbers.any((item) {
++     return item.isEven;
++   });
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:28`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) {
+-     return n == 0;
+-   }).isNotEmpty;
++   numbers.any((n) {
++     return n == 0;
++   });
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:33`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) {
+-     return n > 0;
+-   }).isNotEmpty;
++   numbers.any((n) {
++     return n > 0;
++   });
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:38`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) {
+-     return n % 3 == 0;
+-   }).isNotEmpty;
++   numbers.any((n) {
++     return n % 3 == 0;
++   });
+
+  // expect_lint: prefer_iterable_any
+```
+---
+Message: `Replace with Iterable.any`
+Priority: 80
+Diff for file `test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart:43`:
+```
+
+  // expect_lint: prefer_iterable_any
+-   numbers.where((n) {
+-     return isMultipleOfThree(n);
+-   }).isNotEmpty;
++   numbers.any((n) {
++     return isMultipleOfThree(n);
++   });
+}
+
+```
+---

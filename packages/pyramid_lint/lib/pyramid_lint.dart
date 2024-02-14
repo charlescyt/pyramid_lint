@@ -25,6 +25,8 @@ import 'src/lints/dart/no_self_comparisons.dart';
 import 'src/lints/dart/prefer_async_await.dart';
 import 'src/lints/dart/prefer_declaring_const_constructors.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
+import 'src/lints/dart/prefer_iterable_any.dart';
+import 'src/lints/dart/prefer_iterable_every.dart';
 import 'src/lints/dart/prefer_iterable_first.dart';
 import 'src/lints/dart/prefer_iterable_last.dart';
 import 'src/lints/dart/prefer_library_prefixes.dart';
@@ -73,6 +75,8 @@ class _PyramidLinter extends PluginBase {
         const PreferAsyncAwait(),
         const PreferDeclaringConstConstructors(),
         const PreferImmediateReturn(),
+        const PreferIterableAny(),
+        const PreferIterableEvery(),
         const PreferIterableFirst(),
         const PreferIterableLast(),
         PreferLibraryPrefixes.fromConfigs(configs),

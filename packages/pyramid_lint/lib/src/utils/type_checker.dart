@@ -95,6 +95,8 @@ const richTextChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const iterableChecker = TypeChecker.fromUrl('dart:core#Iterable');
+
 const listChecker = TypeChecker.fromUrl('dart:core#List');
 
 const mediaQueryChecker = TypeChecker.fromName(
