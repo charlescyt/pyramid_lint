@@ -19,6 +19,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   path: ^1.8.3
+  pub_semver: ^2.1.4
   pubspec_parse: ^1.2.3
   pyramid_lint:
     path: ../pyramid_lint

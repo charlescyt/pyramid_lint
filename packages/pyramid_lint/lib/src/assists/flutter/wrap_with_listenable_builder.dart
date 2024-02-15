@@ -7,8 +7,12 @@ import 'package:pub_semver/pub_semver.dart';
 
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
+import '../../utils/version_constraint_extension.dart';
 
 class WrapWithListenableBuilder extends DartAssist {
+  /// ListenableBuilder requires Flutter 3.10.0 which corresponds to Dart 3.0.0
+  static Version minimumRequiredDartSdkVersion = Version(3, 0, 0);
+
   @override
   Future<void> run(
     CustomLintResolver resolver,
@@ -18,15 +22,12 @@ class WrapWithListenableBuilder extends DartAssist {
   ) async {
     if (!context.pubspec.isFlutterProject) return;
 
-    // Its not neccessary to have flutter mentioned in the sdk block.
-    final flutterVersion = context.pubspec.environment?['flutter'];
-    final minimumRequiredVersion = Version(3, 10, 0);
+    final dartSdkVersion = context.pubspec.dartSdkVersion;
+    if (dartSdkVersion == null) return;
 
-    switch (flutterVersion) {
-      case final Version version when version < minimumRequiredVersion:
-      case VersionRange(:final min)
-          when min != null && min < minimumRequiredVersion:
-        return;
+    if (!dartSdkVersion
+        .meetMinimumRequiredVersion(minimumRequiredDartSdkVersion)) {
+      return;
     }
 
     context.registry.addInstanceCreationExpression((node) {
