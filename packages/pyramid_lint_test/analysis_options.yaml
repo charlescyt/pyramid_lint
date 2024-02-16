@@ -18,6 +18,7 @@ custom_lint:
     - avoid_mutable_global_variables
     - avoid_inverted_boolean_expressions
     - avoid_nested_if
+    - avoid_redundant_pattern_field_names
     - avoid_unused_parameters
     - boolean_prefix:
       valid_prefixes: ["at"]
@@ -41,7 +42,7 @@ custom_lint:
     - unnecessary_nullable_return_type
     # Flutter lints
     - avoid_returning_widgets:
-      ignored_method_names: ['myMethod']
+      ignored_method_names: ["myMethod"]
     - avoid_single_child_in_flex
     - avoid_widget_state_public_members
     - prefer_async_callback

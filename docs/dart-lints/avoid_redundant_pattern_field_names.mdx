@@ -1,0 +1,31 @@
+# avoid_redundant_pattern_field_names
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ✅     |   ❌    |
+
+## Details
+
+**DO** avoid redundant pattern field names when it can be inferred.
+
+```dart title="Bad"
+void fn(Map<String, int> map) {
+  for (final MapEntry(key: key, value: value) in map.entries) {}
+}
+```
+
+```dart title="Good"
+void fn(Map<String, int> map) {
+  for (final MapEntry(:key, :value) in map.entries) {}
+}
+```
+
+## Usage
+
+To enable the `avoid_redundant_pattern_field_names` rule, add `avoid_redundant_pattern_field_names` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_redundant_pattern_field_names
+```

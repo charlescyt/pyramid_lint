@@ -6,6 +6,7 @@
 
 - Add support for changing the lint severity.
 - Lint: `avoid_mutable_global_variables`
+- Lint: `avoid_redundant_pattern_field_names`
 
 ### Changed
 
