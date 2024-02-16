@@ -1,8 +1,8 @@
 {
-	"lint": {
+	"dart lint": {
 		"scope": "dart",
-		"prefix": "lint",
-		"description": "Create a lint",
+		"prefix": "dlint",
+		"description": "Create a dart lint",
 		"body": [
 			"import 'package:analyzer/error/error.dart';",
 			"import 'package:analyzer/error/listener.dart';",
@@ -11,17 +11,19 @@
 			"import '../../utils/constants.dart';"
 			"",
 			"class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends DartLintRule {",
-			"  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}() : super(code: _code);",
+			"  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}()"
+			"      : super(
+			"          code: const LintCode(",
+			"            name: name,",
+			"            problemMessage: '${1:The problem message of this lint}',",
+			"            correctionMessage: '${2:The correction message of this lint}',",
+			"            url: url,",
+			"            errorSeverity: ErrorSeverity.INFO,",
+			"          ),",
+			"        );",
 			"",
 			"  static const name = '${TM_FILENAME_BASE}';",
-			"",
-			"  static const _code = LintCode(",
-			"    name: name,",
-			"    problemMessage: '${1:The problem message of this lint}',",
-			"    correctionMessage: '${2:The correction message of this lint}',",
-			"    url: '\\$docUrl#${${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.name}',"
-			"    errorSeverity: ErrorSeverity.INFO,",
-			"  );",
+			"  static const url = '\\$dartLintDocUrl#\\$name';",
 			"",
 			"  @override",
 			"  void run(",
@@ -52,20 +54,22 @@
 			"import 'package:custom_lint_builder/custom_lint_builder.dart';",
 			"",
 			"import '../../utils/constants.dart';",
-			"import '../../utils/pubspec_extensions.dart';",
+			"import '../../utils/pubspec_extension.dart';",
 			"",
 			"class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends DartLintRule {",
-			"  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}() : super(code: _code);",
+			"  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}()"
+			"      : super(",
+			"          code: const LintCode(",
+			"            name: name,",
+			"            problemMessage: '${1:The problem message of this lint}',",
+			"            correctionMessage: '${2:The correction message of this lint}',",
+			"            url: url,",
+			"            errorSeverity: ErrorSeverity.INFO,",
+			"          ),",
+			"        );",
 			"",
 			"  static const name = '${TM_FILENAME_BASE}';",
-			"",
-			"  static const _code = LintCode(",
-			"    name: name,",
-			"    problemMessage: '${1:The problem message of this lint}',",
-			"    correctionMessage: '${2:The correction message of this lint}',",
-			"    url: '\\$docUrl#${${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.name}',"
-			"    errorSeverity: ErrorSeverity.INFO,",
-			"  );",
+			"  static const url = '\\$flutterLintDocUrl#\\$name';",
 			"",
 			"  @override",
 			"  void run(",
@@ -119,9 +123,9 @@
 			""
 		],
 	},
-	"assist": {
+	"dart assist": {
 		"scope": "dart",
-		"prefix": "assist",
+		"prefix": "dassist",
 		"description": "Create an assist",
 		"body": [
 			"import 'package:analyzer/source/source_range.dart';",
@@ -193,21 +197,21 @@
 			""
 		],
 	},
-	"expect": {
+	"expect lint": {
 		"scope": "dart",
-		"prefix": "expect",
-		"description": "Create a expect_lint",
+		"prefix": "expectlint",
+		"description": "Create an expect_lint.",
 		"body": [
-			"// expect_lint: ${TM_FILENAME_BASE/(.*)_(.*)/$1/}"
+			"// expect_lint: ${TM_FILENAME_BASE}"
 		],
 	},
-	"limit":{
+	"limit the scope of the lint":{
 		"scope": "dart",
-		"prefix": "limit",
-		"description": "Limit the scope of a lint to the example file",
+		"prefix": "limitscope",
+		"description": "Limit the scope of the lint.",
 		"body": [
 			"final fileName = resolver.source.shortName;",
-			"if (fileName != '${TM_FILENAME_BASE}_example.dart') return;",
+			"if (fileName != '${TM_FILENAME_BASE}.dart') return;",
 		],
 	}
 }
