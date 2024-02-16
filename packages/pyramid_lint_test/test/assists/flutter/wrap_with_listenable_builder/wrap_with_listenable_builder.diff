@@ -1,0 +1,42 @@
+Message: `Wrap with ListenableBuilder`
+Priority: 29
+Diff for file `test/assists/flutter/wrap_with_listenable_builder/wrap_with_listenable_builder.dart:23`:
+```
+  @override
+  Widget build(BuildContext context) {
+-     return Column(
+-       children: [
+-         Text(_focusNode.hasFocus ? 'Focused' : 'Unfocused'),
+-         TextFormField(
+-           focusNode: _focusNode,
+-         ),
+-       ],
+-     );
++     return ListenableBuilder(listenable: _focusNode,builder: (context, child) { return Column(
++       children: [
++         Text(_focusNode.hasFocus ? 'Focused' : 'Unfocused'),
++         TextFormField(
++           focusNode: _focusNode,
++         ),
++       ],
++     ); },);
+  }
+}
+```
+---
+Message: `Wrap with ListenableBuilder`
+Priority: 29
+Diff for file `test/assists/flutter/wrap_with_listenable_builder/wrap_with_listenable_builder.dart:26`:
+```
+      children: [
+        Text(_focusNode.hasFocus ? 'Focused' : 'Unfocused'),
+-         TextFormField(
+-           focusNode: _focusNode,
+-         ),
++         ListenableBuilder(listenable: _focusNode,builder: (context, child) { return TextFormField(
++           focusNode: _focusNode,
++         ); },),
+      ],
+    );
+```
+---
