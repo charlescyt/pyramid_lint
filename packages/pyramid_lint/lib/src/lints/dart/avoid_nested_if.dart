@@ -37,17 +37,18 @@ class AvoidNestedIf extends DartLintRule {
                 'Avoid nested if statements to reduce code complexity.',
             correctionMessage:
                 'Try reducing the nesting level to less than ${options.maxNestingLevel}.',
-            url: '$dartLintDocUrl/${AvoidNestedIf.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'avoid_nested_if';
+  static const url = '$dartLintDocUrl/$name';
 
   final AvoidNestedIfOptions options;
 
   factory AvoidNestedIf.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[AvoidNestedIf.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = AvoidNestedIfOptions.fromJson(json);
 
     return AvoidNestedIf._(options);

@@ -56,17 +56,18 @@ class BooleanPrefix extends DartLintRule {
             name: name,
             problemMessage: '{0} should be named with a valid prefix.',
             correctionMessage: 'Try naming your {1} with a valid prefix.',
-            url: '$dartLintDocUrl/${BooleanPrefix.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'boolean_prefix';
+  static const url = '$dartLintDocUrl/$name';
 
   final BooleanPrefixOptions options;
 
   factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[BooleanPrefix.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = BooleanPrefixOptions.fromJson(json);
 
     return BooleanPrefix._(options);

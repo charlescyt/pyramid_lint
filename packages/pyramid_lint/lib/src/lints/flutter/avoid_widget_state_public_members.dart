@@ -13,12 +13,13 @@ class AvoidWidgetStatePublicMembers extends DartLintRule {
             name: name,
             problemMessage: 'Avoid public members in widget state classes.',
             correctionMessage: 'Consider using private members.',
-            url: '$flutterLintDocUrl/${AvoidWidgetStatePublicMembers.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'avoid_widget_state_public_members';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

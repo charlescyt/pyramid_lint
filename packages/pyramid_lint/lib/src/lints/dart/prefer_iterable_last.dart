@@ -15,12 +15,13 @@ class PreferIterableLast extends DartLintRule {
             name: name,
             problemMessage: '{0} is more verbose than iterable.last.',
             correctionMessage: 'Consider replacing {1} with {2}.',
-            url: '$dartLintDocUrl/${PreferIterableLast.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_iterable_last';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

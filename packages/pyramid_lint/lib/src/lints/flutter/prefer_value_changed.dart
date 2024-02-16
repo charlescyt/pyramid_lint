@@ -16,12 +16,13 @@ class PreferValueChanged extends DartLintRule {
                 'There is a typedef ValueChanged<T> defined in flutter.',
             correctionMessage:
                 'Consider using ValueChanged<{0}> instead of void Function({1}).',
-            url: '$flutterLintDocUrl/${PreferValueChanged.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_value_changed';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

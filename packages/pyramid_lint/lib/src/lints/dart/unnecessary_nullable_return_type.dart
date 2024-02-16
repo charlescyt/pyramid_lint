@@ -15,12 +15,13 @@ class UnnecessaryNullableReturnType extends DartLintRule {
             name: name,
             problemMessage: 'The nullable return type is unnecessary.',
             correctionMessage: 'Consider using non-nullable return type.',
-            url: '$dartLintDocUrl/${UnnecessaryNullableReturnType.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'unnecessary_nullable_return_type';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

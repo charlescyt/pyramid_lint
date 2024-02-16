@@ -15,12 +15,13 @@ class PreferImmediateReturn extends DartLintRule {
                 'Declaring a variable to return it on the next line is '
                 'unnecessary.',
             correctionMessage: 'Consider returning the value immediately.',
-            url: '$dartLintDocUrl/${PreferImmediateReturn.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_immediate_return';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

@@ -12,12 +12,13 @@ class AvoidMutableGlobalVariables extends DartLintRule {
             problemMessage: 'Using mutable global variables is discouraged.',
             correctionMessage:
                 'Consider declaring the variable as final or const.',
-            url: '$dartLintDocUrl#${AvoidMutableGlobalVariables.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'avoid_mutable_global_variables';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

@@ -20,12 +20,13 @@ class PreferIterableEvery extends DartLintRule {
                 'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
             correctionMessage:
                 'Consider using Iterable.every for better readability.',
-            url: '$dartLintDocUrl/${PreferIterableEvery.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_iterable_every';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

@@ -15,12 +15,13 @@ class PreferNewLineBeforeReturn extends DartLintRule {
                 'There should be a new line before the return statement.',
             correctionMessage:
                 'Consider adding a new line before the return statement.',
-            url: '$dartLintDocUrl/${PreferNewLineBeforeReturn.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_new_line_before_return';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

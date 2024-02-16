@@ -16,12 +16,13 @@ class PreferBorderRadiusAll extends DartLintRule {
                 'constructor BorderRadius.all internally.',
             correctionMessage:
                 'Consider replacing BorderRadius.circular with BorderRadius.all.',
-            url: '$flutterLintDocUrl/${PreferBorderRadiusAll.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_border_radius_all';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

@@ -48,20 +48,20 @@ class AvoidAbbreviationsInDocComments extends DartLintRule {
                 'Avoid using abbreviations in doc comments as they can hinder '
                 'readability and cause confusion.',
             correctionMessage: 'Consider using the full word instead.',
-            url: '$dartLintDocUrl/${AvoidAbbreviationsInDocComments.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'avoid_abbreviations_in_doc_comments';
+  static const url = '$dartLintDocUrl/$name';
 
   final AvoidAbbreviationsInDocCommentsOptions options;
 
   factory AvoidAbbreviationsInDocComments.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json =
-        configs.rules[AvoidAbbreviationsInDocComments.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = AvoidAbbreviationsInDocCommentsOptions.fromJson(json);
 
     return AvoidAbbreviationsInDocComments._(options);

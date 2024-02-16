@@ -15,12 +15,13 @@ class DocCommentsBeforeAnnotations extends DartLintRule {
             problemMessage: 'Doc comments should be placed before annotations.',
             correctionMessage:
                 'Consider moving the doc comment before the annotation.',
-            url: '$dartLintDocUrl/${DocCommentsBeforeAnnotations.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'doc_comments_before_annotations';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

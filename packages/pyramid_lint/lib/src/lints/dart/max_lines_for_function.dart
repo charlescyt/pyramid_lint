@@ -37,17 +37,18 @@ class MaxLinesForFunction extends DartLintRule {
             problemMessage: 'There are too many lines in this {0}.',
             correctionMessage:
                 'Consider reducing the number of lines to {1} or less.',
-            url: '$dartLintDocUrl/${MaxLinesForFunction.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'max_lines_for_function';
+  static const url = '$dartLintDocUrl/$name';
 
   final MaxLinesForFunctionOptions options;
 
   factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[MaxLinesForFunction.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = MaxLinesForFunctionOptions.fromJson(json);
 
     return MaxLinesForFunction._(options);

@@ -53,17 +53,18 @@ class PreferLibraryPrefixes extends DartLintRule {
             name: name,
             problemMessage: 'Prefix should be used for this library.',
             correctionMessage: 'Consider adding a prefix to this library.',
-            url: '$dartLintDocUrl/${PreferLibraryPrefixes.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_library_prefixes';
+  static const url = '$dartLintDocUrl/$name';
 
   final PreferLibraryPrefixesOptions options;
 
   factory PreferLibraryPrefixes.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[PreferLibraryPrefixes.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = PreferLibraryPrefixesOptions.fromJson(json);
 
     return PreferLibraryPrefixes(options);

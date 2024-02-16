@@ -14,12 +14,13 @@ class AvoidDuplicateImport extends DartLintRule {
             problemMessage: 'Duplicate imports can lead to confusion.',
             correctionMessage:
                 'Consider combining or removing the duplicate imports.',
-            url: '$dartLintDocUrl/${AvoidDuplicateImport.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'avoid_duplicate_import';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

@@ -16,12 +16,13 @@ class ProperFromEnvironment extends DartLintRule {
             correctionMessage:
                 'Try invoking the {0}.fromEnvironment constructor as a '
                 'const constructor.',
-            url: '$flutterLintDocUrl/${ProperFromEnvironment.name}',
+            url: url,
             errorSeverity: ErrorSeverity.ERROR,
           ),
         );
 
   static const name = 'proper_from_environment';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

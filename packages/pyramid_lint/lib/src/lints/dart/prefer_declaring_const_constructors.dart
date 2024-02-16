@@ -15,12 +15,13 @@ class PreferDeclaringConstConstructors extends DartLintRule {
                 'Constructors should be declared as const constructors when possible.',
             correctionMessage:
                 'Consider adding a const keyword to the constructor.',
-            url: '$dartLintDocUrl/${PreferDeclaringConstConstructors.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_declaring_const_constructors';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

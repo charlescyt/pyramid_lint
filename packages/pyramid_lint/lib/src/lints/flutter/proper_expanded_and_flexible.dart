@@ -16,12 +16,13 @@ class ProperExpandedAndFlexible extends DartLintRule {
                 '{0} should be placed inside a Row, Column, or Flex.',
             correctionMessage:
                 'Try placing {0} inside a Row, Column, or Flex, or remove it.',
-            url: '$flutterLintDocUrl/${ProperExpandedAndFlexible.name}',
+            url: url,
             errorSeverity: ErrorSeverity.ERROR,
           ),
         );
 
   static const name = 'proper_expanded_and_flexible';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

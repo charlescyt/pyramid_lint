@@ -14,12 +14,13 @@ class PreferIterableFirst extends DartLintRule {
             name: name,
             problemMessage: '{0} is more verbose than iterable.first.',
             correctionMessage: 'Consider replacing {1} with {2}.',
-            url: '$dartLintDocUrl/${PreferIterableFirst.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_iterable_first';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

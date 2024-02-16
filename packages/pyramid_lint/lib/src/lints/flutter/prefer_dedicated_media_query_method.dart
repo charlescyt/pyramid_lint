@@ -41,12 +41,13 @@ class PreferDedicatedMediaQueryMethod extends DartLintRule {
             name: name,
             problemMessage: 'Using {0} will cause unnecessary rebuilds.',
             correctionMessage: 'Consider using {1} instead.',
-            url: '$flutterLintDocUrl/${PreferDedicatedMediaQueryMethod.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_dedicated_media_query_method';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

@@ -40,17 +40,18 @@ class AvoidUnusedParameters extends DartLintRule {
             name: name,
             problemMessage: 'Unused parameter should be removed.',
             correctionMessage: 'Consider removing the unused parameter.',
-            url: '$dartLintDocUrl/${AvoidUnusedParameters.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'avoid_unused_parameters';
+  static const url = '$dartLintDocUrl/$name';
 
   final AvoidUnusedParametersOptions options;
 
   factory AvoidUnusedParameters.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[AvoidUnusedParameters.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = AvoidUnusedParametersOptions.fromJson(json);
 
     return AvoidUnusedParameters._(options);

@@ -15,12 +15,13 @@ class PreferTextRich extends DartLintRule {
             problemMessage:
                 'RichText does not inherit TextStyle from DefaultTextStyle.',
             correctionMessage: 'Consider replacing RichText with Text.rich.',
-            url: '$flutterLintDocUrl/${PreferTextRich.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_text_rich';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

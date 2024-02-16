@@ -16,12 +16,13 @@ class PreferIterableAny extends DartLintRule {
                 'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
             correctionMessage:
                 'Consider using Iterable.any for better readability.',
-            url: '$dartLintDocUrl/${PreferIterableAny.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_iterable_any';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

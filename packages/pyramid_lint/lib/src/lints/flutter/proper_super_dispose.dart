@@ -18,12 +18,13 @@ class ProperSuperDispose extends DartLintRule {
                 'super.dispose() should be called at the end of the dispose method.',
             correctionMessage:
                 'Try placing super.dispose() at the end of the dispose method.',
-            url: '$flutterLintDocUrl/${ProperSuperDispose.name}',
+            url: url,
             errorSeverity: ErrorSeverity.ERROR,
           ),
         );
 
   static const name = 'proper_super_dispose';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

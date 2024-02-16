@@ -16,12 +16,13 @@ class AvoidDynamic extends DartLintRule {
                 'lead to potential runtime errors.',
             correctionMessage:
                 'Consider specifying a type instead of using dynamic.',
-            url: '$dartLintDocUrl/${AvoidDynamic.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'avoid_dynamic';
+  static const url = '$dartLintDocUrl/$name';
 
   @override
   void run(

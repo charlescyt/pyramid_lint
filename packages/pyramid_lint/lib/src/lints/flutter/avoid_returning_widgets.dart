@@ -40,19 +40,20 @@ class AvoidReturningWidgets extends DartLintRule {
             problemMessage:
                 'Returning widgets is not recommended for performance reasons.',
             correctionMessage: 'Consider creating a separate widget instead.',
-            url: '$flutterLintDocUrl/${AvoidReturningWidgets.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'avoid_returning_widgets';
+  static const url = '$flutterLintDocUrl/$name';
 
   final AvoidReturningWidgetsOptions options;
 
   factory AvoidReturningWidgets.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[AvoidReturningWidgets.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = AvoidReturningWidgetsOptions.fromJson(json);
 
     return AvoidReturningWidgets._(options);

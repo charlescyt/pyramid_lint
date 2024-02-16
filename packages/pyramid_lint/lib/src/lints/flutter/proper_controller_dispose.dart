@@ -18,12 +18,13 @@ class ProperControllerDispose extends DartLintRule {
                 'Controller should be disposed in the dispose method.',
             correctionMessage:
                 'Try adding {0}.dispose() in the dispose method.',
-            url: '$flutterLintDocUrl/${ProperControllerDispose.name}',
+            url: url,
             errorSeverity: ErrorSeverity.ERROR,
           ),
         );
 
   static const name = 'proper_controller_dispose';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

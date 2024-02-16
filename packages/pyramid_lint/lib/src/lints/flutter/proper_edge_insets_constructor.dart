@@ -17,12 +17,13 @@ class ProperEdgeInsetsConstructor extends DartLintRule {
             problemMessage:
                 'Using incorrect EdgeInsets constructor and arguments.',
             correctionMessage: 'Consider replacing with {0}.',
-            url: '$flutterLintDocUrl/${ProperEdgeInsetsConstructor.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'proper_edge_insets_constructor';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

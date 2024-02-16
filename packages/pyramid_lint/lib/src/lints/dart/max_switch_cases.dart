@@ -36,17 +36,18 @@ class MaxSwitchCases extends DartLintRule {
                 'There are too many cases in this switch statement.',
             correctionMessage:
                 'Consider reducing the number of cases to {0} or less.',
-            url: '$dartLintDocUrl#${MaxSwitchCases.name}',
+            url: url,
             errorSeverity: ErrorSeverity.WARNING,
           ),
         );
 
   static const name = 'max_switch_cases';
+  static const url = '$dartLintDocUrl/$name';
 
   final MaxSwitchCasesOptions options;
 
   factory MaxSwitchCases.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[MaxSwitchCases.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = MaxSwitchCasesOptions.fromJson(json);
 
     return MaxSwitchCases._(options);

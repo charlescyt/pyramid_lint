@@ -16,12 +16,13 @@ class PreferBorderFromBorderSide extends DartLintRule {
                 'Border.fromBorderSide internally.',
             correctionMessage:
                 'Consider replacing Border.all with Border.fromBorderSide.',
-            url: '$flutterLintDocUrl/${PreferBorderFromBorderSide.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'prefer_border_from_border_side';
+  static const url = '$flutterLintDocUrl/$name';
 
   @override
   void run(

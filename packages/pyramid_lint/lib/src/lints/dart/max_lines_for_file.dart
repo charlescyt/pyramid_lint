@@ -36,17 +36,18 @@ class MaxLinesForFile extends DartLintRule {
             problemMessage: 'There are too many lines in this file.',
             correctionMessage:
                 'Consider reducing the number of lines to {0} or less.',
-            url: '$dartLintDocUrl/${MaxLinesForFile.name}',
+            url: url,
             errorSeverity: ErrorSeverity.INFO,
           ),
         );
 
   static const name = 'max_lines_for_file';
+  static const url = '$dartLintDocUrl/$name';
 
   final MaxLinesForFileOptions options;
 
   factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[MaxLinesForFile.name]?.json ?? {};
+    final json = configs.rules[name]?.json ?? {};
     final options = MaxLinesForFileOptions.fromJson(json);
 
     return MaxLinesForFile._(options);
