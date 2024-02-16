@@ -1,0 +1,33 @@
+# avoid_record_positional_field_getters
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ❌    |
+
+## Details
+
+**DO** avoid using record positional field getters.
+
+```dart title="Bad"
+void fn((String, String) record) {
+  final first = record.$1;
+  final second = record.$2;
+}
+```
+
+```dart title="Good"
+void fn(({String first, String second}) record) {
+  final first = record.first;
+  final second = record.second;
+}
+```
+
+## Usage
+
+To enable the `avoid_record_positional_field_getters` rule, add `avoid_record_positional_field_getters` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_record_positional_field_getters
+```
