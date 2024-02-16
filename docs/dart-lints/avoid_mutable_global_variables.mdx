@@ -1,0 +1,26 @@
+# avoid_mutable_global_variables
+
+- Severity: warning ⚠️
+
+## Details
+
+**DO** avoid using mutable global variables.
+
+```dart title="Bad"
+double pi = 3.14;
+```
+
+```dart title="Good"
+const double pi = 3.14;
+const pi = 3.14;
+```
+
+## Usage
+
+To enable the `avoid_mutable_global_variables` rule, add `avoid_mutable_global_variables` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - avoid_mutable_global_variables
+```
