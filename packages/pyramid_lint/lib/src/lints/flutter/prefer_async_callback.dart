@@ -4,25 +4,34 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 
-class PreferAsyncCallback extends DartLintRule {
-  const PreferAsyncCallback()
+class PreferAsyncCallback extends PyramidLintRule {
+  PreferAsyncCallback({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'There is a typedef AsyncCallback defined in flutter.',
-            correctionMessage:
-                'Consider using AsyncCallback instead of Future<void> Function().',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'There is a typedef AsyncCallback defined in flutter.',
+          correctionMessage:
+              'Consider using AsyncCallback instead of Future<void> Function().',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_async_callback';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferAsyncCallback.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferAsyncCallback(options: options);
+  }
 
   @override
   void run(

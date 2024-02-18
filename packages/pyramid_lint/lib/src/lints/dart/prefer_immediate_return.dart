@@ -4,24 +4,33 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class PreferImmediateReturn extends DartLintRule {
-  const PreferImmediateReturn()
+class PreferImmediateReturn extends PyramidLintRule {
+  PreferImmediateReturn({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Declaring a variable to return it on the next line is '
-                'unnecessary.',
-            correctionMessage: 'Consider returning the value immediately.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Declaring a variable to return it on the next line is '
+              'unnecessary.',
+          correctionMessage: 'Consider returning the value immediately.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_immediate_return';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferImmediateReturn.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferImmediateReturn(options: options);
+  }
 
   @override
   void run(

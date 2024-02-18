@@ -5,23 +5,32 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class PreferIterableLast extends DartLintRule {
-  const PreferIterableLast()
+class PreferIterableLast extends PyramidLintRule {
+  PreferIterableLast({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: '{0} is more verbose than iterable.last.',
-            correctionMessage: 'Consider replacing {1} with {2}.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: '{0} is more verbose than iterable.last.',
+          correctionMessage: 'Consider replacing {1} with {2}.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_iterable_last';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferIterableLast.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferIterableLast(options: options);
+  }
 
   @override
   void run(

@@ -2,26 +2,35 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class PreferTextRich extends DartLintRule {
-  const PreferTextRich()
+class PreferTextRich extends PyramidLintRule {
+  PreferTextRich({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'RichText does not inherit TextStyle from DefaultTextStyle.',
-            correctionMessage: 'Consider replacing RichText with Text.rich.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'RichText does not inherit TextStyle from DefaultTextStyle.',
+          correctionMessage: 'Consider replacing RichText with Text.rich.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_text_rich';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferTextRich.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferTextRich(options: options);
+  }
 
   @override
   void run(

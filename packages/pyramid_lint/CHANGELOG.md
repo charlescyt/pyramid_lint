@@ -4,6 +4,7 @@
 
 ### Added
 
+- Add support for changing the lint severity.
 - Lint: `avoid_mutable_global_variables`
 
 ## [1.5.0] - 2024-02-14

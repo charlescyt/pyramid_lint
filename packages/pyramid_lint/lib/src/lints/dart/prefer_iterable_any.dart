@@ -4,25 +4,34 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class PreferIterableAny extends DartLintRule {
-  const PreferIterableAny()
+class PreferIterableAny extends PyramidLintRule {
+  PreferIterableAny({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
-            correctionMessage:
-                'Consider using Iterable.any for better readability.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
+          correctionMessage:
+              'Consider using Iterable.any for better readability.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_iterable_any';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferIterableAny.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferIterableAny(options: options);
+  }
 
   @override
   void run(

@@ -3,25 +3,33 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 
-class PreferVoidCallback extends DartLintRule {
-  const PreferVoidCallback()
+class PreferVoidCallback extends PyramidLintRule<void> {
+  PreferVoidCallback({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'There is a typedef VoidCallback defined in flutter.',
-            correctionMessage:
-                'Consider using VoidCallback instead of void Function().',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'There is a typedef VoidCallback defined in flutter.',
+          correctionMessage:
+              'Consider using VoidCallback instead of void Function().',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_void_callback';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferVoidCallback.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferVoidCallback(options: options);
+  }
 
   @override
   void run(

@@ -4,27 +4,36 @@ import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class ProperSuperInitState extends DartLintRule {
-  const ProperSuperInitState()
+class ProperSuperInitState extends PyramidLintRule {
+  ProperSuperInitState({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'super.initState() should be called at the start of the initState method.',
-            correctionMessage:
-                'Try placing super.initState() at the start of the initState method.',
-            url: url,
-            errorSeverity: ErrorSeverity.ERROR,
-          ),
+          name: name,
+          problemMessage:
+              'super.initState() should be called at the start of the initState method.',
+          correctionMessage:
+              'Try placing super.initState() at the start of the initState method.',
+          url: url,
+          errorSeverity: ErrorSeverity.ERROR,
         );
 
   static const name = 'proper_super_init_state';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory ProperSuperInitState.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return ProperSuperInitState(options: options);
+  }
 
   @override
   void run(

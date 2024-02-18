@@ -5,6 +5,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 
@@ -49,28 +50,27 @@ class BooleanPrefixOptions {
   }
 }
 
-class BooleanPrefix extends DartLintRule {
-  const BooleanPrefix._(this.options)
+class BooleanPrefix extends PyramidLintRule<BooleanPrefixOptions> {
+  BooleanPrefix({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: '{0} should be named with a valid prefix.',
-            correctionMessage: 'Try naming your {1} with a valid prefix.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: '{0} should be named with a valid prefix.',
+          correctionMessage: 'Try naming your {1} with a valid prefix.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'boolean_prefix';
   static const url = '$dartLintDocUrl/$name';
 
-  final BooleanPrefixOptions options;
-
   factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = BooleanPrefixOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: BooleanPrefixOptions.fromJson,
+    );
 
-    return BooleanPrefix._(options);
+    return BooleanPrefix(options: options);
   }
 
   @override
@@ -151,7 +151,7 @@ class BooleanPrefix extends DartLintRule {
     final nameWithoutUnderscore =
         name.startsWith('_') ? name.substring(1) : name;
 
-    if (options.validPrefixes.any(nameWithoutUnderscore.startsWith)) {
+    if (options.params.validPrefixes.any(nameWithoutUnderscore.startsWith)) {
       return true;
     }
 

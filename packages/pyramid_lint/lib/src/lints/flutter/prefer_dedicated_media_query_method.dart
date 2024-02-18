@@ -4,6 +4,7 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/string_extension.dart';
@@ -34,20 +35,30 @@ const List<String> _properties = [
   'viewPadding',
 ];
 
-class PreferDedicatedMediaQueryMethod extends DartLintRule {
-  const PreferDedicatedMediaQueryMethod()
+class PreferDedicatedMediaQueryMethod extends PyramidLintRule {
+  PreferDedicatedMediaQueryMethod({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Using {0} will cause unnecessary rebuilds.',
-            correctionMessage: 'Consider using {1} instead.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Using {0} will cause unnecessary rebuilds.',
+          correctionMessage: 'Consider using {1} instead.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_dedicated_media_query_method';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferDedicatedMediaQueryMethod.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferDedicatedMediaQueryMethod(options: options);
+  }
 
   @override
   void run(

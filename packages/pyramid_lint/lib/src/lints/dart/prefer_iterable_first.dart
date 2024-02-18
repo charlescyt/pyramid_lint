@@ -4,23 +4,32 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class PreferIterableFirst extends DartLintRule {
-  const PreferIterableFirst()
+class PreferIterableFirst extends PyramidLintRule {
+  PreferIterableFirst({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: '{0} is more verbose than iterable.first.',
-            correctionMessage: 'Consider replacing {1} with {2}.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: '{0} is more verbose than iterable.first.',
+          correctionMessage: 'Consider replacing {1} with {2}.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_iterable_first';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferIterableFirst.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferIterableFirst(options: options);
+  }
 
   @override
   void run(

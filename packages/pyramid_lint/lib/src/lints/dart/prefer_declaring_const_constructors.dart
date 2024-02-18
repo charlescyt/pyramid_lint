@@ -3,25 +3,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 
-class PreferDeclaringConstConstructors extends DartLintRule {
-  const PreferDeclaringConstConstructors()
+class PreferDeclaringConstConstructors extends PyramidLintRule {
+  PreferDeclaringConstConstructors({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Constructors should be declared as const constructors when possible.',
-            correctionMessage:
-                'Consider adding a const keyword to the constructor.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Constructors should be declared as const constructors when possible.',
+          correctionMessage:
+              'Consider adding a const keyword to the constructor.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_declaring_const_constructors';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferDeclaringConstConstructors.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferDeclaringConstConstructors(options: options);
+  }
 
   @override
   void run(

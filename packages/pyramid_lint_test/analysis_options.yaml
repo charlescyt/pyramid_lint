@@ -9,9 +9,9 @@ analyzer:
 custom_lint:
   rules:
     - max_lines_for_file:
-      max_lines: 100
+      max_lines: 300
     - max_lines_for_function:
-      max_lines: 50
+      max_lines: 200
     - boolean_prefix:
       valid_prefixes: ["at"]
     - avoid_abbreviations_in_doc_comments:

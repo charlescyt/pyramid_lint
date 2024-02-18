@@ -3,25 +3,34 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class PreferSpacer extends DartLintRule {
-  const PreferSpacer()
+class PreferSpacer extends PyramidLintRule {
+  PreferSpacer({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
-            correctionMessage: 'Consider replacing Expanded with Spacer.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
+          correctionMessage: 'Consider replacing Expanded with Spacer.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_spacer';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferSpacer.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferSpacer(options: options);
+  }
 
   @override
   void run(

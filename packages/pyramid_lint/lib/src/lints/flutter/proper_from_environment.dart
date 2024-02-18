@@ -2,27 +2,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 
-class ProperFromEnvironment extends DartLintRule {
-  const ProperFromEnvironment()
+class ProperFromEnvironment extends PyramidLintRule {
+  ProperFromEnvironment({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'The {0}.fromEnvironment constructor should be invoked '
-                'as a const constructor.',
-            correctionMessage:
-                'Try invoking the {0}.fromEnvironment constructor as a '
-                'const constructor.',
-            url: url,
-            errorSeverity: ErrorSeverity.ERROR,
-          ),
+          name: name,
+          problemMessage:
+              'The {0}.fromEnvironment constructor should be invoked '
+              'as a const constructor.',
+          correctionMessage:
+              'Try invoking the {0}.fromEnvironment constructor as a '
+              'const constructor.',
+          url: url,
+          errorSeverity: ErrorSeverity.ERROR,
         );
 
   static const name = 'proper_from_environment';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory ProperFromEnvironment.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return ProperFromEnvironment(options: options);
+  }
 
   @override
   void run(

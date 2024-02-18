@@ -4,24 +4,35 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/dart_type_extension.dart';
 import '../../utils/visitors.dart';
 
-class UnnecessaryNullableReturnType extends DartLintRule {
-  const UnnecessaryNullableReturnType()
+class UnnecessaryNullableReturnType extends PyramidLintRule {
+  UnnecessaryNullableReturnType({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'The nullable return type is unnecessary.',
-            correctionMessage: 'Consider using non-nullable return type.',
-            url: url,
-            errorSeverity: ErrorSeverity.WARNING,
-          ),
+          name: name,
+          problemMessage: 'The nullable return type is unnecessary.',
+          correctionMessage: 'Consider using non-nullable return type.',
+          url: url,
+          errorSeverity: ErrorSeverity.WARNING,
         );
 
   static const name = 'unnecessary_nullable_return_type';
   static const url = '$dartLintDocUrl/$name';
+
+  factory UnnecessaryNullableReturnType.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return UnnecessaryNullableReturnType(options: options);
+  }
 
   @override
   void run(

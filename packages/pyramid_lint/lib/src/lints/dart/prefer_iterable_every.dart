@@ -6,27 +6,36 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/token_type_extension.dart';
 import '../../utils/type_checker.dart';
 import '../../utils/utils.dart';
 
-class PreferIterableEvery extends DartLintRule {
-  const PreferIterableEvery()
+class PreferIterableEvery extends PyramidLintRule {
+  PreferIterableEvery({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
-            correctionMessage:
-                'Consider using Iterable.every for better readability.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
+          correctionMessage:
+              'Consider using Iterable.every for better readability.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_iterable_every';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferIterableEvery.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferIterableEvery(options: options);
+  }
 
   @override
   void run(

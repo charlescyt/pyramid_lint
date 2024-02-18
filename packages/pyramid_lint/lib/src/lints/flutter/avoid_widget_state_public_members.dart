@@ -3,23 +3,32 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class AvoidWidgetStatePublicMembers extends DartLintRule {
-  const AvoidWidgetStatePublicMembers()
+class AvoidWidgetStatePublicMembers extends PyramidLintRule {
+  AvoidWidgetStatePublicMembers({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Avoid public members in widget state classes.',
-            correctionMessage: 'Consider using private members.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Avoid public members in widget state classes.',
+          correctionMessage: 'Consider using private members.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'avoid_widget_state_public_members';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory AvoidWidgetStatePublicMembers.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return AvoidWidgetStatePublicMembers(options: options);
+  }
 
   @override
   void run(

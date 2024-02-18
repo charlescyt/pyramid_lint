@@ -3,27 +3,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 import '../../utils/utils.dart';
 
-class ProperEdgeInsetsConstructor extends DartLintRule {
-  const ProperEdgeInsetsConstructor()
+class ProperEdgeInsetsConstructor extends PyramidLintRule {
+  ProperEdgeInsetsConstructor({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Using incorrect EdgeInsets constructor and arguments.',
-            correctionMessage: 'Consider replacing with {0}.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Using incorrect EdgeInsets constructor and arguments.',
+          correctionMessage: 'Consider replacing with {0}.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'proper_edge_insets_constructor';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory ProperEdgeInsetsConstructor.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return ProperEdgeInsetsConstructor(options: options);
+  }
 
   @override
   void run(

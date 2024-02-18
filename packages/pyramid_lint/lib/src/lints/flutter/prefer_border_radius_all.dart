@@ -2,27 +2,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class PreferBorderRadiusAll extends DartLintRule {
-  const PreferBorderRadiusAll()
+class PreferBorderRadiusAll extends PyramidLintRule {
+  PreferBorderRadiusAll({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'BorderRadius.circular is not a const constructor and it uses const '
-                'constructor BorderRadius.all internally.',
-            correctionMessage:
-                'Consider replacing BorderRadius.circular with BorderRadius.all.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'BorderRadius.circular is not a const constructor and it uses const '
+              'constructor BorderRadius.all internally.',
+          correctionMessage:
+              'Consider replacing BorderRadius.circular with BorderRadius.all.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_border_radius_all';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferBorderRadiusAll.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferBorderRadiusAll(options: options);
+  }
 
   @override
   void run(
