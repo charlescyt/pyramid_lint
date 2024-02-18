@@ -4,6 +4,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 
@@ -27,30 +28,28 @@ class MaxSwitchCasesOptions {
   }
 }
 
-class MaxSwitchCases extends DartLintRule {
-  const MaxSwitchCases._(this.options)
+class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
+  MaxSwitchCases({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'There are too many cases in this switch statement.',
-            correctionMessage:
-                'Consider reducing the number of cases to {0} or less.',
-            url: url,
-            errorSeverity: ErrorSeverity.WARNING,
-          ),
+          name: name,
+          problemMessage: 'There are too many cases in this switch statement.',
+          correctionMessage:
+              'Consider reducing the number of cases to {0} or less.',
+          url: url,
+          errorSeverity: ErrorSeverity.WARNING,
         );
 
   static const name = 'max_switch_cases';
   static const url = '$dartLintDocUrl/$name';
 
-  final MaxSwitchCasesOptions options;
-
   factory MaxSwitchCases.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = MaxSwitchCasesOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: MaxSwitchCasesOptions.fromJson,
+    );
 
-    return MaxSwitchCases._(options);
+    return MaxSwitchCases(options: options);
   }
 
   @override
@@ -62,16 +61,16 @@ class MaxSwitchCases extends DartLintRule {
     context.registry.addSwitchStatement((node) {
       final cases =
           node.members.where((e) => e is SwitchCase || e is SwitchPatternCase);
-      if (cases.length <= options.maxCases) return;
+      if (cases.length <= options.params.maxCases) return;
 
-      reporter.reportErrorForNode(code, node, [options.maxCases]);
+      reporter.reportErrorForNode(code, node, [options.params.maxCases]);
     });
 
     context.registry.addSwitchExpression((node) {
       final cases = node.cases;
-      if (cases.length <= options.maxCases) return;
+      if (cases.length <= options.params.maxCases) return;
 
-      reporter.reportErrorForNode(code, node, [options.maxCases]);
+      reporter.reportErrorForNode(code, node, [options.params.maxCases]);
     });
   }
 }

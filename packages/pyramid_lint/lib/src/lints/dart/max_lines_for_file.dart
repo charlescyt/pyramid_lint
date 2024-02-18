@@ -3,6 +3,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 
@@ -28,29 +29,28 @@ class MaxLinesForFileOptions {
   }
 }
 
-class MaxLinesForFile extends DartLintRule {
-  const MaxLinesForFile._(this.options)
+class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
+  MaxLinesForFile({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'There are too many lines in this file.',
-            correctionMessage:
-                'Consider reducing the number of lines to {0} or less.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'There are too many lines in this file.',
+          correctionMessage:
+              'Consider reducing the number of lines to {0} or less.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'max_lines_for_file';
   static const url = '$dartLintDocUrl/$name';
 
-  final MaxLinesForFileOptions options;
-
   factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = MaxLinesForFileOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: MaxLinesForFileOptions.fromJson,
+    );
 
-    return MaxLinesForFile._(options);
+    return MaxLinesForFile(options: options);
   }
 
   @override
@@ -61,12 +61,12 @@ class MaxLinesForFile extends DartLintRule {
   ) {
     context.registry.addCompilationUnit((node) {
       final lineCount = node.lineInfo.lineCount;
-      if (lineCount <= options.maxLines) return;
+      if (lineCount <= options.params.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        [options.maxLines],
+        [options.params.maxLines],
       );
     });
   }

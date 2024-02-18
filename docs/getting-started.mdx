@@ -40,6 +40,19 @@ custom_lint:
     - specific_lint_rule # enable specific_lint_rule
 ```
 
+### Lint Severity
+
+You can change the severity of a particular lint. The available severities are `info`, `warning`, and `error`. To change the severity of a lint, add the following to your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - specific_lint_rule:
+      severity: warning
+```
+
+### Lint Options
+
 Some lints are configurable. To configure a lint, follow the example below:
 
 ```yaml

@@ -4,27 +4,36 @@ import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class ProperSuperDispose extends DartLintRule {
-  const ProperSuperDispose()
+class ProperSuperDispose extends PyramidLintRule {
+  ProperSuperDispose({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'super.dispose() should be called at the end of the dispose method.',
-            correctionMessage:
-                'Try placing super.dispose() at the end of the dispose method.',
-            url: url,
-            errorSeverity: ErrorSeverity.ERROR,
-          ),
+          name: name,
+          problemMessage:
+              'super.dispose() should be called at the end of the dispose method.',
+          correctionMessage:
+              'Try placing super.dispose() at the end of the dispose method.',
+          url: url,
+          errorSeverity: ErrorSeverity.ERROR,
         );
 
   static const name = 'proper_super_dispose';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory ProperSuperDispose.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return ProperSuperDispose(options: options);
+  }
 
   @override
   void run(

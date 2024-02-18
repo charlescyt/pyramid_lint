@@ -4,25 +4,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/token_type_extension.dart';
 import '../../utils/utils.dart';
 
-class AvoidInvertedBooleanExpressions extends DartLintRule {
-  const AvoidInvertedBooleanExpressions()
+class AvoidInvertedBooleanExpressions extends PyramidLintRule {
+  AvoidInvertedBooleanExpressions({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Using inverted boolean expression decreases code readability.',
-            correctionMessage: 'Consider using {0} instead.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Using inverted boolean expression decreases code readability.',
+          correctionMessage: 'Consider using {0} instead.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'avoid_inverted_boolean_expressions';
   static const url = '$dartLintDocUrl/$name';
+
+  factory AvoidInvertedBooleanExpressions.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return AvoidInvertedBooleanExpressions(options: options);
+  }
 
   @override
   void run(

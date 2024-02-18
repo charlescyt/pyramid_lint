@@ -4,25 +4,34 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 
-class PreferValueChanged extends DartLintRule {
-  const PreferValueChanged()
+class PreferValueChanged extends PyramidLintRule {
+  PreferValueChanged({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'There is a typedef ValueChanged<T> defined in flutter.',
-            correctionMessage:
-                'Consider using ValueChanged<{0}> instead of void Function({1}).',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'There is a typedef ValueChanged<T> defined in flutter.',
+          correctionMessage:
+              'Consider using ValueChanged<{0}> instead of void Function({1}).',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_value_changed';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferValueChanged.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferValueChanged(options: options);
+  }
 
   @override
   void run(

@@ -4,6 +4,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
@@ -28,30 +29,29 @@ class AvoidNestedIfOptions {
   }
 }
 
-class AvoidNestedIf extends DartLintRule {
-  AvoidNestedIf._(this.options)
+class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
+  AvoidNestedIf({required super.options})
       : super(
-          code: LintCode(
-            name: name,
-            problemMessage:
-                'Avoid nested if statements to reduce code complexity.',
-            correctionMessage:
-                'Try reducing the nesting level to less than ${options.maxNestingLevel}.',
-            url: url,
-            errorSeverity: ErrorSeverity.WARNING,
-          ),
+          name: name,
+          problemMessage:
+              'Avoid nested if statements to reduce code complexity.',
+          correctionMessage:
+              'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
+          url: url,
+          errorSeverity: ErrorSeverity.WARNING,
         );
 
   static const name = 'avoid_nested_if';
   static const url = '$dartLintDocUrl/$name';
 
-  final AvoidNestedIfOptions options;
-
   factory AvoidNestedIf.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = AvoidNestedIfOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: AvoidNestedIfOptions.fromJson,
+    );
 
-    return AvoidNestedIf._(options);
+    return AvoidNestedIf(options: options);
   }
 
   @override
@@ -65,7 +65,7 @@ class AvoidNestedIf extends DartLintRule {
       if (parentIf != null) return;
 
       final ifStatements = node.childrenIfStatements;
-      if (ifStatements.length < options.maxNestingLevel) return;
+      if (ifStatements.length < options.params.maxNestingLevel) return;
 
       reporter.reportErrorForNode(code, node);
     });

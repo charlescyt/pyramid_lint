@@ -5,6 +5,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 import '../../utils/visitors.dart';
@@ -33,28 +34,28 @@ class AvoidUnusedParametersOptions {
   }
 }
 
-class AvoidUnusedParameters extends DartLintRule {
-  const AvoidUnusedParameters._(this.options)
+class AvoidUnusedParameters
+    extends PyramidLintRule<AvoidUnusedParametersOptions> {
+  AvoidUnusedParameters({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Unused parameter should be removed.',
-            correctionMessage: 'Consider removing the unused parameter.',
-            url: url,
-            errorSeverity: ErrorSeverity.WARNING,
-          ),
+          name: name,
+          problemMessage: 'Unused parameter should be removed.',
+          correctionMessage: 'Consider removing the unused parameter.',
+          url: url,
+          errorSeverity: ErrorSeverity.WARNING,
         );
 
   static const name = 'avoid_unused_parameters';
   static const url = '$dartLintDocUrl/$name';
 
-  final AvoidUnusedParametersOptions options;
-
   factory AvoidUnusedParameters.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = AvoidUnusedParametersOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: AvoidUnusedParametersOptions.fromJson,
+    );
 
-    return AvoidUnusedParameters._(options);
+    return AvoidUnusedParameters(options: options);
   }
 
   @override
@@ -76,7 +77,8 @@ class AvoidUnusedParameters extends DartLintRule {
       body.accept(visitor);
 
       for (final parameter in parameters) {
-        if (options.excludedParameters.contains(parameter.name?.lexeme)) {
+        if (options.params.excludedParameters
+            .contains(parameter.name?.lexeme)) {
           continue;
         }
 

@@ -5,6 +5,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
@@ -32,31 +33,29 @@ class AvoidReturningWidgetsOptions {
   }
 }
 
-class AvoidReturningWidgets extends DartLintRule {
-  const AvoidReturningWidgets._(this.options)
+class AvoidReturningWidgets
+    extends PyramidLintRule<AvoidReturningWidgetsOptions> {
+  AvoidReturningWidgets({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Returning widgets is not recommended for performance reasons.',
-            correctionMessage: 'Consider creating a separate widget instead.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Returning widgets is not recommended for performance reasons.',
+          correctionMessage: 'Consider creating a separate widget instead.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'avoid_returning_widgets';
   static const url = '$flutterLintDocUrl/$name';
 
-  final AvoidReturningWidgetsOptions options;
-
-  factory AvoidReturningWidgets.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AvoidReturningWidgets.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = AvoidReturningWidgetsOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: AvoidReturningWidgetsOptions.fromJson,
+    );
 
-    return AvoidReturningWidgets._(options);
+    return AvoidReturningWidgets(options: options);
   }
 
   @override
@@ -79,7 +78,7 @@ class AvoidReturningWidgets extends DartLintRule {
         return;
       }
 
-      if (options.ignoredMethods.contains(node.name.lexeme)) return;
+      if (options.params.ignoredMethods.contains(node.name.lexeme)) return;
 
       reporter.reportErrorForNode(code, node);
     });
@@ -91,7 +90,7 @@ class AvoidReturningWidgets extends DartLintRule {
         return;
       }
 
-      if (options.ignoredMethods.contains(node.name.lexeme)) return;
+      if (options.params.ignoredMethods.contains(node.name.lexeme)) return;
 
       reporter.reportErrorForNode(code, node);
     });

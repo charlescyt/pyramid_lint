@@ -4,6 +4,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 import 'package:yaml/yaml.dart' show YamlList;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 
@@ -46,28 +47,28 @@ class PreferLibraryPrefixesOptions {
   }
 }
 
-class PreferLibraryPrefixes extends DartLintRule {
-  const PreferLibraryPrefixes(this.options)
+class PreferLibraryPrefixes
+    extends PyramidLintRule<PreferLibraryPrefixesOptions> {
+  PreferLibraryPrefixes({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Prefix should be used for this library.',
-            correctionMessage: 'Consider adding a prefix to this library.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Prefix should be used for this library.',
+          correctionMessage: 'Consider adding a prefix to this library.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_library_prefixes';
   static const url = '$dartLintDocUrl/$name';
 
-  final PreferLibraryPrefixesOptions options;
-
   factory PreferLibraryPrefixes.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = PreferLibraryPrefixesOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: PreferLibraryPrefixesOptions.fromJson,
+    );
 
-    return PreferLibraryPrefixes(options);
+    return PreferLibraryPrefixes(options: options);
   }
 
   @override
@@ -80,7 +81,7 @@ class PreferLibraryPrefixes extends DartLintRule {
       final uri = node.uri.stringValue;
       if (uri == null) return;
 
-      if (!options.libraries.contains(uri)) return;
+      if (!options.params.libraries.contains(uri)) return;
 
       final prefix = node.prefix;
       if (prefix != null) return;

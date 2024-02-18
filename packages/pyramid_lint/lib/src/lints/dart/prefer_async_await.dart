@@ -2,22 +2,31 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class PreferAsyncAwait extends DartLintRule {
-  const PreferAsyncAwait()
+class PreferAsyncAwait extends PyramidLintRule {
+  PreferAsyncAwait({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Using Future.then() decreases readability.',
-            correctionMessage: 'Consider using async/await instead.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Using Future.then() decreases readability.',
+          correctionMessage: 'Consider using async/await instead.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_async_await';
   static const url = '$dartLintDocUrl/$name';
+
+  factory PreferAsyncAwait.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferAsyncAwait(options: options);
+  }
 
   @override
   void run(

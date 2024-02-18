@@ -5,23 +5,32 @@ import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class DocCommentsBeforeAnnotations extends DartLintRule {
-  const DocCommentsBeforeAnnotations()
+class DocCommentsBeforeAnnotations extends PyramidLintRule {
+  DocCommentsBeforeAnnotations({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'Doc comments should be placed before annotations.',
-            correctionMessage:
-                'Consider moving the doc comment before the annotation.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'Doc comments should be placed before annotations.',
+          correctionMessage:
+              'Consider moving the doc comment before the annotation.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'doc_comments_before_annotations';
   static const url = '$dartLintDocUrl/$name';
+
+  factory DocCommentsBeforeAnnotations.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return DocCommentsBeforeAnnotations(options: options);
+  }
 
   @override
   void run(

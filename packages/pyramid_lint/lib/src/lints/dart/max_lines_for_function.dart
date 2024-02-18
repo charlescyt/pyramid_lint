@@ -3,6 +3,7 @@ import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 import 'package:meta/meta.dart' show immutable;
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/custom_lint_resolver_extension.dart';
 import '../../utils/typedef.dart';
@@ -29,29 +30,28 @@ class MaxLinesForFunctionOptions {
   }
 }
 
-class MaxLinesForFunction extends DartLintRule {
-  const MaxLinesForFunction._(this.options)
+class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
+  MaxLinesForFunction({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage: 'There are too many lines in this {0}.',
-            correctionMessage:
-                'Consider reducing the number of lines to {1} or less.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage: 'There are too many lines in this {0}.',
+          correctionMessage:
+              'Consider reducing the number of lines to {1} or less.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'max_lines_for_function';
   static const url = '$dartLintDocUrl/$name';
 
-  final MaxLinesForFunctionOptions options;
-
   factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = MaxLinesForFunctionOptions.fromJson(json);
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: MaxLinesForFunctionOptions.fromJson,
+    );
 
-    return MaxLinesForFunction._(options);
+    return MaxLinesForFunction(options: options);
   }
 
   @override
@@ -63,23 +63,23 @@ class MaxLinesForFunction extends DartLintRule {
     context.registry.addFunctionDeclaration((node) {
       final lineCount =
           resolver.getLineCountForNode(node.functionExpression.body);
-      if (lineCount <= options.maxLines) return;
+      if (lineCount <= options.params.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        ['function', options.maxLines],
+        ['function', options.params.maxLines],
       );
     });
 
     context.registry.addMethodDeclaration((node) {
       final lineCount = resolver.getLineCountForNode(node.body);
-      if (lineCount <= options.maxLines) return;
+      if (lineCount <= options.params.maxLines) return;
 
       reporter.reportErrorForNode(
         code,
         node,
-        ['method', options.maxLines],
+        ['method', options.params.maxLines],
       );
     });
   }

@@ -4,27 +4,35 @@ import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class ProperControllerDispose extends DartLintRule {
-  const ProperControllerDispose()
+class ProperControllerDispose extends PyramidLintRule {
+  ProperControllerDispose({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Controller should be disposed in the dispose method.',
-            correctionMessage:
-                'Try adding {0}.dispose() in the dispose method.',
-            url: url,
-            errorSeverity: ErrorSeverity.ERROR,
-          ),
+          name: name,
+          problemMessage:
+              'Controller should be disposed in the dispose method.',
+          correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
+          url: url,
+          errorSeverity: ErrorSeverity.ERROR,
         );
 
   static const name = 'proper_controller_dispose';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory ProperControllerDispose.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return ProperControllerDispose(options: options);
+  }
 
   @override
   void run(

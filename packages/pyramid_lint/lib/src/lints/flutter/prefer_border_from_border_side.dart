@@ -2,27 +2,36 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
+import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class PreferBorderFromBorderSide extends DartLintRule {
-  const PreferBorderFromBorderSide()
+class PreferBorderFromBorderSide extends PyramidLintRule {
+  PreferBorderFromBorderSide({required super.options})
       : super(
-          code: const LintCode(
-            name: name,
-            problemMessage:
-                'Border.all is not a const constructor and it uses const constructor '
-                'Border.fromBorderSide internally.',
-            correctionMessage:
-                'Consider replacing Border.all with Border.fromBorderSide.',
-            url: url,
-            errorSeverity: ErrorSeverity.INFO,
-          ),
+          name: name,
+          problemMessage:
+              'Border.all is not a const constructor and it uses const constructor '
+              'Border.fromBorderSide internally.',
+          correctionMessage:
+              'Consider replacing Border.all with Border.fromBorderSide.',
+          url: url,
+          errorSeverity: ErrorSeverity.INFO,
         );
 
   static const name = 'prefer_border_from_border_side';
   static const url = '$flutterLintDocUrl/$name';
+
+  factory PreferBorderFromBorderSide.fromConfigs(CustomLintConfigs configs) {
+    final json = configs.rules[name]?.json ?? {};
+    final options = PyramidLintRuleOptions.fromJson(
+      json: json,
+      paramsConverter: (_) => null,
+    );
+
+    return PreferBorderFromBorderSide(options: options);
+  }
 
   @override
   void run(
