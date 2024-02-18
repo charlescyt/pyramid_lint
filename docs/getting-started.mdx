@@ -23,24 +23,17 @@ analyzer:
 
 ## Configuration
 
-By default, all lints are enabled. To disable a specific lint, add the following to your `analysis_options.yaml` file:
+### Enable Lints
+
+By default, all lints are disabled. To enable a specific lint, add the following to your `analysis_options.yaml` file:
 
 ```yaml
 custom_lint:
-  rules:
-    - specific_lint_rule: false # disable specific_lint_rule
-```
-
-If you prefer to disable all lints and only enable specific ones, you can edit your analysis_options.yaml file as below:
-
-```yaml
-custom_lint:
-  enable_all_lint_rules: false # disable all lints
   rules:
     - specific_lint_rule # enable specific_lint_rule
 ```
 
-### Lint Severity
+### Change Severity
 
 You can change the severity of a particular lint. The available severities are `info`, `warning`, and `error`. To change the severity of a lint, add the following to your `analysis_options.yaml` file:
 
@@ -51,7 +44,7 @@ custom_lint:
       severity: warning
 ```
 
-### Lint Options
+### Configure Lints
 
 Some lints are configurable. To configure a lint, follow the example below:
 

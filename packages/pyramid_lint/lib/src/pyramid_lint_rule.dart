@@ -26,8 +26,7 @@ abstract class PyramidLintRule<T extends Object?> extends DartLintRule {
   final PyramidLintRuleOptions<T> options;
 
   @override
-  // TODO: Change to disable by default
-  bool get enabledByDefault => true;
+  bool get enabledByDefault => false;
 }
 
 @immutable
