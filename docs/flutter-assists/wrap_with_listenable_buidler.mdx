@@ -1,0 +1,21 @@
+# wrap_with_listenable_builder
+
+Wrap the selected widget with a `ListenableBuilder`.
+
+```dart title="Before"
+Widget build(BuildContext context) {
+  return Text('${counterNotifier.count}');
+  //     ^^^^
+}
+```
+
+```dart title="After"
+Widget build(BuildContext context) {
+  return ListenableBuilder(
+    listenable: counterNotifier,
+    builder: (context, child) {
+      return Text('${counterNotifier.count}');
+    },
+  );
+}
+```

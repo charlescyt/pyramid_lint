@@ -9,4 +9,13 @@ Replace
 
 with EdgeInsets.zero.
 
+```dart title="Before"
+const edgeInsets = EdgeInsets.all(0);
+//                 ^^^^^^^^^^^^^^
+```
+
+```dart title="After"
+const edgeInsets = EdgeInsets.zero;
+```
+
 ![use_edge_insets_zero](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/use_edge_insets_zero.gif)

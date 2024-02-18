@@ -1,0 +1,113 @@
+# Getting Started
+
+## Installation
+
+Run the following command to add `custom_lint` and `pyramid_lint` to your project's dev dependencies:
+
+```sh
+dart pub add --dev custom_lint pyramid_lint
+```
+
+Then enable `custom_lint` in your `analysis_options.yaml` file. You can also exclude generated files from analysis.
+
+```yaml
+analyzer:
+  plugins:
+    - custom_lint
+
+  exclude:
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
+```
+
+## Configuration
+
+### Enable Lints
+
+By default, all lints are disabled. To enable a specific lint, add the following to your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - specific_lint_rule # enable specific_lint_rule
+```
+
+### Change Severity
+
+You can change the severity of a particular lint. The available severities are `info`, `warning`, and `error`. To change the severity of a lint, add the following to your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - specific_lint_rule:
+      severity: warning
+```
+
+### Configure Lints
+
+Some lints are configurable. To configure a lint, follow the example below:
+
+```yaml
+custom_lint:
+  rules:
+    - configurable_lint_rule:
+      option1: value1
+      option2: value2
+```
+
+## Lint Preset
+
+You can use the following preset as a starting point for your project:
+
+```yaml
+analyzer:
+  plugins:
+    - custom_lint
+
+  exclude:
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
+
+custom_lint:
+  rules:
+    # Dart lints
+    - always_declare_parameter_names
+    - avoid_abbreviations_in_doc_comments
+    - avoid_duplicate_import
+    - avoid_dynamic
+    - avoid_empty_blocks
+    - avoid_mutable_global_variables
+    - avoid_inverted_boolean_expressions
+    - avoid_nested_if
+    - avoid_unused_parameters
+    - doc_comments_before_annotations
+    - no_self_comparisons
+    - prefer_async_await
+    - prefer_declaring_const_constructors
+    - prefer_iterable_any
+    - prefer_iterable_every
+    - prefer_iterable_first
+    - prefer_iterable_last
+    - prefer_library_prefixes
+    - prefer_underscore_for_unused_callback_parameters
+    - unnecessary_nullable_return_type
+    # Flutter lints
+    - avoid_returning_widgets
+    - avoid_single_child_in_flex
+    - avoid_widget_state_public_members
+    - prefer_async_callback
+    - prefer_border_from_border_side
+    - prefer_border_radius_all
+    - prefer_dedicated_media_query_method
+    - prefer_spacer
+    - prefer_text_rich
+    - prefer_void_callback
+    - proper_controller_dispose
+    - proper_edge_insets_constructor
+    - proper_expanded_and_flexible
+    - proper_from_environment
+    - proper_super_dispose
+    - proper_super_init_state
+```

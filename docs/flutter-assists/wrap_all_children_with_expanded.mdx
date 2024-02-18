@@ -5,3 +5,28 @@ Wrap all children with `Expanded` widget.
 <Info> This assist is only available when the selected widget is a direct child of a `Flex` widget. </Info>
 
 <Info> This assist will skip children that are `Expanded`, `Flexible` or `Spacer`. </Info>
+
+```dart title="Before"
+Widget build(BuildContext context) {
+  return const Column(
+    //   ^^^^^^^^^^^^
+    children: [
+      Text('Hello'),
+      Spacer(),
+      Text('World'),
+    ],
+  );
+}
+```
+
+```dart title="After"
+Widget build(BuildContext context) {
+  return const Column(
+    children: [
+      Expanded(child: Text('Hello')),
+      Spacer(),
+      Expanded(child: Text('World')),
+    ],
+  );
+}
+```

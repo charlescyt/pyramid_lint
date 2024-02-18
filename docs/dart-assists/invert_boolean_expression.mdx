@@ -2,4 +2,21 @@
 
 Invert a boolean expression.
 
+```dart title="Before"
+void fn(bool condition) {
+  if (number == 0) {
+//    ^^^^^^^^^^^
+    // ...
+  }
+}
+```
+
+```dart title="After"
+void fn(bool condition) {
+  if (number != 0) {
+    // ...
+  }
+}
+```
+
 ![invert_boolean_expression](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/invert_boolean_expression.gif)

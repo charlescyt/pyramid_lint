@@ -2,4 +2,21 @@
 
 Wrap the selected widget with a Stack.
 
+```dart title="Before"
+Widget build(BuildContext context) {
+  return const Placeholder();
+  //     ^^^^^^^^^^^^^^^^^
+}
+```
+
+```dart title="After"
+Widget build(BuildContext context) {
+  return const Stack(
+    children: [
+      Placeholder(),
+    ],
+  );
+}
+```
+
 ![wrap_with_stack](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/wrap_with_stack.gif)

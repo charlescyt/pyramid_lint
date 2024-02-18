@@ -2,4 +2,25 @@
 
 Swap the then and else expression of a if-else expression or conditional expression.
 
+```dart title="Before"
+void fn(bool condition) {
+  if (condition) {
+//^^^^^^^^^^^^^^
+    print('then');
+  } else {
+    print('else');
+  }
+}
+```
+
+```dart title="After"
+void fn(bool condition) {
+  if (condition) {
+    print('else');
+  } else {
+    print('then');
+  }
+}
+```
+
 ![swap_then_else_expression](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/swap_then_else_expression.gif)

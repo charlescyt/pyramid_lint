@@ -6,4 +6,21 @@ Wrap the selected widget with a LayoutBuilder.
 
 <info> This assist is only available if the selected widget is not already wrapped with a LayoutBuilder. </info>
 
+```dart title="Before"
+Widget build(BuildContext context) {
+  return const Placeholder();
+  //     ^^^^^^^^^^^^^^^^^
+}
+```
+
+```dart title="After"
+Widget build(BuildContext context) {
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      return const Placeholder();
+    },
+  );
+}
+```
+
 ![wrap_with_layout_builder](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/wrap_with_layout_builder.gif)

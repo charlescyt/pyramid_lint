@@ -14,16 +14,19 @@
     }
   ],
   "sidebar": [
-    ["Overview", "/"],
-    ["Getting started", "/getting-started"],
+    ["Getting Started", [
+      ["Overview", "/"],
+      ["Getting Started", "/getting-started/getting-started"],
+      ["Available Lints", "/getting-started/available-lints"]
+    ]],
     ["Dart Lints", [
       ["always_declare_parameter_names", "/dart-lints/always_declare_parameter_names"],
       ["avoid_abbreviations_in_doc_comments", "/dart-lints/avoid_abbreviations_in_doc_comments"],
       ["avoid_duplicate_import", "/dart-lints/avoid_duplicate_import"],
       ["avoid_dynamic", "/dart-lints/avoid_dynamic"],
       ["avoid_empty_blocks", "/dart-lints/avoid_empty_blocks"],
-      ["avoid_mutable_global_variables", "/dart-lints/avoid_mutable_global_variables"],
       ["avoid_inverted_boolean_expressions", "/dart-lints/avoid_inverted_boolean_expressions"],
+      ["avoid_mutable_global_variables", "/dart-lints/avoid_mutable_global_variables"],
       ["avoid_nested_if", "/dart-lints/avoid_nested_if"],
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
       ["boolean_prefix", "/dart-lints/boolean_prefix"],
@@ -72,6 +75,7 @@
         ["wrap_all_children_with_expanded", "/flutter-assists/wrap_all_children_with_expanded"],
         ["wrap_with_expanded", "/flutter-assists/wrap_with_expanded"],
         ["wrap_with_layout_builder", "/flutter-assists/wrap_with_layout_builder"],
+        ["wrap_with_listenable_builder", "/flutter-assists/wrap_with_listenable_builder"],
         ["wrap_with_stack", "/flutter-assists/wrap_with_stack"],
         ["wrap_with_value_listenable_builder", "/flutter-assists/wrap_with_value_listenable_builder"]
       ]
