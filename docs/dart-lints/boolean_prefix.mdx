@@ -1,8 +1,8 @@
 # boolean_prefix
 
-- Severity: info ℹ️
-- Options:
-  - valid_prefixes: `List<String>`
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ✅    |
 
 ## Details
 
@@ -61,6 +61,12 @@ custom_lint:
   rules:
     - boolean_prefix
 ```
+
+## Options
+
+| Option           | Type           | Description               | Default Value |
+| ---------------- | -------------- | ------------------------- |:-------------:|
+| `valid_prefixes` | `List<String>` | A list of valid prefixes. |     `[]`      |
 
 To configure the list of valid prefixes, add a list of strings to the `valid_prefixes` option:
 

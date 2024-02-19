@@ -16,8 +16,8 @@
   "sidebar": [
     ["Getting Started", [
       ["Overview", "/"],
-      ["Getting Started", "/getting-started/getting-started"],
-      ["Available Lints", "/getting-started/available-lints"]
+      ["Getting Started", "/getting-started"],
+      ["Available Lints", "/available-lints"]
     ]],
     ["Dart Lints", [
       ["always_declare_parameter_names", "/dart-lints/always_declare_parameter_names"],

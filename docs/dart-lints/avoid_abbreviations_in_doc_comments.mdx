@@ -1,8 +1,8 @@
 # avoid_abbreviations_in_doc_comments
 
-- Severity: warning ⚠️
-- Options:
-  - abbreviations: `List<String>`
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+| Warning  |    ❌     |   ✅    |
 
 ## Details
 
@@ -40,6 +40,12 @@ custom_lint:
   rules:
     - avoid_abbreviations_in_doc_comments
 ```
+
+## Options
+
+| Option          | Type           | Description                         | Default Value |
+| --------------- | -------------- | ----------------------------------- |:-------------:|
+| `abbreviations` | `List<String>` | The list of abbreviations to avoid. |     `[]`      |
 
 To configure the list of abbreviations, add a list of strings to the `abbreviations` option:
 

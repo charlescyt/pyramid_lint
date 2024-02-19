@@ -1,14 +1,16 @@
 # avoid_returning_widgets
 
-- Severity: info ℹ️
-- Options:
-  - ignored_method_names: `List<String>`
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ✅    |
 
 ## Details
 
 **Avoid** returning widgets from methods.
 
 <Info> Static, overridden and extension methods are ignored. </Info>
+
+Watch the video below to learn more about the advantages of using widgets as classes instead of methods.
 
 <YouTube id="IOyq-eTRhvo" />
 
@@ -66,6 +68,12 @@ custom_lint:
   rules:
     - avoid_returning_widgets
 ```
+
+## Options
+
+| Option                 | Type           | Description                      | Default Value |
+| ---------------------- | -------------- | -------------------------------- |:-------------:|
+| `ignored_method_names` | `List<String>` | A list of method names to ignore |     `[]`      |
 
 To configure the list of ignored method names, add a list of strings to the `ignored_method_names` option:
 

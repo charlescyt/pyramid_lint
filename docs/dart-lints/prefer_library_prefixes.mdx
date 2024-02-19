@@ -1,10 +1,8 @@
 # prefer_library_prefixes
 
-- Severity: info ℹ️
-- Quick fix: ✅
-- Options:
-  - include_default_libraries: `bool` (default: true)
-  - libraries: `List<String>`
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ✅     |   ✅    |
 
 ## Details
 
@@ -41,6 +39,13 @@ custom_lint:
   rules:
     - prefer_library_prefixes
 ```
+
+## Options
+
+| Option                      | Type           | Description                           | Default Value |
+| --------------------------- | -------------- | ------------------------------------- |:-------------:|
+| `include_default_libraries` | `bool`         | Whether to include default libraries. |    `true`     |
+| `libraries`                 | `List<String>` | A list of libraries to include.       |     `[]`      |
 
 To configure the rule, add the optional `include_default_libraries` and `libraries` parameters:
 

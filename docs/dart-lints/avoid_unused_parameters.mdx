@@ -1,8 +1,8 @@
 # avoid_unused_parameters
 
-- Severity: warning ⚠️
-- Options:
-  - excluded_parameters: `List<String>`
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+| Warning  |    ❌     |   ✅    |
 
 ## Details
 
@@ -31,6 +31,12 @@ custom_lint:
   rules:
     - avoid_unused_parameters
 ```
+
+## Options
+
+| Option                | Type           | Description                     | Default Value |
+| --------------------- | -------------- | ------------------------------- |:-------------:|
+| `excluded_parameters` | `List<String>` | A list of parameters to ignore. |     `[]`      |
 
 To configure the list of excluded parameters, add a list of strings to the `excluded_parameters` option:
 

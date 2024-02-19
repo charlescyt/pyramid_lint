@@ -1,8 +1,8 @@
 # max_switch_cases
 
-- Severity: warning ⚠️
-- Options:
-  - max_cases: `int` (default: 10)
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+| Warning  |    ❌     |   ✅    |
 
 ## Details
 
@@ -17,6 +17,12 @@ custom_lint:
   rules:
     - max_switch_cases
 ```
+
+## Options
+
+| Option      | Type  | Description                  | Default Value |
+| ----------- | ----- | ---------------------------- |:-------------:|
+| `max_cases` | `int` | The maximum number of cases. |     `10`      |
 
 To configure the maximum number of cases, add an `int` to the `max_cases` option:
 

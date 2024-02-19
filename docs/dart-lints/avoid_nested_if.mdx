@@ -1,8 +1,8 @@
 # avoid_nested_if
 
-- Severity: warning ⚠️
-- Options:
-  - max_nesting_level: `int` (default: 2)
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+| Warning  |    ❌     |   ✅    |
 
 ## Details
 
@@ -36,6 +36,12 @@ custom_lint:
   rules:
     - avoid_nested_if
 ```
+
+## Options
+
+| Option              | Type  | Description                        | Default Value |
+| ------------------- | ----- | ---------------------------------- |:-------------:|
+| `max_nesting_level` | `int` | The maximum allowed nesting level. |      `2`      |
 
 To configure the max nesting level, add an integer to the `max_nesting_level` option:
 

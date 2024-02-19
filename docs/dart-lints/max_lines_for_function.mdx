@@ -1,8 +1,8 @@
 # max_lines_for_function
 
-- Severity: info ℹ️
-- Options:
-  - max_lines: `int` (default: 100)
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ✅    |
 
 ## Details
 
@@ -17,6 +17,12 @@ custom_lint:
   rules:
     - max_lines_for_function
 ```
+
+## Options
+
+| Option      | Type  | Description                  | Default Value |
+| ----------- | ----- | ---------------------------- |:-------------:|
+| `max_lines` | `int` | The maximum number of lines. |     `100`     |
 
 To configure the maximum number of lines, add an `int` to the `max_lines` option:
 
