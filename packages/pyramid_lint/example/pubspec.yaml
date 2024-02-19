@@ -12,6 +12,6 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  custom_lint: ^0.6.0
+  custom_lint: ^0.6.2
   pyramid_lint:
     path: ../

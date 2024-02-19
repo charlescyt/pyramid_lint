@@ -11,6 +11,7 @@
 ### Changed
 
 - **BREAKING**: All lints are now disabled by default. You need to enable them in your `analysis_options.yaml` file.
+- Pump the minimum `custom_lint_builder` version to 0.6.2.
 
 ## [1.5.0] - 2024-02-14
 
