@@ -28,6 +28,7 @@
       ["avoid_inverted_boolean_expressions", "/dart-lints/avoid_inverted_boolean_expressions"],
       ["avoid_mutable_global_variables", "/dart-lints/avoid_mutable_global_variables"],
       ["avoid_nested_if", "/dart-lints/avoid_nested_if"],
+      ["avoid_record_positional_field_getters", "/dart-lints/avoid_record_positional_field_getters"],
       ["avoid_redundant_pattern_field_names", "/dart-lints/avoid_redundant_pattern_field_names"],
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
       ["boolean_prefix", "/dart-lints/boolean_prefix"],
