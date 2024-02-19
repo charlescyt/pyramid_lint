@@ -13,23 +13,23 @@ import '../../utils/visitors.dart';
 @immutable
 class AvoidUnusedParametersOptions {
   const AvoidUnusedParametersOptions({
-    List<String>? excludedParameters,
-  }) : _excludedParameters = excludedParameters;
+    List<String>? ignoredParameters,
+  }) : _ignoredParameters = ignoredParameters;
 
-  final List<String>? _excludedParameters;
+  final List<String>? _ignoredParameters;
 
-  List<String> get excludedParameters => [
-        ...?_excludedParameters,
+  List<String> get ignoredParameters => [
+        ...?_ignoredParameters,
       ];
 
   factory AvoidUnusedParametersOptions.fromJson(Json json) {
-    final excludedParameters = switch (json['excluded_parameters']) {
+    final ignoredParameters = switch (json['ignored_parameters']) {
       final YamlList excludedParameters => excludedParameters.cast<String>(),
       _ => null,
     };
 
     return AvoidUnusedParametersOptions(
-      excludedParameters: excludedParameters,
+      ignoredParameters: ignoredParameters,
     );
   }
 }
@@ -77,8 +77,7 @@ class AvoidUnusedParameters
       body.accept(visitor);
 
       for (final parameter in parameters) {
-        if (options.params.excludedParameters
-            .contains(parameter.name?.lexeme)) {
+        if (options.params.ignoredParameters.contains(parameter.name?.lexeme)) {
           continue;
         }
 
@@ -103,9 +102,11 @@ class AvoidUnusedParameters
       final classDeclaration = node.thisOrAncestorOfType<ClassDeclaration>();
       if (classDeclaration == null) return;
 
+      classDeclaration.declaredElement?.isAbstract;
       final isAbstractClass = classDeclaration.abstractKeyword != null;
       if (isAbstractClass) return;
 
+      node.declaredElement?.hasOverride;
       final isOverrideMethod =
           node.metadata.any((e) => e.name.name == 'override');
       if (isOverrideMethod) return;
