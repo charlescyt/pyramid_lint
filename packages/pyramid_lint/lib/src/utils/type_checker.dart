@@ -15,7 +15,7 @@ const statefulWidgetChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
-const widgetStateChecker = TypeChecker.fromName(
+const stateChecker = TypeChecker.fromName(
   'State',
   packageName: 'flutter',
 );

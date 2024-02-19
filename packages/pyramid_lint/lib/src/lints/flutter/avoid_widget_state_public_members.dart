@@ -45,9 +45,7 @@ class AvoidWidgetStatePublicMembers extends PyramidLintRule {
       if (superClass == null) return;
 
       final type = superClass.type;
-      if (type == null || !widgetStateChecker.isAssignableFromType(type)) {
-        return;
-      }
+      if (type == null || !stateChecker.isAssignableFromType(type)) return;
 
       final hasOverrideAnnotation =
           classMember.metadata.any((e) => e.name.name == 'override');

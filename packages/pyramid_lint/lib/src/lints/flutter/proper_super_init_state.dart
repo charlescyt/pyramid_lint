@@ -48,9 +48,7 @@ class ProperSuperInitState extends PyramidLintRule {
       if (extendsClause == null) return;
 
       final type = extendsClause.superclass.type;
-      if (type == null || !widgetStateChecker.isAssignableFromType(type)) {
-        return;
-      }
+      if (type == null || !stateChecker.isAssignableFromType(type)) return;
 
       final body = node.members.findMethodDeclarationByName('initState')?.body;
       if (body == null || body is! BlockFunctionBody) return;
