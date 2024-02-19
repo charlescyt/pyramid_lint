@@ -44,7 +44,7 @@ class AvoidAbbreviationsInDocComments
     extends PyramidLintRule<AvoidAbbreviationsInDocCommentsOptions> {
   AvoidAbbreviationsInDocComments({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Avoid using abbreviations in doc comments as they can hinder '
               'readability and cause confusion.',
@@ -53,13 +53,13 @@ class AvoidAbbreviationsInDocComments
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'avoid_abbreviations_in_doc_comments';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_abbreviations_in_doc_comments';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidAbbreviationsInDocComments.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: AvoidAbbreviationsInDocCommentsOptions.fromJson,

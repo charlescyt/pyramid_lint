@@ -9,7 +9,7 @@ import '../../utils/pubspec_extension.dart';
 class ProperFromEnvironment extends PyramidLintRule {
   ProperFromEnvironment({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'The {0}.fromEnvironment constructor should be invoked '
               'as a const constructor.',
@@ -20,11 +20,11 @@ class ProperFromEnvironment extends PyramidLintRule {
           errorSeverity: ErrorSeverity.ERROR,
         );
 
-  static const name = 'proper_from_environment';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'proper_from_environment';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory ProperFromEnvironment.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

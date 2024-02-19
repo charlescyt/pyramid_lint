@@ -11,18 +11,18 @@ import '../../utils/type_checker.dart';
 class PreferIterableFirst extends PyramidLintRule {
   PreferIterableFirst({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: '{0} is more verbose than iterable.first.',
           correctionMessage: 'Consider replacing {1} with {2}.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_iterable_first';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_iterable_first';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferIterableFirst.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

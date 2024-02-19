@@ -10,18 +10,18 @@ import '../../utils/type_checker.dart';
 class AvoidWidgetStatePublicMembers extends PyramidLintRule {
   AvoidWidgetStatePublicMembers({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Avoid public members in widget state classes.',
           correctionMessage: 'Consider using private members.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_widget_state_public_members';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'avoid_widget_state_public_members';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory AvoidWidgetStatePublicMembers.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

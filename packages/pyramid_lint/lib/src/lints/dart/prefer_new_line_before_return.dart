@@ -10,7 +10,7 @@ import '../../utils/constants.dart';
 class PreferNewLineBeforeReturn extends PyramidLintRule {
   PreferNewLineBeforeReturn({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'There should be a new line before the return statement.',
           correctionMessage:
@@ -19,11 +19,11 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_new_line_before_return';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_new_line_before_return';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferNewLineBeforeReturn.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

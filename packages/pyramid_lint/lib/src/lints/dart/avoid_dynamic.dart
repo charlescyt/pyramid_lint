@@ -10,7 +10,7 @@ import '../../utils/constants.dart';
 class AvoidDynamic extends PyramidLintRule {
   AvoidDynamic({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Avoid using dynamic type as it reduces type safety and can '
               'lead to potential runtime errors.',
@@ -20,11 +20,11 @@ class AvoidDynamic extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_dynamic';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_dynamic';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidDynamic.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

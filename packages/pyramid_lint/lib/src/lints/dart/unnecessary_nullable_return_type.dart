@@ -12,20 +12,20 @@ import '../../utils/visitors.dart';
 class UnnecessaryNullableReturnType extends PyramidLintRule {
   UnnecessaryNullableReturnType({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'The nullable return type is unnecessary.',
           correctionMessage: 'Consider using non-nullable return type.',
           url: url,
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'unnecessary_nullable_return_type';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'unnecessary_nullable_return_type';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory UnnecessaryNullableReturnType.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

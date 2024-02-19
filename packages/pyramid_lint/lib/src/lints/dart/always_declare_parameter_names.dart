@@ -8,7 +8,7 @@ import '../../utils/constants.dart';
 class AlwaysDeclareParameterNames extends PyramidLintRule {
   AlwaysDeclareParameterNames({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Parameter names should always be declared to enhance code readability and '
               'enable IDEs to provide code completion suggestions.',
@@ -17,11 +17,11 @@ class AlwaysDeclareParameterNames extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'always_declare_parameter_names';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'always_declare_parameter_names';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AlwaysDeclareParameterNames.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

@@ -33,7 +33,7 @@ class MaxLinesForFunctionOptions {
 class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
   MaxLinesForFunction({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'There are too many lines in this {0}.',
           correctionMessage:
               'Consider reducing the number of lines to {1} or less.',
@@ -41,11 +41,11 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'max_lines_for_function';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'max_lines_for_function';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: MaxLinesForFunctionOptions.fromJson,

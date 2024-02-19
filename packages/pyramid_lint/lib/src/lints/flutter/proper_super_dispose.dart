@@ -13,7 +13,7 @@ import '../../utils/type_checker.dart';
 class ProperSuperDispose extends PyramidLintRule {
   ProperSuperDispose({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'super.dispose() should be called at the end of the dispose method.',
           correctionMessage:
@@ -22,11 +22,11 @@ class ProperSuperDispose extends PyramidLintRule {
           errorSeverity: ErrorSeverity.ERROR,
         );
 
-  static const name = 'proper_super_dispose';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'proper_super_dispose';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory ProperSuperDispose.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

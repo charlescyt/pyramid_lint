@@ -11,7 +11,7 @@ import '../../utils/type_checker.dart';
 class PreferTextRich extends PyramidLintRule {
   PreferTextRich({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'RichText does not inherit TextStyle from DefaultTextStyle.',
           correctionMessage: 'Consider replacing RichText with Text.rich.',
@@ -19,11 +19,11 @@ class PreferTextRich extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_text_rich';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_text_rich';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferTextRich.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

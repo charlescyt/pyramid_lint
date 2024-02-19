@@ -10,7 +10,7 @@ import '../../utils/type_checker.dart';
 class PreferBorderRadiusAll extends PyramidLintRule {
   PreferBorderRadiusAll({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'BorderRadius.circular is not a const constructor and it uses const '
               'constructor BorderRadius.all internally.',
@@ -20,11 +20,11 @@ class PreferBorderRadiusAll extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_border_radius_all';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_border_radius_all';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferBorderRadiusAll.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

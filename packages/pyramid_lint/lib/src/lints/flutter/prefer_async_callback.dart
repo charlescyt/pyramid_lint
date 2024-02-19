@@ -11,7 +11,7 @@ import '../../utils/pubspec_extension.dart';
 class PreferAsyncCallback extends PyramidLintRule {
   PreferAsyncCallback({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'There is a typedef AsyncCallback defined in flutter.',
           correctionMessage:
@@ -20,11 +20,11 @@ class PreferAsyncCallback extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_async_callback';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_async_callback';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferAsyncCallback.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

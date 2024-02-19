@@ -10,7 +10,7 @@ import '../../utils/constants.dart';
 class PreferDeclaringConstConstructors extends PyramidLintRule {
   PreferDeclaringConstConstructors({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Constructors should be declared as const constructors when possible.',
           correctionMessage:
@@ -19,13 +19,13 @@ class PreferDeclaringConstConstructors extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_declaring_const_constructors';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_declaring_const_constructors';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferDeclaringConstConstructors.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

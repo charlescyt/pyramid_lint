@@ -51,18 +51,18 @@ class PreferLibraryPrefixes
     extends PyramidLintRule<PreferLibraryPrefixesOptions> {
   PreferLibraryPrefixes({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Prefix should be used for this library.',
           correctionMessage: 'Consider adding a prefix to this library.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_library_prefixes';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_library_prefixes';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferLibraryPrefixes.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: PreferLibraryPrefixesOptions.fromJson,

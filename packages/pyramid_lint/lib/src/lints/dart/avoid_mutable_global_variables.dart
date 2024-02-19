@@ -8,7 +8,7 @@ import '../../utils/constants.dart';
 class AvoidMutableGlobalVariables extends PyramidLintRule {
   AvoidMutableGlobalVariables({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Using mutable global variables is discouraged.',
           correctionMessage:
               'Consider declaring the variable as final or const.',
@@ -16,11 +16,11 @@ class AvoidMutableGlobalVariables extends PyramidLintRule {
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'avoid_mutable_global_variables';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_mutable_global_variables';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidMutableGlobalVariables.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

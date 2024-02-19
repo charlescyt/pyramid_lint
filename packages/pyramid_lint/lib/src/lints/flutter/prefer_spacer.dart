@@ -12,18 +12,18 @@ import '../../utils/type_checker.dart';
 class PreferSpacer extends PyramidLintRule {
   PreferSpacer({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
           correctionMessage: 'Consider replacing Expanded with Spacer.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_spacer';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_spacer';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferSpacer.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

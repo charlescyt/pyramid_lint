@@ -10,7 +10,7 @@ import '../../utils/constants.dart';
 class PreferImmediateReturn extends PyramidLintRule {
   PreferImmediateReturn({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Declaring a variable to return it on the next line is '
               'unnecessary.',
@@ -19,11 +19,11 @@ class PreferImmediateReturn extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_immediate_return';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_immediate_return';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferImmediateReturn.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

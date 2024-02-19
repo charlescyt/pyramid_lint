@@ -8,18 +8,18 @@ import '../../utils/constants.dart';
 class PreferAsyncAwait extends PyramidLintRule {
   PreferAsyncAwait({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Using Future.then() decreases readability.',
           correctionMessage: 'Consider using async/await instead.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_async_await';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_async_await';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferAsyncAwait.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

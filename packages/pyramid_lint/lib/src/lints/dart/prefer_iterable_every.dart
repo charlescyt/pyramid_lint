@@ -15,7 +15,7 @@ import '../../utils/utils.dart';
 class PreferIterableEvery extends PyramidLintRule {
   PreferIterableEvery({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
           correctionMessage:
@@ -24,11 +24,11 @@ class PreferIterableEvery extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_iterable_every';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'prefer_iterable_every';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory PreferIterableEvery.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

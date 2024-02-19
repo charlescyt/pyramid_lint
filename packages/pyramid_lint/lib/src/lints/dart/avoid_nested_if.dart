@@ -32,7 +32,7 @@ class AvoidNestedIfOptions {
 class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
   AvoidNestedIf({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Avoid nested if statements to reduce code complexity.',
           correctionMessage:
@@ -41,11 +41,11 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'avoid_nested_if';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_nested_if';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidNestedIf.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: AvoidNestedIfOptions.fromJson,

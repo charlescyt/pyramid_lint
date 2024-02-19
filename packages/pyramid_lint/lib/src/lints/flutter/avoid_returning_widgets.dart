@@ -37,7 +37,7 @@ class AvoidReturningWidgets
     extends PyramidLintRule<AvoidReturningWidgetsOptions> {
   AvoidReturningWidgets({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Returning widgets is not recommended for performance reasons.',
           correctionMessage: 'Consider creating a separate widget instead.',
@@ -45,11 +45,11 @@ class AvoidReturningWidgets
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_returning_widgets';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'avoid_returning_widgets';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory AvoidReturningWidgets.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: AvoidReturningWidgetsOptions.fromJson,

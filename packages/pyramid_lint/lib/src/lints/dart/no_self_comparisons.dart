@@ -9,7 +9,7 @@ import '../../utils/constants.dart';
 class NoSelfComparisons extends PyramidLintRule {
   NoSelfComparisons({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Self comparison is usually a mistake.',
           correctionMessage:
               'Consider changing the comparison to something else.',
@@ -17,11 +17,11 @@ class NoSelfComparisons extends PyramidLintRule {
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'no_self_comparisons';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'no_self_comparisons';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory NoSelfComparisons.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

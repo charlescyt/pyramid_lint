@@ -13,7 +13,7 @@ import '../../utils/type_checker.dart';
 class ProperControllerDispose extends PyramidLintRule {
   ProperControllerDispose({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Controller should be disposed in the dispose method.',
           correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
@@ -21,11 +21,11 @@ class ProperControllerDispose extends PyramidLintRule {
           errorSeverity: ErrorSeverity.ERROR,
         );
 
-  static const name = 'proper_controller_dispose';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'proper_controller_dispose';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory ProperControllerDispose.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

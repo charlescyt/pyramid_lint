@@ -10,7 +10,7 @@ import '../../utils/type_checker.dart';
 class PreferBorderFromBorderSide extends PyramidLintRule {
   PreferBorderFromBorderSide({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Border.all is not a const constructor and it uses const constructor '
               'Border.fromBorderSide internally.',
@@ -20,11 +20,11 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_border_from_border_side';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_border_from_border_side';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferBorderFromBorderSide.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

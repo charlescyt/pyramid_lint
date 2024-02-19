@@ -38,20 +38,20 @@ const List<String> _properties = [
 class PreferDedicatedMediaQueryMethod extends PyramidLintRule {
   PreferDedicatedMediaQueryMethod({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Using {0} will cause unnecessary rebuilds.',
           correctionMessage: 'Consider using {1} instead.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_dedicated_media_query_method';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_dedicated_media_query_method';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferDedicatedMediaQueryMethod.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

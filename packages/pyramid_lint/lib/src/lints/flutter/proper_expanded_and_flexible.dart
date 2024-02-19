@@ -11,7 +11,7 @@ import '../../utils/type_checker.dart';
 class ProperExpandedAndFlexible extends PyramidLintRule {
   ProperExpandedAndFlexible({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
           correctionMessage:
               'Try placing {0} inside a Row, Column, or Flex, or remove it.',
@@ -19,11 +19,11 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
           errorSeverity: ErrorSeverity.ERROR,
         );
 
-  static const name = 'proper_expanded_and_flexible';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'proper_expanded_and_flexible';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory ProperExpandedAndFlexible.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

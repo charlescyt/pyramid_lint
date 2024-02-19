@@ -32,7 +32,7 @@ class MaxLinesForFileOptions {
 class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
   MaxLinesForFile({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'There are too many lines in this file.',
           correctionMessage:
               'Consider reducing the number of lines to {0} or less.',
@@ -40,11 +40,11 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'max_lines_for_file';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'max_lines_for_file';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: MaxLinesForFileOptions.fromJson,

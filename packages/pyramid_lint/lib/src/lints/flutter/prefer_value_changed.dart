@@ -11,7 +11,7 @@ import '../../utils/pubspec_extension.dart';
 class PreferValueChanged extends PyramidLintRule {
   PreferValueChanged({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'There is a typedef ValueChanged<T> defined in flutter.',
           correctionMessage:
@@ -20,11 +20,11 @@ class PreferValueChanged extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'prefer_value_changed';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'prefer_value_changed';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory PreferValueChanged.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

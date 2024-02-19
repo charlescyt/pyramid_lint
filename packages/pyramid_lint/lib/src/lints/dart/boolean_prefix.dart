@@ -53,18 +53,18 @@ class BooleanPrefixOptions {
 class BooleanPrefix extends PyramidLintRule<BooleanPrefixOptions> {
   BooleanPrefix({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: '{0} should be named with a valid prefix.',
           correctionMessage: 'Try naming your {1} with a valid prefix.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'boolean_prefix';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'boolean_prefix';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: BooleanPrefixOptions.fromJson,

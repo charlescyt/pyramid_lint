@@ -31,7 +31,7 @@ class MaxSwitchCasesOptions {
 class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
   MaxSwitchCases({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'There are too many cases in this switch statement.',
           correctionMessage:
               'Consider reducing the number of cases to {0} or less.',
@@ -39,11 +39,11 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'max_switch_cases';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'max_switch_cases';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory MaxSwitchCases.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: MaxSwitchCasesOptions.fromJson,

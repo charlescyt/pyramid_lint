@@ -8,7 +8,7 @@ import '../../utils/constants.dart';
 class AvoidEmptyBlocks extends PyramidLintRule {
   AvoidEmptyBlocks({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Empty block usually indicates a missing implementation.',
           correctionMessage:
@@ -17,11 +17,11 @@ class AvoidEmptyBlocks extends PyramidLintRule {
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'avoid_empty_blocks';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_empty_blocks';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidEmptyBlocks.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

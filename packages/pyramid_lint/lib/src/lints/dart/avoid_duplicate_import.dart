@@ -10,7 +10,7 @@ import '../../utils/iterable_extension.dart';
 class AvoidDuplicateImport extends PyramidLintRule {
   AvoidDuplicateImport({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Duplicate imports can lead to confusion.',
           correctionMessage:
               'Consider combining or removing the duplicate imports.',
@@ -18,11 +18,11 @@ class AvoidDuplicateImport extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_duplicate_import';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_duplicate_import';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidDuplicateImport.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

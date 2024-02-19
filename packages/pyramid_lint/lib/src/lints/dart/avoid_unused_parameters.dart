@@ -38,18 +38,18 @@ class AvoidUnusedParameters
     extends PyramidLintRule<AvoidUnusedParametersOptions> {
   AvoidUnusedParameters({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Unused parameter should be removed.',
           correctionMessage: 'Consider removing the unused parameter.',
           url: url,
           errorSeverity: ErrorSeverity.WARNING,
         );
 
-  static const name = 'avoid_unused_parameters';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_unused_parameters';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidUnusedParameters.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: AvoidUnusedParametersOptions.fromJson,

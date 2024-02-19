@@ -11,7 +11,7 @@ import '../../utils/constants.dart';
 class DocCommentsBeforeAnnotations extends PyramidLintRule {
   DocCommentsBeforeAnnotations({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Doc comments should be placed before annotations.',
           correctionMessage:
               'Consider moving the doc comment before the annotation.',
@@ -19,11 +19,11 @@ class DocCommentsBeforeAnnotations extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'doc_comments_before_annotations';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'doc_comments_before_annotations';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory DocCommentsBeforeAnnotations.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

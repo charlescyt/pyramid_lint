@@ -10,20 +10,20 @@ import '../../utils/constants.dart';
 class AvoidRedundantPatternFieldNames extends PyramidLintRule {
   AvoidRedundantPatternFieldNames({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage: 'Using explicit getter names is redundant.',
           correctionMessage: 'Consider omitting the getter name.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_redundant_pattern_field_names';
-  static const url = '$dartLintDocUrl/$name';
+  static const ruleName = 'avoid_redundant_pattern_field_names';
+  static const url = '$dartLintDocUrl/$ruleName';
 
   factory AvoidRedundantPatternFieldNames.fromConfigs(
     CustomLintConfigs configs,
   ) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

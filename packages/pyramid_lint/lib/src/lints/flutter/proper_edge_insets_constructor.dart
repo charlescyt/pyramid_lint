@@ -13,7 +13,7 @@ import '../../utils/utils.dart';
 class ProperEdgeInsetsConstructor extends PyramidLintRule {
   ProperEdgeInsetsConstructor({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Using incorrect EdgeInsets constructor and arguments.',
           correctionMessage: 'Consider replacing with {0}.',
@@ -21,11 +21,11 @@ class ProperEdgeInsetsConstructor extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'proper_edge_insets_constructor';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'proper_edge_insets_constructor';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory ProperEdgeInsetsConstructor.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,

@@ -12,7 +12,7 @@ import '../../utils/type_checker.dart';
 class AvoidSingleChildInFlex extends PyramidLintRule {
   AvoidSingleChildInFlex({required super.options})
       : super(
-          name: name,
+          name: ruleName,
           problemMessage:
               'Using {0} to position a single widget is inefficient.',
           correctionMessage: 'Consider replacing {0} with Align or Center.',
@@ -20,11 +20,11 @@ class AvoidSingleChildInFlex extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'avoid_single_child_in_flex';
-  static const url = '$flutterLintDocUrl/$name';
+  static const ruleName = 'avoid_single_child_in_flex';
+  static const url = '$flutterLintDocUrl/$ruleName';
 
   factory AvoidSingleChildInFlex.fromConfigs(CustomLintConfigs configs) {
-    final json = configs.rules[name]?.json ?? {};
+    final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
