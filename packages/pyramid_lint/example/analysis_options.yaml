@@ -4,11 +4,49 @@ analyzer:
   plugins:
     - custom_lint
 
+  exclude:
+    - "**.freezed.dart"
+    - "**.g.dart"
+    - "**.gr.dart"
+
 custom_lint:
   rules:
-    - max_lines_for_file:
-      max_lines: 100
-    - max_lines_for_function:
-      max_lines: 50
-    - avoid_returning_widgets:
-      ignored_method_names: ['myMethod']
+    # Dart lints
+    - always_declare_parameter_names
+    - avoid_abbreviations_in_doc_comments
+    - avoid_duplicate_import
+    - avoid_dynamic
+    - avoid_empty_blocks
+    - avoid_mutable_global_variables
+    - avoid_inverted_boolean_expressions
+    - avoid_nested_if
+    - avoid_redundant_pattern_field_names
+    - avoid_unused_parameters
+    - doc_comments_before_annotations
+    - no_self_comparisons
+    - prefer_async_await
+    - prefer_declaring_const_constructors
+    - prefer_iterable_any
+    - prefer_iterable_every
+    - prefer_iterable_first
+    - prefer_iterable_last
+    - prefer_library_prefixes
+    - prefer_underscore_for_unused_callback_parameters
+    - unnecessary_nullable_return_type
+    # Flutter lints
+    - avoid_returning_widgets
+    - avoid_single_child_in_flex
+    - avoid_widget_state_public_members
+    - prefer_async_callback
+    - prefer_border_from_border_side
+    - prefer_border_radius_all
+    - prefer_dedicated_media_query_method
+    - prefer_spacer
+    - prefer_text_rich
+    - prefer_void_callback
+    - proper_controller_dispose
+    - proper_edge_insets_constructor
+    - proper_expanded_and_flexible
+    - proper_from_environment
+    - proper_super_dispose
+    - proper_super_init_state
