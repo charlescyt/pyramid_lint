@@ -1,0 +1,22 @@
+Message: `Remove the field name`
+Priority: 80
+Diff for file `test/lints/dart/avoid_redundant_pattern_field_names/fix/avoid_redundant_pattern_field_names.dart:5`:
+```
+void fn(Map<String, int> map) {
+  // expect_lint: avoid_redundant_pattern_field_names
+-   for (final MapEntry(key: key, value: value) in map.entries) {}
++   for (final MapEntry(:key, value: value) in map.entries) {}
+}
+```
+---
+Message: `Remove the field name`
+Priority: 80
+Diff for file `test/lints/dart/avoid_redundant_pattern_field_names/fix/avoid_redundant_pattern_field_names.dart:5`:
+```
+void fn(Map<String, int> map) {
+  // expect_lint: avoid_redundant_pattern_field_names
+-   for (final MapEntry(key: key, value: value) in map.entries) {}
++   for (final MapEntry(key: key, :value) in map.entries) {}
+}
+```
+---
