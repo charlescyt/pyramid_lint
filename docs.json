@@ -32,6 +32,7 @@
       ["avoid_redundant_pattern_field_names", "/dart-lints/avoid_redundant_pattern_field_names"],
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
       ["boolean_prefix", "/dart-lints/boolean_prefix"],
+      ["class_member_ordering", "/dart-lints/class_member_ordering"],
       ["doc_comments_before_annotations", "/dart-lints/doc_comments_before_annotations"],
       ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
       ["max_lines_for_function", "/dart-lints/max_lines_for_function"],

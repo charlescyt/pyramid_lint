@@ -24,6 +24,9 @@ class B extends StatefulWidget {
 }
 
 class _BState extends State<B> {
+  // expect_lint: avoid_returning_widgets
+  Widget get myWidget => const Placeholder();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,9 +36,6 @@ class _BState extends State<B> {
       ],
     );
   }
-
-  // expect_lint: avoid_returning_widgets
-  Widget get myWidget => const Placeholder();
 
   // expect_lint: avoid_returning_widgets
   Widget _buildWidget() => const Placeholder();
@@ -53,13 +53,13 @@ class MyInheritedWidget extends InheritedWidget {
     required super.child,
   });
 
-  @override
-  bool updateShouldNotify(MyInheritedWidget oldWidget) => false;
-
   // Static methods are ignored.
   static MyInheritedWidget? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
   }
+
+  @override
+  bool updateShouldNotify(MyInheritedWidget oldWidget) => false;
 }
 
 Widget myMethod() {
