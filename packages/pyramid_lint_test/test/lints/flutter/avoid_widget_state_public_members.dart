@@ -18,11 +18,6 @@ class _BarState extends State<Bar> {
   // expect_lint: avoid_widget_state_public_members
   String _privateField2 = '', publicField2 = '';
 
-  // expect_lint: avoid_widget_state_public_members
-  void publicMethod() {}
-
-  void _privateMethod() {}
-
   @override
   void initState() {
     super.initState();
@@ -32,4 +27,9 @@ class _BarState extends State<Bar> {
   Widget build(BuildContext context) {
     return const Placeholder();
   }
+
+  // expect_lint: avoid_widget_state_public_members
+  void publicMethod() {}
+
+  void _privateMethod() {}
 }

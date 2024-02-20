@@ -1,0 +1,105 @@
+# class_member_ordering
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ❌    |
+
+## Details
+
+**DO** arrange class members in a consistent order.
+
+Class members should be ordered in the following sequence:
+
+1. Public static fields
+2. Private static fields
+3. Public instance fields
+4. Private instance fields
+5. Public constructors
+6. Public named constructors
+7. Private constructors
+8. Private named constructors
+9. Public getters
+10. Private getters
+11. Public setters
+12. Private setters
+13. Public static methods
+14. Public instance methods
+15. Private static methods
+16. Private instance methods
+
+For widgets, the order is slightly different:
+
+1. Public constructors
+2. Public named constructors
+3. Private constructors
+4. Private named constructors
+5. Public static fields
+6. Private static fields
+7. Public instance fields
+8. Private instance fields
+9. Public getters
+10. Private getters
+11. Public setters
+12. Private setters
+13. Public static methods
+14. Public instance methods
+15. Private static methods
+16. Private instance methods
+
+```dart title="Bad"
+class A {
+  void method() {}
+
+  int field;
+
+  A();
+}
+
+class AWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+
+  final String field;
+
+  const AWidget({
+    super.key,
+    required this.field,
+  });
+}
+```
+
+```dart title="Good"
+class A {
+  int field;
+
+  A();
+
+  void method() {}
+}
+
+class AWidget extends StatelessWidget {
+  const AWidget({
+    super.key,
+    required this.field,
+  });
+
+  final String field;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+```
+
+## Usage
+
+To enable the `class_member_ordering` rule, add `class_member_ordering` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - class_member_ordering
+```

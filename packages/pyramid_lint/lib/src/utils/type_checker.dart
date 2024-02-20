@@ -20,6 +20,13 @@ const stateChecker = TypeChecker.fromName(
   packageName: 'flutter',
 );
 
+const widgetOrStateChecker = TypeChecker.any(
+  [
+    widgetChecker,
+    stateChecker,
+  ],
+);
+
 const containerChecker = TypeChecker.fromName(
   'Container',
   packageName: 'flutter',
