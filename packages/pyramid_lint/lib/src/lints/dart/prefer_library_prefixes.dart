@@ -14,10 +14,10 @@ class PreferLibraryPrefixesOptions {
     bool? includeDefaultLibraries,
     List<String>? libraries,
   })  : _includeDefaultLibraries = includeDefaultLibraries ?? true,
-        _libraries = libraries ?? const [];
+        _libraries = libraries;
 
   final bool _includeDefaultLibraries;
-  final List<String> _libraries;
+  final List<String>? _libraries;
 
   static const defaultLibraries = [
     'dart:developer',
@@ -26,7 +26,7 @@ class PreferLibraryPrefixesOptions {
 
   List<String> get libraries => [
         if (_includeDefaultLibraries) ...defaultLibraries,
-        ..._libraries,
+        ...?_libraries,
       ];
 
   factory PreferLibraryPrefixesOptions.fromJson(Json json) {

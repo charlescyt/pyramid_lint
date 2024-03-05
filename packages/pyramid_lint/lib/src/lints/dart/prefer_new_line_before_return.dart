@@ -56,7 +56,7 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
         final returnTokenLine =
             lineInfo.getLocation(returnToken.offset).lineNumber;
 
-        if (previousTokenLine + 1 >= returnTokenLine) {
+        if (returnTokenLine - previousTokenLine == 1) {
           reporter.reportErrorForToken(code, returnToken);
         }
       }
@@ -79,16 +79,16 @@ class _AddNewLineBeforeReturn extends DartFix {
     context.registry.addReturnStatement((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
+      final returnToken = node.returnKeyword;
+      final previousToken = returnToken.previous;
+      if (previousToken == null) return;
+
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Add new line before return statement.',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final returnToken = node.returnKeyword;
-        final previousToken = returnToken.previous;
-        if (previousToken == null) return;
-
         builder.addSimpleInsertion(previousToken.end, '\n');
       });
     });
