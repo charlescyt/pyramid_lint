@@ -17,6 +17,10 @@
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
 
+### Removed
+
+- **BREAKING**: Remove `prefer_value_changed` lint.
+
 ## [1.5.0] - 2024-02-14
 
 ### Added
