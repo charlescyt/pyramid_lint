@@ -18,6 +18,7 @@
 - **BREAKING**: `doc_comments_before_annotations` is renamed to `always_put_doc_comments_before_annotations`.
 - **BREAKING**: `boolean_prefix` is renamed to `boolean_prefixes`.
 - **BREAKING**: `always_declare_parameter_names` is renamed to `always_specify_parameter_names`.
+- **BREAKING**: `prefer_spacer` is renamed to `use_spacer`.
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
 

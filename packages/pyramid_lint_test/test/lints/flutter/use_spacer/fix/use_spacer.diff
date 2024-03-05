@@ -1,23 +1,23 @@
 Message: `Replace with Spacer`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_spacer/fix/prefer_spacer.dart:6`:
+Diff for file `test/lints/flutter/use_spacer/fix/use_spacer.dart:6`:
 ```
   children: [
-    // expect_lint: prefer_spacer
+    // expect_lint: use_spacer
 -     const Expanded(
 -       child: SizedBox(),
 -     ),
 +     const Spacer(),
-    // expect_lint: prefer_spacer
+    // expect_lint: use_spacer
     Expanded(
 ```
 ---
 Message: `Replace with Spacer`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_spacer/fix/prefer_spacer.dart:10`:
+Diff for file `test/lints/flutter/use_spacer/fix/use_spacer.dart:10`:
 ```
     ),
-    // expect_lint: prefer_spacer
+    // expect_lint: use_spacer
 -     Expanded(
 -       flex: 2,
 -       child: Container(),

@@ -45,7 +45,6 @@ import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_method.dart';
-import 'src/lints/flutter/prefer_spacer.dart';
 import 'src/lints/flutter/prefer_text_rich.dart';
 import 'src/lints/flutter/prefer_void_callback.dart';
 import 'src/lints/flutter/proper_controller_dispose.dart';
@@ -54,6 +53,7 @@ import 'src/lints/flutter/proper_expanded_and_flexible.dart';
 import 'src/lints/flutter/proper_from_environment.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
 import 'src/lints/flutter/proper_super_init_state.dart';
+import 'src/lints/flutter/use_spacer.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -99,7 +99,6 @@ class _PyramidLinter extends PluginBase {
         PreferBorderFromBorderSide.fromConfigs(configs),
         PreferBorderRadiusAll.fromConfigs(configs),
         PreferDedicatedMediaQueryMethod.fromConfigs(configs),
-        PreferSpacer.fromConfigs(configs),
         PreferTextRich.fromConfigs(configs),
         PreferVoidCallback.fromConfigs(configs),
         ProperControllerDispose.fromConfigs(configs),
@@ -108,6 +107,7 @@ class _PyramidLinter extends PluginBase {
         ProperFromEnvironment.fromConfigs(configs),
         ProperSuperDispose.fromConfigs(configs),
         ProperSuperInitState.fromConfigs(configs),
+        UseSpacer.fromConfigs(configs),
       ];
 
   @override

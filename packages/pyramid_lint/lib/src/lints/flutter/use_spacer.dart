@@ -9,8 +9,8 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class PreferSpacer extends PyramidLintRule {
-  PreferSpacer({required super.options})
+class UseSpacer extends PyramidLintRule {
+  UseSpacer({required super.options})
       : super(
           name: ruleName,
           problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
@@ -19,17 +19,17 @@ class PreferSpacer extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'prefer_spacer';
+  static const ruleName = 'use_spacer';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory PreferSpacer.fromConfigs(CustomLintConfigs configs) {
+  factory UseSpacer.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return PreferSpacer(options: options);
+    return UseSpacer(options: options);
   }
 
   @override

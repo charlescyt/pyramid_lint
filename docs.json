@@ -58,7 +58,6 @@
       ["prefer_border_from_border_side", "/flutter-lints/prefer_border_from_border_side"],
       ["prefer_border_radius_all", "/flutter-lints/prefer_border_radius_all"],
       ["prefer_dedicated_media_query_method", "/flutter-lints/prefer_dedicated_media_query_method"],
-      ["prefer_spacer", "/flutter-lints/prefer_spacer"],
       ["prefer_text_rich", "/flutter-lints/prefer_text_rich"],
       ["prefer_void_callback", "/flutter-lints/prefer_void_callback"],
       ["proper_controller_dispose", "/flutter-lints/proper_controller_dispose"],
@@ -66,7 +65,8 @@
       ["proper_expanded_and_flexible", "/flutter-lints/proper_expanded_and_flexible"],
       ["proper_from_environment", "/flutter-lints/proper_from_environment"],
       ["proper_super_dispose", "/flutter-lints/proper_super_dispose"],
-      ["proper_super_init_state", "/flutter-lints/proper_super_init_state"]
+      ["proper_super_init_state", "/flutter-lints/proper_super_init_state"],
+      ["use_spacer", "/flutter-lints/use_spacer"]
     ]],
     ["Dart Assists", [
       ["invert_boolean_expression", "/dart-assists/invert_boolean_expression"],
