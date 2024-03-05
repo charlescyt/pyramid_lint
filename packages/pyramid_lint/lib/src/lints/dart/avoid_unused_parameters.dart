@@ -102,11 +102,9 @@ class AvoidUnusedParameters
       final classDeclaration = node.thisOrAncestorOfType<ClassDeclaration>();
       if (classDeclaration == null) return;
 
-      classDeclaration.declaredElement?.isAbstract;
       final isAbstractClass = classDeclaration.abstractKeyword != null;
       if (isAbstractClass) return;
 
-      node.declaredElement?.hasOverride;
       final isOverrideMethod =
           node.metadata.any((e) => e.name.name == 'override');
       if (isOverrideMethod) return;
