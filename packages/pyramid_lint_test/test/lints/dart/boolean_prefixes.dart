@@ -1,4 +1,4 @@
-// expect_lint: boolean_prefix
+// expect_lint: boolean_prefixes
 const debugMode = true;
 
 // "at" is a valid prefix since we specified it in the analysis_options.yaml.
@@ -10,10 +10,10 @@ class Point {
 
   const Point(this.x, this.y);
 
-  // expect_lint: boolean_prefix
+  // expect_lint: boolean_prefixes
   bool get origin => x == 0 && y == 0;
 
-  // expect_lint: boolean_prefix
+  // expect_lint: boolean_prefixes
   bool samePoint(covariant Point other) => x == other.x && y == other.y;
 }
 
@@ -26,10 +26,10 @@ class Point3D extends Point {
   bool samePoint(Point3D other) => super.samePoint(other) && z == other.z;
 }
 
-// expect_lint: boolean_prefix
+// expect_lint: boolean_prefixes
 bool samePoint(Point a, Point b) => a.x == b.x && a.y == b.y;
 
 extension PointExtension on Point {
-  // expect_lint: boolean_prefix
+  // expect_lint: boolean_prefixes
   bool get onXAxis => y == 0;
 }

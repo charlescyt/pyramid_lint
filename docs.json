@@ -32,7 +32,7 @@
       ["avoid_positional_fields_in_records", "/dart-lints/avoid_positional_fields_in_records"],
       ["avoid_redundant_pattern_field_names", "/dart-lints/avoid_redundant_pattern_field_names"],
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
-      ["boolean_prefix", "/dart-lints/boolean_prefix"],
+      ["boolean_prefixes", "/dart-lints/boolean_prefixes"],
       ["class_members_ordering", "/dart-lints/class_members_ordering"],
       ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
       ["max_lines_for_function", "/dart-lints/max_lines_for_function"],

@@ -10,8 +10,8 @@ import '../../utils/constants.dart';
 import '../../utils/typedef.dart';
 
 @immutable
-class BooleanPrefixOptions {
-  const BooleanPrefixOptions({
+class BooleanPrefixesOptions {
+  const BooleanPrefixesOptions({
     List<String>? validPrefixes,
   }) : _validPrefixes = validPrefixes;
 
@@ -38,20 +38,20 @@ class BooleanPrefixOptions {
         ...?_validPrefixes,
       ];
 
-  factory BooleanPrefixOptions.fromJson(Json json) {
+  factory BooleanPrefixesOptions.fromJson(Json json) {
     final validPrefixes = switch (json['valid_prefixes']) {
       final YamlList validPrefixes => validPrefixes.cast<String>(),
       _ => null,
     };
 
-    return BooleanPrefixOptions(
+    return BooleanPrefixesOptions(
       validPrefixes: validPrefixes,
     );
   }
 }
 
-class BooleanPrefix extends PyramidLintRule<BooleanPrefixOptions> {
-  BooleanPrefix({required super.options})
+class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
+  BooleanPrefixes({required super.options})
       : super(
           name: ruleName,
           problemMessage: '{0} should be named with a valid prefix.',
@@ -60,17 +60,17 @@ class BooleanPrefix extends PyramidLintRule<BooleanPrefixOptions> {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'boolean_prefix';
+  static const ruleName = 'boolean_prefixes';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory BooleanPrefix.fromConfigs(CustomLintConfigs configs) {
+  factory BooleanPrefixes.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
-      paramsConverter: BooleanPrefixOptions.fromJson,
+      paramsConverter: BooleanPrefixesOptions.fromJson,
     );
 
-    return BooleanPrefix(options: options);
+    return BooleanPrefixes(options: options);
   }
 
   @override

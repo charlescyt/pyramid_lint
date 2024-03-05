@@ -21,7 +21,7 @@ import 'src/lints/dart/avoid_nested_if.dart';
 import 'src/lints/dart/avoid_positional_fields_in_records.dart';
 import 'src/lints/dart/avoid_redundant_pattern_field_names.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
-import 'src/lints/dart/boolean_prefix.dart';
+import 'src/lints/dart/boolean_prefixes.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
@@ -74,7 +74,7 @@ class _PyramidLinter extends PluginBase {
         AvoidPositionalFieldsInRecords.fromConfigs(configs),
         AvoidRedundantPatternFieldNames.fromConfigs(configs),
         AvoidUnusedParameters.fromConfigs(configs),
-        BooleanPrefix.fromConfigs(configs),
+        BooleanPrefixes.fromConfigs(configs),
         ClassMembersOrdering.fromConfigs(configs),
         MaxLinesForFile.fromConfigs(configs),
         MaxLinesForFunction.fromConfigs(configs),

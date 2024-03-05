@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, unused_element, avoid_empty_blocks, avoid_widget_state_public_members, boolean_prefix
+// ignore_for_file: unused_field, unused_element, avoid_empty_blocks, avoid_widget_state_public_members, boolean_prefixes
 
 import 'package:flutter/widgets.dart';
 

@@ -22,7 +22,7 @@ custom_lint:
     - avoid_positional_fields_in_records
     - avoid_redundant_pattern_field_names
     - avoid_unused_parameters
-    - boolean_prefix:
+    - boolean_prefixes:
       valid_prefixes: ["at"]
     - class_members_ordering
     - max_lines_for_file

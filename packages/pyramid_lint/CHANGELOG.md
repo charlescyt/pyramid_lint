@@ -16,6 +16,7 @@
 - **BREAKING**: `avoid_duplicate_import` is renamed to `avoid_duplicate_imports`.
 - **BREAKING**: `prefer_declaring_const_constructors` is renamed to `prefer_const_constructor_declarations`.
 - **BREAKING**: `doc_comments_before_annotations` is renamed to `always_put_doc_comments_before_annotations`.
+- **BREAKING**: `boolean_prefix` is renamed to `boolean_prefixes`.
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
 

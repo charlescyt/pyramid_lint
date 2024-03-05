@@ -1,4 +1,4 @@
-# boolean_prefix
+# boolean_prefixes
 
 | Severity | Quick Fix | Options |
 |:--------:|:---------:|:-------:|
@@ -54,12 +54,12 @@ class Point {
 
 ## Usage
 
-To enable the `boolean_prefix` rule, add `boolean_prefix` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `boolean_prefixes` rule, add `boolean_prefixes` under custom_lint > rules in your `analysis_options.yaml` file:
 
 ```yaml
 custom_lint:
   rules:
-    - boolean_prefix
+    - boolean_prefixes
 ```
 
 ## Options
@@ -73,6 +73,6 @@ To configure the list of valid prefixes, add a list of strings to the `valid_pre
 ```yaml
 custom_lint:
   rules:
-    - boolean_prefix:
+    - boolean_prefixes:
       valid_prefixes: ['is', 'has']
 ```
