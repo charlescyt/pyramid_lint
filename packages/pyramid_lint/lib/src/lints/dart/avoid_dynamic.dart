@@ -41,21 +41,33 @@ class AvoidDynamic extends PyramidLintRule {
   ) {
     context.registry.addNamedType((node) {
       if (node.type is! DynamicType) return;
-
-      if (_isNodeUsedInMap(node)) return;
+      if (_isUsedInMap(node)) return;
 
       reporter.reportErrorForNode(code, node);
     });
   }
 
-  bool _isNodeUsedInMap(AstNode node) {
+  bool _isUsedInMap(NamedType node) {
     final parent = node.parent;
-    final grandParent = parent?.parent;
-
     if (parent is! TypeArgumentList) return false;
 
-    if ((grandParent is NamedType && grandParent.type?.isDartCoreMap == true) ||
-        (grandParent is SetOrMapLiteral && grandParent.isMap)) return true;
+    final grandParent = parent.parent;
+
+    // Map<String, dynamic>
+    // node: dynamic
+    // parent: <String, dynamic>
+    // grandParent: Map
+    if (grandParent is NamedType && grandParent.type?.isDartCoreMap == true) {
+      return true;
+    }
+
+    // <String, dynamic>{}
+    // node: dynamic
+    // parent: <String, dynamic>
+    // grandParent: <String, dynamic>{}
+    if (grandParent is SetOrMapLiteral && grandParent.isMap) {
+      return true;
+    }
 
     return false;
   }
