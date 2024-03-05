@@ -6,8 +6,8 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class AvoidRecordPositionalFieldGetters extends PyramidLintRule {
-  AvoidRecordPositionalFieldGetters({required super.options})
+class AvoidPositionalFieldsInRecords extends PyramidLintRule {
+  AvoidPositionalFieldsInRecords({required super.options})
       : super(
           name: ruleName,
           problemMessage:
@@ -17,10 +17,10 @@ class AvoidRecordPositionalFieldGetters extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'avoid_record_positional_field_getters';
+  static const ruleName = 'avoid_positional_fields_in_records';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidRecordPositionalFieldGetters.fromConfigs(
+  factory AvoidPositionalFieldsInRecords.fromConfigs(
     CustomLintConfigs configs,
   ) {
     final json = configs.rules[ruleName]?.json ?? {};
@@ -29,7 +29,7 @@ class AvoidRecordPositionalFieldGetters extends PyramidLintRule {
       paramsConverter: (_) => null,
     );
 
-    return AvoidRecordPositionalFieldGetters(options: options);
+    return AvoidPositionalFieldsInRecords(options: options);
   }
 
   @override

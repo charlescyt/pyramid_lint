@@ -1,4 +1,4 @@
-# avoid_record_positional_field_getters
+# avoid_positional_fields_in_records
 
 | Severity | Quick Fix | Options |
 |:--------:|:---------:|:-------:|
@@ -24,10 +24,10 @@ void fn(({String first, String second}) record) {
 
 ## Usage
 
-To enable the `avoid_record_positional_field_getters` rule, add `avoid_record_positional_field_getters` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_positional_fields_in_records` rule, add `avoid_positional_fields_in_records` under custom_lint > rules in your `analysis_options.yaml` file:
 
 ```yaml
 custom_lint:
   rules:
-    - avoid_record_positional_field_getters
+    - avoid_positional_fields_in_records
 ```
