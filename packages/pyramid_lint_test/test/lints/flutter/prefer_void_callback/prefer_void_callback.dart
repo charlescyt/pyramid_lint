@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_value_changed
-
 import 'package:flutter/foundation.dart' show VoidCallback;
 
 typedef A = VoidCallback;

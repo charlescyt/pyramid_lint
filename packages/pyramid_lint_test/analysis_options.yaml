@@ -53,7 +53,6 @@ custom_lint:
     - prefer_dedicated_media_query_method
     - prefer_spacer
     - prefer_text_rich
-    - prefer_value_changed
     - prefer_void_callback
     - proper_controller_dispose
     - proper_edge_insets_constructor
