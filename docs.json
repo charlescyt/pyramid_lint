@@ -21,6 +21,7 @@
     ]],
     ["Dart Lints", [
       ["always_declare_parameter_names", "/dart-lints/always_declare_parameter_names"],
+      ["always_put_doc_comments_before_annotations", "/dart-lints/always_put_doc_comments_before_annotations"],
       ["avoid_abbreviations_in_doc_comments", "/dart-lints/avoid_abbreviations_in_doc_comments"],
       ["avoid_duplicate_imports", "/dart-lints/avoid_duplicate_imports"],
       ["avoid_dynamic", "/dart-lints/avoid_dynamic"],
@@ -33,7 +34,6 @@
       ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
       ["boolean_prefix", "/dart-lints/boolean_prefix"],
       ["class_members_ordering", "/dart-lints/class_members_ordering"],
-      ["doc_comments_before_annotations", "/dart-lints/doc_comments_before_annotations"],
       ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
       ["max_lines_for_function", "/dart-lints/max_lines_for_function"],
       ["max_switch_cases", "/dart-lints/max_switch_cases"],

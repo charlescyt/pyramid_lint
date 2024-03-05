@@ -10,6 +10,7 @@ custom_lint:
   rules:
     # Dart lints
     - always_declare_parameter_names
+    - always_put_doc_comments_before_annotations
     - avoid_abbreviations_in_doc_comments:
       abbreviations: ["approx."]
     - avoid_duplicate_imports
@@ -24,7 +25,6 @@ custom_lint:
     - boolean_prefix:
       valid_prefixes: ["at"]
     - class_members_ordering
-    - doc_comments_before_annotations
     - max_lines_for_file
     - max_lines_for_function
     - max_switch_cases:

@@ -13,6 +13,7 @@ custom_lint:
   rules:
     # Dart lints
     - always_declare_parameter_names
+    - always_put_doc_comments_before_annotations
     - avoid_abbreviations_in_doc_comments
     - avoid_duplicate_imports
     - avoid_dynamic
@@ -23,7 +24,6 @@ custom_lint:
     - avoid_record_positional_field_getters
     - avoid_redundant_pattern_field_names
     - avoid_unused_parameters
-    - doc_comments_before_annotations
     - no_self_comparisons
     - prefer_async_await
     - prefer_const_constructor_declarations

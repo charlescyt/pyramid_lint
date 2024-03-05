@@ -10,6 +10,7 @@ import 'src/assists/flutter/wrap_with_listenable_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/assists/flutter/wrap_with_value_listenable_builder.dart';
 import 'src/lints/dart/always_declare_parameter_names.dart';
+import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/lints/dart/avoid_abbreviations_in_doc_comments.dart';
 import 'src/lints/dart/avoid_duplicate_imports.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
@@ -22,7 +23,6 @@ import 'src/lints/dart/avoid_redundant_pattern_field_names.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/boolean_prefix.dart';
 import 'src/lints/dart/class_members_ordering.dart';
-import 'src/lints/dart/doc_comments_before_annotations.dart';
 import 'src/lints/dart/max_lines_for_file.dart';
 import 'src/lints/dart/max_lines_for_function.dart';
 import 'src/lints/dart/max_switch_cases.dart';
@@ -63,6 +63,7 @@ class _PyramidLinter extends PluginBase {
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
         // Dart lints
         AlwaysDeclareParameterNames.fromConfigs(configs),
+        AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(configs),
         AvoidAbbreviationsInDocComments.fromConfigs(configs),
         AvoidDuplicateImports.fromConfigs(configs),
         AvoidDynamic.fromConfigs(configs),
@@ -75,7 +76,6 @@ class _PyramidLinter extends PluginBase {
         AvoidUnusedParameters.fromConfigs(configs),
         BooleanPrefix.fromConfigs(configs),
         ClassMembersOrdering.fromConfigs(configs),
-        DocCommentsBeforeAnnotations.fromConfigs(configs),
         MaxLinesForFile.fromConfigs(configs),
         MaxLinesForFunction.fromConfigs(configs),
         MaxSwitchCases.fromConfigs(configs),

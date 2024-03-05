@@ -8,8 +8,8 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class DocCommentsBeforeAnnotations extends PyramidLintRule {
-  DocCommentsBeforeAnnotations({required super.options})
+class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
+  AlwaysPutDocCommentsBeforeAnnotations({required super.options})
       : super(
           name: ruleName,
           problemMessage: 'Doc comments should be placed before annotations.',
@@ -19,17 +19,19 @@ class DocCommentsBeforeAnnotations extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'doc_comments_before_annotations';
+  static const ruleName = 'always_put_doc_comments_before_annotations';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory DocCommentsBeforeAnnotations.fromConfigs(CustomLintConfigs configs) {
+  factory AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(
+    CustomLintConfigs configs,
+  ) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return DocCommentsBeforeAnnotations(options: options);
+    return AlwaysPutDocCommentsBeforeAnnotations(options: options);
   }
 
   @override
