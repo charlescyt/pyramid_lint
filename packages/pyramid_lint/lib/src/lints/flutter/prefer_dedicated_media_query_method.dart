@@ -28,7 +28,7 @@ const List<String> _properties = [
   'platformBrightness',
   'size',
   'systemGestureInsets',
-  // TODO(Charles): Remove textScaleFactor later since it was deprecated.
+  // TODO(charlescyt): Remove textScaleFactor later since it was deprecated.
   'textScaleFactor',
   'textScaler',
   'viewInsets',

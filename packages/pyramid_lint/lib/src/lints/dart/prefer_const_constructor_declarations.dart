@@ -50,7 +50,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
       if (!_areAllRedirectingConstructorInvocationsConst(node)) return;
       if (!_areAllSuperConstructorInvocationsConst(node)) return;
 
-      // TODO: need to check if the super constructor is a const constructor when using super parameters.
+      // TODO(charlescyt): need to check if the super constructor is a const constructor when using super parameters.
       final superParameters =
           node.parameters.parameters.whereType<SuperFormalParameter>();
       if (superParameters.isNotEmpty) return;
@@ -59,7 +59,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
       if (fieldInitializers.isNotEmpty) {
         final allExpressionResolveToConstant = fieldInitializers.every(
           (e) {
-            // TODO: find a better way to check if the expression resolves to a constant value.
+            // TODO(charlescyt): find a better way to check if the expression resolves to a constant value.
             if (e.expression is BooleanLiteral ||
                 e.expression is DoubleLiteral ||
                 e.expression is IntegerLiteral ||
