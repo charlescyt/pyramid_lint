@@ -13,6 +13,7 @@
 ### Changed
 
 - **BREAKING**: All lints are now disabled by default. You need to enable them in your `analysis_options.yaml` file.
+- **BREAKING**: `avoid_duplicate_import` is renamed to `avoid_duplicate_imports`.
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
 

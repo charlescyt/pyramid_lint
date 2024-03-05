@@ -12,7 +12,7 @@ custom_lint:
     - always_declare_parameter_names
     - avoid_abbreviations_in_doc_comments:
       abbreviations: ["approx."]
-    - avoid_duplicate_import
+    - avoid_duplicate_imports
     - avoid_dynamic
     - avoid_empty_blocks
     - avoid_mutable_global_variables

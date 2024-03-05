@@ -11,7 +11,7 @@ import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/assists/flutter/wrap_with_value_listenable_builder.dart';
 import 'src/lints/dart/always_declare_parameter_names.dart';
 import 'src/lints/dart/avoid_abbreviations_in_doc_comments.dart';
-import 'src/lints/dart/avoid_duplicate_import.dart';
+import 'src/lints/dart/avoid_duplicate_imports.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
 import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
@@ -65,7 +65,7 @@ class _PyramidLinter extends PluginBase {
         // Dart lints
         AlwaysDeclareParameterNames.fromConfigs(configs),
         AvoidAbbreviationsInDocComments.fromConfigs(configs),
-        AvoidDuplicateImport.fromConfigs(configs),
+        AvoidDuplicateImports.fromConfigs(configs),
         AvoidDynamic.fromConfigs(configs),
         AvoidEmptyBlocks.fromConfigs(configs),
         AvoidInvertedBooleanExpressions.fromConfigs(configs),
