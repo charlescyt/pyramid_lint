@@ -7,8 +7,8 @@ import '../../pyramid_lint_rule.dart';
 import '../../utils/ast_node_extensions.dart';
 import '../../utils/constants.dart';
 
-class PreferDeclaringConstConstructors extends PyramidLintRule {
-  PreferDeclaringConstConstructors({required super.options})
+class PreferConstConstructorDeclarations extends PyramidLintRule {
+  PreferConstConstructorDeclarations({required super.options})
       : super(
           name: ruleName,
           problemMessage:
@@ -19,10 +19,10 @@ class PreferDeclaringConstConstructors extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'prefer_declaring_const_constructors';
+  static const ruleName = 'prefer_const_constructor_declarations';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory PreferDeclaringConstConstructors.fromConfigs(
+  factory PreferConstConstructorDeclarations.fromConfigs(
     CustomLintConfigs configs,
   ) {
     final json = configs.rules[ruleName]?.json ?? {};
@@ -31,7 +31,7 @@ class PreferDeclaringConstConstructors extends PyramidLintRule {
       paramsConverter: (_) => null,
     );
 
-    return PreferDeclaringConstConstructors(options: options);
+    return PreferConstConstructorDeclarations(options: options);
   }
 
   @override

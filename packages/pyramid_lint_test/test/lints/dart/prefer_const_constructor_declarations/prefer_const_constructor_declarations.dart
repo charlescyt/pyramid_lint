@@ -4,13 +4,13 @@ class Point {
   final double x;
   final double y;
 
-  // expect_lint: prefer_declaring_const_constructors
+  // expect_lint: prefer_const_constructor_declarations
   Point(this.x, this.y);
 
   // The lint will not be triggered because the super constructor is not const.
   Point.origin() : this(0, 0);
 
-  // expect_lint: prefer_declaring_const_constructors
+  // expect_lint: prefer_const_constructor_declarations
   Point.origin2()
       : x = 0.0,
         y = 0.0;
@@ -34,6 +34,6 @@ class Point3D extends Point {
 }
 
 class A {
-  // expect_lint: prefer_declaring_const_constructors
+  // expect_lint: prefer_const_constructor_declarations
   A();
 }

@@ -31,7 +31,7 @@ custom_lint:
       max_cases: 5
     - no_self_comparisons
     - prefer_async_await
-    - prefer_declaring_const_constructors
+    - prefer_const_constructor_declarations
     - prefer_immediate_return
     - prefer_iterable_any
     - prefer_iterable_every

@@ -26,7 +26,7 @@ custom_lint:
     - doc_comments_before_annotations
     - no_self_comparisons
     - prefer_async_await
-    - prefer_declaring_const_constructors
+    - prefer_const_constructor_declarations
     - prefer_iterable_any
     - prefer_iterable_every
     - prefer_iterable_first

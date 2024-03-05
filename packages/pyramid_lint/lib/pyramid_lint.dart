@@ -28,7 +28,7 @@ import 'src/lints/dart/max_lines_for_function.dart';
 import 'src/lints/dart/max_switch_cases.dart';
 import 'src/lints/dart/no_self_comparisons.dart';
 import 'src/lints/dart/prefer_async_await.dart';
-import 'src/lints/dart/prefer_declaring_const_constructors.dart';
+import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
 import 'src/lints/dart/prefer_iterable_any.dart';
 import 'src/lints/dart/prefer_iterable_every.dart';
@@ -81,7 +81,7 @@ class _PyramidLinter extends PluginBase {
         MaxSwitchCases.fromConfigs(configs),
         NoSelfComparisons.fromConfigs(configs),
         PreferAsyncAwait.fromConfigs(configs),
-        PreferDeclaringConstConstructors.fromConfigs(configs),
+        PreferConstConstructorDeclarations.fromConfigs(configs),
         PreferImmediateReturn.fromConfigs(configs),
         PreferIterableAny.fromConfigs(configs),
         PreferIterableEvery.fromConfigs(configs),
