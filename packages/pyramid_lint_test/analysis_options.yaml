@@ -13,7 +13,6 @@ custom_lint:
     - always_specify_parameter_names
     - avoid_abbreviations_in_doc_comments:
       abbreviations: ["approx."]
-    - avoid_duplicate_imports
     - avoid_dynamic
     - avoid_empty_blocks
     - avoid_mutable_global_variables
@@ -29,6 +28,7 @@ custom_lint:
     - max_lines_for_function
     - max_switch_cases:
       max_cases: 5
+    - no_duplicate_imports
     - no_self_comparisons
     - prefer_async_await
     - prefer_const_constructor_declarations

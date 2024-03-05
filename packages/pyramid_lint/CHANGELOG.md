@@ -13,7 +13,7 @@
 ### Changed
 
 - **BREAKING**: All lints are now disabled by default. You need to enable them in your `analysis_options.yaml` file.
-- **BREAKING**: `avoid_duplicate_import` is renamed to `avoid_duplicate_imports`.
+- **BREAKING**: `avoid_duplicate_import` is renamed to `no_duplicate_imports`.
 - **BREAKING**: `prefer_declaring_const_constructors` is renamed to `prefer_const_constructor_declarations`.
 - **BREAKING**: `doc_comments_before_annotations` is renamed to `always_put_doc_comments_before_annotations`.
 - **BREAKING**: `boolean_prefix` is renamed to `boolean_prefixes`.

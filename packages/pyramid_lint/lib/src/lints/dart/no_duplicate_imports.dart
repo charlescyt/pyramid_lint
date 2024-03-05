@@ -7,8 +7,8 @@ import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/iterable_extension.dart';
 
-class AvoidDuplicateImports extends PyramidLintRule {
-  AvoidDuplicateImports({required super.options})
+class NoDuplicateImports extends PyramidLintRule {
+  NoDuplicateImports({required super.options})
       : super(
           name: ruleName,
           problemMessage: 'Duplicate imports can lead to confusion.',
@@ -18,17 +18,17 @@ class AvoidDuplicateImports extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'avoid_duplicate_imports';
+  static const ruleName = 'no_duplicate_imports';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidDuplicateImports.fromConfigs(CustomLintConfigs configs) {
+  factory NoDuplicateImports.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return AvoidDuplicateImports(options: options);
+    return NoDuplicateImports(options: options);
   }
 
   @override
