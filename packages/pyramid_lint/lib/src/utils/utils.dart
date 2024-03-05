@@ -2,6 +2,7 @@ import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/source/line_info.dart';
 
 import 'type_checker.dart';
 
@@ -49,4 +50,10 @@ InstanceCreationExpression? findParentWidget(InstanceCreationExpression expr) {
   }
 
   return parentExpr;
+}
+
+int getLineCountForNode(AstNode node, LineInfo lineInfo) {
+  final startLine = lineInfo.getLocation(node.offset).lineNumber;
+  final endLine = lineInfo.getLocation(node.end).lineNumber;
+  return endLine - startLine + 1;
 }

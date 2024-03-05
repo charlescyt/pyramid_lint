@@ -5,8 +5,8 @@ import 'package:meta/meta.dart' show immutable;
 
 import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
-import '../../utils/custom_lint_resolver_extension.dart';
 import '../../utils/typedef.dart';
+import '../../utils/utils.dart';
 
 @immutable
 class MaxLinesForFunctionOptions {
@@ -61,8 +61,9 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
     CustomLintContext context,
   ) {
     context.registry.addFunctionDeclaration((node) {
-      final lineCount =
-          resolver.getLineCountForNode(node.functionExpression.body);
+      final body = node.functionExpression.body;
+      final lineInfo = resolver.lineInfo;
+      final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
       reporter.reportErrorForNode(
@@ -73,7 +74,9 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
     });
 
     context.registry.addMethodDeclaration((node) {
-      final lineCount = resolver.getLineCountForNode(node.body);
+      final body = node.body;
+      final lineInfo = resolver.lineInfo;
+      final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
       reporter.reportErrorForNode(
