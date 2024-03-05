@@ -166,20 +166,22 @@ class _ProperControllerDisposeFix extends DartFix {
     final (int offset, bool addNewLineAtTheStart, bool addNewLineAtTheEnd) =
         switch ((initStateMethod, buildMethod)) {
       (null, null) => (node.end, true, false),
-      (null, final buildMethod?) => (buildMethod.offset, true, true),
+      (null, final buildMethod?) => (buildMethod.offset, false, true),
       (final initStateMethod?, null) => (initStateMethod.end, true, false),
       (final _?, final buildMethod?) => (buildMethod.offset, false, true),
     };
 
+    // TODO(charlescyt): Improve the fix.
     changeBuilder.addDartFileEdit((builder) {
       builder.addInsertion(offset, (builder) {
-        if (addNewLineAtTheStart) builder.write('\n');
-        builder.write('  @override\n');
-        builder.write('  void dispose() {\n');
-        builder.write('    $toBeDisposedControllerName.dispose();\n');
-        builder.write('    super.dispose();\n');
-        builder.write('  }\n');
-        if (addNewLineAtTheEnd) builder.write('\n');
+        if (addNewLineAtTheStart) builder.writeln();
+        builder.writeln('@override');
+        builder.writeln('  void dispose() {');
+        builder.writeln('    $toBeDisposedControllerName.dispose();');
+        builder.writeln('    super.dispose();');
+        builder.writeln('  }');
+        if (addNewLineAtTheEnd) builder.writeln();
+        builder.write('  ');
       });
     });
   }

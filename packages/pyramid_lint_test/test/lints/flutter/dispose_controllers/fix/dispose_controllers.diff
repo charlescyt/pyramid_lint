@@ -1,20 +1,19 @@
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:22`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:23`:
 ```
-  final _textEditingController = TextEditingController();
 
--   @override
-+
-+   @override
+  @override
+-   Widget build(BuildContext context) {
 +   void dispose() {
 +     _textEditingController.dispose();
 +     super.dispose();
 +   }
-+
-+ @override
-  Widget build(BuildContext context) {
++ 
++   @override
++   Widget build(BuildContext context) {
     return Container();
+  }
 ```
 ---
 Message: `Dispose controller`
