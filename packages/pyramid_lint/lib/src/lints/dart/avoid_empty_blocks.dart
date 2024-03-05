@@ -1,3 +1,4 @@
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -39,12 +40,26 @@ class AvoidEmptyBlocks extends PyramidLintRule {
     context.registry.addBlock((node) {
       if (node.statements.isNotEmpty) return;
 
-      if (node.endToken.precedingComments?.lexeme.startsWith('// TODO') ==
-          true) {
-        return;
-      }
+      final comment = node.endToken.precedingComments;
+      if (comment != null && _hasTodoComment(comment)) return;
 
       reporter.reportErrorForNode(code, node);
     });
+  }
+
+  bool _hasTodoComment(Token comment) {
+    Token? current = comment;
+
+    while (current != null) {
+      if (_isTodoComment(current)) return true;
+      current = current.next;
+    }
+
+    return false;
+  }
+
+  bool _isTodoComment(Token token) {
+    final comment = token.lexeme;
+    return comment.startsWith('// TODO');
   }
 }
