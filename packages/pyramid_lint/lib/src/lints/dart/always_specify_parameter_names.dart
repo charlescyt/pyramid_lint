@@ -5,29 +5,29 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 
-class AlwaysDeclareParameterNames extends PyramidLintRule {
-  AlwaysDeclareParameterNames({required super.options})
+class AlwaysSpecifyParameterNames extends PyramidLintRule {
+  AlwaysSpecifyParameterNames({required super.options})
       : super(
           name: ruleName,
           problemMessage:
-              'Parameter names should always be declared to enhance code readability and '
-              'enable IDEs to provide code completion suggestions.',
+              'Parameter names should always be specified to enhance code readability '
+              'and enable IDEs to provide code completion suggestions.',
           correctionMessage: 'Consider declaring a descriptive parameter name.',
           url: url,
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'always_declare_parameter_names';
+  static const ruleName = 'always_specify_parameter_names';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AlwaysDeclareParameterNames.fromConfigs(CustomLintConfigs configs) {
+  factory AlwaysSpecifyParameterNames.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return AlwaysDeclareParameterNames(options: options);
+    return AlwaysSpecifyParameterNames(options: options);
   }
 
   @override

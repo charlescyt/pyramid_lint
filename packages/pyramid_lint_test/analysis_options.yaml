@@ -9,8 +9,8 @@ analyzer:
 custom_lint:
   rules:
     # Dart lints
-    - always_declare_parameter_names
     - always_put_doc_comments_before_annotations
+    - always_specify_parameter_names
     - avoid_abbreviations_in_doc_comments:
       abbreviations: ["approx."]
     - avoid_duplicate_imports

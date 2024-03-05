@@ -9,8 +9,8 @@ import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_listenable_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/assists/flutter/wrap_with_value_listenable_builder.dart';
-import 'src/lints/dart/always_declare_parameter_names.dart';
 import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
+import 'src/lints/dart/always_specify_parameter_names.dart';
 import 'src/lints/dart/avoid_abbreviations_in_doc_comments.dart';
 import 'src/lints/dart/avoid_duplicate_imports.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
@@ -62,8 +62,8 @@ class _PyramidLinter extends PluginBase {
   @override
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
         // Dart lints
-        AlwaysDeclareParameterNames.fromConfigs(configs),
         AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(configs),
+        AlwaysSpecifyParameterNames.fromConfigs(configs),
         AvoidAbbreviationsInDocComments.fromConfigs(configs),
         AvoidDuplicateImports.fromConfigs(configs),
         AvoidDynamic.fromConfigs(configs),
