@@ -7,8 +7,8 @@ import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class ClassMemberOrdering extends PyramidLintRule {
-  ClassMemberOrdering({required super.options})
+class ClassMembersOrdering extends PyramidLintRule {
+  ClassMembersOrdering({required super.options})
       : super(
           name: name,
           problemMessage: 'Incorrect order of {0}.',
@@ -17,17 +17,17 @@ class ClassMemberOrdering extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const name = 'class_member_ordering';
+  static const name = 'class_members_ordering';
   static const url = '$dartLintDocUrl#$name';
 
-  factory ClassMemberOrdering.fromConfigs(CustomLintConfigs configs) {
+  factory ClassMembersOrdering.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return ClassMemberOrdering(options: options);
+    return ClassMembersOrdering(options: options);
   }
 
   @override

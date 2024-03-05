@@ -8,7 +8,7 @@
 - Lint: `avoid_mutable_global_variables`
 - Lint: `avoid_redundant_pattern_field_names`
 - Lint: `avoid_record_positional_field_getters`
-- Lint: `class_member_ordering`
+- Lint: `class_members_ordering`
 
 ### Changed
 

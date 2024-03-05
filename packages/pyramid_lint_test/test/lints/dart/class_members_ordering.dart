@@ -3,19 +3,19 @@
 import 'package:flutter/widgets.dart';
 
 class A {
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   int get c => _c + 1;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   A(
     this.publicInstanceField,
     this._privateInstanceField,
   );
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   set c(int value) => _c = value;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   A.named()
       : publicInstanceField = 0,
         _privateInstanceField = 0;
@@ -24,30 +24,30 @@ class A {
     return A(a, a + 1);
   }
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   A._()
       : publicInstanceField = 0,
         _privateInstanceField = 0;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   final int publicInstanceField;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   final int _privateInstanceField;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   static const int e = 1;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   void _privateMethod() {}
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   static void publicStaticMethod() {}
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   void publicMethod() {}
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   int _c = 1;
 }
 
@@ -88,10 +88,10 @@ class B {
 class Stateless extends StatelessWidget {
   static const int e = 1;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   final int publicInstanceField;
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   const Stateless({
     super.key,
     required this.publicInstanceField,
@@ -104,27 +104,27 @@ class Stateless extends StatelessWidget {
 }
 
 class Stateful extends StatefulWidget {
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   @override
   State<Stateful> createState() => _StatefulState();
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   const Stateful({super.key});
 }
 
 class _StatefulState extends State<Stateful> {
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   void _privateMethod() => setState(() => _flag = !_flag);
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   @override
   Widget build(BuildContext context) {
     return Container();
   }
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   void publicMethod() {}
 
-  // expect_lint: class_member_ordering
+  // expect_lint: class_members_ordering
   bool _flag = false;
 }

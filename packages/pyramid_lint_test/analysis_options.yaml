@@ -23,7 +23,7 @@ custom_lint:
     - avoid_unused_parameters
     - boolean_prefix:
       valid_prefixes: ["at"]
-    - class_member_ordering
+    - class_members_ordering
     - doc_comments_before_annotations
     - max_lines_for_file
     - max_lines_for_function
