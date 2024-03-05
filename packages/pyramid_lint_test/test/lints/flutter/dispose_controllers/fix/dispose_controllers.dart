@@ -16,7 +16,7 @@ class Example extends StatefulWidget {
 }
 
 class _ExampleState extends State<Example> {
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   final _textEditingController = TextEditingController();
 
   @override
@@ -40,23 +40,23 @@ class Example2 extends StatefulWidget {
 class _Example2State extends State<Example2>
     with SingleTickerProviderStateMixin {
   // The lint is triggered here because _controller2 is not disposed.
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final AnimationController _controller1, _controller2;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final ScrollController _scrollController;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final PageController _pageController;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final TabController _tabController;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final SearchController _searchController;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final UndoHistoryController _undoHistoryController;
 
   // The lint also handles custom controllers that extends ChangeNotifier.
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final _CustomController _customController;
-  // expect_lint: proper_controller_dispose
+  // expect_lint: dispose_controllers
   late final _CustomCounterController _customCounterController;
 
   @override

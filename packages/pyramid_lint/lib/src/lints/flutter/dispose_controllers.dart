@@ -10,8 +10,8 @@ import '../../utils/constants.dart';
 import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 
-class ProperControllerDispose extends PyramidLintRule {
-  ProperControllerDispose({required super.options})
+class DisposeControllers extends PyramidLintRule {
+  DisposeControllers({required super.options})
       : super(
           name: ruleName,
           problemMessage:
@@ -21,17 +21,17 @@ class ProperControllerDispose extends PyramidLintRule {
           errorSeverity: ErrorSeverity.ERROR,
         );
 
-  static const ruleName = 'proper_controller_dispose';
+  static const ruleName = 'dispose_controllers';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory ProperControllerDispose.fromConfigs(CustomLintConfigs configs) {
+  factory DisposeControllers.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return ProperControllerDispose(options: options);
+    return DisposeControllers(options: options);
   }
 
   @override

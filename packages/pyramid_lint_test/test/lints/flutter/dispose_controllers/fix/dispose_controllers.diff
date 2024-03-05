@@ -1,17 +1,17 @@
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:22`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:22`:
 ```
   final _textEditingController = TextEditingController();
 
 -   @override
-+   
++
 +   @override
 +   void dispose() {
 +     _textEditingController.dispose();
 +     super.dispose();
 +   }
-+ 
++
 + @override
   Widget build(BuildContext context) {
     return Container();
@@ -19,7 +19,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -32,7 +32,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -45,7 +45,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -58,7 +58,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -71,7 +71,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -84,7 +84,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -97,7 +97,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
@@ -110,7 +110,7 @@ Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controlle
 ---
 Message: `Dispose controller`
 Priority: 80
-Diff for file `test/lints/flutter/proper_controller_dispose/fix/proper_controller_dispose.dart:83`:
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:83`:
 ```
   @override
   void dispose() {
