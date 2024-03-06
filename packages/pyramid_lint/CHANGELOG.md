@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [2.0.0] - 2024-03-06
 
 ### Added
 
@@ -197,7 +197,7 @@
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
 
-[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v1.5.0...HEAD
+[2.0.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.2.0...v1.3.0
