@@ -10,8 +10,8 @@ import '../../utils/pubspec_extension.dart';
 import '../../utils/type_checker.dart';
 import '../../utils/utils.dart';
 
-class ProperEdgeInsetsConstructor extends PyramidLintRule {
-  ProperEdgeInsetsConstructor({required super.options})
+class ProperEdgeInsetsConstructors extends PyramidLintRule {
+  ProperEdgeInsetsConstructors({required super.options})
       : super(
           name: ruleName,
           problemMessage:
@@ -21,17 +21,17 @@ class ProperEdgeInsetsConstructor extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'proper_edge_insets_constructor';
+  static const ruleName = 'proper_edge_insets_constructors';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory ProperEdgeInsetsConstructor.fromConfigs(CustomLintConfigs configs) {
+  factory ProperEdgeInsetsConstructors.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return ProperEdgeInsetsConstructor(options: options);
+    return ProperEdgeInsetsConstructors(options: options);
   }
 
   @override

@@ -1,117 +1,117 @@
 Message: `Replace with EdgeInsets.all`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:10`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:10`:
 ```
 
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.fromLTRB(a, a, a, a);
 +   padding = EdgeInsets.all(a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.fromLTRB(a, 0, a, 0);
 ```
 ---
 Message: `Replace with EdgeInsets.symmetric`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:12`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:12`:
 ```
   padding = const EdgeInsets.fromLTRB(a, a, a, a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.fromLTRB(a, 0, a, 0);
 +   padding = EdgeInsets.symmetric(horizontal: a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.fromLTRB(a, 4, a, 4);
 ```
 ---
 Message: `Replace with EdgeInsets.symmetric`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:14`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:14`:
 ```
   padding = const EdgeInsets.fromLTRB(a, 0, a, 0);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.fromLTRB(a, 4, a, 4);
 +   padding = EdgeInsets.symmetric(horizontal: a, vertical: 4);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.fromLTRB(a, 0, 2, 4);
 ```
 ---
 Message: `Replace with EdgeInsets.only`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:16`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:16`:
 ```
   padding = const EdgeInsets.fromLTRB(a, 4, a, 4);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.fromLTRB(a, 0, 2, 4);
 +   padding = EdgeInsets.only(left: a, right: 2, bottom: 4);
 
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 ```
 ---
 Message: `Replace with EdgeInsets.all`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:19`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:19`:
 ```
 
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.only(left: a, top: a, right: a, bottom: a);
 +   padding = EdgeInsets.all(a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.only(left: a, top: 0, right: a, bottom: 0);
 ```
 ---
 Message: `Replace with EdgeInsets.symmetric`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:21`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:21`:
 ```
   padding = const EdgeInsets.only(left: a, top: a, right: a, bottom: a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.only(left: a, top: 0, right: a, bottom: 0);
 +   padding = EdgeInsets.symmetric(horizontal: a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.only(left: a, top: 4, right: a, bottom: 4);
 ```
 ---
 Message: `Replace with EdgeInsets.symmetric`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:23`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:23`:
 ```
   padding = const EdgeInsets.only(left: a, top: 0, right: a, bottom: 0);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.only(left: a, top: 4, right: a, bottom: 4);
 +   padding = EdgeInsets.symmetric(horizontal: a, vertical: 4);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.only(left: 2, top: 4, right: 6, bottom: a);
 ```
 ---
 Message: `Replace with EdgeInsets.fromLTRB`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:25`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:25`:
 ```
   padding = const EdgeInsets.only(left: a, top: 4, right: a, bottom: 4);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.only(left: 2, top: 4, right: 6, bottom: a);
 +   padding = EdgeInsets.fromLTRB(2, 4, 6, a);
 
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 ```
 ---
 Message: `Replace with EdgeInsets.all`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:28`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:28`:
 ```
 
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.symmetric(horizontal: a, vertical: a);
 +   padding = EdgeInsets.all(a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
   padding = const EdgeInsets.symmetric(horizontal: a, vertical: 0);
 ```
 ---
 Message: `Replace with EdgeInsets.symmetric`
 Priority: 80
-Diff for file `test/lints/flutter/proper_edge_insets_constructor/fix/proper_edge_insets_constructor.dart:30`:
+Diff for file `test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart:30`:
 ```
   padding = const EdgeInsets.symmetric(horizontal: a, vertical: a);
-  // expect_lint: proper_edge_insets_constructor
+  // expect_lint: proper_edge_insets_constructors
 -   padding = const EdgeInsets.symmetric(horizontal: a, vertical: 0);
 +   padding = EdgeInsets.symmetric(horizontal: a);
 }

@@ -1,4 +1,4 @@
-// ignore_for_file: use_named_constants, proper_edge_insets_constructor
+// ignore_for_file: use_named_constants, proper_edge_insets_constructors
 
 import 'package:flutter/painting.dart';
 
