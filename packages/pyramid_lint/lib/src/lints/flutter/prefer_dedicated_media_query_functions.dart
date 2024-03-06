@@ -35,8 +35,8 @@ const List<String> _properties = [
   'viewPadding',
 ];
 
-class PreferDedicatedMediaQueryMethod extends PyramidLintRule {
-  PreferDedicatedMediaQueryMethod({required super.options})
+class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
+  PreferDedicatedMediaQueryFunctions({required super.options})
       : super(
           name: ruleName,
           problemMessage: 'Using {0} will cause unnecessary rebuilds.',
@@ -45,10 +45,10 @@ class PreferDedicatedMediaQueryMethod extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'prefer_dedicated_media_query_method';
+  static const ruleName = 'prefer_dedicated_media_query_functions';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory PreferDedicatedMediaQueryMethod.fromConfigs(
+  factory PreferDedicatedMediaQueryFunctions.fromConfigs(
     CustomLintConfigs configs,
   ) {
     final json = configs.rules[ruleName]?.json ?? {};
@@ -57,7 +57,7 @@ class PreferDedicatedMediaQueryMethod extends PyramidLintRule {
       paramsConverter: (_) => null,
     );
 
-    return PreferDedicatedMediaQueryMethod(options: options);
+    return PreferDedicatedMediaQueryFunctions(options: options);
   }
 
   @override

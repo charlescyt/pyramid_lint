@@ -1,237 +1,237 @@
 Message: `Replace with MediaQuery.accessibleNavigationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:7`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:7`:
 ```
 void mediaQueryOf(BuildContext context) {
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final accessibleNavigation = MediaQuery.of(context).accessibleNavigation;
 +   final accessibleNavigation = MediaQuery.accessibleNavigationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final alwaysUse24HourFormat = MediaQuery.of(context).alwaysUse24HourFormat;
 ```
 ---
 Message: `Replace with MediaQuery.alwaysUse24HourFormatOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:9`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:9`:
 ```
   final accessibleNavigation = MediaQuery.of(context).accessibleNavigation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final alwaysUse24HourFormat = MediaQuery.of(context).alwaysUse24HourFormat;
 +   final alwaysUse24HourFormat = MediaQuery.alwaysUse24HourFormatOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final boldText = MediaQuery.of(context).boldText;
 ```
 ---
 Message: `Replace with MediaQuery.boldTextOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:11`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:11`:
 ```
   final alwaysUse24HourFormat = MediaQuery.of(context).alwaysUse24HourFormat;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final boldText = MediaQuery.of(context).boldText;
 +   final boldText = MediaQuery.boldTextOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
 ```
 ---
 Message: `Replace with MediaQuery.devicePixelRatioOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:13`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:13`:
 ```
   final boldText = MediaQuery.of(context).boldText;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
 +   final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final disableAnimations = MediaQuery.of(context).disableAnimations;
 ```
 ---
 Message: `Replace with MediaQuery.disableAnimationsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:15`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:15`:
 ```
   final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final disableAnimations = MediaQuery.of(context).disableAnimations;
 +   final disableAnimations = MediaQuery.disableAnimationsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final displayFeatures = MediaQuery.of(context).displayFeatures;
 ```
 ---
 Message: `Replace with MediaQuery.displayFeaturesOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:17`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:17`:
 ```
   final disableAnimations = MediaQuery.of(context).disableAnimations;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final displayFeatures = MediaQuery.of(context).displayFeatures;
 +   final displayFeatures = MediaQuery.displayFeaturesOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final gestureSettings = MediaQuery.of(context).gestureSettings;
 ```
 ---
 Message: `Replace with MediaQuery.gestureSettingsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:19`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:19`:
 ```
   final displayFeatures = MediaQuery.of(context).displayFeatures;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final gestureSettings = MediaQuery.of(context).gestureSettings;
 +   final gestureSettings = MediaQuery.gestureSettingsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final highContrast = MediaQuery.of(context).highContrast;
 ```
 ---
 Message: `Replace with MediaQuery.highContrastOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:21`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:21`:
 ```
   final gestureSettings = MediaQuery.of(context).gestureSettings;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final highContrast = MediaQuery.of(context).highContrast;
 +   final highContrast = MediaQuery.highContrastOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final invertColors = MediaQuery.of(context).invertColors;
 ```
 ---
 Message: `Replace with MediaQuery.invertColorsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:23`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:23`:
 ```
   final highContrast = MediaQuery.of(context).highContrast;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final invertColors = MediaQuery.of(context).invertColors;
 +   final invertColors = MediaQuery.invertColorsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final navigationMode = MediaQuery.of(context).navigationMode;
 ```
 ---
 Message: `Replace with MediaQuery.navigationModeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:25`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:25`:
 ```
   final invertColors = MediaQuery.of(context).invertColors;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final navigationMode = MediaQuery.of(context).navigationMode;
 +   final navigationMode = MediaQuery.navigationModeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final onOffSwitchLabels = MediaQuery.of(context).onOffSwitchLabels;
 ```
 ---
 Message: `Replace with MediaQuery.onOffSwitchLabelsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:27`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:27`:
 ```
   final navigationMode = MediaQuery.of(context).navigationMode;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final onOffSwitchLabels = MediaQuery.of(context).onOffSwitchLabels;
 +   final onOffSwitchLabels = MediaQuery.onOffSwitchLabelsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final orientation = MediaQuery.of(context).orientation;
 ```
 ---
 Message: `Replace with MediaQuery.orientationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:29`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:29`:
 ```
   final onOffSwitchLabels = MediaQuery.of(context).onOffSwitchLabels;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final orientation = MediaQuery.of(context).orientation;
 +   final orientation = MediaQuery.orientationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final padding = MediaQuery.of(context).padding;
 ```
 ---
 Message: `Replace with MediaQuery.paddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:31`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:31`:
 ```
   final orientation = MediaQuery.of(context).orientation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final padding = MediaQuery.of(context).padding;
 +   final padding = MediaQuery.paddingOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final platformBrightness = MediaQuery.of(context).platformBrightness;
 ```
 ---
 Message: `Replace with MediaQuery.platformBrightnessOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:33`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:33`:
 ```
   final padding = MediaQuery.of(context).padding;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final platformBrightness = MediaQuery.of(context).platformBrightness;
 +   final platformBrightness = MediaQuery.platformBrightnessOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final size = MediaQuery.of(context).size;
 ```
 ---
 Message: `Replace with MediaQuery.sizeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:35`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:35`:
 ```
   final platformBrightness = MediaQuery.of(context).platformBrightness;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final size = MediaQuery.of(context).size;
 +   final size = MediaQuery.sizeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final systemGestureInsets = MediaQuery.of(context).systemGestureInsets;
 ```
 ---
 Message: `Replace with MediaQuery.systemGestureInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:37`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:37`:
 ```
   final size = MediaQuery.of(context).size;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final systemGestureInsets = MediaQuery.of(context).systemGestureInsets;
 +   final systemGestureInsets = MediaQuery.systemGestureInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaleFactor = MediaQuery.of(context).textScaleFactor;
 ```
 ---
 Message: `Replace with MediaQuery.textScaleFactorOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:39`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:39`:
 ```
   final systemGestureInsets = MediaQuery.of(context).systemGestureInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaleFactor = MediaQuery.of(context).textScaleFactor;
 +   final textScaleFactor = MediaQuery.textScaleFactorOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaler = MediaQuery.of(context).textScaler;
 ```
 ---
 Message: `Replace with MediaQuery.textScalerOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:41`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:41`:
 ```
   final textScaleFactor = MediaQuery.of(context).textScaleFactor;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaler = MediaQuery.of(context).textScaler;
 +   final textScaler = MediaQuery.textScalerOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewInsets = MediaQuery.of(context).viewInsets;
 ```
 ---
 Message: `Replace with MediaQuery.viewInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:43`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:43`:
 ```
   final textScaler = MediaQuery.of(context).textScaler;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewInsets = MediaQuery.of(context).viewInsets;
 +   final viewInsets = MediaQuery.viewInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewPadding = MediaQuery.of(context).viewPadding;
 ```
 ---
 Message: `Replace with MediaQuery.viewPaddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:45`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:45`:
 ```
   final viewInsets = MediaQuery.of(context).viewInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewPadding = MediaQuery.of(context).viewPadding;
 +   final viewPadding = MediaQuery.viewPaddingOf(context);
 }
@@ -240,238 +240,238 @@ Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer
 ---
 Message: `Replace with MediaQuery.maybeAccessibleNavigationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:51`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:51`:
 ```
   final accessibleNavigation =
-      // expect_lint: prefer_dedicated_media_query_method
+      // expect_lint: prefer_dedicated_media_query_functions
 -       MediaQuery.maybeOf(context)?.accessibleNavigation;
 +       MediaQuery.maybeAccessibleNavigationOf(context);
   final alwaysUse24HourFormat =
-      // expect_lint: prefer_dedicated_media_query_method
+      // expect_lint: prefer_dedicated_media_query_functions
 ```
 ---
 Message: `Replace with MediaQuery.maybeAlwaysUse24HourFormatOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:54`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:54`:
 ```
   final alwaysUse24HourFormat =
-      // expect_lint: prefer_dedicated_media_query_method
+      // expect_lint: prefer_dedicated_media_query_functions
 -       MediaQuery.maybeOf(context)?.alwaysUse24HourFormat;
 +       MediaQuery.maybeAlwaysUse24HourFormatOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final boldText = MediaQuery.maybeOf(context)?.boldText;
 ```
 ---
 Message: `Replace with MediaQuery.maybeBoldTextOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:56`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:56`:
 ```
       MediaQuery.maybeOf(context)?.alwaysUse24HourFormat;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final boldText = MediaQuery.maybeOf(context)?.boldText;
 +   final boldText = MediaQuery.maybeBoldTextOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final devicePixelRatio = MediaQuery.maybeOf(context)?.devicePixelRatio;
 ```
 ---
 Message: `Replace with MediaQuery.maybeDevicePixelRatioOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:58`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:58`:
 ```
   final boldText = MediaQuery.maybeOf(context)?.boldText;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final devicePixelRatio = MediaQuery.maybeOf(context)?.devicePixelRatio;
 +   final devicePixelRatio = MediaQuery.maybeDevicePixelRatioOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final disableAnimations = MediaQuery.maybeOf(context)?.disableAnimations;
 ```
 ---
 Message: `Replace with MediaQuery.maybeDisableAnimationsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:60`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:60`:
 ```
   final devicePixelRatio = MediaQuery.maybeOf(context)?.devicePixelRatio;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final disableAnimations = MediaQuery.maybeOf(context)?.disableAnimations;
 +   final disableAnimations = MediaQuery.maybeDisableAnimationsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final displayFeatures = MediaQuery.maybeOf(context)?.displayFeatures;
 ```
 ---
 Message: `Replace with MediaQuery.maybeDisplayFeaturesOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:62`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:62`:
 ```
   final disableAnimations = MediaQuery.maybeOf(context)?.disableAnimations;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final displayFeatures = MediaQuery.maybeOf(context)?.displayFeatures;
 +   final displayFeatures = MediaQuery.maybeDisplayFeaturesOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final gestureSettings = MediaQuery.maybeOf(context)?.gestureSettings;
 ```
 ---
 Message: `Replace with MediaQuery.maybeGestureSettingsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:64`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:64`:
 ```
   final displayFeatures = MediaQuery.maybeOf(context)?.displayFeatures;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final gestureSettings = MediaQuery.maybeOf(context)?.gestureSettings;
 +   final gestureSettings = MediaQuery.maybeGestureSettingsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final highContrast = MediaQuery.maybeOf(context)?.highContrast;
 ```
 ---
 Message: `Replace with MediaQuery.maybeHighContrastOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:66`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:66`:
 ```
   final gestureSettings = MediaQuery.maybeOf(context)?.gestureSettings;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final highContrast = MediaQuery.maybeOf(context)?.highContrast;
 +   final highContrast = MediaQuery.maybeHighContrastOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final invertColors = MediaQuery.maybeOf(context)?.invertColors;
 ```
 ---
 Message: `Replace with MediaQuery.maybeInvertColorsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:68`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:68`:
 ```
   final highContrast = MediaQuery.maybeOf(context)?.highContrast;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final invertColors = MediaQuery.maybeOf(context)?.invertColors;
 +   final invertColors = MediaQuery.maybeInvertColorsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final navigationMode = MediaQuery.maybeOf(context)?.navigationMode;
 ```
 ---
 Message: `Replace with MediaQuery.maybeNavigationModeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:70`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:70`:
 ```
   final invertColors = MediaQuery.maybeOf(context)?.invertColors;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final navigationMode = MediaQuery.maybeOf(context)?.navigationMode;
 +   final navigationMode = MediaQuery.maybeNavigationModeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final onOffSwitchLabels = MediaQuery.maybeOf(context)?.onOffSwitchLabels;
 ```
 ---
 Message: `Replace with MediaQuery.maybeOnOffSwitchLabelsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:72`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:72`:
 ```
   final navigationMode = MediaQuery.maybeOf(context)?.navigationMode;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final onOffSwitchLabels = MediaQuery.maybeOf(context)?.onOffSwitchLabels;
 +   final onOffSwitchLabels = MediaQuery.maybeOnOffSwitchLabelsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final orientation = MediaQuery.maybeOf(context)?.orientation;
 ```
 ---
 Message: `Replace with MediaQuery.maybeOrientationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:74`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:74`:
 ```
   final onOffSwitchLabels = MediaQuery.maybeOf(context)?.onOffSwitchLabels;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final orientation = MediaQuery.maybeOf(context)?.orientation;
 +   final orientation = MediaQuery.maybeOrientationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final padding = MediaQuery.maybeOf(context)?.padding;
 ```
 ---
 Message: `Replace with MediaQuery.maybePaddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:76`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:76`:
 ```
   final orientation = MediaQuery.maybeOf(context)?.orientation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final padding = MediaQuery.maybeOf(context)?.padding;
 +   final padding = MediaQuery.maybePaddingOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final platformBrightness = MediaQuery.maybeOf(context)?.platformBrightness;
 ```
 ---
 Message: `Replace with MediaQuery.maybePlatformBrightnessOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:78`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:78`:
 ```
   final padding = MediaQuery.maybeOf(context)?.padding;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final platformBrightness = MediaQuery.maybeOf(context)?.platformBrightness;
 +   final platformBrightness = MediaQuery.maybePlatformBrightnessOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final size = MediaQuery.maybeOf(context)?.size;
 ```
 ---
 Message: `Replace with MediaQuery.maybeSizeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:80`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:80`:
 ```
   final platformBrightness = MediaQuery.maybeOf(context)?.platformBrightness;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final size = MediaQuery.maybeOf(context)?.size;
 +   final size = MediaQuery.maybeSizeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final systemGestureInsets = MediaQuery.maybeOf(context)?.systemGestureInsets;
 ```
 ---
 Message: `Replace with MediaQuery.maybeSystemGestureInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:82`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:82`:
 ```
   final size = MediaQuery.maybeOf(context)?.size;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final systemGestureInsets = MediaQuery.maybeOf(context)?.systemGestureInsets;
 +   final systemGestureInsets = MediaQuery.maybeSystemGestureInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaleFactor = MediaQuery.maybeOf(context)?.textScaleFactor;
 ```
 ---
 Message: `Replace with MediaQuery.maybeTextScaleFactorOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:84`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:84`:
 ```
   final systemGestureInsets = MediaQuery.maybeOf(context)?.systemGestureInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaleFactor = MediaQuery.maybeOf(context)?.textScaleFactor;
 +   final textScaleFactor = MediaQuery.maybeTextScaleFactorOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaler = MediaQuery.maybeOf(context)?.textScaler;
 ```
 ---
 Message: `Replace with MediaQuery.maybeTextScalerOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:86`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:86`:
 ```
   final textScaleFactor = MediaQuery.maybeOf(context)?.textScaleFactor;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaler = MediaQuery.maybeOf(context)?.textScaler;
 +   final textScaler = MediaQuery.maybeTextScalerOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewInsets = MediaQuery.maybeOf(context)?.viewInsets;
 ```
 ---
 Message: `Replace with MediaQuery.maybeViewInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:88`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:88`:
 ```
   final textScaler = MediaQuery.maybeOf(context)?.textScaler;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewInsets = MediaQuery.maybeOf(context)?.viewInsets;
 +   final viewInsets = MediaQuery.maybeViewInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewPadding = MediaQuery.maybeOf(context)?.viewPadding;
 ```
 ---
 Message: `Replace with MediaQuery.maybeViewPaddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:90`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:90`:
 ```
   final viewInsets = MediaQuery.maybeOf(context)?.viewInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewPadding = MediaQuery.maybeOf(context)?.viewPadding;
 +   final viewPadding = MediaQuery.maybeViewPaddingOf(context);
 }
@@ -480,238 +480,238 @@ Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer
 ---
 Message: `Replace with MediaQuery.accessibleNavigationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:97`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:97`:
 ```
 
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final accessibleNavigation = mediaQuery.accessibleNavigation;
 +   final accessibleNavigation = MediaQuery.accessibleNavigationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final alwaysUse24HourFormat = mediaQuery.alwaysUse24HourFormat;
 ```
 ---
 Message: `Replace with MediaQuery.alwaysUse24HourFormatOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:99`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:99`:
 ```
   final accessibleNavigation = mediaQuery.accessibleNavigation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final alwaysUse24HourFormat = mediaQuery.alwaysUse24HourFormat;
 +   final alwaysUse24HourFormat = MediaQuery.alwaysUse24HourFormatOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final boldText = mediaQuery.boldText;
 ```
 ---
 Message: `Replace with MediaQuery.boldTextOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:101`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:101`:
 ```
   final alwaysUse24HourFormat = mediaQuery.alwaysUse24HourFormat;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final boldText = mediaQuery.boldText;
 +   final boldText = MediaQuery.boldTextOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final devicePixelRatio = mediaQuery.devicePixelRatio;
 ```
 ---
 Message: `Replace with MediaQuery.devicePixelRatioOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:103`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:103`:
 ```
   final boldText = mediaQuery.boldText;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final devicePixelRatio = mediaQuery.devicePixelRatio;
 +   final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final disableAnimations = mediaQuery.disableAnimations;
 ```
 ---
 Message: `Replace with MediaQuery.disableAnimationsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:105`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:105`:
 ```
   final devicePixelRatio = mediaQuery.devicePixelRatio;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final disableAnimations = mediaQuery.disableAnimations;
 +   final disableAnimations = MediaQuery.disableAnimationsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final displayFeatures = mediaQuery.displayFeatures;
 ```
 ---
 Message: `Replace with MediaQuery.displayFeaturesOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:107`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:107`:
 ```
   final disableAnimations = mediaQuery.disableAnimations;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final displayFeatures = mediaQuery.displayFeatures;
 +   final displayFeatures = MediaQuery.displayFeaturesOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final gestureSettings = mediaQuery.gestureSettings;
 ```
 ---
 Message: `Replace with MediaQuery.gestureSettingsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:109`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:109`:
 ```
   final displayFeatures = mediaQuery.displayFeatures;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final gestureSettings = mediaQuery.gestureSettings;
 +   final gestureSettings = MediaQuery.gestureSettingsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final highContrast = mediaQuery.highContrast;
 ```
 ---
 Message: `Replace with MediaQuery.highContrastOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:111`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:111`:
 ```
   final gestureSettings = mediaQuery.gestureSettings;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final highContrast = mediaQuery.highContrast;
 +   final highContrast = MediaQuery.highContrastOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final invertColors = mediaQuery.invertColors;
 ```
 ---
 Message: `Replace with MediaQuery.invertColorsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:113`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:113`:
 ```
   final highContrast = mediaQuery.highContrast;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final invertColors = mediaQuery.invertColors;
 +   final invertColors = MediaQuery.invertColorsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final navigationMode = mediaQuery.navigationMode;
 ```
 ---
 Message: `Replace with MediaQuery.navigationModeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:115`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:115`:
 ```
   final invertColors = mediaQuery.invertColors;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final navigationMode = mediaQuery.navigationMode;
 +   final navigationMode = MediaQuery.navigationModeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final onOffSwitchLabels = mediaQuery.onOffSwitchLabels;
 ```
 ---
 Message: `Replace with MediaQuery.onOffSwitchLabelsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:117`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:117`:
 ```
   final navigationMode = mediaQuery.navigationMode;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final onOffSwitchLabels = mediaQuery.onOffSwitchLabels;
 +   final onOffSwitchLabels = MediaQuery.onOffSwitchLabelsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final orientation = mediaQuery.orientation;
 ```
 ---
 Message: `Replace with MediaQuery.orientationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:119`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:119`:
 ```
   final onOffSwitchLabels = mediaQuery.onOffSwitchLabels;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final orientation = mediaQuery.orientation;
 +   final orientation = MediaQuery.orientationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final padding = mediaQuery.padding;
 ```
 ---
 Message: `Replace with MediaQuery.paddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:121`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:121`:
 ```
   final orientation = mediaQuery.orientation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final padding = mediaQuery.padding;
 +   final padding = MediaQuery.paddingOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final platformBrightness = mediaQuery.platformBrightness;
 ```
 ---
 Message: `Replace with MediaQuery.platformBrightnessOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:123`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:123`:
 ```
   final padding = mediaQuery.padding;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final platformBrightness = mediaQuery.platformBrightness;
 +   final platformBrightness = MediaQuery.platformBrightnessOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final size = mediaQuery.size;
 ```
 ---
 Message: `Replace with MediaQuery.sizeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:125`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:125`:
 ```
   final platformBrightness = mediaQuery.platformBrightness;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final size = mediaQuery.size;
 +   final size = MediaQuery.sizeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final systemGestureInsets = mediaQuery.systemGestureInsets;
 ```
 ---
 Message: `Replace with MediaQuery.systemGestureInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:127`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:127`:
 ```
   final size = mediaQuery.size;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final systemGestureInsets = mediaQuery.systemGestureInsets;
 +   final systemGestureInsets = MediaQuery.systemGestureInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaleFactor = mediaQuery.textScaleFactor;
 ```
 ---
 Message: `Replace with MediaQuery.textScaleFactorOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:129`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:129`:
 ```
   final systemGestureInsets = mediaQuery.systemGestureInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaleFactor = mediaQuery.textScaleFactor;
 +   final textScaleFactor = MediaQuery.textScaleFactorOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaler = mediaQuery.textScaler;
 ```
 ---
 Message: `Replace with MediaQuery.textScalerOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:131`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:131`:
 ```
   final textScaleFactor = mediaQuery.textScaleFactor;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaler = mediaQuery.textScaler;
 +   final textScaler = MediaQuery.textScalerOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewInsets = mediaQuery.viewInsets;
 ```
 ---
 Message: `Replace with MediaQuery.viewInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:133`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:133`:
 ```
   final textScaler = mediaQuery.textScaler;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewInsets = mediaQuery.viewInsets;
 +   final viewInsets = MediaQuery.viewInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewPadding = mediaQuery.viewPadding;
 ```
 ---
 Message: `Replace with MediaQuery.viewPaddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:135`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:135`:
 ```
   final viewInsets = mediaQuery.viewInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewPadding = mediaQuery.viewPadding;
 +   final viewPadding = MediaQuery.viewPaddingOf(context);
 }
@@ -720,238 +720,238 @@ Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer
 ---
 Message: `Replace with MediaQuery.accessibleNavigationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:142`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:142`:
 ```
 
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final accessibleNavigation = mediaQuery?.accessibleNavigation;
 +   final accessibleNavigation = MediaQuery.accessibleNavigationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final alwaysUse24HourFormat = mediaQuery?.alwaysUse24HourFormat;
 ```
 ---
 Message: `Replace with MediaQuery.alwaysUse24HourFormatOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:144`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:144`:
 ```
   final accessibleNavigation = mediaQuery?.accessibleNavigation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final alwaysUse24HourFormat = mediaQuery?.alwaysUse24HourFormat;
 +   final alwaysUse24HourFormat = MediaQuery.alwaysUse24HourFormatOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final boldText = mediaQuery?.boldText;
 ```
 ---
 Message: `Replace with MediaQuery.boldTextOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:146`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:146`:
 ```
   final alwaysUse24HourFormat = mediaQuery?.alwaysUse24HourFormat;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final boldText = mediaQuery?.boldText;
 +   final boldText = MediaQuery.boldTextOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final devicePixelRatio = mediaQuery?.devicePixelRatio;
 ```
 ---
 Message: `Replace with MediaQuery.devicePixelRatioOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:148`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:148`:
 ```
   final boldText = mediaQuery?.boldText;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final devicePixelRatio = mediaQuery?.devicePixelRatio;
 +   final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final disableAnimations = mediaQuery?.disableAnimations;
 ```
 ---
 Message: `Replace with MediaQuery.disableAnimationsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:150`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:150`:
 ```
   final devicePixelRatio = mediaQuery?.devicePixelRatio;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final disableAnimations = mediaQuery?.disableAnimations;
 +   final disableAnimations = MediaQuery.disableAnimationsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final displayFeatures = mediaQuery?.displayFeatures;
 ```
 ---
 Message: `Replace with MediaQuery.displayFeaturesOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:152`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:152`:
 ```
   final disableAnimations = mediaQuery?.disableAnimations;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final displayFeatures = mediaQuery?.displayFeatures;
 +   final displayFeatures = MediaQuery.displayFeaturesOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final gestureSettings = mediaQuery?.gestureSettings;
 ```
 ---
 Message: `Replace with MediaQuery.gestureSettingsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:154`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:154`:
 ```
   final displayFeatures = mediaQuery?.displayFeatures;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final gestureSettings = mediaQuery?.gestureSettings;
 +   final gestureSettings = MediaQuery.gestureSettingsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final highContrast = mediaQuery?.highContrast;
 ```
 ---
 Message: `Replace with MediaQuery.highContrastOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:156`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:156`:
 ```
   final gestureSettings = mediaQuery?.gestureSettings;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final highContrast = mediaQuery?.highContrast;
 +   final highContrast = MediaQuery.highContrastOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final invertColors = mediaQuery?.invertColors;
 ```
 ---
 Message: `Replace with MediaQuery.invertColorsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:158`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:158`:
 ```
   final highContrast = mediaQuery?.highContrast;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final invertColors = mediaQuery?.invertColors;
 +   final invertColors = MediaQuery.invertColorsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final navigationMode = mediaQuery?.navigationMode;
 ```
 ---
 Message: `Replace with MediaQuery.navigationModeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:160`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:160`:
 ```
   final invertColors = mediaQuery?.invertColors;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final navigationMode = mediaQuery?.navigationMode;
 +   final navigationMode = MediaQuery.navigationModeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final onOffSwitchLabels = mediaQuery?.onOffSwitchLabels;
 ```
 ---
 Message: `Replace with MediaQuery.onOffSwitchLabelsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:162`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:162`:
 ```
   final navigationMode = mediaQuery?.navigationMode;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final onOffSwitchLabels = mediaQuery?.onOffSwitchLabels;
 +   final onOffSwitchLabels = MediaQuery.onOffSwitchLabelsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final orientation = mediaQuery?.orientation;
 ```
 ---
 Message: `Replace with MediaQuery.orientationOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:164`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:164`:
 ```
   final onOffSwitchLabels = mediaQuery?.onOffSwitchLabels;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final orientation = mediaQuery?.orientation;
 +   final orientation = MediaQuery.orientationOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final padding = mediaQuery?.padding;
 ```
 ---
 Message: `Replace with MediaQuery.paddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:166`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:166`:
 ```
   final orientation = mediaQuery?.orientation;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final padding = mediaQuery?.padding;
 +   final padding = MediaQuery.paddingOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final platformBrightness = mediaQuery?.platformBrightness;
 ```
 ---
 Message: `Replace with MediaQuery.platformBrightnessOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:168`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:168`:
 ```
   final padding = mediaQuery?.padding;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final platformBrightness = mediaQuery?.platformBrightness;
 +   final platformBrightness = MediaQuery.platformBrightnessOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final size = mediaQuery?.size;
 ```
 ---
 Message: `Replace with MediaQuery.sizeOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:170`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:170`:
 ```
   final platformBrightness = mediaQuery?.platformBrightness;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final size = mediaQuery?.size;
 +   final size = MediaQuery.sizeOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final systemGestureInsets = mediaQuery?.systemGestureInsets;
 ```
 ---
 Message: `Replace with MediaQuery.systemGestureInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:172`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:172`:
 ```
   final size = mediaQuery?.size;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final systemGestureInsets = mediaQuery?.systemGestureInsets;
 +   final systemGestureInsets = MediaQuery.systemGestureInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaleFactor = mediaQuery?.textScaleFactor;
 ```
 ---
 Message: `Replace with MediaQuery.textScaleFactorOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:174`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:174`:
 ```
   final systemGestureInsets = mediaQuery?.systemGestureInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaleFactor = mediaQuery?.textScaleFactor;
 +   final textScaleFactor = MediaQuery.textScaleFactorOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final textScaler = mediaQuery?.textScaler;
 ```
 ---
 Message: `Replace with MediaQuery.textScalerOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:176`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:176`:
 ```
   final textScaleFactor = mediaQuery?.textScaleFactor;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final textScaler = mediaQuery?.textScaler;
 +   final textScaler = MediaQuery.textScalerOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewInsets = mediaQuery?.viewInsets;
 ```
 ---
 Message: `Replace with MediaQuery.viewInsetsOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:178`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:178`:
 ```
   final textScaler = mediaQuery?.textScaler;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewInsets = mediaQuery?.viewInsets;
 +   final viewInsets = MediaQuery.viewInsetsOf(context);
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
   final viewPadding = mediaQuery?.viewPadding;
 ```
 ---
 Message: `Replace with MediaQuery.viewPaddingOf(context)`
 Priority: 80
-Diff for file `test/lints/flutter/prefer_dedicated_media_query_method/fix/prefer_dedicated_media_query_method.dart:180`:
+Diff for file `test/lints/flutter/prefer_dedicated_media_query_functions/fix/prefer_dedicated_media_query_functions.dart:180`:
 ```
   final viewInsets = mediaQuery?.viewInsets;
-  // expect_lint: prefer_dedicated_media_query_method
+  // expect_lint: prefer_dedicated_media_query_functions
 -   final viewPadding = mediaQuery?.viewPadding;
 +   final viewPadding = MediaQuery.viewPaddingOf(context);
 }

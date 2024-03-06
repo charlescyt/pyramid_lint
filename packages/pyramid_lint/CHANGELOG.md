@@ -22,6 +22,7 @@
 - **BREAKING**: `proper_controller_dispose` is renamed to `dispose_controllers`.
 - **BREAKING**: `avoid_widget_state_public_members` is renamed to `avoid_public_members_in_states`.
 - **BREAKING**: `proper_edge_insets_constructor` is renamed to `proper_edge_insets_constructors`.
+- **BREAKING**: `prefer_dedicated_media_query_method` is renamed to `prefer_dedicated_media_query_functions`.
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
 

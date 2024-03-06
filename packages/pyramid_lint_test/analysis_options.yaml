@@ -51,7 +51,7 @@ custom_lint:
     - prefer_async_callback
     - prefer_border_from_border_side
     - prefer_border_radius_all
-    - prefer_dedicated_media_query_method
+    - prefer_dedicated_media_query_functions
     - prefer_text_rich
     - prefer_void_callback
     - proper_edge_insets_constructors

@@ -45,7 +45,7 @@ import 'src/lints/flutter/dispose_controllers.dart';
 import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
-import 'src/lints/flutter/prefer_dedicated_media_query_method.dart';
+import 'src/lints/flutter/prefer_dedicated_media_query_functions.dart';
 import 'src/lints/flutter/prefer_text_rich.dart';
 import 'src/lints/flutter/prefer_void_callback.dart';
 import 'src/lints/flutter/proper_edge_insets_constructors.dart';
@@ -99,7 +99,7 @@ class _PyramidLinter extends PluginBase {
         PreferAsyncCallback.fromConfigs(configs),
         PreferBorderFromBorderSide.fromConfigs(configs),
         PreferBorderRadiusAll.fromConfigs(configs),
-        PreferDedicatedMediaQueryMethod.fromConfigs(configs),
+        PreferDedicatedMediaQueryFunctions.fromConfigs(configs),
         PreferTextRich.fromConfigs(configs),
         PreferVoidCallback.fromConfigs(configs),
         ProperEdgeInsetsConstructors.fromConfigs(configs),

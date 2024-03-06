@@ -58,7 +58,7 @@
       ["prefer_async_callback", "/flutter-lints/prefer_async_callback"],
       ["prefer_border_from_border_side", "/flutter-lints/prefer_border_from_border_side"],
       ["prefer_border_radius_all", "/flutter-lints/prefer_border_radius_all"],
-      ["prefer_dedicated_media_query_method", "/flutter-lints/prefer_dedicated_media_query_method"],
+      ["prefer_dedicated_media_query_functions", "/flutter-lints/prefer_dedicated_media_query_functions"],
       ["prefer_text_rich", "/flutter-lints/prefer_text_rich"],
       ["prefer_void_callback", "/flutter-lints/prefer_void_callback"],
       ["proper_edge_insets_constructors", "/flutter-lints/proper_edge_insets_constructors"],

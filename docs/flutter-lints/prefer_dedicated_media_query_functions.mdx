@@ -1,4 +1,4 @@
-# prefer_dedicated_media_query_method
+# prefer_dedicated_media_query_functions
 
 | Severity | Quick Fix | Options |
 |:--------:|:---------:|:-------:|
@@ -6,7 +6,7 @@
 
 ## Details
 
-**PREFER** using dedicated MediaQuery methods instead of accessing the properties from MediaQuery.of(context) or MediaQuery.maybeOf(context).
+**PREFER** using dedicated MediaQuery functions instead of accessing the properties from MediaQuery.of(context) or MediaQuery.maybeOf(context).
 
 Using MediaQuery.of(context) or MediaQuery.maybeOf(context) to access below properties will cause unnecessary rebuilds.
 
@@ -52,10 +52,10 @@ final platformBrightness = MediaQuery.platformBrightnessOf(context);
 
 ## Usage
 
-To enable the `prefer_dedicated_media_query_method` rule, add `prefer_dedicated_media_query_method` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_dedicated_media_query_functions` rule, add `prefer_dedicated_media_query_functions` under custom_lint > rules in your `analysis_options.yaml` file:
 
 ```yaml
 custom_lint:
   rules:
-    - prefer_dedicated_media_query_method
+    - prefer_dedicated_media_query_functions
 ```
