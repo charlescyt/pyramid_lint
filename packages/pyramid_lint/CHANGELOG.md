@@ -4,31 +4,32 @@
 
 ### Added
 
-- Add support for changing the lint severity.
-- Lint: `avoid_mutable_global_variables`
-- Lint: `avoid_redundant_pattern_field_names`
-- Lint: `avoid_positional_fields_in_records`
-- Lint: `class_members_ordering`
+- Add support for changing the lint severity. ([#38](https://github.com/charlescyt/pyramid_lint/pull/38))
+- Lint: `avoid_mutable_global_variables` ([#37](https://github.com/charlescyt/pyramid_lint/pull/37))
+- Lint: `avoid_redundant_pattern_field_names` ([#40](https://github.com/charlescyt/pyramid_lint/pull/40))
+- Lint: `avoid_positional_fields_in_records` ([#41](https://github.com/charlescyt/pyramid_lint/pull/41))
+- Lint: `class_members_ordering` ([#42](https://github.com/charlescyt/pyramid_lint/pull/42))
+- Assist: `wrap_with_listenable_builder` ([#26](https://github.com/charlescyt/pyramid_lint/pull/26)) thanks to [imsamgarg])
 
 ### Changed
 
-- **BREAKING**: All lints are now disabled by default. You need to enable them in your `analysis_options.yaml` file.
-- **BREAKING**: `avoid_duplicate_import` is renamed to `no_duplicate_imports`.
-- **BREAKING**: `prefer_declaring_const_constructors` is renamed to `prefer_const_constructor_declarations`.
-- **BREAKING**: `doc_comments_before_annotations` is renamed to `always_put_doc_comments_before_annotations`.
-- **BREAKING**: `boolean_prefix` is renamed to `boolean_prefixes`.
-- **BREAKING**: `always_declare_parameter_names` is renamed to `always_specify_parameter_names`.
-- **BREAKING**: `prefer_spacer` is renamed to `use_spacer`.
-- **BREAKING**: `proper_controller_dispose` is renamed to `dispose_controllers`.
-- **BREAKING**: `avoid_widget_state_public_members` is renamed to `avoid_public_members_in_states`.
-- **BREAKING**: `proper_edge_insets_constructor` is renamed to `proper_edge_insets_constructors`.
-- **BREAKING**: `prefer_dedicated_media_query_method` is renamed to `prefer_dedicated_media_query_functions`.
+- **BREAKING**: All lints are now disabled by default. To enable a specific lint, add the lint in the `analysis_options.yaml` file. ([#39](https://github.com/charlescyt/pyramid_lint/pull/39))
+- **BREAKING**: `avoid_duplicate_import` has been renamed to `no_duplicate_imports`.
+- **BREAKING**: `prefer_declaring_const_constructors` has been renamed to `prefer_const_constructor_declarations`.
+- **BREAKING**: `doc_comments_before_annotations` has been renamed to `always_put_doc_comments_before_annotations`.
+- **BREAKING**: `boolean_prefix` has been renamed to `boolean_prefixes`.
+- **BREAKING**: `always_declare_parameter_names` has been renamed to `always_specify_parameter_names`.
+- **BREAKING**: `prefer_spacer` has been renamed to `use_spacer`.
+- **BREAKING**: `proper_controller_dispose` has been renamed to `dispose_controllers`.
+- **BREAKING**: `avoid_widget_state_public_members` has been renamed to `avoid_public_members_in_states`.
+- **BREAKING**: `proper_edge_insets_constructor` has been renamed to `proper_edge_insets_constructors`.
+- **BREAKING**: `prefer_dedicated_media_query_method` has been renamed to `prefer_dedicated_media_query_functions`.
 - Pump the minimum `custom_lint_builder` version to 0.6.2.
-- Fix false positive for `avoid_nested_if` when the if statement is a else if statement.
+- Fix false positive for `avoid_nested_if` when the if statement is a else if statement. ([#44](https://github.com/charlescyt/pyramid_lint/pull/44))
 
 ### Removed
 
-- **BREAKING**: Remove `prefer_value_changed` lint.
+- **BREAKING**: Remove `prefer_value_changed` lint. ([#45](https://github.com/charlescyt/pyramid_lint/pull/45))
 
 ## [1.5.0] - 2024-02-14
 
@@ -119,14 +120,14 @@
 
 ### Changed
 
-- **BREAKING**: `avoid_empty_block` is renamed to `avoid_empty_blocks`.
-- **BREAKING**: `avoid_inverted_boolean_expression` is renamed to `avoid_inverted_boolean_expressions`.
-- **BREAKING**: `correct_order_for_super_dispose` is renamed to `proper_super_dispose`.
-- **BREAKING**: `correct_order_for_super_init_state` is renamed to `proper_super_init_state`.
-- **BREAKING**: `proper_usage_of_expanded_and_flexible` is renamed to `proper_expanded_and_flexible`.
-- **BREAKING**: `proper_usage_of_from_environment` is renamed to `proper_from_environment`.
-- **BREAKING**: `prefer_declaring_const_constructor` is renamed to `prefer_declaring_const_constructors`.
-- **BREAKING**: `prefer_declaring_parameter_name` is renamed to `always_declare_parameter_names`.
+- **BREAKING**: `avoid_empty_block` has been renamed to `avoid_empty_blocks`.
+- **BREAKING**: `avoid_inverted_boolean_expression` has been renamed to `avoid_inverted_boolean_expressions`.
+- **BREAKING**: `correct_order_for_super_dispose` has been renamed to `proper_super_dispose`.
+- **BREAKING**: `correct_order_for_super_init_state` has been renamed to `proper_super_init_state`.
+- **BREAKING**: `proper_usage_of_expanded_and_flexible` has been renamed to `proper_expanded_and_flexible`.
+- **BREAKING**: `proper_usage_of_from_environment` has been renamed to `proper_from_environment`.
+- **BREAKING**: `prefer_declaring_const_constructor` has been renamed to `prefer_declaring_const_constructors`.
+- **BREAKING**: `prefer_declaring_parameter_name` has been renamed to `always_declare_parameter_names`.
 - `proper_edge_insets_constructor` now works when arguments are variables.
 - `proper_edge_insets_constructor` is no longer triggered if all the arguments are 0 in flavor of the built-in `use_named_constants`.
 
