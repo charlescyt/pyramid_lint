@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_widget_state_public_members
+// ignore_for_file: avoid_public_members_in_states
 
 import 'package:flutter/material.dart';
 

@@ -38,9 +38,9 @@ import 'src/lints/dart/prefer_library_prefixes.dart';
 import 'src/lints/dart/prefer_new_line_before_return.dart';
 import 'src/lints/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/lints/dart/unnecessary_nullable_return_type.dart';
+import 'src/lints/flutter/avoid_public_members_in_states.dart';
 import 'src/lints/flutter/avoid_returning_widgets.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
-import 'src/lints/flutter/avoid_widget_state_public_members.dart';
 import 'src/lints/flutter/dispose_controllers.dart';
 import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
@@ -92,9 +92,9 @@ class _PyramidLinter extends PluginBase {
         PreferUnderscoreForUnusedCallbackParameters.fromConfigs(configs),
         UnnecessaryNullableReturnType.fromConfigs(configs),
         // Flutter lints
+        AvoidPublicMembersInStates.fromConfigs(configs),
         AvoidReturningWidgets.fromConfigs(configs),
         AvoidSingleChildInFlex.fromConfigs(configs),
-        AvoidWidgetStatePublicMembers.fromConfigs(configs),
         DisposeControllers.fromConfigs(configs),
         PreferAsyncCallback.fromConfigs(configs),
         PreferBorderFromBorderSide.fromConfigs(configs),

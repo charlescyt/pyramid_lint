@@ -35,9 +35,9 @@ custom_lint:
     - prefer_underscore_for_unused_callback_parameters
     - unnecessary_nullable_return_type
     # Flutter lints
+    - avoid_public_members_in_states
     - avoid_returning_widgets
     - avoid_single_child_in_flex
-    - avoid_widget_state_public_members
     - dispose_controllers
     - prefer_async_callback
     - prefer_border_from_border_side

@@ -10,12 +10,12 @@ class Bar extends StatefulWidget {
 }
 
 class _BarState extends State<Bar> {
-  // expect_lint: avoid_widget_state_public_members
+  // expect_lint: avoid_public_members_in_states
   int publicField = 1;
 
   int _privateField = 0;
 
-  // expect_lint: avoid_widget_state_public_members
+  // expect_lint: avoid_public_members_in_states
   String _privateField2 = '', publicField2 = '';
 
   @override
@@ -28,7 +28,7 @@ class _BarState extends State<Bar> {
     return const Placeholder();
   }
 
-  // expect_lint: avoid_widget_state_public_members
+  // expect_lint: avoid_public_members_in_states
   void publicMethod() {}
 
   void _privateMethod() {}

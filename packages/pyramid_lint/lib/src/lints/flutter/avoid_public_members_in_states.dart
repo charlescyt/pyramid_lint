@@ -7,8 +7,8 @@ import '../../pyramid_lint_rule.dart';
 import '../../utils/constants.dart';
 import '../../utils/type_checker.dart';
 
-class AvoidWidgetStatePublicMembers extends PyramidLintRule {
-  AvoidWidgetStatePublicMembers({required super.options})
+class AvoidPublicMembersInStates extends PyramidLintRule {
+  AvoidPublicMembersInStates({required super.options})
       : super(
           name: ruleName,
           problemMessage: 'Avoid public members in widget state classes.',
@@ -17,17 +17,17 @@ class AvoidWidgetStatePublicMembers extends PyramidLintRule {
           errorSeverity: ErrorSeverity.INFO,
         );
 
-  static const ruleName = 'avoid_widget_state_public_members';
+  static const ruleName = 'avoid_public_members_in_states';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory AvoidWidgetStatePublicMembers.fromConfigs(CustomLintConfigs configs) {
+  factory AvoidPublicMembersInStates.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
       paramsConverter: (_) => null,
     );
 
-    return AvoidWidgetStatePublicMembers(options: options);
+    return AvoidPublicMembersInStates(options: options);
   }
 
   @override
