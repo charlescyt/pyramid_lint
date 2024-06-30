@@ -51,6 +51,10 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
           classMember.metadata.any((e) => e.name.name == 'override');
       if (hasOverrideAnnotation) return;
 
+      final hasVisibleForTestingAnnotation =
+          classMember.metadata.any((e) => e.name.name == 'visibleForTesting');
+      if (hasVisibleForTestingAnnotation) return;
+
       switch (classMember) {
         case final ConstructorDeclaration _:
           return;

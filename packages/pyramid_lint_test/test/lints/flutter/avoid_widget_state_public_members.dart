@@ -13,6 +13,9 @@ class _BarState extends State<Bar> {
   // expect_lint: avoid_public_members_in_states
   int publicField = 1;
 
+  @visibleForTesting
+  int publicFieldWithVisibleForTestingAnnotation = 1;
+
   int _privateField = 0;
 
   // expect_lint: avoid_public_members_in_states
@@ -30,6 +33,9 @@ class _BarState extends State<Bar> {
 
   // expect_lint: avoid_public_members_in_states
   void publicMethod() {}
+
+  @visibleForTesting
+  void publicMethodWithVisibleForTestingAnnotation() {}
 
   void _privateMethod() {}
 }
