@@ -6,7 +6,9 @@
 
 ## Details
 
-**AVOID** declaring public members in widget state classes.
+**AVOID** declaring public fields and methods in widget state classes.
+
+<Info> Public fields and methods with `@visibleForTesting` annotations are ignored. </Info>
 
 ```dart title="Bad"
 class _MyWidgetState extends State<MyWidget> {

@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- `avoid_public_members_in_states` now ignores public fields and methods with `@visibleForTesting` annotations.
+
 ## [2.0.0] - 2024-03-06
 
 ### Added
