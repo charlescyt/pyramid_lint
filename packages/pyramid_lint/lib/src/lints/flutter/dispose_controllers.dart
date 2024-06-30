@@ -227,7 +227,7 @@ Iterable<String> _getDisposeStatementTargetNames(
       .map((e) => e.expression)
       .whereType<MethodInvocation>()
       .map(_getTargetNameOfDisposeMethodInvocation)
-      .whereNotNull();
+      .nonNulls;
 }
 
 String? _getTargetNameOfDisposeMethodInvocation(
