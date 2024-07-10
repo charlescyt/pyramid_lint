@@ -23,7 +23,7 @@ void main() {
       );
 
       final errors = await lint.testRun(result, pubspec: pubspec);
-      expect(errors, hasLength(9));
+      expect(errors, hasLength(10));
 
       final changes = await Future.wait([
         for (final error in errors) fix.testRun(result, error, errors),

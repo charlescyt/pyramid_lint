@@ -120,3 +120,16 @@ Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.da
   }
 ```
 ---
+Message: `Dispose controller`
+Priority: 80
+Diff for file `test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart:144`:
+```
+  @override
+  void dispose() {
+-     super.dispose();
++     _scrollController.dispose();
++     super.dispose();
+  }
+
+```
+---
