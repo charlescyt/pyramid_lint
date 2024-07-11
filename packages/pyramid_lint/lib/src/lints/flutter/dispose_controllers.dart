@@ -231,18 +231,18 @@ Iterable<String> _getDisposeStatementTargetNames(
 String? _getTargetNameOfDisposeMethodInvocation(
   ExpressionStatement expressionStatement,
 ) {
-  if (expressionStatement.expression is CascadeExpression) {
-    final cascadeExpression =
-        expressionStatement.expression as CascadeExpression;
-
+  if (expressionStatement.expression
+      case final CascadeExpression cascadeExpression) {
     for (final section in cascadeExpression.cascadeSections) {
       if (section is MethodInvocation && section.methodName.name == 'dispose') {
-        return cascadeExpression.target.toString();
+        if (cascadeExpression.target
+            case final SimpleIdentifier simpleIdentifier) {
+          return simpleIdentifier.name;
+        }
       }
     }
-  } else if (expressionStatement.expression is MethodInvocation) {
-    final methodInvocation = expressionStatement.expression as MethodInvocation;
-
+  } else if (expressionStatement.expression
+      case final MethodInvocation methodInvocation) {
     final target = methodInvocation.target;
     if (target is! SimpleIdentifier) return null;
 
