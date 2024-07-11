@@ -17,7 +17,7 @@ Pyramid Lint is built with [custom_lint][custom_lint].
 Run the following command to add `custom_lint` and `pyramid_lint` to your project's dev dependencies:
 
 ```sh
-dart pub add dev: custom_lint dev:pyramid_lint
+dart pub add dev:custom_lint dev:pyramid_lint
 ```
 
 Then enable `custom_lint` in your `analysis_options.yaml` file.
