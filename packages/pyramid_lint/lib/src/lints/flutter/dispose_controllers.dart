@@ -224,20 +224,33 @@ Iterable<String> _getDisposeStatementTargetNames(
   NodeList<Statement> statements,
 ) {
   return statements.expressionStatements
-      .map((e) => e.expression)
-      .whereType<MethodInvocation>()
       .map(_getTargetNameOfDisposeMethodInvocation)
       .nonNulls;
 }
 
 String? _getTargetNameOfDisposeMethodInvocation(
-  MethodInvocation invocation,
+  ExpressionStatement expressionStatement,
 ) {
-  final target = invocation.target;
-  if (target is! SimpleIdentifier) return null;
+  if (expressionStatement.expression
+      case final CascadeExpression cascadeExpression) {
+    for (final section in cascadeExpression.cascadeSections) {
+      if (section is MethodInvocation && section.methodName.name == 'dispose') {
+        if (cascadeExpression.target
+            case final SimpleIdentifier simpleIdentifier) {
+          return simpleIdentifier.name;
+        }
+      }
+    }
+  } else if (expressionStatement.expression
+      case final MethodInvocation methodInvocation) {
+    final target = methodInvocation.target;
+    if (target is! SimpleIdentifier) return null;
 
-  final methodName = invocation.methodName.name;
-  if (methodName != 'dispose') return null;
+    final methodName = methodInvocation.methodName.name;
+    if (methodName != 'dispose') return null;
 
-  return target.name;
+    return target.name;
+  }
+
+  return null;
 }

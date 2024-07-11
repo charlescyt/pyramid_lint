@@ -6,6 +6,10 @@
 
 - `avoid_public_members_in_states` now ignores public fields and methods with `@visibleForTesting` annotations.
 
+### Fixed
+
+- Fix false positive for `dispose_controllers` when dispose is already called via [cascade notation](https://dart.dev/language/operators#cascade-notation).
+
 ## [2.0.0] - 2024-03-06
 
 ### Added

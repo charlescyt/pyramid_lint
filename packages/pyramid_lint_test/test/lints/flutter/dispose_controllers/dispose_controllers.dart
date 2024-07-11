@@ -89,3 +89,63 @@ class _Example2State extends State<Example2>
     return const Placeholder();
   }
 }
+
+class Example3 extends StatefulWidget {
+  const Example3({
+    super.key,
+  });
+
+  @override
+  State<Example3> createState() => _Example3State();
+}
+
+class _Example3State extends State<Example3> {
+  late final ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_handleScrollChange);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_handleScrollChange)
+      ..dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+
+  // ignore: avoid_empty_blocks
+  void _handleScrollChange() {}
+}
+
+class Example4 extends StatefulWidget {
+  const Example4({
+    super.key,
+  });
+
+  @override
+  State<Example4> createState() => _Example4State();
+}
+
+class _Example4State extends State<Example4> {
+  // expect_lint: dispose_controllers
+  late final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
