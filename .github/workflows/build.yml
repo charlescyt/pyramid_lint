@@ -13,6 +13,9 @@ on:
     paths-ignore:
       - "**.md"
 
+  schedule:
+    - cron: "0 13 * * *"
+
 jobs:
   pyramid_lint:
     runs-on: ubuntu-latest
