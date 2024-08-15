@@ -59,10 +59,10 @@ class UseSpacer extends PyramidLintRule {
           childExpression.argumentList.arguments.isEmpty;
       if (!isChildArgumentEmpty) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node.constructorName,
-        [childType.getDisplayString(withNullability: false)],
+        code,
+        arguments: [childType.getDisplayString()],
       );
     });
   }

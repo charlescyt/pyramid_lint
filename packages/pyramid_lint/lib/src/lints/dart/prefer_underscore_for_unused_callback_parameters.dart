@@ -67,7 +67,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
 
         if (isParameterReferenced) continue;
 
-        reporter.reportErrorForElement(code, parameterElement);
+        reporter.atElement(parameterElement, code);
       }
     });
   }

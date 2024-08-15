@@ -73,7 +73,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
     if (methodDeclaration.isStatic ||
         methodDeclaration.name.lexeme.startsWith('_')) return;
 
-    reporter.reportErrorForToken(code, methodDeclaration.name);
+    reporter.atToken(methodDeclaration.name, code);
   }
 
   void _checkFieldDeclaration(
@@ -84,7 +84,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
 
     for (final variable in fieldDeclaration.fields.variables) {
       if (!variable.name.lexeme.startsWith('_')) {
-        reporter.reportErrorForToken(code, variable.name);
+        reporter.atToken(variable.name, code);
       }
     }
   }

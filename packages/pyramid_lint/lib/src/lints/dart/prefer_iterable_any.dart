@@ -55,7 +55,7 @@ class PreferIterableAny extends PyramidLintRule {
 
       if (!iterableChecker.isAssignableFromType(targetType)) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

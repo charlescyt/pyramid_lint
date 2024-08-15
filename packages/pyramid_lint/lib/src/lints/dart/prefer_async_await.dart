@@ -44,7 +44,7 @@ class PreferAsyncAwait extends PyramidLintRule {
       final methodName = node.methodName.name;
       if (methodName != 'then') return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 }

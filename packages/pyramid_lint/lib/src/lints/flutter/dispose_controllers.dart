@@ -68,10 +68,10 @@ class DisposeControllers extends PyramidLintRule {
           disposeFunctionBody is! BlockFunctionBody) {
         for (final controller in controllerDeclarations) {
           final controllerName = controller.name.lexeme;
-          reporter.reportErrorForToken(
-            code,
+          reporter.atToken(
             controller.name,
-            [controllerName],
+            code,
+            arguments: [controllerName],
           );
         }
         return;
@@ -84,10 +84,10 @@ class DisposeControllers extends PyramidLintRule {
       for (final controllerDeclaration in controllerDeclarations) {
         final controllerName = controllerDeclaration.name.lexeme;
         if (!disposeStatementTargetNames.contains(controllerName)) {
-          reporter.reportErrorForToken(
-            code,
+          reporter.atToken(
             controllerDeclaration.name,
-            [controllerName],
+            code,
+            arguments: [controllerName],
           );
         }
       }

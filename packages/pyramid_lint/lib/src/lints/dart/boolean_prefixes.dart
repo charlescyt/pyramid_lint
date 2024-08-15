@@ -86,10 +86,10 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final name = parent.name.lexeme;
       if (isNameValid(name)) return;
 
-      reporter.reportErrorForToken(
-        code,
+      reporter.atToken(
         parent.name,
-        [
+        code,
+        arguments: [
           'Boolean variable',
           'variable',
         ],
@@ -109,19 +109,19 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final parameter = node.parameters;
       switch (parameter) {
         case null:
-          reporter.reportErrorForToken(
-            code,
+          reporter.atToken(
             node.name,
-            [
+            code,
+            arguments: [
               'Getter that returns a boolean',
               'getter',
             ],
           );
         case _:
-          reporter.reportErrorForToken(
-            code,
+          reporter.atToken(
             node.name,
-            [
+            code,
+            arguments: [
               'Method that returns a boolean',
               'method',
             ],
@@ -136,10 +136,10 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final name = node.name.lexeme;
       if (isNameValid(name)) return;
 
-      reporter.reportErrorForToken(
-        code,
+      reporter.atToken(
         node.name,
-        [
+        code,
+        arguments: [
           'Function that returns a boolean',
           'function',
         ],

@@ -48,7 +48,7 @@ class AvoidRedundantPatternFieldNames extends PyramidLintRule {
       final patternName = pattern.name.lexeme;
       if (fieldName != patternName) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

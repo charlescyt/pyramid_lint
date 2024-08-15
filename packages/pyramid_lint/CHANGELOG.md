@@ -4,6 +4,8 @@
 
 ### Changed
 
+- Bump the minimum `custom_lint_builder` version to 0.6.5.
+- Bump the minimum `analyzer` version to 0.6.6.
 - `avoid_public_members_in_states` now ignores public fields and methods with `@visibleForTesting` annotations.
 
 ### Fixed
@@ -34,7 +36,7 @@
 - **BREAKING**: `avoid_widget_state_public_members` has been renamed to `avoid_public_members_in_states`.
 - **BREAKING**: `proper_edge_insets_constructor` has been renamed to `proper_edge_insets_constructors`.
 - **BREAKING**: `prefer_dedicated_media_query_method` has been renamed to `prefer_dedicated_media_query_functions`.
-- Pump the minimum `custom_lint_builder` version to 0.6.2.
+- Bump the minimum `custom_lint_builder` version to 0.6.2.
 - Fix false positive for `avoid_nested_if` when the if statement is a else if statement. ([#44](https://github.com/charlescyt/pyramid_lint/pull/44))
 
 ### Removed
@@ -207,6 +209,7 @@
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
 
+[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.0...HEAD
 [2.0.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.3.0...v1.4.0

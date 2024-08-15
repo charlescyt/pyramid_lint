@@ -45,7 +45,7 @@ class NoDuplicateImports extends PyramidLintRule {
       for (final importDirective in importDirectives) {
         final url = importDirective.uri.stringValue;
         if (duplicateUrls.contains(url)) {
-          reporter.reportErrorForNode(code, importDirective.uri);
+          reporter.atNode(importDirective.uri, code);
         }
       }
     });

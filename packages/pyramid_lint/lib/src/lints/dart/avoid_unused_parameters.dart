@@ -94,7 +94,7 @@ class AvoidUnusedParameters
 
         if (isParameterReferenced) continue;
 
-        reporter.reportErrorForNode(code, parameter);
+        reporter.atNode(parameter, code);
       }
     });
 
@@ -134,7 +134,7 @@ class AvoidUnusedParameters
 
         if (isParameterReferenced) continue;
 
-        reporter.reportErrorForNode(code, parameter);
+        reporter.atNode(parameter, code);
       }
     });
   }

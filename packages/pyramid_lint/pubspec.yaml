@@ -19,13 +19,13 @@ screenshots:
     path: screenshots/wrap_with_layout_builder_demo.gif
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
-  analyzer: ">=6.0.0 <6.5.0"
+  analyzer: ^6.6.0
   analyzer_plugin: ^0.11.2
   collection: ^1.17.1
-  custom_lint_builder: ^0.6.2
+  custom_lint_builder: ^0.6.5
   meta: ^1.9.1
   pub_semver: ^2.1.4
   pubspec_parse: ^1.2.3

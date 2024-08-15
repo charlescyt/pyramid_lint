@@ -63,14 +63,22 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
           node.members.where((e) => e is SwitchCase || e is SwitchPatternCase);
       if (cases.length <= options.params.maxCases) return;
 
-      reporter.reportErrorForNode(code, node, [options.params.maxCases]);
+      reporter.atNode(
+        node,
+        code,
+        arguments: [options.params.maxCases],
+      );
     });
 
     context.registry.addSwitchExpression((node) {
       final cases = node.cases;
       if (cases.length <= options.params.maxCases) return;
 
-      reporter.reportErrorForNode(code, node, [options.params.maxCases]);
+      reporter.atNode(
+        node,
+        code,
+        arguments: [options.params.maxCases],
+      );
     });
   }
 }

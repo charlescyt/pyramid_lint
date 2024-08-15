@@ -44,7 +44,7 @@ class PreferTextRich extends PyramidLintRule {
       final type = node.staticType;
       if (type == null || !richTextChecker.isAssignableFromType(type)) return;
 
-      reporter.reportErrorForNode(code, node.constructorName);
+      reporter.atNode(node.constructorName, code);
     });
   }
 

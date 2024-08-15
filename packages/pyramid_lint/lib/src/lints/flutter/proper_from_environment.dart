@@ -53,10 +53,10 @@ class ProperFromEnvironment extends PyramidLintRule {
               !type.isDartCoreInt &&
               !type.isDartCoreString)) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [type.getDisplayString(withNullability: false)],
+        code,
+        arguments: [type.getDisplayString()],
       );
     });
   }

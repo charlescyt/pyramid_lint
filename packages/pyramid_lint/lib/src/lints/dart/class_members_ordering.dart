@@ -49,19 +49,27 @@ class ClassMembersOrdering extends PyramidLintRule {
         final next = i < members.length - 1 ? members[i + 1] : null;
 
         if (previous != null && comparator(current.type, previous.type) < 0) {
-          reporter.reportErrorForNode(code, current, [
-            current.type.label,
-            'before',
-            previous.type.label,
-          ]);
+          reporter.atNode(
+            current,
+            code,
+            arguments: [
+              current.type.label,
+              'before',
+              previous.type.label,
+            ],
+          );
         }
 
         if (next != null && comparator(current.type, next.type) > 0) {
-          reporter.reportErrorForNode(code, current, [
-            current.type.label,
-            'after',
-            next.type.label,
-          ]);
+          reporter.atNode(
+            current,
+            code,
+            arguments: [
+              current.type.label,
+              'after',
+              next.type.label,
+            ],
+          );
         }
       }
     });

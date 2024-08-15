@@ -40,7 +40,7 @@ class AvoidMutableGlobalVariables extends PyramidLintRule {
       final isConstOrFinal = variables.every((v) => v.isConst || v.isFinal);
       if (isConstOrFinal) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 }

@@ -80,7 +80,7 @@ class AvoidReturningWidgets
 
       if (options.params.ignoredMethods.contains(node.name.lexeme)) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
 
     context.registry.addFunctionDeclaration((node) {
@@ -92,7 +92,7 @@ class AvoidReturningWidgets
 
       if (options.params.ignoredMethods.contains(node.name.lexeme)) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 }

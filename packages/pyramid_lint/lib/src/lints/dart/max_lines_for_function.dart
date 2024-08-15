@@ -66,10 +66,10 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
       final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        ['function', options.params.maxLines],
+        code,
+        arguments: ['function', options.params.maxLines],
       );
     });
 
@@ -79,10 +79,10 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
       final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        ['method', options.params.maxLines],
+        code,
+        arguments: ['method', options.params.maxLines],
       );
     });
   }

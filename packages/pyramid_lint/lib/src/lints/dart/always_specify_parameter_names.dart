@@ -38,7 +38,7 @@ class AlwaysSpecifyParameterNames extends PyramidLintRule {
   ) {
     context.registry.addSimpleFormalParameter((node) {
       if (node.name == null) {
-        reporter.reportErrorForNode(code, node);
+        reporter.atNode(node, code);
       }
     });
   }

@@ -51,7 +51,7 @@ class PreferAsyncCallback extends PyramidLintRule {
       final typeParameters = node.typeParameters?.typeParameters;
       if (typeParameters != null) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

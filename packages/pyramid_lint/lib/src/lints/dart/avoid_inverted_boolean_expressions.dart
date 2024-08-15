@@ -71,20 +71,20 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
             '${operandExpression.rightOperand.toSource()}'
             ' ? ${parent.elseExpression.toSource()} : ${parent.thenExpression.toSource()}';
 
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           parent,
-          [correctExpression],
+          code,
+          arguments: [correctExpression],
         );
       } else {
         correctExpression =
             '${operandExpression.leftOperand.toSource()} ${invertedOperator.lexeme} '
             '${operandExpression.rightOperand.toSource()}';
 
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [correctExpression],
+          code,
+          arguments: [correctExpression],
         );
       }
     });

@@ -44,7 +44,7 @@ class NoSelfComparisons extends PyramidLintRule {
       final right = expression.rightOperand.unParenthesized;
       if (left.toSource() != right.toSource()) return;
 
-      reporter.reportErrorForNode(code, expression);
+      reporter.atNode(expression, code);
     });
   }
 }

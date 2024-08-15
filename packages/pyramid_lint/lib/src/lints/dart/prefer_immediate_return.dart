@@ -56,7 +56,7 @@ class PreferImmediateReturn extends PyramidLintRule {
         return;
       }
 
-      reporter.reportErrorForNode(code, lastStatement);
+      reporter.atNode(lastStatement, code);
     });
   }
 

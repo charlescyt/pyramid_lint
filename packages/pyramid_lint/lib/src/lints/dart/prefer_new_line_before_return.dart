@@ -57,7 +57,7 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
             lineInfo.getLocation(returnToken.offset).lineNumber;
 
         if (returnTokenLine - previousTokenLine == 1) {
-          reporter.reportErrorForToken(code, returnToken);
+          reporter.atToken(returnToken, code);
         }
       }
     });

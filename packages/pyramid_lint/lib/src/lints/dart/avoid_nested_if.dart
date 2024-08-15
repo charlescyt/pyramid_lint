@@ -69,7 +69,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
 
       if (ifStatements.length < options.params.maxNestingLevel) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 }

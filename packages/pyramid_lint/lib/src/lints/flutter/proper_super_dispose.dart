@@ -63,7 +63,7 @@ class ProperSuperDispose extends PyramidLintRule {
       );
       if (superDisposeStatement == null) return;
 
-      reporter.reportErrorForNode(code, superDisposeStatement);
+      reporter.atNode(superDisposeStatement, code);
     });
   }
 

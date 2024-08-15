@@ -48,7 +48,7 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
       final constructorNameIdentifier = node.constructorName.name;
       if (constructorNameIdentifier?.name != 'all') return;
 
-      reporter.reportErrorForNode(code, node.constructorName);
+      reporter.atNode(node.constructorName, code);
     });
   }
 

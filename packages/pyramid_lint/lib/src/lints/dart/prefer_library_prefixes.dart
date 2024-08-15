@@ -86,7 +86,7 @@ class PreferLibraryPrefixes
       final prefix = node.prefix;
       if (prefix != null) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

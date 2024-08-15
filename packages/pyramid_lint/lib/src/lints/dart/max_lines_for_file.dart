@@ -63,10 +63,10 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
       final lineCount = node.lineInfo.lineCount;
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [options.params.maxLines],
+        code,
+        arguments: [options.params.maxLines],
       );
     });
   }

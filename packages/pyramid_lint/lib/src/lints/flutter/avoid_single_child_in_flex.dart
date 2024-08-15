@@ -53,10 +53,10 @@ class AvoidSingleChildInFlex extends PyramidLintRule {
       final firstElement = childrenExpression.elements.first;
       if (firstElement is SpreadElement || firstElement is ForElement) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node.constructorName,
-        [type.getDisplayString(withNullability: false)],
+        code,
+        arguments: [type.getDisplayString()],
       );
     });
   }

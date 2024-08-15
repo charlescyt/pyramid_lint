@@ -88,10 +88,10 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
       final dedicatedMethod = 'MediaQuery.${propertyName}Of';
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [
+        code,
+        arguments: [
           'MediaQuery.of and accessing $propertyName',
           dedicatedMethod,
         ],
@@ -121,10 +121,10 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
         final dedicatedMethod =
             'MediaQuery.maybe${propertyName.capitalize()}Of';
 
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'MediaQuery.maybeOf and accessing $propertyName',
             dedicatedMethod,
           ],
@@ -139,10 +139,10 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
             ? 'MediaQuery.${propertyName}Of'
             : 'MediaQuery.maybe${propertyName.capitalize()}Of';
 
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             node.toSource(),
             dedicatedMethod,
           ],

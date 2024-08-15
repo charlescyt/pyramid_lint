@@ -74,7 +74,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
         if (!allExpressionResolveToConstant) return;
       }
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

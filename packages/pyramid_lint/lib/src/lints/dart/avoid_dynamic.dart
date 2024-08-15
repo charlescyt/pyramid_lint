@@ -43,7 +43,7 @@ class AvoidDynamic extends PyramidLintRule {
       if (node.type is! DynamicType) return;
       if (_isUsedInMap(node)) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

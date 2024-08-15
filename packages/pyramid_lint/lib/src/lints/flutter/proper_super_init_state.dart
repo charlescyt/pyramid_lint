@@ -63,7 +63,7 @@ class ProperSuperInitState extends PyramidLintRule {
       );
       if (superInitStateStatement == null) return;
 
-      reporter.reportErrorForNode(code, superInitStateStatement);
+      reporter.atNode(superInitStateStatement, code);
     });
   }
 

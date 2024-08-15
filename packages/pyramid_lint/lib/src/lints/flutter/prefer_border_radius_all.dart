@@ -48,7 +48,7 @@ class PreferBorderRadiusAll extends PyramidLintRule {
       final constructorNameIdentifier = node.constructorName.name;
       if (constructorNameIdentifier?.name != 'circular') return;
 
-      reporter.reportErrorForNode(code, node.constructorName);
+      reporter.atNode(node.constructorName, code);
     });
   }
 

@@ -112,7 +112,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
     );
     if (hasNullableReturn) return;
 
-    reporter.reportErrorForNode(code, returnType);
+    reporter.atNode(returnType, code);
   }
 
   void _checkExpressionFunctionBody({
@@ -123,7 +123,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
     final type = node.expression.staticType;
     if (type == null || type.isNullable) return;
 
-    reporter.reportErrorForNode(code, returnType);
+    reporter.atNode(returnType, code);
   }
 
   @override

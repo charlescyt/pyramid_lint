@@ -56,10 +56,10 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
         return;
       }
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node.constructorName,
-        [type.getDisplayString(withNullability: false)],
+        code,
+        arguments: [type.getDisplayString()],
       );
     });
   }

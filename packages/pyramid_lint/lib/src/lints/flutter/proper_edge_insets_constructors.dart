@@ -90,10 +90,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
           when l.toSource() == t.toSource() &&
               t.toSource() == r.toSource() &&
               r.toSource() == b.toSource():
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          ['EdgeInsets.all(${l.toSource()})'],
+          code,
+          arguments: ['EdgeInsets.all(${l.toSource()})'],
         );
       case (
             left: final l,
@@ -102,10 +102,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             bottom: final b,
           )
           when l.toSource() == r.toSource() && t.toSource() == b.toSource():
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.symmetric(${[
               if (!isZeroExpression(l)) 'horizontal: ${l.toSource()}',
               if (!isZeroExpression(t)) 'vertical: ${t.toSource()}',
@@ -119,10 +119,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             bottom: final b,
           )
           when [l, t, r, b].any(isZeroExpression):
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.only(${[
               if (!isZeroExpression(l)) 'left: ${l.toSource()}',
               if (!isZeroExpression(t)) 'top: ${t.toSource()}',
@@ -160,10 +160,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
           when l.toSource() == r.toSource() &&
               r.toSource() == b.toSource() &&
               t.toSource() == b.toSource():
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.all(${l.toSource()})',
           ],
         );
@@ -174,10 +174,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             bottom: final b,
           )
           when l?.toSource() == r?.toSource() && t?.toSource() == b?.toSource():
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.symmetric(${[
               if (l != null && !isZeroExpression(l))
                 'horizontal: ${l.toSource()}',
@@ -197,10 +197,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
                 (e is IntegerLiteral && e.value == 0) ||
                 (e is DoubleLiteral && e.value == 0.0),
           ):
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.only(${[
               if (l is IntegerLiteral && l.value != 0 ||
                   l is DoubleLiteral && l.value != 0.0)
@@ -223,10 +223,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
           right: final r?,
           bottom: final b?,
         ):
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.fromLTRB(${[
               l.toSource(),
               t.toSource(),
@@ -260,20 +260,20 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             horizontal: final h?,
           )
           when v.toSource() == h.toSource():
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          ['EdgeInsets.all(${v.toSource()})'],
+          code,
+          arguments: ['EdgeInsets.all(${v.toSource()})'],
         );
       case (
             vertical: final v?,
             horizontal: final h?,
           )
           when [v, h].any(isZeroExpression):
-        reporter.reportErrorForNode(
-          code,
+        reporter.atNode(
           node,
-          [
+          code,
+          arguments: [
             'EdgeInsets.symmetric(${[
               if (!isZeroExpression(v)) 'vertical: ${v.toSource()}',
               if (!isZeroExpression(h)) 'horizontal: ${h.toSource()}',

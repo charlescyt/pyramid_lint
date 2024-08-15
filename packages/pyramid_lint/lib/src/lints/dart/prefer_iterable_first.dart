@@ -48,10 +48,10 @@ class PreferIterableFirst extends PyramidLintRule {
         return;
       }
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [
+        code,
+        arguments: [
           'list[0]',
           node.toSource(),
           '${node.realTarget.toSource()}.first',
@@ -67,10 +67,10 @@ class PreferIterableFirst extends PyramidLintRule {
       final argument = node.argumentList.arguments.first;
       if (argument is! IntegerLiteral || argument.value != 0) return;
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [
+        code,
+        arguments: [
           'list.elementAt(0)',
           node.toSource(),
           '${node.realTarget?.toSource()}.first',

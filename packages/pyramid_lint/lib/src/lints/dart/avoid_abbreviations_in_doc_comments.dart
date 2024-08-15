@@ -85,10 +85,10 @@ class AvoidAbbreviationsInDocComments
 
           final index = commentText.indexOf(abbreviation);
 
-          reporter.reportErrorForOffset(
-            code,
-            comment.offset + index,
-            abbreviation.length,
+          reporter.atOffset(
+            offset: comment.offset + index,
+            length: abbreviation.length,
+            errorCode: code,
           );
         }
       }

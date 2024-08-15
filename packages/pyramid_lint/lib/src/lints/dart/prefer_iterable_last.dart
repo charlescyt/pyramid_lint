@@ -58,10 +58,10 @@ class PreferIterableLast extends PyramidLintRule {
         return;
       }
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [
+        code,
+        arguments: [
           'list[list.length - 1]',
           node.toSource(),
           '${node.realTarget.toSource()}.last',
@@ -88,10 +88,10 @@ class PreferIterableLast extends PyramidLintRule {
         return;
       }
 
-      reporter.reportErrorForNode(
-        code,
+      reporter.atNode(
         node,
-        [
+        code,
+        arguments: [
           'iterable.elementAt(iterable.length - 1)',
           node.toSource(),
           '${node.realTarget?.toSource()}.last',

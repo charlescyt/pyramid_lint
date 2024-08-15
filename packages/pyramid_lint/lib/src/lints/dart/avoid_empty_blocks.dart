@@ -43,7 +43,7 @@ class AvoidEmptyBlocks extends PyramidLintRule {
       final comment = node.endToken.precedingComments;
       if (comment != null && _hasTodoComment(comment)) return;
 
-      reporter.reportErrorForNode(code, node);
+      reporter.atNode(node, code);
     });
   }
 

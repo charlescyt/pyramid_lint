@@ -51,7 +51,7 @@ class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
       final annotationOffset = annotations.first.offset;
       if (commentOffset < annotationOffset) return;
 
-      reporter.reportErrorForNode(code, comment);
+      reporter.atNode(comment, code);
     });
   }
 
