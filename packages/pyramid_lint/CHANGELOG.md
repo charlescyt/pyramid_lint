@@ -4,14 +4,16 @@
 
 ### Changed
 
+- Require Dart 3.6.0.
+- Bump the minimum `analyzer` version to 6.11.0.
 - Bump the minimum `custom_lint_builder` version to 0.7.0.
 
 ## [2.0.1] - 2024-08-16
 
 ### Changed
 
+- Bump the minimum `analyzer` version to 6.6.0.
 - Bump the minimum `custom_lint_builder` version to 0.6.5.
-- Bump the minimum `analyzer` version to 0.6.6.
 - `avoid_public_members_in_states` now ignores public fields and methods with `@visibleForTesting` annotations.
 
 ### Fixed

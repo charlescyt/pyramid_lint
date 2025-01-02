@@ -68,7 +68,7 @@ class AvoidReturningWidgets
 
     context.registry.addMethodDeclaration((node) {
       final element = node.declaredElement;
-      if (element?.enclosingElement.kind == ElementKind.EXTENSION) return;
+      if (element?.enclosingElement3.kind == ElementKind.EXTENSION) return;
       if (element?.hasOverride == true) return;
       if (element?.isStatic == true) return;
 

@@ -3,8 +3,8 @@ description: Test for pyramid_lint
 publish_to: none
 
 environment:
-  sdk: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.27.0"
 
 dependencies:
   collection: ^1.18.0
@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  analyzer: ^6.6.0
+  analyzer: ^6.11.0
   analyzer_plugin: ^0.11.3
   custom_lint: ^0.7.0
   custom_lint_core: ^0.7.0
