@@ -28,5 +28,5 @@ dependencies:
   custom_lint_builder: ^0.7.0
   meta: ^1.9.1
   pub_semver: ^2.1.4
-  pubspec_parse: ^1.2.3
+  pubspec_parse: ^1.4.0
   yaml: ^3.1.2
