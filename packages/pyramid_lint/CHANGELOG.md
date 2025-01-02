@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Bump the minimum `custom_lint_builder` version to 0.7.0.
+
 ## [2.0.1] - 2024-08-16
 
 ### Changed
