@@ -5,7 +5,7 @@
 ### Changed
 
 - Require Dart 3.6.0.
-- Bump the minimum `analyzer` version to 6.11.0.
+- Bump the minimum `analyzer` version to 7.0.0.
 - Bump the minimum `custom_lint_builder` version to 0.7.0.
 - Bump the minimum `pubspec_parse` version to 1.4.0.
 
