@@ -22,10 +22,10 @@ environment:
   sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
-  analyzer: ^7.0.0
-  analyzer_plugin: ^0.12.0
+  analyzer: ">=7.0.0 <8.0.0"
+  analyzer_plugin: ">=0.12.0 <0.14.0"
   collection: ^1.17.1
-  custom_lint_builder: ^0.7.0
+  custom_lint_builder: ">=0.7.5 <0.8.0"
   meta: ^1.9.1
   pub_semver: ^2.1.4
   pubspec_parse: ^1.4.0
