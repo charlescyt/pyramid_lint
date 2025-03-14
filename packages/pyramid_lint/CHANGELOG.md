@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased]
+## [2.0.3] - 2024-03-15
+
+### Changed
+
+- Bump the minimum `analyzer_plugin` version to 0.13.0. ([#52](https://github.com/charlescyt/pyramid_lint/pull/52) thanks to [jogboms])
+
+## [2.0.2] - 2024-02-05
 
 ### Changed
 
@@ -217,7 +223,10 @@
 
 [parlough]: https://github.com/parlough
 [imsamgarg]: https://github.com/imsamgarg
+[jogboms]: https://github.com/jogboms
 
+[2.0.3]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.2...v2.0.3
+[2.0.2]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/charlescyt/pyramid_lint/compare/v1.4.0...v1.5.0
