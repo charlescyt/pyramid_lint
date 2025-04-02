@@ -1,0 +1,35 @@
+Message: `Convert to for-in iterable.indexed loop`
+Priority: 30
+Diff for file `test/assists/dart/convert_to_for_in_iterable_indexed_loop/convert_to_for_in_iterable_indexed_loop.dart:4`:
+```
+
+void fn(Iterable<int> numbers) {
+-   for (final int number in numbers) {}
++   for (final (int index, int number) in numbers.indexed) {}
+  for (final number in numbers) {}
+}
+```
+---
+Message: `Convert to for-in iterable.indexed loop`
+Priority: 30
+Diff for file `test/assists/dart/convert_to_for_in_iterable_indexed_loop/convert_to_for_in_iterable_indexed_loop.dart:5`:
+```
+void fn(Iterable<int> numbers) {
+  for (final int number in numbers) {}
+-   for (final number in numbers) {}
++   for (final (index, number) in numbers.indexed) {}
+}
+
+```
+---
+Message: `Convert to for-in iterable.indexed loop`
+Priority: 30
+Diff for file `test/assists/dart/convert_to_for_in_iterable_indexed_loop/convert_to_for_in_iterable_indexed_loop.dart:9`:
+```
+
+void fn2(String word) {
+-   for (final String char in word.split('')) {}
++   for (final (int index, String char) in word.split('').indexed) {}
+}
+```
+---
