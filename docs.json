@@ -1,93 +1,301 @@
 {
+  "$schema": "https://docs.page/schema.json",
   "name": "Pyramid Lint",
   "description": "Linting tool for Dart and Flutter projects.",
-  "theme": "#F7A035",
-  "logo": "/assets/logo-192x192.png",
-  "logoDark": "/assets/logo-192x192.png",
   "favicon": "/assets/favicon.ico",
-  "zoomImages": "true",
+  "logo": {
+    "light": "/assets/logo-192x192.png",
+    "dark": "/assets/logo-192x192.png"
+  },
+  "theme": {
+    "primary": "#F7A035"
+  },
   "anchors": [
     {
       "title": "pub.dev",
       "icon": "globe",
-      "link": "https://pub.dev/packages/pyramid_lint"
+      "href": "https://pub.dev/packages/pyramid_lint"
     }
   ],
-  "sidebar": [
-    ["Getting Started", [
-      ["Overview", "/"],
-      ["Getting Started", "/getting-started"],
-      ["Available Lints", "/available-lints"]
-    ]],
-    ["Dart Lints", [
-      ["always_put_doc_comments_before_annotations", "/dart-lints/always_put_doc_comments_before_annotations"],
-      ["always_specify_parameter_names", "/dart-lints/always_specify_parameter_names"],
-      ["avoid_abbreviations_in_doc_comments", "/dart-lints/avoid_abbreviations_in_doc_comments"],
-      ["avoid_dynamic", "/dart-lints/avoid_dynamic"],
-      ["avoid_empty_blocks", "/dart-lints/avoid_empty_blocks"],
-      ["avoid_inverted_boolean_expressions", "/dart-lints/avoid_inverted_boolean_expressions"],
-      ["avoid_mutable_global_variables", "/dart-lints/avoid_mutable_global_variables"],
-      ["avoid_nested_if", "/dart-lints/avoid_nested_if"],
-      ["avoid_positional_fields_in_records", "/dart-lints/avoid_positional_fields_in_records"],
-      ["avoid_redundant_pattern_field_names", "/dart-lints/avoid_redundant_pattern_field_names"],
-      ["avoid_unused_parameters", "/dart-lints/avoid_unused_parameters"],
-      ["boolean_prefixes", "/dart-lints/boolean_prefixes"],
-      ["class_members_ordering", "/dart-lints/class_members_ordering"],
-      ["max_lines_for_file", "/dart-lints/max_lines_for_file"],
-      ["max_lines_for_function", "/dart-lints/max_lines_for_function"],
-      ["max_switch_cases", "/dart-lints/max_switch_cases"],
-      ["no_duplicate_imports", "/dart-lints/no_duplicate_imports"],
-      ["no_self_comparisons", "/dart-lints/no_self_comparisons"],
-      ["prefer_async_await", "/dart-lints/prefer_async_await"],
-      ["prefer_const_constructor_declarations", "/dart-lints/prefer_const_constructor_declarations"],
-      ["prefer_immediate_return", "/dart-lints/prefer_immediate_return"],
-      ["prefer_iterable_any", "/dart-lints/prefer_iterable_any"],
-      ["prefer_iterable_every"], "/dart-lints/prefer_iterable_every",
-      ["prefer_iterable_first", "/dart-lints/prefer_iterable_first"],
-      ["prefer_iterable_last", "/dart-lints/prefer_iterable_last"],
-      ["prefer_library_prefixes", "/dart-lints/prefer_library_prefixes"],
-      ["prefer_new_line_before_return", "/dart-lints/prefer_new_line_before_return"],
-      ["prefer_underscore_for_unused_callback_parameters", "/dart-lints/prefer_underscore_for_unused_callback_parameters"],
-      ["unnecessary_nullable_return_type", "/dart-lints/unnecessary_nullable_return_type"]
-    ]],
-    ["Flutter Lints", [
-      ["avoid_public_members_in_states", "/flutter-lints/avoid_public_members_in_states"],
-      ["avoid_returning_widgets", "/flutter-lints/avoid_returning_widgets"],
-      ["avoid_single_child_in_flex", "/flutter-lints/avoid_single_child_in_flex"],
-      ["dispose_controllers", "/flutter-lints/dispose_controllers"],
-      ["prefer_async_callback", "/flutter-lints/prefer_async_callback"],
-      ["prefer_border_from_border_side", "/flutter-lints/prefer_border_from_border_side"],
-      ["prefer_border_radius_all", "/flutter-lints/prefer_border_radius_all"],
-      ["prefer_dedicated_media_query_functions", "/flutter-lints/prefer_dedicated_media_query_functions"],
-      ["prefer_text_rich", "/flutter-lints/prefer_text_rich"],
-      ["prefer_void_callback", "/flutter-lints/prefer_void_callback"],
-      ["proper_edge_insets_constructors", "/flutter-lints/proper_edge_insets_constructors"],
-      ["proper_expanded_and_flexible", "/flutter-lints/proper_expanded_and_flexible"],
-      ["proper_from_environment", "/flutter-lints/proper_from_environment"],
-      ["proper_super_dispose", "/flutter-lints/proper_super_dispose"],
-      ["proper_super_init_state", "/flutter-lints/proper_super_init_state"],
-      ["use_spacer", "/flutter-lints/use_spacer"]
-    ]],
-    ["Dart Assists", [
-      ["invert_boolean_expression", "/dart-assists/invert_boolean_expression"],
-      ["swap_then_else_expression", "/dart-assists/swap_then_else_expression"]
-    ]],
-    ["Flutter Assists", [
-        ["use_edge_insets_zero", "/flutter-assists/use_edge_insets_zero"],
-        ["wrap_all_children_with_expanded", "/flutter-assists/wrap_all_children_with_expanded"],
-        ["wrap_with_expanded", "/flutter-assists/wrap_with_expanded"],
-        ["wrap_with_layout_builder", "/flutter-assists/wrap_with_layout_builder"],
-        ["wrap_with_listenable_builder", "/flutter-assists/wrap_with_listenable_builder"],
-        ["wrap_with_stack", "/flutter-assists/wrap_with_stack"],
-        ["wrap_with_value_listenable_builder", "/flutter-assists/wrap_with_value_listenable_builder"]
-      ]
-    ],
-    ["Contributing", "/contributing"]
-  ],
-  "docsearch": {
-    "appId": "89JN6YZ47Y",
-    "apiKey": "8b069d0160111cc3b312656e0c3561ec",
-    "indexName": "pyramid_lint"
+  "social": {
+    "x": "_charlescyt",
+    "github": "charlescyt"
   },
-  "googleAnalytics": "G-0RKHP6L1MY"
+  "search": {
+    "docsearch": {
+      "appId": "89JN6YZ47Y",
+      "apiKey": "8b069d0160111cc3b312656e0c3561ec",
+      "indexName": "pyramid_lint"
+    }
+  },
+  "scripts": {
+    "googleAnalytics": "G-0RKHP6L1MY"
+  },
+  "content": {
+    "zoomImages": true
+  },
+  "sidebar": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        {
+          "title": "Overview",
+          "href": "/"
+        },
+        {
+          "title": "Getting Started",
+          "href": "/getting-started"
+        },
+        {
+          "title": "Available Lints",
+          "href": "/available-lints"
+        }
+      ]
+    },
+    {
+      "group": "Dart Lints",
+      "pages": [
+        {
+          "title": "always_put_doc_comments_before_annotations",
+          "href": "/dart-lints/always_put_doc_comments_before_annotations"
+        },
+        {
+          "title": "always_specify_parameter_names",
+          "href": "/dart-lints/always_specify_parameter_names"
+        },
+        {
+          "title": "avoid_abbreviations_in_doc_comments",
+          "href": "/dart-lints/avoid_abbreviations_in_doc_comments"
+        },
+        {
+          "title": "avoid_dynamic",
+          "href": "/dart-lints/avoid_dynamic"
+        },
+        {
+          "title": "avoid_empty_blocks",
+          "href": "/dart-lints/avoid_empty_blocks"
+        },
+        {
+          "title": "avoid_inverted_boolean_expressions",
+          "href": "/dart-lints/avoid_inverted_boolean_expressions"
+        },
+        {
+          "title": "avoid_mutable_global_variables",
+          "href": "/dart-lints/avoid_mutable_global_variables"
+        },
+        {
+          "title": "avoid_nested_if",
+          "href": "/dart-lints/avoid_nested_if"
+        },
+        {
+          "title": "avoid_positional_fields_in_records",
+          "href": "/dart-lints/avoid_positional_fields_in_records"
+        },
+        {
+          "title": "avoid_redundant_pattern_field_names",
+          "href": "/dart-lints/avoid_redundant_pattern_field_names"
+        },
+        {
+          "title": "avoid_unused_parameters",
+          "href": "/dart-lints/avoid_unused_parameters"
+        },
+        {
+          "title": "boolean_prefixes",
+          "href": "/dart-lints/boolean_prefixes"
+        },
+        {
+          "title": "class_members_ordering",
+          "href": "/dart-lints/class_members_ordering"
+        },
+        {
+          "title": "max_lines_for_file",
+          "href": "/dart-lints/max_lines_for_file"
+        },
+        {
+          "title": "max_lines_for_function",
+          "href": "/dart-lints/max_lines_for_function"
+        },
+        {
+          "title": "max_switch_cases",
+          "href": "/dart-lints/max_switch_cases"
+        },
+        {
+          "title": "no_duplicate_imports",
+          "href": "/dart-lints/no_duplicate_imports"
+        },
+        {
+          "title": "no_self_comparisons",
+          "href": "/dart-lints/no_self_comparisons"
+        },
+        {
+          "title": "prefer_async_await",
+          "href": "/dart-lints/prefer_async_await"
+        },
+        {
+          "title": "prefer_const_constructor_declarations",
+          "href": "/dart-lints/prefer_const_constructor_declarations"
+        },
+        {
+          "title": "prefer_immediate_return",
+          "href": "/dart-lints/prefer_immediate_return"
+        },
+        {
+          "title": "prefer_iterable_any",
+          "href": "/dart-lints/prefer_iterable_any"
+        },
+        {
+          "title": "prefer_iterable_every",
+          "href": "/dart-lints/prefer_iterable_every"
+        },
+        {
+          "title": "prefer_iterable_first",
+          "href": "/dart-lints/prefer_iterable_first"
+        },
+        {
+          "title": "prefer_iterable_last",
+          "href": "/dart-lints/prefer_iterable_last"
+        },
+        {
+          "title": "prefer_library_prefixes",
+          "href": "/dart-lints/prefer_library_prefixes"
+        },
+        {
+          "title": "prefer_new_line_before_return",
+          "href": "/dart-lints/prefer_new_line_before_return"
+        },
+        {
+          "title": "prefer_underscore_for_unused_callback_parameters",
+          "href": "/dart-lints/prefer_underscore_for_unused_callback_parameters"
+        },
+        {
+          "title": "unnecessary_nullable_return_type",
+          "href": "/dart-lints/unnecessary_nullable_return_type"
+        }
+      ]
+    },
+    {
+      "group": "Flutter Lints",
+      "pages": [
+        {
+          "title": "avoid_public_members_in_states",
+          "href": "/flutter-lints/avoid_public_members_in_states"
+        },
+        {
+          "title": "avoid_returning_widgets",
+          "href": "/flutter-lints/avoid_returning_widgets"
+        },
+        {
+          "title": "avoid_single_child_in_flex",
+          "href": "/flutter-lints/avoid_single_child_in_flex"
+        },
+        {
+          "title": "dispose_controllers",
+          "href": "/flutter-lints/dispose_controllers"
+        },
+        {
+          "title": "prefer_async_callback",
+          "href": "/flutter-lints/prefer_async_callback"
+        },
+        {
+          "title": "prefer_border_from_border_side",
+          "href": "/flutter-lints/prefer_border_from_border_side"
+        },
+        {
+          "title": "prefer_border_radius_all",
+          "href": "/flutter-lints/prefer_border_radius_all"
+        },
+        {
+          "title": "prefer_dedicated_media_query_functions",
+          "href": "/flutter-lints/prefer_dedicated_media_query_functions"
+        },
+        {
+          "title": "prefer_text_rich",
+          "href": "/flutter-lints/prefer_text_rich"
+        },
+        {
+          "title": "prefer_void_callback",
+          "href": "/flutter-lints/prefer_void_callback"
+        },
+        {
+          "title": "proper_edge_insets_constructors",
+          "href": "/flutter-lints/proper_edge_insets_constructors"
+        },
+        {
+          "title": "proper_expanded_and_flexible",
+          "href": "/flutter-lints/proper_expanded_and_flexible"
+        },
+        {
+          "title": "proper_from_environment",
+          "href": "/flutter-lints/proper_from_environment"
+        },
+        {
+          "title": "proper_super_dispose",
+          "href": "/flutter-lints/proper_super_dispose"
+        },
+        {
+          "title": "proper_super_init_state",
+          "href": "/flutter-lints/proper_super_init_state"
+        },
+        {
+          "title": "use_spacer",
+          "href": "/flutter-lints/use_spacer"
+        }
+      ]
+    },
+    {
+      "group": "Dart Assists",
+      "pages": [
+        {
+          "title": "invert_boolean_expression",
+          "href": "/dart-assists/invert_boolean_expression"
+        },
+        {
+          "title": "swap_then_else_expression",
+          "href": "/dart-assists/swap_then_else_expression"
+        }
+      ]
+    },
+    {
+      "group": "Flutter Assists",
+      "pages": [
+        {
+          "title": "use_edge_insets_zero",
+          "href": "/flutter-assists/use_edge_insets_zero"
+        },
+        {
+          "title": "wrap_all_children_with_expanded",
+          "href": "/flutter-assists/wrap_all_children_with_expanded"
+        },
+        {
+          "title": "wrap_with_expanded",
+          "href": "/flutter-assists/wrap_with_expanded"
+        },
+        {
+          "title": "wrap_with_layout_builder",
+          "href": "/flutter-assists/wrap_with_layout_builder"
+        },
+        {
+          "title": "wrap_with_listenable_builder",
+          "href": "/flutter-assists/wrap_with_listenable_builder"
+        },
+        {
+          "title": "wrap_with_stack",
+          "href": "/flutter-assists/wrap_with_stack"
+        },
+        {
+          "title": "wrap_with_value_listenable_builder",
+          "href": "/flutter-assists/wrap_with_value_listenable_builder"
+        }
+      ]
+    },
+    {
+      "group": "Misc.",
+      "pages": [
+        {
+          "title": "Contributing",
+          "href": "/Contributing"
+        }
+      ]
+    }
+  ]
 }
