@@ -97,6 +97,11 @@ const expandedOrFlexibleOrSpacerChecker = TypeChecker.any(
   ],
 );
 
+const iconButtonChecker = TypeChecker.fromName(
+  'IconButton',
+  packageName: 'flutter',
+);
+
 const richTextChecker = TypeChecker.fromName(
   'RichText',
   packageName: 'flutter',

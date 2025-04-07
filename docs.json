@@ -237,6 +237,10 @@
           "href": "/flutter-lints/proper_super_init_state"
         },
         {
+          "title": "specify_icon_button_tooltip",
+          "href": "/flutter-lints/specify_icon_button_tooltip"
+        },
+        {
           "title": "use_spacer",
           "href": "/flutter-lints/use_spacer"
         }
