@@ -46,12 +46,16 @@ class PreferIterableLast extends PyramidLintRule {
 
       final indexExpression = node.index;
       if (indexExpression is! BinaryExpression ||
-          indexExpression.operator.type != TokenType.MINUS) return;
+          indexExpression.operator.type != TokenType.MINUS) {
+        return;
+      }
 
       final leftOperand = indexExpression.leftOperand;
       if (leftOperand is! PrefixedIdentifier ||
           leftOperand.prefix.name != node.realTarget.toSource() ||
-          leftOperand.identifier.name != 'length') return;
+          leftOperand.identifier.name != 'length') {
+        return;
+      }
 
       final rightOperand = indexExpression.rightOperand;
       if (rightOperand is! IntegerLiteral || rightOperand.value != 1) {
@@ -76,12 +80,16 @@ class PreferIterableLast extends PyramidLintRule {
 
       final argument = node.argumentList.arguments.first;
       if (argument is! BinaryExpression ||
-          argument.operator.type != TokenType.MINUS) return;
+          argument.operator.type != TokenType.MINUS) {
+        return;
+      }
 
       final leftOperand = argument.leftOperand;
       if (leftOperand is! PrefixedIdentifier ||
           leftOperand.prefix.name != node.realTarget?.toSource() ||
-          leftOperand.identifier.name != 'length') return;
+          leftOperand.identifier.name != 'length') {
+        return;
+      }
 
       final rightOperand = argument.rightOperand;
       if (rightOperand is! IntegerLiteral || rightOperand.value != 1) {

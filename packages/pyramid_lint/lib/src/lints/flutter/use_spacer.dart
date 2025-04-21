@@ -53,7 +53,9 @@ class UseSpacer extends PyramidLintRule {
       final childType = childArgument.staticType;
       if (childType == null ||
           (!containerChecker.isExactlyType(childType) &&
-              !sizedBoxChecker.isExactlyType(childType))) return;
+              !sizedBoxChecker.isExactlyType(childType))) {
+        return;
+      }
 
       final isChildArgumentEmpty =
           childExpression.argumentList.arguments.isEmpty;
@@ -82,7 +84,9 @@ class _ReplaceWithSpacer extends DartFix {
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) return;
+          .intersects(node.constructorName.sourceRange)) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Spacer',

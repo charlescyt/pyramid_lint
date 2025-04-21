@@ -67,7 +67,9 @@ class _ReplaceWithBorderFromBorderSide extends DartFix {
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) return;
+          .intersects(node.constructorName.sourceRange)) {
+        return;
+      }
 
       final constructorNameIdentifier = node.constructorName.name;
       if (constructorNameIdentifier == null) return;

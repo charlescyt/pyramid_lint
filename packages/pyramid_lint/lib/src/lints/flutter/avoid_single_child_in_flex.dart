@@ -76,11 +76,15 @@ class _ReplaceWithAlign extends DartFix {
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) return;
+          .intersects(node.constructorName.sourceRange)) {
+        return;
+      }
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
       if (childrenExpression is! ListLiteral ||
-          childrenExpression.elements.length != 1) return;
+          childrenExpression.elements.length != 1) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Align',
@@ -110,11 +114,15 @@ class _ReplaceWithCenter extends DartFix {
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) return;
+          .intersects(node.constructorName.sourceRange)) {
+        return;
+      }
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
       if (childrenExpression is! ListLiteral ||
-          childrenExpression.elements.length != 1) return;
+          childrenExpression.elements.length != 1) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Center',

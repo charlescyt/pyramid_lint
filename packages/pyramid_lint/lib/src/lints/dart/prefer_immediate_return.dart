@@ -46,7 +46,9 @@ class PreferImmediateReturn extends PyramidLintRule {
       final lastStatement = statements.last;
 
       if (secondLastStatement is! VariableDeclarationStatement ||
-          lastStatement is! ReturnStatement) return;
+          lastStatement is! ReturnStatement) {
+        return;
+      }
 
       final lastStatementExpression = lastStatement.expression;
       if (lastStatementExpression is! SimpleIdentifier) return;
@@ -83,7 +85,9 @@ class _ReplaceWithImmediateReturn extends DartFix {
       final lastStatement = statements.last;
 
       if (secondLastStatement is! VariableDeclarationStatement ||
-          lastStatement is! ReturnStatement) return;
+          lastStatement is! ReturnStatement) {
+        return;
+      }
 
       final lastStatementExpression = lastStatement.expression;
       if (lastStatementExpression is! SimpleIdentifier) return;

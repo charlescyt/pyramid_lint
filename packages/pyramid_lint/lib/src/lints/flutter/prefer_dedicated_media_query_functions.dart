@@ -74,7 +74,9 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
       final targetType = node.prefix.staticType;
       if (targetType == null ||
-          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+          !mediaQueryDataChecker.isExactlyType(targetType)) {
+        return;
+      }
 
       final prefixElement = node.prefix.staticElement;
 
@@ -105,7 +107,9 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
       final target = node.realTarget;
       final targetType = target.staticType;
       if (targetType == null ||
-          !mediaQueryDataChecker.isExactlyType(targetType)) return;
+          !mediaQueryDataChecker.isExactlyType(targetType)) {
+        return;
+      }
 
       if (target is SimpleIdentifier) {
         final prefixElement = target.staticElement;
@@ -179,7 +183,9 @@ class _ReplaceWithDedicatedMethod extends DartFix {
 
       final initializerType = initializer.realTarget?.staticType;
       if (initializerType != null &&
-          mediaQueryChecker.isExactlyType(initializerType)) return;
+          mediaQueryChecker.isExactlyType(initializerType)) {
+        return;
+      }
 
       if (initializer.argumentList.arguments.length != 1) return;
 
@@ -224,7 +230,9 @@ class _ReplaceWithDedicatedMethod extends DartFix {
 
         final initializerType = initializer.realTarget?.staticType;
         if (initializerType != null &&
-            mediaQueryChecker.isExactlyType(initializerType)) return;
+            mediaQueryChecker.isExactlyType(initializerType)) {
+          return;
+        }
 
         if (initializer.argumentList.arguments.length != 1) return;
 
@@ -285,10 +293,14 @@ bool _isInitializedWithMediaQueryOfOrMaybeOf(VariableDeclaration node) {
 
   final initializerType = initializer.realTarget?.staticType;
   if (initializerType != null &&
-      !mediaQueryChecker.isExactlyType(initializerType)) return false;
+      !mediaQueryChecker.isExactlyType(initializerType)) {
+    return false;
+  }
 
   if (initializer.methodName.name != 'of' &&
-      initializer.methodName.name != 'maybeOf') return false;
+      initializer.methodName.name != 'maybeOf') {
+    return false;
+  }
 
   if (initializer.argumentList.arguments.length != 1) return false;
 

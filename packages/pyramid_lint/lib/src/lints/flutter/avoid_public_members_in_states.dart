@@ -71,7 +71,9 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
     ErrorReporter reporter,
   ) {
     if (methodDeclaration.isStatic ||
-        methodDeclaration.name.lexeme.startsWith('_')) return;
+        methodDeclaration.name.lexeme.startsWith('_')) {
+      return;
+    }
 
     reporter.atToken(methodDeclaration.name, code);
   }

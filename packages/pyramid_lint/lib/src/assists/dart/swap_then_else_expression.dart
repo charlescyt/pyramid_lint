@@ -24,13 +24,17 @@ class SwapThenElseExpression extends DartAssist {
       if (!_isTargetOverIfConditionOrElseKeyword(
         target: target,
         node: node,
-      )) return;
+      )) {
+        return;
+      }
 
       final childrenIfStatements = node.childrenIfStatements;
       if (_isTargetInsideChildrenIfStatements(
         target: target,
         childrenIfStatements: childrenIfStatements,
-      )) return;
+      )) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Swap then and else expression',
@@ -58,7 +62,9 @@ class SwapThenElseExpression extends DartAssist {
       if (_isTargetInsideChildrenConditionalExpressions(
         target: target,
         childrenConditionalExpressions: childrenConditionalExpressions,
-      )) return;
+      )) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Swap then and else expression',

@@ -63,7 +63,9 @@ class _ReplaceWithTextRich extends DartFix {
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) return;
+          .intersects(node.constructorName.sourceRange)) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with Text.rich',

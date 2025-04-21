@@ -51,7 +51,9 @@ class DisposeControllers extends PyramidLintRule {
 
       final superClassType = parent.extendsClause?.superclass.type;
       if (superClassType == null ||
-          !stateChecker.isAssignableFromType(superClassType)) return;
+          !stateChecker.isAssignableFromType(superClassType)) {
+        return;
+      }
 
       final disposeFunctionBody =
           parent.members.findMethodDeclarationByName('dispose')?.body;

@@ -61,7 +61,9 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
       if (parent is! IfStatement &&
           parent is! ConditionalExpression &&
           parent is! VariableDeclaration &&
-          parent is! AssignmentExpression) return;
+          parent is! AssignmentExpression) {
+        return;
+      }
 
       String correctExpression;
 
@@ -122,7 +124,9 @@ class _ReplaceWithPositiveBooleanExpression extends DartFix {
       if (parent is! IfStatement &&
           parent is! ConditionalExpression &&
           parent is! VariableDeclaration &&
-          parent is! AssignmentExpression) return;
+          parent is! AssignmentExpression) {
+        return;
+      }
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with positive boolean expression',

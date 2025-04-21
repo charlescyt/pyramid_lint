@@ -27,20 +27,26 @@ class UseEdgeInsetsZero extends DartAssist {
       if (constructorName != 'all' &&
           constructorName != 'fromLTRB' &&
           constructorName != 'only' &&
-          constructorName != 'symmetric') return;
+          constructorName != 'symmetric') {
+        return;
+      }
 
       if (constructorName == 'all') {
         final arguments = node.argumentList.positionalArguments;
         if (arguments.length != 1 ||
             arguments.first is! IntegerLiteral ||
-            (arguments.first as IntegerLiteral).value != 0) return;
+            (arguments.first as IntegerLiteral).value != 0) {
+          return;
+        }
       }
 
       if (constructorName == 'fromLTRB') {
         final arguments = node.argumentList.positionalArguments;
         if (arguments.length != 4 ||
             arguments.any((e) => e is! IntegerLiteral) ||
-            arguments.any((e) => (e as IntegerLiteral).value != 0)) return;
+            arguments.any((e) => (e as IntegerLiteral).value != 0)) {
+          return;
+        }
       }
 
       if (constructorName == 'only') {
