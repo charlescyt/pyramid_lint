@@ -1,0 +1,16 @@
+# convert_to_for_in_iterable_indexed_loop
+
+Convert a `for-in` loop to a `for-in` loop that uses `iterable.indexed` instead of `iterable` directly.
+
+```dart title="Before"
+void fn(Iterable<int> numbers) {
+    for (final int number in numbers) {}
+}
+
+```dart title="After"
+void fn(Iterable<int> numbers) {
+    for (final (int index, int number) in numbers.indexed) {}
+}
+```
+
+![convert_to_for_in_iterable_indexed_loop](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/convert_to_for_in_iterable_indexed_loop.gif)

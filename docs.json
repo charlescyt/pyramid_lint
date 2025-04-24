@@ -246,6 +246,10 @@
       "group": "Dart Assists",
       "pages": [
         {
+          "title": "convert_to_for_in_iterable_indexed_loop",
+          "href": "/dart-assists/convert_to_for_in_iterable_indexed_loop"
+        },
+        {
           "title": "invert_boolean_expression",
           "href": "/dart-assists/invert_boolean_expression"
         },
