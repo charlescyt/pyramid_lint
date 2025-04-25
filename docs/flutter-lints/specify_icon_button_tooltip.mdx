@@ -1,0 +1,34 @@
+# specify_icon_button_tooltip
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ✅     |   ❌    |
+
+## Details
+
+**PREFER** specifying a tooltip for an icon button for accessibility.
+
+```dart title="Bad"
+IconButton(
+    icon: Icon(Icons.add),
+    onPressed: () {},
+)
+```
+
+```dart title="Good"
+IconButton(
+    tooltip: 'Add',
+    icon: Icon(Icons.add),
+    onPressed: () {},
+)
+```
+
+## Usage
+
+To enable the `specify_icon_button_tooltip` rule, add `specify_icon_button_tooltip` under custom_lint > rules in your `analysis_options.yaml` file:
+
+```yaml
+custom_lint:
+  rules:
+    - specify_icon_button_tooltip
+```
