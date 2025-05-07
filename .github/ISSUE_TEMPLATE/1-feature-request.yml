@@ -1,14 +1,8 @@
 name: 🚀 Feature Request
-description: Suggest a new feature
+description: Suggest a new feature or enhancement
 labels: ["enhancement", "needs triage"]
 assignees: [charlescyt]
 body:
-
-  - type: markdown
-    attributes:
-      value: |
-        Thank you for using Pyramid Lint and taking the time to file a feature request!
-
   - type: dropdown
     attributes:
       label: Feature Type
@@ -25,16 +19,16 @@ body:
   - type: textarea
     attributes:
       label: Feature Description
-      description: Please provide a clear and concise description of the feature you would like to see.
+      description: A clear and concise description of the feature you would like to see.
     validations:
       required: true
 
   - type: textarea
     attributes:
       label: Proposed Solution
-      description: If you have a proposed solution or suggestion for implementing this feature, please describe it here.
+      description: If you have a specific solution in mind, please describe it here.
 
   - type: textarea
     attributes:
       label: Additional Information
-      description: Add any additional information, references, or resources that may be helpful in understanding the requested feature.
+      description: Add any additional information that could help us understand the requested feature better.

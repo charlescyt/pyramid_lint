@@ -3,16 +3,10 @@ description: Report a bug
 labels: ["bug", "needs triage"]
 assignees: [charlescyt]
 body:
-
-  - type: markdown
-    attributes:
-      value: |
-        Thank you for using Pyramid Lint and taking the time to file a bug report!
-
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this bug?
-      description: Please check if there's an existing issue for this bug before filing a new one.
+      description: Please check if there is an existing issue for this bug before creating a new one.
       options:
         - label: I have searched the [existing issues](https://github.com/charlescyt/pyramid_lint/issues).
           required: true
@@ -20,13 +14,13 @@ body:
   - type: textarea
     attributes:
       label: Bug Description
-      description: Please provide a clear and concise description of the bug you have encountered.
+      description: A clear and concise description of the bug you have encountered.
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Steps to Reproduce
+      label: Reproduction Steps
       description: Steps or sample code to reproduce the bug.
     validations:
       required: true
@@ -34,4 +28,4 @@ body:
   - type: textarea
     attributes:
       label: Additional Information
-      description: Add any additional information, references, or resources that may be helpful in understanding the reported bug.
+      description: Add any additontal information that could help us understand the bug better.
