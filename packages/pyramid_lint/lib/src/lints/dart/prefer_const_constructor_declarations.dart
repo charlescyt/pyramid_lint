@@ -50,10 +50,11 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
       if (!_areAllRedirectingConstructorInvocationsConst(node)) return;
       if (!_areAllSuperConstructorInvocationsConst(node)) return;
 
-      // TODO(charlescyt): need to check if the super constructor is a const constructor when using super parameters.
       final superParameters =
           node.parameters.parameters.whereType<SuperFormalParameter>();
-      if (superParameters.isNotEmpty) return;
+      if (superParameters.isNotEmpty) {
+        if (!_isSuperConstructorConst(node)) return;
+      }
 
       final fieldInitializers = node.initializers.constructorFieldInitializers;
       if (fieldInitializers.isNotEmpty) {
@@ -80,6 +81,11 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
 
   bool _areAllFieldsFinal(ClassDeclaration node) {
     return node.members.fieldDeclarations.every((e) => e.fields.isFinal);
+  }
+
+  bool _isSuperConstructorConst(ConstructorDeclaration node) {
+    final superConstructor = node.declaredElement?.superConstructor;
+    return superConstructor?.isConst == true;
   }
 
   bool _areAllRedirectingConstructorInvocationsConst(

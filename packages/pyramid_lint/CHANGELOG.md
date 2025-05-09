@@ -7,6 +7,10 @@
 - Assist: `convert_to_for_in_iterable_indexed_loop`.
 - Lint: `specify_icon_button_tooltip`.
 
+### Fixed
+
+- Fix `prefer_const_constructor_declarations` to support constructors with super parameters.
+
 ## [2.0.3] - 2024-03-15
 
 ### Changed
