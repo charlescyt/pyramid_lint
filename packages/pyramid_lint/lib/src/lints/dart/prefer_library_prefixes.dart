@@ -13,8 +13,8 @@ class PreferLibraryPrefixesOptions {
   const PreferLibraryPrefixesOptions({
     bool? includeDefaultLibraries,
     List<String>? libraries,
-  })  : _includeDefaultLibraries = includeDefaultLibraries ?? true,
-        _libraries = libraries;
+  }) : _includeDefaultLibraries = includeDefaultLibraries ?? true,
+       _libraries = libraries;
 
   final bool _includeDefaultLibraries;
   final List<String>? _libraries;
@@ -25,9 +25,9 @@ class PreferLibraryPrefixesOptions {
   ];
 
   List<String> get libraries => [
-        if (_includeDefaultLibraries) ...defaultLibraries,
-        ...?_libraries,
-      ];
+    if (_includeDefaultLibraries) ...defaultLibraries,
+    ...?_libraries,
+  ];
 
   factory PreferLibraryPrefixesOptions.fromJson(Json json) {
     final includeDefaultLibraries = switch (json['include_default_libraries']) {
@@ -50,13 +50,13 @@ class PreferLibraryPrefixesOptions {
 class PreferLibraryPrefixes
     extends PyramidLintRule<PreferLibraryPrefixesOptions> {
   PreferLibraryPrefixes({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Prefix should be used for this library.',
-          correctionMessage: 'Consider adding a prefix to this library.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Prefix should be used for this library.',
+        correctionMessage: 'Consider adding a prefix to this library.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_library_prefixes';
   static const url = '$dartLintDocUrl/$ruleName';

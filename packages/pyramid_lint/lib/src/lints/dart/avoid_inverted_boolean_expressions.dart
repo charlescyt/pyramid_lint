@@ -11,14 +11,14 @@ import '../../utils/utils.dart';
 
 class AvoidInvertedBooleanExpressions extends PyramidLintRule {
   AvoidInvertedBooleanExpressions({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using inverted boolean expression decreases code readability.',
-          correctionMessage: 'Consider using {0} instead.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Using inverted boolean expression decreases code readability.',
+        correctionMessage: 'Consider using {0} instead.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_inverted_boolean_expressions';
   static const url = '$dartLintDocUrl/$ruleName';

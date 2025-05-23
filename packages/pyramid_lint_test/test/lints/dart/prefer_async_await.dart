@@ -2,13 +2,16 @@
 
 void fetchData() {
   // expect_lint: prefer_async_await
-  performAsyncOperation().then((result) {
-    print(result);
-  }).catchError((Object? error) {
-    print('Error: $error');
-  }).whenComplete(() {
-    print('Done');
-  });
+  performAsyncOperation()
+      .then((result) {
+        print(result);
+      })
+      .catchError((Object? error) {
+        print('Error: $error');
+      })
+      .whenComplete(() {
+        print('Done');
+      });
 }
 
 Future<String> performAsyncOperation() async {

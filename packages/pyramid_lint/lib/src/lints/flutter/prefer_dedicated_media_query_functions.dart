@@ -37,13 +37,13 @@ const List<String> _properties = [
 
 class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
   PreferDedicatedMediaQueryFunctions({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Using {0} will cause unnecessary rebuilds.',
-          correctionMessage: 'Consider using {1} instead.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using {0} will cause unnecessary rebuilds.',
+        correctionMessage: 'Consider using {1} instead.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_dedicated_media_query_functions';
   static const url = '$flutterLintDocUrl/$ruleName';

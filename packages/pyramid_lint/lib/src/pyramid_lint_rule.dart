@@ -14,14 +14,14 @@ abstract class PyramidLintRule<T extends Object?> extends DartLintRule {
     required ErrorSeverity errorSeverity,
     required this.options,
   }) : super(
-          code: LintCode(
-            name: name,
-            problemMessage: problemMessage,
-            correctionMessage: correctionMessage,
-            url: url,
-            errorSeverity: options.severity ?? errorSeverity,
-          ),
-        );
+         code: LintCode(
+           name: name,
+           problemMessage: problemMessage,
+           correctionMessage: correctionMessage,
+           url: url,
+           errorSeverity: options.severity ?? errorSeverity,
+         ),
+       );
 
   final PyramidLintRuleOptions<T> options;
 

@@ -9,14 +9,15 @@ class Example extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: 10,
-      itemBuilder: (
-        // expect_lint: prefer_underscore_for_unused_callback_parameters
-        context,
-        // Used parameter will not trigger the lint.
-        index,
-      ) {
-        return Text('Item $index');
-      },
+      itemBuilder:
+          (
+            // expect_lint: prefer_underscore_for_unused_callback_parameters
+            context,
+            // Used parameter will not trigger the lint.
+            index,
+          ) {
+            return Text('Item $index');
+          },
     );
   }
 }

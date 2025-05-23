@@ -84,8 +84,10 @@ class SwapThenElseExpression extends DartAssist {
     required SourceRange target,
     required IfStatement node,
   }) {
-    final ifConditionSourceRange =
-        range.startEnd(node.ifKeyword, node.rightParenthesis);
+    final ifConditionSourceRange = range.startEnd(
+      node.ifKeyword,
+      node.rightParenthesis,
+    );
     final elseKeywordSourceRange = node.elseKeyword?.sourceRange;
     return ifConditionSourceRange.covers(target) ||
         elseKeywordSourceRange?.covers(target) == true;
@@ -102,7 +104,8 @@ class SwapThenElseExpression extends DartAssist {
     required SourceRange target,
     required Iterable<ConditionalExpression> childrenConditionalExpressions,
   }) {
-    return childrenConditionalExpressions
-        .any((e) => e.sourceRange.intersects(target));
+    return childrenConditionalExpressions.any(
+      (e) => e.sourceRange.intersects(target),
+    );
   }
 }

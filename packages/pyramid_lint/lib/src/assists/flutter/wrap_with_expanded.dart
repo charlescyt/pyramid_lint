@@ -27,8 +27,8 @@ class WrapWithExpanded extends DartAssist {
         return;
       }
 
-      final parentInstanceCreationExpression =
-          node.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
+      final parentInstanceCreationExpression = node.parent
+          ?.thisOrAncestorOfType<InstanceCreationExpression>();
       if (parentInstanceCreationExpression == null) return;
 
       final parentType = parentInstanceCreationExpression.staticType;

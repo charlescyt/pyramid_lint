@@ -8,17 +8,17 @@ import '../../utils/pubspec_extension.dart';
 
 class ProperFromEnvironment extends PyramidLintRule {
   ProperFromEnvironment({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'The {0}.fromEnvironment constructor should be invoked '
-              'as a const constructor.',
-          correctionMessage:
-              'Try invoking the {0}.fromEnvironment constructor as a '
-              'const constructor.',
-          url: url,
-          errorSeverity: ErrorSeverity.ERROR,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'The {0}.fromEnvironment constructor should be invoked '
+            'as a const constructor.',
+        correctionMessage:
+            'Try invoking the {0}.fromEnvironment constructor as a '
+            'const constructor.',
+        url: url,
+        errorSeverity: ErrorSeverity.ERROR,
+      );
 
   static const ruleName = 'proper_from_environment';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -81,8 +81,9 @@ class _InvokeAsConstConstructor extends DartFix {
 
       final keyword = node.keyword;
       final changeBuilder = reporter.createChangeBuilder(
-        message:
-            keyword == null ? 'Add const keyword' : 'Replace new with const',
+        message: keyword == null
+            ? 'Add const keyword'
+            : 'Replace new with const',
         priority: 80,
       );
 

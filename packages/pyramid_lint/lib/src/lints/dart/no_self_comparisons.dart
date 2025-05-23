@@ -8,14 +8,14 @@ import '../../utils/constants.dart';
 
 class NoSelfComparisons extends PyramidLintRule {
   NoSelfComparisons({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Self comparison is usually a mistake.',
-          correctionMessage:
-              'Consider changing the comparison to something else.',
-          url: url,
-          errorSeverity: ErrorSeverity.WARNING,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Self comparison is usually a mistake.',
+        correctionMessage:
+            'Consider changing the comparison to something else.',
+        url: url,
+        errorSeverity: ErrorSeverity.WARNING,
+      );
 
   static const ruleName = 'no_self_comparisons';
   static const url = '$dartLintDocUrl/$ruleName';

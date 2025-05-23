@@ -11,13 +11,13 @@ import '../../utils/type_checker.dart';
 
 class PreferIterableLast extends PyramidLintRule {
   PreferIterableLast({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: '{0} is more verbose than iterable.last.',
-          correctionMessage: 'Consider replacing {1} with {2}.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: '{0} is more verbose than iterable.last.',
+        correctionMessage: 'Consider replacing {1} with {2}.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_iterable_last';
   static const url = '$dartLintDocUrl/$ruleName';

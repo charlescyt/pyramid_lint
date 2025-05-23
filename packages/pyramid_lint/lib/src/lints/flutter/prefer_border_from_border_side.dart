@@ -9,16 +9,16 @@ import '../../utils/type_checker.dart';
 
 class PreferBorderFromBorderSide extends PyramidLintRule {
   PreferBorderFromBorderSide({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Border.all is not a const constructor and it uses const constructor '
-              'Border.fromBorderSide internally.',
-          correctionMessage:
-              'Consider replacing Border.all with Border.fromBorderSide.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Border.all is not a const constructor and it uses const constructor '
+            'Border.fromBorderSide internally.',
+        correctionMessage:
+            'Consider replacing Border.all with Border.fromBorderSide.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_border_from_border_side';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -66,8 +66,9 @@ class _ReplaceWithBorderFromBorderSide extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 

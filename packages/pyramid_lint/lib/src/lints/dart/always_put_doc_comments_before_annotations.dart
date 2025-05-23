@@ -10,14 +10,14 @@ import '../../utils/constants.dart';
 
 class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
   AlwaysPutDocCommentsBeforeAnnotations({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Doc comments should be placed before annotations.',
-          correctionMessage:
-              'Consider moving the doc comment before the annotation.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Doc comments should be placed before annotations.',
+        correctionMessage:
+            'Consider moving the doc comment before the annotation.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'always_put_doc_comments_before_annotations';
   static const url = '$dartLintDocUrl/$ruleName';

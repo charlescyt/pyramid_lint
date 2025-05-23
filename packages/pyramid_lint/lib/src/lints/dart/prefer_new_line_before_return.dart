@@ -9,15 +9,15 @@ import '../../utils/constants.dart';
 
 class PreferNewLineBeforeReturn extends PyramidLintRule {
   PreferNewLineBeforeReturn({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'There should be a new line before the return statement.',
-          correctionMessage:
-              'Consider adding a new line before the return statement.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'There should be a new line before the return statement.',
+        correctionMessage:
+            'Consider adding a new line before the return statement.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_new_line_before_return';
   static const url = '$dartLintDocUrl/$ruleName';
@@ -51,10 +51,12 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
 
         final lineInfo = resolver.lineInfo;
 
-        final previousTokenLine =
-            lineInfo.getLocation(previousToken.offset).lineNumber;
-        final returnTokenLine =
-            lineInfo.getLocation(returnToken.offset).lineNumber;
+        final previousTokenLine = lineInfo
+            .getLocation(previousToken.offset)
+            .lineNumber;
+        final returnTokenLine = lineInfo
+            .getLocation(returnToken.offset)
+            .lineNumber;
 
         if (returnTokenLine - previousTokenLine == 1) {
           reporter.atToken(returnToken, code);

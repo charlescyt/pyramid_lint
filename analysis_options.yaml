@@ -20,6 +20,10 @@ analyzer:
     - "lib/generated_plugin_registrant.dart"
     - "test/.test_coverage.dart"
 
+formatter:
+  trailing_commas: preserve
+  page_width: 80
+
 linter:
   rules:
     - always_declare_return_types

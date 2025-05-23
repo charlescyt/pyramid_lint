@@ -22,9 +22,9 @@ class WrapAllChildrenWithExpanded extends DartAssist {
       final sourceRange = switch (node.keyword) {
         null => node.constructorName.sourceRange,
         final keyword => range.startEnd(
-            keyword,
-            node.constructorName,
-          ),
+          keyword,
+          node.constructorName,
+        ),
       };
       if (!sourceRange.covers(target)) return;
 
@@ -37,8 +37,8 @@ class WrapAllChildrenWithExpanded extends DartAssist {
       final childrenExpression = childrenArg.expression;
       if (childrenExpression is! ListLiteral) return;
 
-      final childrenElements =
-          childrenExpression.elements.whereType<InstanceCreationExpression>();
+      final childrenElements = childrenExpression.elements
+          .whereType<InstanceCreationExpression>();
 
       final expandableChildren = childrenElements
           .where((e) => e.staticType != null)

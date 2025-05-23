@@ -10,15 +10,14 @@ import '../../utils/pubspec_extension.dart';
 
 class PreferAsyncCallback extends PyramidLintRule {
   PreferAsyncCallback({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'There is a typedef AsyncCallback defined in flutter.',
-          correctionMessage:
-              'Consider using AsyncCallback instead of Future<void> Function().',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'There is a typedef AsyncCallback defined in flutter.',
+        correctionMessage:
+            'Consider using AsyncCallback instead of Future<void> Function().',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_async_callback';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -85,8 +84,9 @@ class _ReplaceWithAsyncCallback extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final replacement =
-          node.question == null ? 'AsyncCallback' : 'AsyncCallback?';
+      final replacement = node.question == null
+          ? 'AsyncCallback'
+          : 'AsyncCallback?';
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with $replacement',

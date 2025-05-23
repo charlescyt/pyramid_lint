@@ -28,7 +28,9 @@ class ConvertToForInIterableIndexedLoop extends DartAssist {
 
         final loopVariableType = loopVariable.type;
         final loopVariableKeyword = loopVariable.keyword;
-        final keyword = loopVariableKeyword == null //
+        final keyword =
+            loopVariableKeyword ==
+                null //
             ? 'var'
             : loopVariableKeyword.lexeme;
 
@@ -47,8 +49,9 @@ class ConvertToForInIterableIndexedLoop extends DartAssist {
           if (loopVariableType != null) {
             builder.write('${loopVariableType.toSource()} ');
           }
-          builder
-              .write('${loopVariable.name}) in ${iterable.toSource()}.indexed');
+          builder.write(
+            '${loopVariable.name}) in ${iterable.toSource()}.indexed',
+          );
         });
       });
     });

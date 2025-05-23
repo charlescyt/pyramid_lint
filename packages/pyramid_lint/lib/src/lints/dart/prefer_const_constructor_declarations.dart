@@ -9,15 +9,15 @@ import '../../utils/constants.dart';
 
 class PreferConstConstructorDeclarations extends PyramidLintRule {
   PreferConstConstructorDeclarations({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Constructors should be declared as const constructors when possible.',
-          correctionMessage:
-              'Consider adding a const keyword to the constructor.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Constructors should be declared as const constructors when possible.',
+        correctionMessage:
+            'Consider adding a const keyword to the constructor.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_const_constructor_declarations';
   static const url = '$dartLintDocUrl/$ruleName';
@@ -50,8 +50,8 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
       if (!_areAllRedirectingConstructorInvocationsConst(node)) return;
       if (!_areAllSuperConstructorInvocationsConst(node)) return;
 
-      final superParameters =
-          node.parameters.parameters.whereType<SuperFormalParameter>();
+      final superParameters = node.parameters.parameters
+          .whereType<SuperFormalParameter>();
       if (superParameters.isNotEmpty) {
         if (!_isSuperConstructorConst(node)) return;
       }
@@ -91,15 +91,17 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   bool _areAllRedirectingConstructorInvocationsConst(
     ConstructorDeclaration node,
   ) {
-    return node.initializers.redirectingConstructorInvocations
-        .every((e) => e.staticElement?.isConst == true);
+    return node.initializers.redirectingConstructorInvocations.every(
+      (e) => e.staticElement?.isConst == true,
+    );
   }
 
   bool _areAllSuperConstructorInvocationsConst(
     ConstructorDeclaration node,
   ) {
-    return node.initializers.superConstructorInvocations
-        .every((e) => e.staticElement?.isConst == true);
+    return node.initializers.superConstructorInvocations.every(
+      (e) => e.staticElement?.isConst == true,
+    );
   }
 
   @override

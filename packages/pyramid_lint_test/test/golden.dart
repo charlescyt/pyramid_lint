@@ -49,7 +49,7 @@ void testGolden(
   String description,
   String fileName,
   Future<Iterable<PrioritizedSourceChange>> Function(ResolvedUnitResult unit)
-      body, {
+  body, {
   required String sourcePath,
 }) {
   test(description, () async {

@@ -7,15 +7,15 @@ import '../../utils/constants.dart';
 
 class AlwaysSpecifyParameterNames extends PyramidLintRule {
   AlwaysSpecifyParameterNames({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Parameter names should always be specified to enhance code readability '
-              'and enable IDEs to provide code completion suggestions.',
-          correctionMessage: 'Consider declaring a descriptive parameter name.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Parameter names should always be specified to enhance code readability '
+            'and enable IDEs to provide code completion suggestions.',
+        correctionMessage: 'Consider declaring a descriptive parameter name.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'always_specify_parameter_names';
   static const url = '$dartLintDocUrl/$ruleName';

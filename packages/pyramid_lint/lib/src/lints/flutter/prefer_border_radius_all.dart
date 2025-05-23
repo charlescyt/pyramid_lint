@@ -9,16 +9,16 @@ import '../../utils/type_checker.dart';
 
 class PreferBorderRadiusAll extends PyramidLintRule {
   PreferBorderRadiusAll({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'BorderRadius.circular is not a const constructor and it uses const '
-              'constructor BorderRadius.all internally.',
-          correctionMessage:
-              'Consider replacing BorderRadius.circular with BorderRadius.all.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'BorderRadius.circular is not a const constructor and it uses const '
+            'constructor BorderRadius.all internally.',
+        correctionMessage:
+            'Consider replacing BorderRadius.circular with BorderRadius.all.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_border_radius_all';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -66,8 +66,9 @@ class _ReplaceWithBorderRadiusAll extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 

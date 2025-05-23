@@ -24,9 +24,9 @@ class AvoidAbbreviationsInDocCommentsOptions {
   final List<String>? _abbreviations;
 
   List<String> get abbreviations => [
-        ...defaultAbbreviations,
-        ...?_abbreviations,
-      ];
+    ...defaultAbbreviations,
+    ...?_abbreviations,
+  ];
 
   factory AvoidAbbreviationsInDocCommentsOptions.fromJson(Json json) {
     final abbreviations = switch (json['abbreviations']) {
@@ -43,15 +43,15 @@ class AvoidAbbreviationsInDocCommentsOptions {
 class AvoidAbbreviationsInDocComments
     extends PyramidLintRule<AvoidAbbreviationsInDocCommentsOptions> {
   AvoidAbbreviationsInDocComments({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Avoid using abbreviations in doc comments as they can hinder '
-              'readability and cause confusion.',
-          correctionMessage: 'Consider using the full word instead.',
-          url: url,
-          errorSeverity: ErrorSeverity.WARNING,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Avoid using abbreviations in doc comments as they can hinder '
+            'readability and cause confusion.',
+        correctionMessage: 'Consider using the full word instead.',
+        url: url,
+        errorSeverity: ErrorSeverity.WARNING,
+      );
 
   static const ruleName = 'avoid_abbreviations_in_doc_comments';
   static const url = '$dartLintDocUrl/$ruleName';

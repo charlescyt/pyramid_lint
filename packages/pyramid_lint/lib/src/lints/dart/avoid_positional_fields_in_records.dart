@@ -8,14 +8,13 @@ import '../../utils/constants.dart';
 
 class AvoidPositionalFieldsInRecords extends PyramidLintRule {
   AvoidPositionalFieldsInRecords({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using positional field getters decreases readability.',
-          correctionMessage: 'Consider using named field getters instead.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using positional field getters decreases readability.',
+        correctionMessage: 'Consider using named field getters instead.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_positional_fields_in_records';
   static const url = '$dartLintDocUrl/$ruleName';

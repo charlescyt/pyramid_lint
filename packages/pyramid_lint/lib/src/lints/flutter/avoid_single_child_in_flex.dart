@@ -11,14 +11,13 @@ import '../../utils/type_checker.dart';
 
 class AvoidSingleChildInFlex extends PyramidLintRule {
   AvoidSingleChildInFlex({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using {0} to position a single widget is inefficient.',
-          correctionMessage: 'Consider replacing {0} with Align or Center.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using {0} to position a single widget is inefficient.',
+        correctionMessage: 'Consider replacing {0} with Align or Center.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_single_child_in_flex';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -75,8 +74,9 @@ class _ReplaceWithAlign extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 
@@ -113,8 +113,9 @@ class _ReplaceWithCenter extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 

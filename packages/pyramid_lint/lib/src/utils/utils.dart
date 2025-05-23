@@ -33,15 +33,16 @@ AstNode? getAstNodeFromElement(Element element) {
 
   final parsedLibraryResult =
       session.getParsedLibraryByElement(elementLibrary) as ParsedLibraryResult;
-  final elementDeclarationResult =
-      parsedLibraryResult.getElementDeclaration(element);
+  final elementDeclarationResult = parsedLibraryResult.getElementDeclaration(
+    element,
+  );
 
   return elementDeclarationResult?.node;
 }
 
 InstanceCreationExpression? findParentWidget(InstanceCreationExpression expr) {
-  final parentExpr =
-      expr.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
+  final parentExpr = expr.parent
+      ?.thisOrAncestorOfType<InstanceCreationExpression>();
   if (parentExpr == null) return null;
 
   final parentType = parentExpr.staticType;

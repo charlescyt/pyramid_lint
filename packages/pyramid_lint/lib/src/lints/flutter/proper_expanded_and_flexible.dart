@@ -10,14 +10,14 @@ import '../../utils/type_checker.dart';
 
 class ProperExpandedAndFlexible extends PyramidLintRule {
   ProperExpandedAndFlexible({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
-          correctionMessage:
-              'Try placing {0} inside a Row, Column, or Flex, or remove it.',
-          url: url,
-          errorSeverity: ErrorSeverity.ERROR,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
+        correctionMessage:
+            'Try placing {0} inside a Row, Column, or Flex, or remove it.',
+        url: url,
+        errorSeverity: ErrorSeverity.ERROR,
+      );
 
   static const ruleName = 'proper_expanded_and_flexible';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -47,8 +47,8 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
         return;
       }
 
-      final parentInstanceCreationExpression =
-          node.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
+      final parentInstanceCreationExpression = node.parent
+          ?.thisOrAncestorOfType<InstanceCreationExpression>();
       if (parentInstanceCreationExpression == null) return;
 
       final parentType = parentInstanceCreationExpression.staticType;

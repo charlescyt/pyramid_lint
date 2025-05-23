@@ -25,8 +25,9 @@ class WrapWithListenableBuilder extends DartAssist {
     final dartSdkVersion = context.pubspec.dartSdkVersion;
     if (dartSdkVersion == null) return;
 
-    if (!dartSdkVersion
-        .meetMinimumRequiredVersion(minimumRequiredDartSdkVersion)) {
+    if (!dartSdkVersion.meetMinimumRequiredVersion(
+      minimumRequiredDartSdkVersion,
+    )) {
       return;
     }
 
@@ -34,9 +35,9 @@ class WrapWithListenableBuilder extends DartAssist {
       final sourceRange = switch (node.keyword) {
         null => node.constructorName.sourceRange,
         final keyword => range.startEnd(
-            keyword,
-            node.constructorName,
-          ),
+          keyword,
+          node.constructorName,
+        ),
       };
       if (!sourceRange.covers(target)) return;
 

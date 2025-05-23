@@ -9,13 +9,13 @@ import '../../utils/type_checker.dart';
 
 class ClassMembersOrdering extends PyramidLintRule {
   ClassMembersOrdering({required super.options})
-      : super(
-          name: name,
-          problemMessage: 'Incorrect order of {0}.',
-          correctionMessage: 'Consider putting {0} {1} {2}.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: name,
+        problemMessage: 'Incorrect order of {0}.',
+        correctionMessage: 'Consider putting {0} {1} {2}.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const name = 'class_members_ordering';
   static const url = '$dartLintDocUrl#$name';
@@ -40,8 +40,9 @@ class ClassMembersOrdering extends PyramidLintRule {
       final members = node.members;
       if (members.isEmpty || members.length == 1) return;
 
-      final comparator =
-          _isWidget(node) ? _compareMembersInWidget : _compareMembersInClass;
+      final comparator = _isWidget(node)
+          ? _compareMembersInWidget
+          : _compareMembersInClass;
 
       for (var i = 0; i < members.length; i++) {
         final current = members[i];
@@ -102,8 +103,7 @@ enum _MemberType implements Comparable<_MemberType> {
   publicStaticMethods(41),
   publicMethods(42),
   privateStaticMethods(43),
-  privateMethods(44),
-  ;
+  privateMethods(44);
 
   final int orderInWidget;
 
@@ -113,23 +113,23 @@ enum _MemberType implements Comparable<_MemberType> {
   int compareTo(_MemberType other) => index - other.index;
 
   String get label => switch (this) {
-        publicStaticFields => 'public static fields',
-        privateStaticFields => 'private static fields',
-        publicFields => 'public fields',
-        privateFields => 'private fields',
-        publicConstructors => 'public constructors',
-        publicNamedConstructors => 'public named constructors',
-        privateConstructors => 'private constructors',
-        privateNamedConstructors => 'private named constructors',
-        publicGetters => 'public getters',
-        privateGetters => 'private getters',
-        publicSetters => 'public setters',
-        privateSetters => 'private setters',
-        publicStaticMethods => 'public static methods',
-        publicMethods => 'public methods',
-        privateStaticMethods => 'private static methods',
-        privateMethods => 'private methods',
-      };
+    publicStaticFields => 'public static fields',
+    privateStaticFields => 'private static fields',
+    publicFields => 'public fields',
+    privateFields => 'private fields',
+    publicConstructors => 'public constructors',
+    publicNamedConstructors => 'public named constructors',
+    privateConstructors => 'private constructors',
+    privateNamedConstructors => 'private named constructors',
+    publicGetters => 'public getters',
+    privateGetters => 'private getters',
+    publicSetters => 'public setters',
+    privateSetters => 'private setters',
+    publicStaticMethods => 'public static methods',
+    publicMethods => 'public methods',
+    privateStaticMethods => 'private static methods',
+    privateMethods => 'private methods',
+  };
 }
 
 extension on ConstructorDeclaration {
@@ -139,8 +139,9 @@ extension on ConstructorDeclaration {
 extension on ClassMember {
   bool get isPrivate {
     return switch (this) {
-      FieldDeclaration(:final fields) =>
-        fields.variables.any((e) => e.name.lexeme.startsWith('_')),
+      FieldDeclaration(:final fields) => fields.variables.any(
+        (e) => e.name.lexeme.startsWith('_'),
+      ),
       ConstructorDeclaration(:final name) =>
         name?.lexeme.startsWith('_') == true,
       MethodDeclaration(:final name) => name.lexeme.startsWith('_'),
@@ -168,11 +169,11 @@ extension on ClassMember {
             ? _MemberType.privateConstructors
             : _MemberType.publicConstructors;
       case MethodDeclaration(
-          :final isGetter,
-          :final isSetter,
-          :final isStatic,
-          :final isPrivate,
-        ):
+        :final isGetter,
+        :final isSetter,
+        :final isStatic,
+        :final isPrivate,
+      ):
         if (isGetter) {
           return isPrivate
               ? _MemberType.privateGetters

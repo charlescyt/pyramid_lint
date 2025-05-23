@@ -34,9 +34,9 @@ class BooleanPrefixesOptions {
   final List<String>? _validPrefixes;
 
   List<String> get validPrefixes => [
-        ...defaultValidPrefixes,
-        ...?_validPrefixes,
-      ];
+    ...defaultValidPrefixes,
+    ...?_validPrefixes,
+  ];
 
   factory BooleanPrefixesOptions.fromJson(Json json) {
     final validPrefixes = switch (json['valid_prefixes']) {
@@ -52,13 +52,13 @@ class BooleanPrefixesOptions {
 
 class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
   BooleanPrefixes({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: '{0} should be named with a valid prefix.',
-          correctionMessage: 'Try naming your {1} with a valid prefix.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: '{0} should be named with a valid prefix.',
+        correctionMessage: 'Try naming your {1} with a valid prefix.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'boolean_prefixes';
   static const url = '$dartLintDocUrl/$ruleName';
@@ -148,8 +148,9 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
   }
 
   bool isNameValid(String name) {
-    final nameWithoutUnderscore =
-        name.startsWith('_') ? name.substring(1) : name;
+    final nameWithoutUnderscore = name.startsWith('_')
+        ? name.substring(1)
+        : name;
 
     if (options.params.validPrefixes.any(nameWithoutUnderscore.startsWith)) {
       return true;

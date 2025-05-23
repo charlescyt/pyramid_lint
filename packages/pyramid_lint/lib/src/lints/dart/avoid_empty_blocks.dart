@@ -8,15 +8,15 @@ import '../../utils/constants.dart';
 
 class AvoidEmptyBlocks extends PyramidLintRule {
   AvoidEmptyBlocks({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Empty block usually indicates a missing implementation.',
-          correctionMessage:
-              'Consider adding an implementation or a TODO comment.',
-          url: url,
-          errorSeverity: ErrorSeverity.WARNING,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Empty block usually indicates a missing implementation.',
+        correctionMessage:
+            'Consider adding an implementation or a TODO comment.',
+        url: url,
+        errorSeverity: ErrorSeverity.WARNING,
+      );
 
   static const ruleName = 'avoid_empty_blocks';
   static const url = '$dartLintDocUrl/$ruleName';

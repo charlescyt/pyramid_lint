@@ -9,16 +9,16 @@ import '../../utils/constants.dart';
 
 class AvoidDynamic extends PyramidLintRule {
   AvoidDynamic({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Avoid using dynamic type as it reduces type safety and can '
-              'lead to potential runtime errors.',
-          correctionMessage:
-              'Consider specifying a type instead of using dynamic.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Avoid using dynamic type as it reduces type safety and can '
+            'lead to potential runtime errors.',
+        correctionMessage:
+            'Consider specifying a type instead of using dynamic.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_dynamic';
   static const url = '$dartLintDocUrl/$ruleName';

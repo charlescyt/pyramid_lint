@@ -10,14 +10,14 @@ import '../../utils/type_checker.dart';
 
 class PreferTextRich extends PyramidLintRule {
   PreferTextRich({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'RichText does not inherit TextStyle from DefaultTextStyle.',
-          correctionMessage: 'Consider replacing RichText with Text.rich.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'RichText does not inherit TextStyle from DefaultTextStyle.',
+        correctionMessage: 'Consider replacing RichText with Text.rich.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_text_rich';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -62,8 +62,9 @@ class _ReplaceWithTextRich extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 

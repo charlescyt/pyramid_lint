@@ -16,18 +16,14 @@ class A {
   set c(int value) => _c = value;
 
   // expect_lint: class_members_ordering
-  A.named()
-      : publicInstanceField = 0,
-        _privateInstanceField = 0;
+  A.named() : publicInstanceField = 0, _privateInstanceField = 0;
 
   factory A.factory(int a) {
     return A(a, a + 1);
   }
 
   // expect_lint: class_members_ordering
-  A._()
-      : publicInstanceField = 0,
-        _privateInstanceField = 0;
+  A._() : publicInstanceField = 0, _privateInstanceField = 0;
 
   // expect_lint: class_members_ordering
   final int publicInstanceField;
@@ -65,17 +61,13 @@ class B {
     this._privateInstanceField,
   );
 
-  B.named()
-      : publicInstanceField = 0,
-        _privateInstanceField = 0;
+  B.named() : publicInstanceField = 0, _privateInstanceField = 0;
 
   factory B.factory(int a) {
     return B(a, a + 1);
   }
 
-  B._()
-      : publicInstanceField = 0,
-        _privateInstanceField = 0;
+  B._() : publicInstanceField = 0, _privateInstanceField = 0;
 
   int get c => _c + 1;
   set c(int value) => _c = value;

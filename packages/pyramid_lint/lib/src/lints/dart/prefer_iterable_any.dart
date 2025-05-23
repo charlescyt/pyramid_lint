@@ -10,15 +10,15 @@ import '../../utils/type_checker.dart';
 
 class PreferIterableAny extends PyramidLintRule {
   PreferIterableAny({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
-          correctionMessage:
-              'Consider using Iterable.any for better readability.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
+        correctionMessage:
+            'Consider using Iterable.any for better readability.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_iterable_any';
   static const url = '$dartLintDocUrl/$ruleName';

@@ -9,15 +9,15 @@ import '../../utils/constants.dart';
 
 class PreferImmediateReturn extends PyramidLintRule {
   PreferImmediateReturn({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Declaring a variable to return it on the next line is '
-              'unnecessary.',
-          correctionMessage: 'Consider returning the value immediately.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Declaring a variable to return it on the next line is '
+            'unnecessary.',
+        correctionMessage: 'Consider returning the value immediately.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_immediate_return';
   static const url = '$dartLintDocUrl/$ruleName';

@@ -7,13 +7,13 @@ import '../../utils/constants.dart';
 
 class PreferAsyncAwait extends PyramidLintRule {
   PreferAsyncAwait({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Using Future.then() decreases readability.',
-          correctionMessage: 'Consider using async/await instead.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using Future.then() decreases readability.',
+        correctionMessage: 'Consider using async/await instead.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_async_await';
   static const url = '$dartLintDocUrl/$ruleName';

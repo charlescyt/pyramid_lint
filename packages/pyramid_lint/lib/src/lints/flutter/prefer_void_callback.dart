@@ -9,14 +9,14 @@ import '../../utils/pubspec_extension.dart';
 
 class PreferVoidCallback extends PyramidLintRule<void> {
   PreferVoidCallback({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'There is a typedef VoidCallback defined in flutter.',
-          correctionMessage:
-              'Consider using VoidCallback instead of void Function().',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'There is a typedef VoidCallback defined in flutter.',
+        correctionMessage:
+            'Consider using VoidCallback instead of void Function().',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_void_callback';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -69,8 +69,9 @@ class _ReplaceWithVoidCallBack extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final replacement =
-          node.question == null ? 'VoidCallback' : 'VoidCallback?';
+      final replacement = node.question == null
+          ? 'VoidCallback'
+          : 'VoidCallback?';
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with $replacement',

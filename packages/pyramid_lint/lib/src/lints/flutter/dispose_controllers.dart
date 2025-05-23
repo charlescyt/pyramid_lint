@@ -12,14 +12,13 @@ import '../../utils/type_checker.dart';
 
 class DisposeControllers extends PyramidLintRule {
   DisposeControllers({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Controller should be disposed in the dispose method.',
-          correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
-          url: url,
-          errorSeverity: ErrorSeverity.ERROR,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Controller should be disposed in the dispose method.',
+        correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
+        url: url,
+        errorSeverity: ErrorSeverity.ERROR,
+      );
 
   static const ruleName = 'dispose_controllers';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -55,8 +54,9 @@ class DisposeControllers extends PyramidLintRule {
         return;
       }
 
-      final disposeFunctionBody =
-          parent.members.findMethodDeclarationByName('dispose')?.body;
+      final disposeFunctionBody = parent.members
+          .findMethodDeclarationByName('dispose')
+          ?.body;
 
       final controllerDeclarations = node.fields.variables.where(
         (e) {
@@ -80,8 +80,9 @@ class DisposeControllers extends PyramidLintRule {
       }
 
       final statements = disposeFunctionBody.block.statements;
-      final disposeStatementTargetNames =
-          _getDisposeStatementTargetNames(statements);
+      final disposeStatementTargetNames = _getDisposeStatementTargetNames(
+        statements,
+      );
 
       for (final controllerDeclaration in controllerDeclarations) {
         final controllerName = controllerDeclaration.name.lexeme;
@@ -124,8 +125,9 @@ class _ProperControllerDisposeFix extends DartFix {
       );
       if (controllerToBeDisposed == null) return;
 
-      final disposeMethod =
-          parent.members.findMethodDeclarationByName('dispose');
+      final disposeMethod = parent.members.findMethodDeclarationByName(
+        'dispose',
+      );
       final toBeDisposedControllerName = controllerToBeDisposed.name.lexeme;
 
       switch (disposeMethod?.body) {
@@ -165,8 +167,11 @@ class _ProperControllerDisposeFix extends DartFix {
 
     final buildMethod = parent.members.findMethodDeclarationByName('build');
 
-    final (int offset, bool addNewLineAtTheStart, bool addNewLineAtTheEnd) =
-        switch ((initStateMethod, buildMethod)) {
+    final (
+      int offset,
+      bool addNewLineAtTheStart,
+      bool addNewLineAtTheEnd,
+    ) = switch ((initStateMethod, buildMethod)) {
       (null, null) => (node.end, true, false),
       (null, final buildMethod?) => (buildMethod.offset, false, true),
       (final initStateMethod?, null) => (initStateMethod.end, true, false),
@@ -194,8 +199,9 @@ class _ProperControllerDisposeFix extends DartFix {
     ChangeBuilder changeBuilder,
   ) {
     final statements = disposeFunctionBody.block.statements;
-    final disposeStatementTargetNames =
-        _getDisposeStatementTargetNames(statements);
+    final disposeStatementTargetNames = _getDisposeStatementTargetNames(
+      statements,
+    );
 
     if (!disposeStatementTargetNames.contains(toBeDisposedControllerName)) {
       changeBuilder.addDartFileEdit((builder) {

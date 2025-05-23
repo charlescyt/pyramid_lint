@@ -9,13 +9,13 @@ import '../../utils/constants.dart';
 
 class AvoidRedundantPatternFieldNames extends PyramidLintRule {
   AvoidRedundantPatternFieldNames({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Using explicit getter names is redundant.',
-          correctionMessage: 'Consider omitting the getter name.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using explicit getter names is redundant.',
+        correctionMessage: 'Consider omitting the getter name.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_redundant_pattern_field_names';
   static const url = '$dartLintDocUrl/$ruleName';

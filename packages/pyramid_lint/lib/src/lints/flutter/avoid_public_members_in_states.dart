@@ -9,13 +9,13 @@ import '../../utils/type_checker.dart';
 
 class AvoidPublicMembersInStates extends PyramidLintRule {
   AvoidPublicMembersInStates({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Avoid public members in widget state classes.',
-          correctionMessage: 'Consider using private members.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Avoid public members in widget state classes.',
+        correctionMessage: 'Consider using private members.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'avoid_public_members_in_states';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -47,12 +47,14 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
       final type = superClass.type;
       if (type == null || !stateChecker.isAssignableFromType(type)) return;
 
-      final hasOverrideAnnotation =
-          classMember.metadata.any((e) => e.name.name == 'override');
+      final hasOverrideAnnotation = classMember.metadata.any(
+        (e) => e.name.name == 'override',
+      );
       if (hasOverrideAnnotation) return;
 
-      final hasVisibleForTestingAnnotation =
-          classMember.metadata.any((e) => e.name.name == 'visibleForTesting');
+      final hasVisibleForTestingAnnotation = classMember.metadata.any(
+        (e) => e.name.name == 'visibleForTesting',
+      );
       if (hasVisibleForTestingAnnotation) return;
 
       switch (classMember) {

@@ -14,13 +14,13 @@ import '../../utils/type_checker.dart';
 
 class SpecifyIconButtonTooltip extends PyramidLintRule {
   SpecifyIconButtonTooltip({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'There is no tooltip specified for the icon button.',
-          correctionMessage: 'Try specifying a tooltip for the icon button.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'There is no tooltip specified for the icon button.',
+        correctionMessage: 'Try specifying a tooltip for the icon button.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'specify_icon_button_tooltip';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -112,7 +112,8 @@ class _AddTooltip extends DartFix {
           );
         } else {
           // Indent the tooltip to the +1 level of the right parenthesis
-          indentLevel = _getLineIndentLevelAtToken(
+          indentLevel =
+              _getLineIndentLevelAtToken(
                 resolver.lineInfo,
                 node.argumentList.rightParenthesis,
               ) +

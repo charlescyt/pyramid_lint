@@ -99,8 +99,9 @@ extension ClassMembersExtension on NodeList<ClassMember> {
   /// Returns the first [ConstructorDeclaration] with the given [name], or
   /// `null` if there is none.
   ConstructorDeclaration? findConstructorDeclarationByName(String name) {
-    return constructorDeclarations
-        .firstWhereOrNull((e) => e.name?.lexeme == name);
+    return constructorDeclarations.firstWhereOrNull(
+      (e) => e.name?.lexeme == name,
+    );
   }
 
   /// Returns the first [MethodDeclaration] with the given [name], or `null` if
@@ -127,8 +128,8 @@ extension ConstructorInitializersExtension on NodeList<ConstructorInitializer> {
   /// Returns an iterable of all the [RedirectingConstructorInvocation] in this
   /// [ConstructorInitializer] list.
   Iterable<RedirectingConstructorInvocation>
-      get redirectingConstructorInvocations =>
-          whereType<RedirectingConstructorInvocation>();
+  get redirectingConstructorInvocations =>
+      whereType<RedirectingConstructorInvocation>();
 
   /// Returns an iterable of all the [SuperConstructorInvocation] in this
   /// [ConstructorInitializer] list.

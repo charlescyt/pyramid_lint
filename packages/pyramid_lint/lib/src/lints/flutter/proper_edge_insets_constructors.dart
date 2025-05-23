@@ -12,14 +12,13 @@ import '../../utils/utils.dart';
 
 class ProperEdgeInsetsConstructors extends PyramidLintRule {
   ProperEdgeInsetsConstructors({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using incorrect EdgeInsets constructor and arguments.',
-          correctionMessage: 'Consider replacing with {0}.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
+        correctionMessage: 'Consider replacing with {0}.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'proper_edge_insets_constructors';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -75,11 +74,11 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
 
     switch ((left: left, top: top, right: right, bottom: bottom)) {
       case (
-          left: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-          top: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-          right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-          bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-        ):
+        left: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+        top: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+        right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+        bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+      ):
         return;
       case (
             left: final l,
@@ -145,11 +144,11 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
 
     switch ((left: left, top: top, right: right, bottom: bottom)) {
       case (
-          left: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          top: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-        ):
+        left: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        top: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+      ):
         return;
       case (
             left: final l?,
@@ -179,10 +178,8 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
           code,
           arguments: [
             'EdgeInsets.symmetric(${[
-              if (l != null && !isZeroExpression(l))
-                'horizontal: ${l.toSource()}',
-              if (t != null && !isZeroExpression(t))
-                'vertical: ${t.toSource()}',
+              if (l != null && !isZeroExpression(l)) 'horizontal: ${l.toSource()}',
+              if (t != null && !isZeroExpression(t)) 'vertical: ${t.toSource()}',
             ].join(', ')})',
           ],
         );
@@ -202,27 +199,19 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
           code,
           arguments: [
             'EdgeInsets.only(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'left: ${l?.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'top: ${t?.toSource()}',
-              if (r is IntegerLiteral && r.value != 0 ||
-                  r is DoubleLiteral && r.value != 0.0)
-                'right: ${r?.toSource()}',
-              if (b is IntegerLiteral && b.value != 0 ||
-                  b is DoubleLiteral && b.value != 0.0)
-                'bottom: ${b?.toSource()}',
+              if (l is IntegerLiteral && l.value != 0 || l is DoubleLiteral && l.value != 0.0) 'left: ${l?.toSource()}',
+              if (t is IntegerLiteral && t.value != 0 || t is DoubleLiteral && t.value != 0.0) 'top: ${t?.toSource()}',
+              if (r is IntegerLiteral && r.value != 0 || r is DoubleLiteral && r.value != 0.0) 'right: ${r?.toSource()}',
+              if (b is IntegerLiteral && b.value != 0 || b is DoubleLiteral && b.value != 0.0) 'bottom: ${b?.toSource()}',
             ].join(', ')})',
           ],
         );
       case (
-          left: final l?,
-          top: final t?,
-          right: final r?,
-          bottom: final b?,
-        ):
+        left: final l?,
+        top: final t?,
+        right: final r?,
+        bottom: final b?,
+      ):
         reporter.atNode(
           node,
           code,
@@ -232,7 +221,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
               t.toSource(),
               r.toSource(),
               b.toSource(),
-            ].join(', ')})'
+            ].join(', ')})',
           ],
         );
     }
@@ -242,18 +231,20 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     required InstanceCreationExpression node,
     required ErrorReporter reporter,
   }) {
-    final vertical =
-        node.argumentList.findArgumentByName('vertical')?.expression;
-    final horizontal =
-        node.argumentList.findArgumentByName('horizontal')?.expression;
+    final vertical = node.argumentList
+        .findArgumentByName('vertical')
+        ?.expression;
+    final horizontal = node.argumentList
+        .findArgumentByName('horizontal')
+        ?.expression;
 
     switch ((vertical: vertical, horizontal: horizontal)) {
       case (
-          vertical:
-              null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-          horizontal:
-              null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-        ):
+        vertical: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+        horizontal: null ||
+            IntegerLiteral(value: 0) ||
+            DoubleLiteral(value: 0.0),
+      ):
         return;
       case (
             vertical: final v?,
@@ -328,11 +319,11 @@ class _ReplaceWithProperConstructor extends DartFix {
 
     switch ((left: left, top: top, right: right, bottom: bottom)) {
       case (
-          left: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          top: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-        ):
+        left: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        top: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        right: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+      ):
         return;
       case (
             left: final l,
@@ -409,11 +400,11 @@ class _ReplaceWithProperConstructor extends DartFix {
 
     switch ((left: left, top: top, right: right, bottom: bottom)) {
       case (
-          left: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          top: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-          bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
-        ):
+        left: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        top: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        right: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+        bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
+      ):
         return;
       case (
             left: final l?,
@@ -449,10 +440,8 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.symmetric(${[
-              if (l != null && !isZeroExpression(l))
-                'horizontal: ${l.toSource()}',
-              if (t != null && !isZeroExpression(t))
-                'vertical: ${t.toSource()}',
+              if (l != null && !isZeroExpression(l)) 'horizontal: ${l.toSource()}',
+              if (t != null && !isZeroExpression(t)) 'vertical: ${t.toSource()}',
             ].join(', ')})',
           );
         });
@@ -471,27 +460,19 @@ class _ReplaceWithProperConstructor extends DartFix {
           builder.addSimpleReplacement(
             node.sourceRange,
             'EdgeInsets.only(${[
-              if (l is IntegerLiteral && l.value != 0 ||
-                  l is DoubleLiteral && l.value != 0.0)
-                'left: ${l?.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 ||
-                  t is DoubleLiteral && t.value != 0.0)
-                'top: ${t?.toSource()}',
-              if (r is IntegerLiteral && r.value != 0 ||
-                  r is DoubleLiteral && r.value != 0.0)
-                'right: ${r?.toSource()}',
-              if (b is IntegerLiteral && b.value != 0 ||
-                  b is DoubleLiteral && b.value != 0.0)
-                'bottom: ${b?.toSource()}',
+              if (l is IntegerLiteral && l.value != 0 || l is DoubleLiteral && l.value != 0.0) 'left: ${l?.toSource()}',
+              if (t is IntegerLiteral && t.value != 0 || t is DoubleLiteral && t.value != 0.0) 'top: ${t?.toSource()}',
+              if (r is IntegerLiteral && r.value != 0 || r is DoubleLiteral && r.value != 0.0) 'right: ${r?.toSource()}',
+              if (b is IntegerLiteral && b.value != 0 || b is DoubleLiteral && b.value != 0.0) 'bottom: ${b?.toSource()}',
             ].join(', ')})',
           );
         });
       case (
-          left: final l?,
-          top: final t?,
-          right: final r?,
-          bottom: final b?,
-        ):
+        left: final l?,
+        top: final t?,
+        right: final r?,
+        bottom: final b?,
+      ):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.fromLTRB',
           priority: 80,
@@ -514,18 +495,20 @@ class _ReplaceWithProperConstructor extends DartFix {
     required InstanceCreationExpression node,
     required ChangeReporter reporter,
   }) {
-    final vertical =
-        node.argumentList.findArgumentByName('vertical')?.expression;
-    final horizontal =
-        node.argumentList.findArgumentByName('horizontal')?.expression;
+    final vertical = node.argumentList
+        .findArgumentByName('vertical')
+        ?.expression;
+    final horizontal = node.argumentList
+        .findArgumentByName('horizontal')
+        ?.expression;
 
     switch ((vertical: vertical, horizontal: horizontal)) {
       case (
-          vertical:
-              null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-          horizontal:
-              null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-        ):
+        vertical: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
+        horizontal: null ||
+            IntegerLiteral(value: 0) ||
+            DoubleLiteral(value: 0.0),
+      ):
         return;
       case (
             vertical: final v?,

@@ -12,15 +12,15 @@ import '../../utils/type_checker.dart';
 
 class ProperSuperInitState extends PyramidLintRule {
   ProperSuperInitState({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'super.initState() should be called at the start of the initState method.',
-          correctionMessage:
-              'Try placing super.initState() at the start of the initState method.',
-          url: url,
-          errorSeverity: ErrorSeverity.ERROR,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'super.initState() should be called at the start of the initState method.',
+        correctionMessage:
+            'Try placing super.initState() at the start of the initState method.',
+        url: url,
+        errorSeverity: ErrorSeverity.ERROR,
+      );
 
   static const ruleName = 'proper_super_init_state';
   static const url = '$flutterLintDocUrl/$ruleName';

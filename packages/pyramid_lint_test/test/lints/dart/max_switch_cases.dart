@@ -43,6 +43,6 @@ String fn2(Direction direction) {
     Direction.south => 'south',
     Direction.southWest => 'southWest',
     Direction.west => 'west',
-    Direction.northWest => 'northWest'
+    Direction.northWest => 'northWest',
   };
 }

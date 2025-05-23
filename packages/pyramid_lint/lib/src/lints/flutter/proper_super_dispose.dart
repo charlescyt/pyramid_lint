@@ -12,15 +12,15 @@ import '../../utils/type_checker.dart';
 
 class ProperSuperDispose extends PyramidLintRule {
   ProperSuperDispose({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'super.dispose() should be called at the end of the dispose method.',
-          correctionMessage:
-              'Try placing super.dispose() at the end of the dispose method.',
-          url: url,
-          errorSeverity: ErrorSeverity.ERROR,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'super.dispose() should be called at the end of the dispose method.',
+        correctionMessage:
+            'Try placing super.dispose() at the end of the dispose method.',
+        url: url,
+        errorSeverity: ErrorSeverity.ERROR,
+      );
 
   static const ruleName = 'proper_super_dispose';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -105,9 +105,11 @@ class _PlaceSuperDisposeAtTheEnd extends DartFix {
         );
         final lastStatement = statements.last;
 
-        for (var i = superDisposeStatementIndex;
-            i < statements.length - 1;
-            i++) {
+        for (
+          var i = superDisposeStatementIndex;
+          i < statements.length - 1;
+          i++
+        ) {
           builder.addSimpleReplacement(
             statements[i].sourceRange,
             statements[i + 1].toSource(),

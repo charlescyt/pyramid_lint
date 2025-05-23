@@ -11,13 +11,13 @@ import '../../utils/type_checker.dart';
 
 class UseSpacer extends PyramidLintRule {
   UseSpacer({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
-          correctionMessage: 'Consider replacing Expanded with Spacer.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Using Expanded with an empty {0} is unnecessary.',
+        correctionMessage: 'Consider replacing Expanded with Spacer.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'use_spacer';
   static const url = '$flutterLintDocUrl/$ruleName';
@@ -83,8 +83,9 @@ class _ReplaceWithSpacer extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange
-          .intersects(node.constructorName.sourceRange)) {
+      if (!analysisError.sourceRange.intersects(
+        node.constructorName.sourceRange,
+      )) {
         return;
       }
 

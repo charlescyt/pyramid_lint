@@ -31,15 +31,14 @@ class AvoidNestedIfOptions {
 
 class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
   AvoidNestedIf({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Avoid nested if statements to reduce code complexity.',
-          correctionMessage:
-              'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
-          url: url,
-          errorSeverity: ErrorSeverity.WARNING,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Avoid nested if statements to reduce code complexity.',
+        correctionMessage:
+            'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
+        url: url,
+        errorSeverity: ErrorSeverity.WARNING,
+      );
 
   static const ruleName = 'avoid_nested_if';
   static const url = '$dartLintDocUrl/$ruleName';

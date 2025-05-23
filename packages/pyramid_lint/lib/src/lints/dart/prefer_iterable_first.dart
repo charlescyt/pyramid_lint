@@ -10,13 +10,13 @@ import '../../utils/type_checker.dart';
 
 class PreferIterableFirst extends PyramidLintRule {
   PreferIterableFirst({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: '{0} is more verbose than iterable.first.',
-          correctionMessage: 'Consider replacing {1} with {2}.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: '{0} is more verbose than iterable.first.',
+        correctionMessage: 'Consider replacing {1} with {2}.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_iterable_first';
   static const url = '$dartLintDocUrl/$ruleName';

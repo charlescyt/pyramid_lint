@@ -19,8 +19,8 @@ class AvoidUnusedParametersOptions {
   final List<String>? _ignoredParameters;
 
   List<String> get ignoredParameters => [
-        ...?_ignoredParameters,
-      ];
+    ...?_ignoredParameters,
+  ];
 
   factory AvoidUnusedParametersOptions.fromJson(Json json) {
     final ignoredParameters = switch (json['ignored_parameters']) {
@@ -37,13 +37,13 @@ class AvoidUnusedParametersOptions {
 class AvoidUnusedParameters
     extends PyramidLintRule<AvoidUnusedParametersOptions> {
   AvoidUnusedParameters({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage: 'Unused parameter should be removed.',
-          correctionMessage: 'Consider removing the unused parameter.',
-          url: url,
-          errorSeverity: ErrorSeverity.WARNING,
-        );
+    : super(
+        name: ruleName,
+        problemMessage: 'Unused parameter should be removed.',
+        correctionMessage: 'Consider removing the unused parameter.',
+        url: url,
+        errorSeverity: ErrorSeverity.WARNING,
+      );
 
   static const ruleName = 'avoid_unused_parameters';
   static const url = '$dartLintDocUrl/$ruleName';
@@ -105,8 +105,9 @@ class AvoidUnusedParameters
       final isAbstractClass = classDeclaration.abstractKeyword != null;
       if (isAbstractClass) return;
 
-      final isOverrideMethod =
-          node.metadata.any((e) => e.name.name == 'override');
+      final isOverrideMethod = node.metadata.any(
+        (e) => e.name.name == 'override',
+      );
       if (isOverrideMethod) return;
 
       final parameters = node.parameters?.parameters;

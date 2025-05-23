@@ -14,15 +14,15 @@ import '../../utils/utils.dart';
 
 class PreferIterableEvery extends PyramidLintRule {
   PreferIterableEvery({required super.options})
-      : super(
-          name: ruleName,
-          problemMessage:
-              'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
-          correctionMessage:
-              'Consider using Iterable.every for better readability.',
-          url: url,
-          errorSeverity: ErrorSeverity.INFO,
-        );
+    : super(
+        name: ruleName,
+        problemMessage:
+            'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
+        correctionMessage:
+            'Consider using Iterable.every for better readability.',
+        url: url,
+        errorSeverity: ErrorSeverity.INFO,
+      );
 
   static const ruleName = 'prefer_iterable_every';
   static const url = '$dartLintDocUrl/$ruleName';
@@ -103,10 +103,10 @@ class _ReplaceWithIterableEvery extends DartFix {
 
       switch (expression) {
         case PrefixExpression() ||
-              PrefixedIdentifier() ||
-              SimpleIdentifier() ||
-              MethodInvocation() ||
-              IsExpression():
+            PrefixedIdentifier() ||
+            SimpleIdentifier() ||
+            MethodInvocation() ||
+            IsExpression():
         case BinaryExpression(:final operator)
             when !operator.type.isLogicalOperator:
           break;
@@ -127,8 +127,8 @@ class _ReplaceWithIterableEvery extends DartFix {
               builder.addDeletion(operator.sourceRange);
             }
           case PrefixedIdentifier(:final offset) ||
-                SimpleIdentifier(:final offset) ||
-                MethodInvocation(:final offset):
+              SimpleIdentifier(:final offset) ||
+              MethodInvocation(:final offset):
             builder.addSimpleInsertion(offset, '!');
           case IsExpression(:final isOperator, :final notOperator):
             if (notOperator != null) {
