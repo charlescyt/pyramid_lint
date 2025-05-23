@@ -19,7 +19,7 @@ screenshots:
     path: screenshots/wrap_with_layout_builder_demo.gif
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
   analyzer: ^7.0.0
