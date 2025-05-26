@@ -6,7 +6,7 @@ class A extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (_, __) {
+      builder: (_, _) {
         return const Center(
           child: Placeholder(),
         );

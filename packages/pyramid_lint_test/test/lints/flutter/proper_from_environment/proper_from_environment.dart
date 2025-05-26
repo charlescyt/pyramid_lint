@@ -1,4 +1,4 @@
-// ignore_for_file: do_not_use_environment, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors
 
 // expect_lint: proper_from_environment
 final boolean = bool.fromEnvironment('bool');

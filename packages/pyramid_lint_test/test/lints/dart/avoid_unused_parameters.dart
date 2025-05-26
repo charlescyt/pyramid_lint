@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, avoid_empty_blocks, avoid_print
+// ignore_for_file: avoid_empty_blocks, avoid_print
 
 void function1(String s) {
   print(s);
