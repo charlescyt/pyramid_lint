@@ -4,12 +4,16 @@
 
 ### Added
 
-- Assist: `convert_to_for_in_iterable_indexed_loop`.
-- Lint: `specify_icon_button_tooltip`.
+- Assist: `convert_to_for_in_iterable_indexed_loop`. ([#55](https://github.com/charlescyt/pyramid_lint/pull/55))
+- Lint: `specify_icon_button_tooltip`. ([#56](https://github.com/charlescyt/pyramid_lint/pull/56))
+
+### Changed
+
+- Require Dart 3.8.0.
 
 ### Fixed
 
-- Fix `prefer_const_constructor_declarations` to support constructors with super parameters.
+- Fix `prefer_const_constructor_declarations` to support constructors with super parameters. ([#58](https://github.com/charlescyt/pyramid_lint/pull/58))
 
 ## [2.0.3] - 2024-03-15
 
