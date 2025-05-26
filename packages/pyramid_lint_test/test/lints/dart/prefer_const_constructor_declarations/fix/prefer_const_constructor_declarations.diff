@@ -16,15 +16,15 @@ Diff for file `test/lints/dart/prefer_const_constructor_declarations/fix/prefer_
 ```
 
   // expect_lint: prefer_const_constructor_declarations
--   Point.origin()
-+   const Point.origin()
-      : x = 0.0,
-        y = 0.0;
+-   Point.origin() : x = 0.0, y = 0.0;
++   const Point.origin() : x = 0.0, y = 0.0;
+}
+
 ```
 ---
 Message: `Add const keyword`
 Priority: 80
-Diff for file `test/lints/dart/prefer_const_constructor_declarations/fix/prefer_const_constructor_declarations.dart:16`:
+Diff for file `test/lints/dart/prefer_const_constructor_declarations/fix/prefer_const_constructor_declarations.dart:14`:
 ```
 class A {
   // expect_lint: prefer_const_constructor_declarations

@@ -2,7 +2,7 @@ Message: `Wrap with LayoutBuilder`
 Priority: 29
 Diff for file `test/assists/flutter/wrap_with_layout_builder/wrap_with_layout_builder.dart:11`:
 ```
-      builder: (_, __) {
+      builder: (_, _) {
         return const Center(
 -           child: Placeholder(),
 +           child: LayoutBuilder(builder: (context, constraints) { return Placeholder(); },),
