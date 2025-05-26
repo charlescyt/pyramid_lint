@@ -22,7 +22,7 @@ environment:
   sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
-  analyzer: ^7.0.0
+  analyzer: ">=7.0.0 <7.4.0" # Temporary constraint to avoid analyzer 7.4.0 https://github.com/dart-lang/sdk/issues/60784
   analyzer_plugin: ^0.13.0
   collection: ^1.17.1
   custom_lint_builder: ^0.7.5
