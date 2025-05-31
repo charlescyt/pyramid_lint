@@ -18,6 +18,7 @@
 ### Removed
 
 - Remove `wrap_with_expanded` assist in favor of the built-in one introduced in Dart 3.7.0.
+- Remove `wrap_with_value_listenable_builder` assist in favor of the built-in one introduced in Dart 3.8.0.
 
 ## [2.0.3] - 2024-03-15
 
