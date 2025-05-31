@@ -8,9 +8,10 @@
 
 **DO** use `_` for unused callback parameters.
 
-<Info>If the function has multiple unused parameters, use additional underscores such as `__`, `___`.</Info>
+<Info> Since Dart 3.7.0, local parameters named `_` can be declared multiple times without collisions.</Info>
 
-see: [effective-dart](https://dart.dev/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters)
+see: [effective-dart](https://dart.dev/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters) and
+[wildcard variables](https://dart.dev/language/variables#wildcard-variables)
 
 ```dart title="Bad"
 itemBuilder: (context, index) {
