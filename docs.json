@@ -285,10 +285,6 @@
         {
           "title": "wrap_with_stack",
           "href": "/flutter-assists/wrap_with_stack"
-        },
-        {
-          "title": "wrap_with_value_listenable_builder",
-          "href": "/flutter-assists/wrap_with_value_listenable_builder"
         }
       ]
     },

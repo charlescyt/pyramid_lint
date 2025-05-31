@@ -8,7 +8,6 @@ import 'src/assists/flutter/wrap_all_children_with_expanded.dart';
 import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_listenable_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
-import 'src/assists/flutter/wrap_with_value_listenable_builder.dart';
 import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/lints/dart/always_specify_parameter_names.dart';
 import 'src/lints/dart/avoid_abbreviations_in_doc_comments.dart';
@@ -124,6 +123,5 @@ class _PyramidLinter extends PluginBase {
     WrapWithLayoutBuilder(),
     WrapWithListenableBuilder(),
     WrapWithStack(),
-    WrapWithValueListenableBuilder(),
   ];
 }
