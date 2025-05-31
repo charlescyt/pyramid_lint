@@ -15,6 +15,10 @@
 
 - Fix `prefer_const_constructor_declarations` to support constructors with super parameters. ([#58](https://github.com/charlescyt/pyramid_lint/pull/58))
 
+### Removed
+
+- Remove `wrap_with_expanded` assist in favor of the built-in one introduced in Dart 3.7.0.
+
 ## [2.0.3] - 2024-03-15
 
 ### Changed
