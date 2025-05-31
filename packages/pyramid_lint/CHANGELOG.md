@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [2.1.0] - 2025-05-31
 
 ### Added
 
@@ -17,16 +17,16 @@
 
 ### Removed
 
-- Remove `wrap_with_expanded` assist in favor of the built-in one introduced in Dart 3.7.0.
-- Remove `wrap_with_value_listenable_builder` assist in favor of the built-in one introduced in Dart 3.8.0.
+- Remove `wrap_with_expanded` assist in favor of the built-in one introduced in Dart 3.7.0. ([#60](https://github.com/charlescyt/pyramid_lint/pull/60))
+- Remove `wrap_with_value_listenable_builder` assist in favor of the built-in one introduced in Dart 3.8.0. ([#61](https://github.com/charlescyt/pyramid_lint/pull/61))
 
-## [2.0.3] - 2024-03-15
+## [2.0.3] - 2025-03-15
 
 ### Changed
 
 - Bump the minimum `analyzer_plugin` version to 0.13.0. ([#52](https://github.com/charlescyt/pyramid_lint/pull/52) thanks to [jogboms])
 
-## [2.0.2] - 2024-02-05
+## [2.0.2] - 2025-02-05
 
 ### Changed
 
@@ -245,7 +245,7 @@
 [imsamgarg]: https://github.com/imsamgarg
 [jogboms]: https://github.com/jogboms
 
-[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.3...HEAD
+[2.1.0]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.0...v2.0.1
