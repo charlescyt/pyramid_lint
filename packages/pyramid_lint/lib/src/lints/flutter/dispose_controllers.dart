@@ -60,7 +60,7 @@ class DisposeControllers extends PyramidLintRule {
 
       final controllerDeclarations = node.fields.variables.where(
         (e) {
-          final variableType = e.declaredElement?.type;
+          final variableType = e.declaredFragment?.element.type;
           if (variableType == null) return false;
           return disposableControllerChecker.isAssignableFromType(variableType);
         },

@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
 import 'package:analyzer/source/line_info.dart';
 
 import 'type_checker.dart';
@@ -24,17 +24,17 @@ TokenType? getInvertedOperator(TokenType operator) {
   };
 }
 
-AstNode? getAstNodeFromElement(Element element) {
+AstNode? getAstNodeFromElement(Element2 element) {
   final session = element.session;
   if (session == null) return null;
 
-  final elementLibrary = element.library;
+  final elementLibrary = element.library2;
   if (elementLibrary == null) return null;
 
   final parsedLibraryResult =
-      session.getParsedLibraryByElement(elementLibrary) as ParsedLibraryResult;
-  final elementDeclarationResult = parsedLibraryResult.getElementDeclaration(
-    element,
+      session.getParsedLibraryByElement2(elementLibrary) as ParsedLibraryResult;
+  final elementDeclarationResult = parsedLibraryResult.getFragmentDeclaration(
+    element.firstFragment,
   );
 
   return elementDeclarationResult?.node;

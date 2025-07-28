@@ -1,5 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -78,11 +78,11 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
         return;
       }
 
-      final prefixElement = node.prefix.staticElement;
+      final prefixElement = node.prefix.element;
 
       // Lint should only work if the MediaQueryData variable is declared locally
       // and initialized with MediaQuery.of(context).
-      if (prefixElement is! LocalVariableElement) return;
+      if (prefixElement is! LocalVariableElement2) return;
 
       final prefixNode = getAstNodeFromElement(prefixElement);
       if (prefixNode is! VariableDeclaration) return;
@@ -112,11 +112,11 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
       }
 
       if (target is SimpleIdentifier) {
-        final prefixElement = target.staticElement;
+        final prefixElement = target.element;
 
         // Lint should only work if the MediaQueryData variable is declared locally
         // and initialized with MediaQuery.maybeOf(context).
-        if (prefixElement is! LocalVariableElement) return;
+        if (prefixElement is! LocalVariableElement2) return;
 
         final prefixNode = getAstNodeFromElement(prefixElement);
         if (prefixNode is! VariableDeclaration) return;
@@ -171,8 +171,8 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     context.registry.addPrefixedIdentifier((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final prefixElement = node.prefix.staticElement;
-      if (prefixElement is! LocalVariableElement) return;
+      final prefixElement = node.prefix.element;
+      if (prefixElement is! LocalVariableElement2) return;
 
       final prefixNode = getAstNodeFromElement(prefixElement);
       if (prefixNode is! VariableDeclaration) return;
@@ -215,11 +215,11 @@ class _ReplaceWithDedicatedMethod extends DartFix {
       final target = node.realTarget;
 
       if (target is SimpleIdentifier) {
-        final targetElement = target.staticElement;
+        final targetElement = target.element;
 
         // Lint should only work if the MediaQueryData variable is declared locally
         // and initialized with MediaQuery.maybeOf(context).
-        if (targetElement is! LocalVariableElement) return;
+        if (targetElement is! LocalVariableElement2) return;
 
         final prefixNode = getAstNodeFromElement(targetElement);
         if (prefixNode is! VariableDeclaration) return;
