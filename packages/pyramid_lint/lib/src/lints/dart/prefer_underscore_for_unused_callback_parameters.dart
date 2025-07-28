@@ -48,16 +48,16 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
       if (parent is FunctionDeclaration) return;
 
       for (final parameter in parameters) {
-        final parameterElement = parameter.declaredElement;
+        final parameterElement = parameter.declaredFragment?.element;
         if (parameterElement == null) continue;
 
-        final parameterName = parameterElement.name;
-        if (parameterName.containsOnlyUnderscores) continue;
+        final parameterName = parameterElement.name3;
+        if (parameterName?.containsOnlyUnderscores == true) continue;
 
         var isParameterReferenced = false;
         final visitor = RecursiveSimpleIdentifierVisitor(
           onVisitSimpleIdentifier: (node) {
-            if (node.staticElement == parameterElement) {
+            if (node.element == parameterElement) {
               isParameterReferenced = true;
             }
           },
@@ -67,7 +67,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
 
         if (isParameterReferenced) continue;
 
-        reporter.atElement(parameterElement, code);
+        reporter.atElement2(parameterElement, code);
       }
     });
   }

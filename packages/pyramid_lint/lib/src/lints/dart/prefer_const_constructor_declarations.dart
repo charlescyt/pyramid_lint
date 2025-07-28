@@ -84,7 +84,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   }
 
   bool _isSuperConstructorConst(ConstructorDeclaration node) {
-    final superConstructor = node.declaredElement?.superConstructor;
+    final superConstructor = node.declaredFragment?.element.superConstructor2;
     return superConstructor?.isConst == true;
   }
 
@@ -92,7 +92,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
     ConstructorDeclaration node,
   ) {
     return node.initializers.redirectingConstructorInvocations.every(
-      (e) => e.staticElement?.isConst == true,
+      (e) => e.element?.isConst == true,
     );
   }
 
@@ -100,7 +100,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
     ConstructorDeclaration node,
   ) {
     return node.initializers.superConstructorInvocations.every(
-      (e) => e.staticElement?.isConst == true,
+      (e) => e.element?.isConst == true,
     );
   }
 

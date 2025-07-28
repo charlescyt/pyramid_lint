@@ -81,12 +81,12 @@ class AvoidUnusedParameters
           continue;
         }
 
-        final parameterElement = parameter.declaredElement;
+        final parameterElement = parameter.declaredFragment?.element;
         if (parameterElement == null) continue;
 
         var isParameterReferenced = false;
         for (final simpleIdentifier in simpleIdentifiers) {
-          if (simpleIdentifier.staticElement == parameterElement) {
+          if (simpleIdentifier.element == parameterElement) {
             isParameterReferenced = true;
             break;
           }
@@ -122,12 +122,12 @@ class AvoidUnusedParameters
       body.accept(visitor);
 
       for (final parameter in parameters) {
-        final parameterElement = parameter.declaredElement;
+        final parameterElement = parameter.declaredFragment?.element;
         if (parameterElement == null) continue;
 
         var isParameterReferenced = false;
         for (final simpleIdentifier in simpleIdentifiers) {
-          if (simpleIdentifier.staticElement == parameterElement) {
+          if (simpleIdentifier.element == parameterElement) {
             isParameterReferenced = true;
             break;
           }

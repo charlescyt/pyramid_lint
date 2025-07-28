@@ -67,10 +67,18 @@ class AvoidReturningWidgets
     if (!context.pubspec.isFlutterProject) return;
 
     context.registry.addMethodDeclaration((node) {
-      final element = node.declaredElement;
-      if (element?.enclosingElement3.kind == ElementKind.EXTENSION) return;
-      if (element?.hasOverride == true) return;
-      if (element?.isStatic == true) return;
+      final element = node.declaredFragment?.element;
+      if (element == null) return;
+      final isExtensionMethod =
+          node.declaredFragment?.enclosingFragment?.element.kind ==
+          ElementKind.EXTENSION;
+      if (isExtensionMethod) return;
+
+      final isOverride = node.metadata.any(
+        (e) => e.elementAnnotation?.isOverride == true,
+      );
+      if (isOverride) return;
+      if (element.isStatic) return;
 
       final returnType = node.returnType?.type;
       if (returnType == null ||

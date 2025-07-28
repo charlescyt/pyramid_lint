@@ -100,8 +100,10 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final returnType = node.returnType?.type;
       if (returnType == null || !returnType.isDartCoreBool) return;
 
-      final element = node.declaredElement;
-      if (element == null || element.hasOverride) return;
+      final isOverride = node.metadata.any(
+        (e) => e.elementAnnotation?.isOverride == true,
+      );
+      if (isOverride) return;
 
       final name = node.name.lexeme;
       if (isNameValid(name)) return;
