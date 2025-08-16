@@ -1,10 +1,10 @@
 # Changelog
 
-## [Unreleased]
+## [2.3.0] - 2025-08-17
 
 ### Changed
 
-- Bump the minimum `analyzer` version to 7.5.0.
+- Bump the minimum `analyzer` version to 7.5.0. ([#71](https://github.com/charlescyt/pyramid_lint/pull/71))
 
 ## [2.2.0] - 2025-07-28
 
@@ -257,7 +257,7 @@
 [imsamgarg]: https://github.com/imsamgarg
 [jogboms]: https://github.com/jogboms
 
-[Unreleased]: https://github.com/charlescyt/pyramid_lint/compare/v2.2.0...HEAD
+[2.3.0]: https://github.com/charlescyt/pyramid_lint/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/charlescyt/pyramid_lint/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/charlescyt/pyramid_lint/compare/v2.0.2...v2.0.3
