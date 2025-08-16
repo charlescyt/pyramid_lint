@@ -48,8 +48,7 @@ File writeToTemporaryFile(String content) {
 void testGolden(
   String description,
   String fileName,
-  Future<Iterable<PrioritizedSourceChange>> Function(ResolvedUnitResult unit)
-  body, {
+  Future<Iterable<PrioritizedSourceChange>> Function(ResolvedUnitResult unit) body, {
   required String sourcePath,
 }) {
   test(description, () async {

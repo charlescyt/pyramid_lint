@@ -11,16 +11,12 @@ void main() {
   testGolden(
     'Test for prefer_async_callback fix',
     'lints/flutter/prefer_async_callback/fix/prefer_async_callback.diff',
-    sourcePath:
-        'test/lints/flutter/prefer_async_callback/fix/prefer_async_callback.dart',
+    sourcePath: 'test/lints/flutter/prefer_async_callback/fix/prefer_async_callback.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferAsyncCallback(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(2));

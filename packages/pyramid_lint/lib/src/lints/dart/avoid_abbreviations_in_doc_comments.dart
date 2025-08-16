@@ -14,19 +14,11 @@ class AvoidAbbreviationsInDocCommentsOptions {
     List<String>? abbreviations,
   }) : _abbreviations = abbreviations;
 
-  static const defaultAbbreviations = [
-    'e.g.',
-    'i.e.',
-    'etc.',
-    'et al.',
-  ];
+  static const defaultAbbreviations = ['e.g.', 'i.e.', 'etc.', 'et al.'];
 
   final List<String>? _abbreviations;
 
-  List<String> get abbreviations => [
-    ...defaultAbbreviations,
-    ...?_abbreviations,
-  ];
+  List<String> get abbreviations => [...defaultAbbreviations, ...?_abbreviations];
 
   factory AvoidAbbreviationsInDocCommentsOptions.fromJson(Json json) {
     final abbreviations = switch (json['abbreviations']) {
@@ -34,14 +26,11 @@ class AvoidAbbreviationsInDocCommentsOptions {
       _ => null,
     };
 
-    return AvoidAbbreviationsInDocCommentsOptions(
-      abbreviations: abbreviations,
-    );
+    return AvoidAbbreviationsInDocCommentsOptions(abbreviations: abbreviations);
   }
 }
 
-class AvoidAbbreviationsInDocComments
-    extends PyramidLintRule<AvoidAbbreviationsInDocCommentsOptions> {
+class AvoidAbbreviationsInDocComments extends PyramidLintRule<AvoidAbbreviationsInDocCommentsOptions> {
   AvoidAbbreviationsInDocComments({required super.options})
     : super(
         name: ruleName,
@@ -56,9 +45,7 @@ class AvoidAbbreviationsInDocComments
   static const ruleName = 'avoid_abbreviations_in_doc_comments';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidAbbreviationsInDocComments.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AvoidAbbreviationsInDocComments.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
     final options = PyramidLintRuleOptions.fromJson(
       json: json,
@@ -84,12 +71,7 @@ class AvoidAbbreviationsInDocComments
           if (!commentText.contains(abbreviation)) continue;
 
           final index = commentText.indexOf(abbreviation);
-
-          reporter.atOffset(
-            offset: comment.offset + index,
-            length: abbreviation.length,
-            errorCode: code,
-          );
+          reporter.atOffset(offset: comment.offset + index, length: abbreviation.length, errorCode: code);
         }
       }
     });

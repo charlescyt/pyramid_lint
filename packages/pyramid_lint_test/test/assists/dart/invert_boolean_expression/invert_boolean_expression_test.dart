@@ -8,8 +8,7 @@ void main() {
   testGolden(
     'Invert boolean expression',
     'assists/dart/invert_boolean_expression/invert_boolean_expression.diff',
-    sourcePath:
-        'test/assists/dart/invert_boolean_expression/invert_boolean_expression.dart',
+    sourcePath: 'test/assists/dart/invert_boolean_expression/invert_boolean_expression.dart',
     (result) async {
       final assist = InvertBooleanExpression();
 

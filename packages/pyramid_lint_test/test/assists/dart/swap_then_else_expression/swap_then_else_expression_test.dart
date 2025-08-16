@@ -8,8 +8,7 @@ void main() {
   testGolden(
     'Swap then else expression',
     'assists/dart/swap_then_else_expression/swap_then_else_expression.diff',
-    sourcePath:
-        'test/assists/dart/swap_then_else_expression/swap_then_else_expression.dart',
+    sourcePath: 'test/assists/dart/swap_then_else_expression/swap_then_else_expression.dart',
     (result) async {
       final assist = SwapThenElseExpression();
 

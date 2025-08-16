@@ -12,8 +12,7 @@ void main() {
   testGolden(
     'Wrap with ListenableBuilder',
     'assists/flutter/wrap_with_listenable_builder/wrap_with_listenable_builder.diff',
-    sourcePath:
-        'test/assists/flutter/wrap_with_listenable_builder/wrap_with_listenable_builder.dart',
+    sourcePath: 'test/assists/flutter/wrap_with_listenable_builder/wrap_with_listenable_builder.dart',
     (result) async {
       final assist = WrapWithListenableBuilder();
       final pubspec = Pubspec(
@@ -24,18 +23,10 @@ void main() {
 
       final changes = [
         // Column
-        ...await assist.testRun(
-          result,
-          const SourceRange(565, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(555, 0), pubspec: pubspec),
 
         // TextFormField
-        ...await assist.testRun(
-          result,
-          const SourceRange(667, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(657, 0), pubspec: pubspec),
       ];
 
       expect(changes, hasLength(2));

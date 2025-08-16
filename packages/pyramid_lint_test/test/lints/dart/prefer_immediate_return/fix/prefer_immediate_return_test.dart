@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for prefer_immediate_return fix',
     'lints/dart/prefer_immediate_return/fix/prefer_immediate_return.diff',
-    sourcePath:
-        'test/lints/dart/prefer_immediate_return/fix/prefer_immediate_return.dart',
+    sourcePath: 'test/lints/dart/prefer_immediate_return/fix/prefer_immediate_return.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferImmediateReturn(options: options);

@@ -71,10 +71,7 @@ class UseEdgeInsetsZero extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          'EdgeInsets.zero',
-        );
+        builder.addSimpleReplacement(node.sourceRange, 'EdgeInsets.zero');
       });
     });
   }

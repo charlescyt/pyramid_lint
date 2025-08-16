@@ -24,10 +24,7 @@ class PreferIterableLast extends PyramidLintRule {
 
   factory PreferIterableLast.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferIterableLast(options: options);
   }
@@ -45,8 +42,7 @@ class PreferIterableLast extends PyramidLintRule {
       }
 
       final indexExpression = node.index;
-      if (indexExpression is! BinaryExpression ||
-          indexExpression.operator.type != TokenType.MINUS) {
+      if (indexExpression is! BinaryExpression || indexExpression.operator.type != TokenType.MINUS) {
         return;
       }
 
@@ -65,11 +61,7 @@ class PreferIterableLast extends PyramidLintRule {
       reporter.atNode(
         node,
         code,
-        arguments: [
-          'list[list.length - 1]',
-          node.toSource(),
-          '${node.realTarget.toSource()}.last',
-        ],
+        arguments: ['list[list.length - 1]', node.toSource(), '${node.realTarget.toSource()}.last'],
       );
     });
 
@@ -79,8 +71,7 @@ class PreferIterableLast extends PyramidLintRule {
       if (node.argumentList.arguments.length != 1) return;
 
       final argument = node.argumentList.arguments.first;
-      if (argument is! BinaryExpression ||
-          argument.operator.type != TokenType.MINUS) {
+      if (argument is! BinaryExpression || argument.operator.type != TokenType.MINUS) {
         return;
       }
 
@@ -99,11 +90,7 @@ class PreferIterableLast extends PyramidLintRule {
       reporter.atNode(
         node,
         code,
-        arguments: [
-          'iterable.elementAt(iterable.length - 1)',
-          node.toSource(),
-          '${node.realTarget?.toSource()}.last',
-        ],
+        arguments: ['iterable.elementAt(iterable.length - 1)', node.toSource(), '${node.realTarget?.toSource()}.last'],
       );
     });
   }
@@ -131,10 +118,7 @@ class _ReplaceWithIterableLast extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         final replacement = node.isCascaded ? 'last' : '.last';
-        builder.addSimpleReplacement(
-          range.startEnd(node.leftBracket, node.rightBracket),
-          replacement,
-        );
+        builder.addSimpleReplacement(range.startEnd(node.leftBracket, node.rightBracket), replacement);
       });
     });
 
@@ -147,10 +131,7 @@ class _ReplaceWithIterableLast extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          range.startEnd(node.methodName, node.argumentList),
-          'last',
-        );
+        builder.addSimpleReplacement(range.startEnd(node.methodName, node.argumentList), 'last');
       });
     });
   }

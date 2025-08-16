@@ -11,8 +11,7 @@ class NoSelfComparisons extends PyramidLintRule {
     : super(
         name: ruleName,
         problemMessage: 'Self comparison is usually a mistake.',
-        correctionMessage:
-            'Consider changing the comparison to something else.',
+        correctionMessage: 'Consider changing the comparison to something else.',
         url: url,
         errorSeverity: ErrorSeverity.WARNING,
       );
@@ -22,10 +21,7 @@ class NoSelfComparisons extends PyramidLintRule {
 
   factory NoSelfComparisons.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return NoSelfComparisons(options: options);
   }

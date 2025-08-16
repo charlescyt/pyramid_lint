@@ -34,8 +34,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
     : super(
         name: ruleName,
         problemMessage: 'Avoid nested if statements to reduce code complexity.',
-        correctionMessage:
-            'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
+        correctionMessage: 'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
         url: url,
         errorSeverity: ErrorSeverity.WARNING,
       );
@@ -45,10 +44,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
 
   factory AvoidNestedIf.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: AvoidNestedIfOptions.fromJson,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: AvoidNestedIfOptions.fromJson);
 
     return AvoidNestedIf(options: options);
   }
@@ -61,9 +57,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
   ) {
     context.registry.addIfStatement((node) {
       final ifStatements = <IfStatement>[];
-      final visitor = RecursiveIfStatementVisitor(
-        onVisitIfStatement: ifStatements.add,
-      );
+      final visitor = RecursiveIfStatementVisitor(onVisitIfStatement: ifStatements.add);
       node.thenStatement.visitChildren(visitor);
 
       if (ifStatements.length < options.params.maxNestingLevel) return;

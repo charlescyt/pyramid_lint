@@ -21,10 +21,7 @@ class WrapAllChildrenWithExpanded extends DartAssist {
     context.registry.addInstanceCreationExpression((node) {
       final sourceRange = switch (node.keyword) {
         null => node.constructorName.sourceRange,
-        final keyword => range.startEnd(
-          keyword,
-          node.constructorName,
-        ),
+        final keyword => range.startEnd(keyword, node.constructorName),
       };
       if (!sourceRange.covers(target)) return;
 
@@ -37,15 +34,11 @@ class WrapAllChildrenWithExpanded extends DartAssist {
       final childrenExpression = childrenArg.expression;
       if (childrenExpression is! ListLiteral) return;
 
-      final childrenElements = childrenExpression.elements
-          .whereType<InstanceCreationExpression>();
+      final childrenElements = childrenExpression.elements.whereType<InstanceCreationExpression>();
 
       final expandableChildren = childrenElements
           .where((e) => e.staticType != null)
-          .whereNot(
-            (e) =>
-                expandedOrFlexibleOrSpacerChecker.isExactlyType(e.staticType!),
-          );
+          .whereNot((e) => expandedOrFlexibleOrSpacerChecker.isExactlyType(e.staticType!));
       if (expandableChildren.isEmpty) return;
 
       final changeBuilder = reporter.createChangeBuilder(
@@ -55,15 +48,8 @@ class WrapAllChildrenWithExpanded extends DartAssist {
 
       changeBuilder.addDartFileEdit((builder) {
         for (final child in expandableChildren) {
-          builder.addSimpleInsertion(
-            child.offset,
-            'Expanded(child: ',
-          );
-
-          builder.addSimpleInsertion(
-            child.end,
-            ')',
-          );
+          builder.addSimpleInsertion(child.offset, 'Expanded(child: ');
+          builder.addSimpleInsertion(child.end, ')');
         }
       });
     });

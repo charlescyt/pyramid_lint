@@ -12,8 +12,7 @@ class PreferVoidCallback extends PyramidLintRule<void> {
     : super(
         name: ruleName,
         problemMessage: 'There is a typedef VoidCallback defined in flutter.',
-        correctionMessage:
-            'Consider using VoidCallback instead of void Function().',
+        correctionMessage: 'Consider using VoidCallback instead of void Function().',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -23,10 +22,7 @@ class PreferVoidCallback extends PyramidLintRule<void> {
 
   factory PreferVoidCallback.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferVoidCallback(options: options);
   }
@@ -69,9 +65,7 @@ class _ReplaceWithVoidCallBack extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final replacement = node.question == null
-          ? 'VoidCallback'
-          : 'VoidCallback?';
+      final replacement = node.question == null ? 'VoidCallback' : 'VoidCallback?';
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with $replacement',
@@ -79,10 +73,7 @@ class _ReplaceWithVoidCallBack extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          replacement,
-        );
+        builder.addSimpleReplacement(node.sourceRange, replacement);
       });
     });
   }

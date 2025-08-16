@@ -12,25 +12,14 @@ void main() {
     sourcePath: 'test/assists/flutter/wrap_with_stack/wrap_with_stack.dart',
     (result) async {
       final assist = WrapWithStack();
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final changes = [
         // Column
-        ...await assist.testRun(
-          result,
-          const SourceRange(170, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(170, 0), pubspec: pubspec),
 
         // Text
-        ...await assist.testRun(
-          result,
-          const SourceRange(203, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(203, 0), pubspec: pubspec),
       ];
 
       expect(changes, hasLength(2));

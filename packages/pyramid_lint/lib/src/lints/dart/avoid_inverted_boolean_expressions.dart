@@ -13,8 +13,7 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
   AvoidInvertedBooleanExpressions({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Using inverted boolean expression decreases code readability.',
+        problemMessage: 'Using inverted boolean expression decreases code readability.',
         correctionMessage: 'Consider using {0} instead.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
@@ -23,14 +22,9 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
   static const ruleName = 'avoid_inverted_boolean_expressions';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidInvertedBooleanExpressions.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AvoidInvertedBooleanExpressions.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidInvertedBooleanExpressions(options: options);
   }
@@ -73,21 +67,13 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
             '${operandExpression.rightOperand.toSource()}'
             ' ? ${parent.elseExpression.toSource()} : ${parent.thenExpression.toSource()}';
 
-        reporter.atNode(
-          parent,
-          code,
-          arguments: [correctExpression],
-        );
+        reporter.atNode(parent, code, arguments: [correctExpression]);
       } else {
         correctExpression =
             '${operandExpression.leftOperand.toSource()} ${invertedOperator.lexeme} '
             '${operandExpression.rightOperand.toSource()}';
 
-        reporter.atNode(
-          node,
-          code,
-          arguments: [correctExpression],
-        );
+        reporter.atNode(node, code, arguments: [correctExpression]);
       }
     });
   }

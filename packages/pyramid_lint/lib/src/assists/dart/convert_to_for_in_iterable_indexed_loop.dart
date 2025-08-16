@@ -49,9 +49,7 @@ class ConvertToForInIterableIndexedLoop extends DartAssist {
           if (loopVariableType != null) {
             builder.write('${loopVariableType.toSource()} ');
           }
-          builder.write(
-            '${loopVariable.name}) in ${iterable.toSource()}.indexed',
-          );
+          builder.write('${loopVariable.name}) in ${iterable.toSource()}.indexed');
         });
       });
     });

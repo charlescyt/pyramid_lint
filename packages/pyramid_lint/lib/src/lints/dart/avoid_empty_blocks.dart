@@ -10,10 +10,8 @@ class AvoidEmptyBlocks extends PyramidLintRule {
   AvoidEmptyBlocks({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Empty block usually indicates a missing implementation.',
-        correctionMessage:
-            'Consider adding an implementation or a TODO comment.',
+        problemMessage: 'Empty block usually indicates a missing implementation.',
+        correctionMessage: 'Consider adding an implementation or a TODO comment.',
         url: url,
         errorSeverity: ErrorSeverity.WARNING,
       );
@@ -23,10 +21,7 @@ class AvoidEmptyBlocks extends PyramidLintRule {
 
   factory AvoidEmptyBlocks.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidEmptyBlocks(options: options);
   }

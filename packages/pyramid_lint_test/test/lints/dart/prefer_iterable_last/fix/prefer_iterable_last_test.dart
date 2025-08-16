@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for prefer_iterable_last fix',
     'lints/dart/prefer_iterable_last/fix/prefer_iterable_last.diff',
-    sourcePath:
-        'test/lints/dart/prefer_iterable_last/fix/prefer_iterable_last.dart',
+    sourcePath: 'test/lints/dart/prefer_iterable_last/fix/prefer_iterable_last.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferIterableLast(options: options);

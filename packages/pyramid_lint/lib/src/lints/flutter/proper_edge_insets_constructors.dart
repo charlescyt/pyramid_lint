@@ -25,10 +25,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
 
   factory ProperEdgeInsetsConstructors.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ProperEdgeInsetsConstructors(options: options);
   }
@@ -60,10 +57,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     });
   }
 
-  void handleFromLTRB({
-    required InstanceCreationExpression node,
-    required ErrorReporter reporter,
-  }) {
+  void handleFromLTRB({required InstanceCreationExpression node, required ErrorReporter reporter}) {
     final arguments = node.argumentList.positionalArguments.toList();
     if (arguments.length != 4) return;
 
@@ -80,26 +74,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
         bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
       ):
         return;
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
-          when l.toSource() == t.toSource() &&
-              t.toSource() == r.toSource() &&
-              r.toSource() == b.toSource():
-        reporter.atNode(
-          node,
-          code,
-          arguments: ['EdgeInsets.all(${l.toSource()})'],
-        );
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
+      case (left: final l, top: final t, right: final r, bottom: final b)
+          when l.toSource() == t.toSource() && t.toSource() == r.toSource() && r.toSource() == b.toSource():
+        reporter.atNode(node, code, arguments: ['EdgeInsets.all(${l.toSource()})']);
+      case (left: final l, top: final t, right: final r, bottom: final b)
           when l.toSource() == r.toSource() && t.toSource() == b.toSource():
         reporter.atNode(
           node,
@@ -111,13 +89,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             ].join(', ')})',
           ],
         );
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
-          when [l, t, r, b].any(isZeroExpression):
+      case (left: final l, top: final t, right: final r, bottom: final b) when [l, t, r, b].any(isZeroExpression):
         reporter.atNode(
           node,
           code,
@@ -133,10 +105,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     }
   }
 
-  void handleOnly({
-    required InstanceCreationExpression node,
-    required ErrorReporter reporter,
-  }) {
+  void handleOnly({required InstanceCreationExpression node, required ErrorReporter reporter}) {
     final left = node.argumentList.findArgumentByName('left')?.expression;
     final top = node.argumentList.findArgumentByName('top')?.expression;
     final right = node.argumentList.findArgumentByName('right')?.expression;
@@ -150,28 +119,10 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
         bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
       ):
         return;
-      case (
-            left: final l?,
-            top: final t?,
-            right: final r?,
-            bottom: final b?,
-          )
-          when l.toSource() == r.toSource() &&
-              r.toSource() == b.toSource() &&
-              t.toSource() == b.toSource():
-        reporter.atNode(
-          node,
-          code,
-          arguments: [
-            'EdgeInsets.all(${l.toSource()})',
-          ],
-        );
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
+      case (left: final l?, top: final t?, right: final r?, bottom: final b?)
+          when l.toSource() == r.toSource() && r.toSource() == b.toSource() && t.toSource() == b.toSource():
+        reporter.atNode(node, code, arguments: ['EdgeInsets.all(${l.toSource()})']);
+      case (left: final l, top: final t, right: final r, bottom: final b)
           when l?.toSource() == r?.toSource() && t?.toSource() == b?.toSource():
         reporter.atNode(
           node,
@@ -183,17 +134,8 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             ].join(', ')})',
           ],
         );
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
-          when [l, t, r, b].any(
-            (e) =>
-                (e is IntegerLiteral && e.value == 0) ||
-                (e is DoubleLiteral && e.value == 0.0),
-          ):
+      case (left: final l, top: final t, right: final r, bottom: final b)
+          when [l, t, r, b].any((e) => (e is IntegerLiteral && e.value == 0) || (e is DoubleLiteral && e.value == 0.0)):
         reporter.atNode(
           node,
           code,
@@ -206,61 +148,30 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
             ].join(', ')})',
           ],
         );
-      case (
-        left: final l?,
-        top: final t?,
-        right: final r?,
-        bottom: final b?,
-      ):
+      case (left: final l?, top: final t?, right: final r?, bottom: final b?):
         reporter.atNode(
           node,
           code,
           arguments: [
-            'EdgeInsets.fromLTRB(${[
-              l.toSource(),
-              t.toSource(),
-              r.toSource(),
-              b.toSource(),
-            ].join(', ')})',
+            'EdgeInsets.fromLTRB(${[l.toSource(), t.toSource(), r.toSource(), b.toSource()].join(', ')})',
           ],
         );
     }
   }
 
-  void handleSymmetric({
-    required InstanceCreationExpression node,
-    required ErrorReporter reporter,
-  }) {
-    final vertical = node.argumentList
-        .findArgumentByName('vertical')
-        ?.expression;
-    final horizontal = node.argumentList
-        .findArgumentByName('horizontal')
-        ?.expression;
+  void handleSymmetric({required InstanceCreationExpression node, required ErrorReporter reporter}) {
+    final vertical = node.argumentList.findArgumentByName('vertical')?.expression;
+    final horizontal = node.argumentList.findArgumentByName('horizontal')?.expression;
 
     switch ((vertical: vertical, horizontal: horizontal)) {
       case (
         vertical: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-        horizontal: null ||
-            IntegerLiteral(value: 0) ||
-            DoubleLiteral(value: 0.0),
+        horizontal: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
       ):
         return;
-      case (
-            vertical: final v?,
-            horizontal: final h?,
-          )
-          when v.toSource() == h.toSource():
-        reporter.atNode(
-          node,
-          code,
-          arguments: ['EdgeInsets.all(${v.toSource()})'],
-        );
-      case (
-            vertical: final v?,
-            horizontal: final h?,
-          )
-          when [v, h].any(isZeroExpression):
+      case (vertical: final v?, horizontal: final h?) when v.toSource() == h.toSource():
+        reporter.atNode(node, code, arguments: ['EdgeInsets.all(${v.toSource()})']);
+      case (vertical: final v?, horizontal: final h?) when [v, h].any(isZeroExpression):
         reporter.atNode(
           node,
           code,
@@ -305,10 +216,7 @@ class _ReplaceWithProperConstructor extends DartFix {
     });
   }
 
-  void handleFromLTRB({
-    required InstanceCreationExpression node,
-    required ChangeReporter reporter,
-  }) {
+  void handleFromLTRB({required InstanceCreationExpression node, required ChangeReporter reporter}) {
     final arguments = node.argumentList.positionalArguments.toList();
     if (arguments.length != 4) return;
 
@@ -325,31 +233,16 @@ class _ReplaceWithProperConstructor extends DartFix {
         bottom: IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
       ):
         return;
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
-          when l.toSource() == t.toSource() &&
-              t.toSource() == r.toSource() &&
-              r.toSource() == b.toSource():
+      case (left: final l, top: final t, right: final r, bottom: final b)
+          when l.toSource() == t.toSource() && t.toSource() == r.toSource() && r.toSource() == b.toSource():
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.all',
           priority: 80,
         );
         changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.all(${l.toSource()})',
-          );
+          builder.addSimpleReplacement(node.sourceRange, 'EdgeInsets.all(${l.toSource()})');
         });
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
+      case (left: final l, top: final t, right: final r, bottom: final b)
           when l.toSource() == r.toSource() && t.toSource() == b.toSource():
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.symmetric',
@@ -364,13 +257,7 @@ class _ReplaceWithProperConstructor extends DartFix {
             ].join(', ')})',
           );
         });
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
-          when [l, t, r, b].any(isZeroExpression):
+      case (left: final l, top: final t, right: final r, bottom: final b) when [l, t, r, b].any(isZeroExpression):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.only',
           priority: 80,
@@ -389,10 +276,7 @@ class _ReplaceWithProperConstructor extends DartFix {
     }
   }
 
-  void handleOnly({
-    required InstanceCreationExpression node,
-    required ChangeReporter reporter,
-  }) {
+  void handleOnly({required InstanceCreationExpression node, required ChangeReporter reporter}) {
     final left = node.argumentList.findArgumentByName('left')?.expression;
     final top = node.argumentList.findArgumentByName('top')?.expression;
     final right = node.argumentList.findArgumentByName('right')?.expression;
@@ -406,31 +290,16 @@ class _ReplaceWithProperConstructor extends DartFix {
         bottom: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0),
       ):
         return;
-      case (
-            left: final l?,
-            top: final t?,
-            right: final r?,
-            bottom: final b?,
-          )
-          when l.toSource() == t.toSource() &&
-              t.toSource() == r.toSource() &&
-              r.toSource() == b.toSource():
+      case (left: final l?, top: final t?, right: final r?, bottom: final b?)
+          when l.toSource() == t.toSource() && t.toSource() == r.toSource() && r.toSource() == b.toSource():
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.all',
           priority: 80,
         );
         changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.all(${l.toSource()})',
-          );
+          builder.addSimpleReplacement(node.sourceRange, 'EdgeInsets.all(${l.toSource()})');
         });
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
+      case (left: final l, top: final t, right: final r, bottom: final b)
           when l?.toSource() == r?.toSource() && t?.toSource() == b?.toSource():
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.symmetric',
@@ -439,18 +308,10 @@ class _ReplaceWithProperConstructor extends DartFix {
         changeBuilder.addDartFileEdit((builder) {
           builder.addSimpleReplacement(
             node.sourceRange,
-            'EdgeInsets.symmetric(${[
-              if (l != null && !isZeroExpression(l)) 'horizontal: ${l.toSource()}',
-              if (t != null && !isZeroExpression(t)) 'vertical: ${t.toSource()}',
-            ].join(', ')})',
+            'EdgeInsets.symmetric(${[if (l != null && !isZeroExpression(l)) 'horizontal: ${l.toSource()}', if (t != null && !isZeroExpression(t)) 'vertical: ${t.toSource()}'].join(', ')})',
           );
         });
-      case (
-            left: final l,
-            top: final t,
-            right: final r,
-            bottom: final b,
-          )
+      case (left: final l, top: final t, right: final r, bottom: final b)
           when [l, t, r, b].any((e) => e != null && isZeroExpression(e)):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.only',
@@ -459,20 +320,10 @@ class _ReplaceWithProperConstructor extends DartFix {
         changeBuilder.addDartFileEdit((builder) {
           builder.addSimpleReplacement(
             node.sourceRange,
-            'EdgeInsets.only(${[
-              if (l is IntegerLiteral && l.value != 0 || l is DoubleLiteral && l.value != 0.0) 'left: ${l?.toSource()}',
-              if (t is IntegerLiteral && t.value != 0 || t is DoubleLiteral && t.value != 0.0) 'top: ${t?.toSource()}',
-              if (r is IntegerLiteral && r.value != 0 || r is DoubleLiteral && r.value != 0.0) 'right: ${r?.toSource()}',
-              if (b is IntegerLiteral && b.value != 0 || b is DoubleLiteral && b.value != 0.0) 'bottom: ${b?.toSource()}',
-            ].join(', ')})',
+            'EdgeInsets.only(${[if (l is IntegerLiteral && l.value != 0 || l is DoubleLiteral && l.value != 0.0) 'left: ${l?.toSource()}', if (t is IntegerLiteral && t.value != 0 || t is DoubleLiteral && t.value != 0.0) 'top: ${t?.toSource()}', if (r is IntegerLiteral && r.value != 0 || r is DoubleLiteral && r.value != 0.0) 'right: ${r?.toSource()}', if (b is IntegerLiteral && b.value != 0 || b is DoubleLiteral && b.value != 0.0) 'bottom: ${b?.toSource()}'].join(', ')})',
           );
         });
-      case (
-        left: final l?,
-        top: final t?,
-        right: final r?,
-        bottom: final b?,
-      ):
+      case (left: final l?, top: final t?, right: final r?, bottom: final b?):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.fromLTRB',
           priority: 80,
@@ -480,57 +331,32 @@ class _ReplaceWithProperConstructor extends DartFix {
         changeBuilder.addDartFileEdit((builder) {
           builder.addSimpleReplacement(
             node.sourceRange,
-            'EdgeInsets.fromLTRB(${[
-              l.toSource(),
-              t.toSource(),
-              r.toSource(),
-              b.toSource(),
-            ].join(', ')})',
+            'EdgeInsets.fromLTRB(${[l.toSource(), t.toSource(), r.toSource(), b.toSource()].join(', ')})',
           );
         });
     }
   }
 
-  void handleSymmetric({
-    required InstanceCreationExpression node,
-    required ChangeReporter reporter,
-  }) {
-    final vertical = node.argumentList
-        .findArgumentByName('vertical')
-        ?.expression;
-    final horizontal = node.argumentList
-        .findArgumentByName('horizontal')
-        ?.expression;
+  void handleSymmetric({required InstanceCreationExpression node, required ChangeReporter reporter}) {
+    final vertical = node.argumentList.findArgumentByName('vertical')?.expression;
+    final horizontal = node.argumentList.findArgumentByName('horizontal')?.expression;
 
     switch ((vertical: vertical, horizontal: horizontal)) {
       case (
         vertical: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
-        horizontal: null ||
-            IntegerLiteral(value: 0) ||
-            DoubleLiteral(value: 0.0),
+        horizontal: null || IntegerLiteral(value: 0) || DoubleLiteral(value: 0.0),
       ):
         return;
-      case (
-            vertical: final v?,
-            horizontal: final h?,
-          )
-          when v.toSource() == h.toSource():
+      case (vertical: final v?, horizontal: final h?) when v.toSource() == h.toSource():
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.all',
           priority: 80,
         );
 
         changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'EdgeInsets.all(${v.toSource()})',
-          );
+          builder.addSimpleReplacement(node.sourceRange, 'EdgeInsets.all(${v.toSource()})');
         });
-      case (
-            vertical: final v?,
-            horizontal: final h?,
-          )
-          when [v, h].any(isZeroExpression):
+      case (vertical: final v?, horizontal: final h?) when [v, h].any(isZeroExpression):
         final changeBuilder = reporter.createChangeBuilder(
           message: 'Replace with EdgeInsets.symmetric',
           priority: 80,

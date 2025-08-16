@@ -23,10 +23,7 @@ class PreferIterableFirst extends PyramidLintRule {
 
   factory PreferIterableFirst.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferIterableFirst(options: options);
   }
@@ -48,15 +45,7 @@ class PreferIterableFirst extends PyramidLintRule {
         return;
       }
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [
-          'list[0]',
-          node.toSource(),
-          '${node.realTarget.toSource()}.first',
-        ],
-      );
+      reporter.atNode(node, code, arguments: ['list[0]', node.toSource(), '${node.realTarget.toSource()}.first']);
     });
 
     context.registry.addMethodInvocation((node) {
@@ -70,11 +59,7 @@ class PreferIterableFirst extends PyramidLintRule {
       reporter.atNode(
         node,
         code,
-        arguments: [
-          'list.elementAt(0)',
-          node.toSource(),
-          '${node.realTarget?.toSource()}.first',
-        ],
+        arguments: ['list.elementAt(0)', node.toSource(), '${node.realTarget?.toSource()}.first'],
       );
     });
   }
@@ -102,10 +87,7 @@ class _ReplaceWithIterableFirst extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         final replacement = node.isCascaded ? 'first' : '.first';
-        builder.addSimpleReplacement(
-          range.startEnd(node.leftBracket, node.rightBracket),
-          replacement,
-        );
+        builder.addSimpleReplacement(range.startEnd(node.leftBracket, node.rightBracket), replacement);
       });
     });
 
@@ -118,10 +100,7 @@ class _ReplaceWithIterableFirst extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          range.startEnd(node.methodName, node.argumentList),
-          'first',
-        );
+        builder.addSimpleReplacement(range.startEnd(node.methodName, node.argumentList), 'first');
       });
     });
   }

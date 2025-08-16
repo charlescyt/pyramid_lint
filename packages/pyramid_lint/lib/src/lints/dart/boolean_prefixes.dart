@@ -33,10 +33,7 @@ class BooleanPrefixesOptions {
 
   final List<String>? _validPrefixes;
 
-  List<String> get validPrefixes => [
-    ...defaultValidPrefixes,
-    ...?_validPrefixes,
-  ];
+  List<String> get validPrefixes => [...defaultValidPrefixes, ...?_validPrefixes];
 
   factory BooleanPrefixesOptions.fromJson(Json json) {
     final validPrefixes = switch (json['valid_prefixes']) {
@@ -44,9 +41,7 @@ class BooleanPrefixesOptions {
       _ => null,
     };
 
-    return BooleanPrefixesOptions(
-      validPrefixes: validPrefixes,
-    );
+    return BooleanPrefixesOptions(validPrefixes: validPrefixes);
   }
 }
 
@@ -65,10 +60,7 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
 
   factory BooleanPrefixes.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: BooleanPrefixesOptions.fromJson,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: BooleanPrefixesOptions.fromJson);
 
     return BooleanPrefixes(options: options);
   }
@@ -86,23 +78,14 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final name = parent.name.lexeme;
       if (isNameValid(name)) return;
 
-      reporter.atToken(
-        parent.name,
-        code,
-        arguments: [
-          'Boolean variable',
-          'variable',
-        ],
-      );
+      reporter.atToken(parent.name, code, arguments: ['Boolean variable', 'variable']);
     });
 
     context.registry.addMethodDeclaration((node) {
       final returnType = node.returnType?.type;
       if (returnType == null || !returnType.isDartCoreBool) return;
 
-      final isOverride = node.metadata.any(
-        (e) => e.elementAnnotation?.isOverride == true,
-      );
+      final isOverride = node.metadata.any((e) => e.elementAnnotation?.isOverride == true);
       if (isOverride) return;
 
       final name = node.name.lexeme;
@@ -111,23 +94,9 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final parameter = node.parameters;
       switch (parameter) {
         case null:
-          reporter.atToken(
-            node.name,
-            code,
-            arguments: [
-              'Getter that returns a boolean',
-              'getter',
-            ],
-          );
+          reporter.atToken(node.name, code, arguments: ['Getter that returns a boolean', 'getter']);
         case _:
-          reporter.atToken(
-            node.name,
-            code,
-            arguments: [
-              'Method that returns a boolean',
-              'method',
-            ],
-          );
+          reporter.atToken(node.name, code, arguments: ['Method that returns a boolean', 'method']);
       }
     });
 
@@ -138,21 +107,12 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
       final name = node.name.lexeme;
       if (isNameValid(name)) return;
 
-      reporter.atToken(
-        node.name,
-        code,
-        arguments: [
-          'Function that returns a boolean',
-          'function',
-        ],
-      );
+      reporter.atToken(node.name, code, arguments: ['Function that returns a boolean', 'function']);
     });
   }
 
   bool isNameValid(String name) {
-    final nameWithoutUnderscore = name.startsWith('_')
-        ? name.substring(1)
-        : name;
+    final nameWithoutUnderscore = name.startsWith('_') ? name.substring(1) : name;
 
     if (options.params.validPrefixes.any(nameWithoutUnderscore.startsWith)) {
       return true;

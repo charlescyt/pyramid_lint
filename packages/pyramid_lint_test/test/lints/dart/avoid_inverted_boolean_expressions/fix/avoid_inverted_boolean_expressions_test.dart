@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for avoid_inverted_boolean_expressions fix',
     'lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.diff',
-    sourcePath:
-        'test/lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.dart',
+    sourcePath: 'test/lints/dart/avoid_inverted_boolean_expressions/fix/avoid_inverted_boolean_expressions.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = AvoidInvertedBooleanExpressions(options: options);

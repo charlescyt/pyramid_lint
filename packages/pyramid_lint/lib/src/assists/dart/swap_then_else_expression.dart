@@ -21,18 +21,12 @@ class SwapThenElseExpression extends DartAssist {
       final elseStatement = node.elseStatement;
       if (elseStatement == null) return;
 
-      if (!_isTargetOverIfConditionOrElseKeyword(
-        target: target,
-        node: node,
-      )) {
+      if (!_isTargetOverIfConditionOrElseKeyword(target: target, node: node)) {
         return;
       }
 
       final childrenIfStatements = node.childrenIfStatements;
-      if (_isTargetInsideChildrenIfStatements(
-        target: target,
-        childrenIfStatements: childrenIfStatements,
-      )) {
+      if (_isTargetInsideChildrenIfStatements(target: target, childrenIfStatements: childrenIfStatements)) {
         return;
       }
 
@@ -42,14 +36,8 @@ class SwapThenElseExpression extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          thenStatement.sourceRange,
-          elseStatement.toSource(),
-        );
-        builder.addSimpleReplacement(
-          elseStatement.sourceRange,
-          thenStatement.toSource(),
-        );
+        builder.addSimpleReplacement(thenStatement.sourceRange, elseStatement.toSource());
+        builder.addSimpleReplacement(elseStatement.sourceRange, thenStatement.toSource());
         builder.format(node.sourceRange);
       });
     });
@@ -57,8 +45,7 @@ class SwapThenElseExpression extends DartAssist {
     context.registry.addConditionalExpression((node) {
       if (!node.sourceRange.covers(target)) return;
 
-      final childrenConditionalExpressions =
-          node.childrenConditionalExpressions;
+      final childrenConditionalExpressions = node.childrenConditionalExpressions;
       if (_isTargetInsideChildrenConditionalExpressions(
         target: target,
         childrenConditionalExpressions: childrenConditionalExpressions,
@@ -80,17 +67,10 @@ class SwapThenElseExpression extends DartAssist {
     });
   }
 
-  bool _isTargetOverIfConditionOrElseKeyword({
-    required SourceRange target,
-    required IfStatement node,
-  }) {
-    final ifConditionSourceRange = range.startEnd(
-      node.ifKeyword,
-      node.rightParenthesis,
-    );
+  bool _isTargetOverIfConditionOrElseKeyword({required SourceRange target, required IfStatement node}) {
+    final ifConditionSourceRange = range.startEnd(node.ifKeyword, node.rightParenthesis);
     final elseKeywordSourceRange = node.elseKeyword?.sourceRange;
-    return ifConditionSourceRange.covers(target) ||
-        elseKeywordSourceRange?.covers(target) == true;
+    return ifConditionSourceRange.covers(target) || elseKeywordSourceRange?.covers(target) == true;
   }
 
   bool _isTargetInsideChildrenIfStatements({
@@ -104,8 +84,6 @@ class SwapThenElseExpression extends DartAssist {
     required SourceRange target,
     required Iterable<ConditionalExpression> childrenConditionalExpressions,
   }) {
-    return childrenConditionalExpressions.any(
-      (e) => e.sourceRange.intersects(target),
-    );
+    return childrenConditionalExpressions.any((e) => e.sourceRange.intersects(target));
   }
 }

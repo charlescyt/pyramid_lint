@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for avoid_redundant_pattern_field_names fix',
     'lints/dart/avoid_redundant_pattern_field_names/fix/avoid_redundant_pattern_field_names.diff',
-    sourcePath:
-        'test/lints/dart/avoid_redundant_pattern_field_names/fix/avoid_redundant_pattern_field_names.dart',
+    sourcePath: 'test/lints/dart/avoid_redundant_pattern_field_names/fix/avoid_redundant_pattern_field_names.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = AvoidRedundantPatternFieldNames(options: options);

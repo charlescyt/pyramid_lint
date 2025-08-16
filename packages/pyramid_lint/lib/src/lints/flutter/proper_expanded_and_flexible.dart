@@ -13,8 +13,7 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
     : super(
         name: ruleName,
         problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
-        correctionMessage:
-            'Try placing {0} inside a Row, Column, or Flex, or remove it.',
+        correctionMessage: 'Try placing {0} inside a Row, Column, or Flex, or remove it.',
         url: url,
         errorSeverity: ErrorSeverity.ERROR,
       );
@@ -24,10 +23,7 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
 
   factory ProperExpandedAndFlexible.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ProperExpandedAndFlexible(options: options);
   }
@@ -42,13 +38,11 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
 
     context.registry.addInstanceCreationExpression((node) {
       final type = node.staticType;
-      if (type == null ||
-          !expandedOrFlexibleChecker.isAssignableFromType(type)) {
+      if (type == null || !expandedOrFlexibleChecker.isAssignableFromType(type)) {
         return;
       }
 
-      final parentInstanceCreationExpression = node.parent
-          ?.thisOrAncestorOfType<InstanceCreationExpression>();
+      final parentInstanceCreationExpression = node.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
       if (parentInstanceCreationExpression == null) return;
 
       final parentType = parentInstanceCreationExpression.staticType;
@@ -56,11 +50,7 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
         return;
       }
 
-      reporter.atNode(
-        node.constructorName,
-        code,
-        arguments: [type.getDisplayString()],
-      );
+      reporter.atNode(node.constructorName, code, arguments: [type.getDisplayString()]);
     });
   }
 }

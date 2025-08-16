@@ -20,10 +20,7 @@ class PreferAsyncAwait extends PyramidLintRule {
 
   factory PreferAsyncAwait.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferAsyncAwait(options: options);
   }

@@ -11,16 +11,12 @@ void main() {
   testGolden(
     'Test for proper_edge_insets_constructors fix',
     'lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.diff',
-    sourcePath:
-        'test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart',
+    sourcePath: 'test/lints/flutter/proper_edge_insets_constructors/fix/proper_edge_insets_constructors.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = ProperEdgeInsetsConstructors(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(10));

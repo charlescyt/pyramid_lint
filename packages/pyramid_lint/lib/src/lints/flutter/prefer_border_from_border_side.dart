@@ -14,8 +14,7 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
         problemMessage:
             'Border.all is not a const constructor and it uses const constructor '
             'Border.fromBorderSide internally.',
-        correctionMessage:
-            'Consider replacing Border.all with Border.fromBorderSide.',
+        correctionMessage: 'Consider replacing Border.all with Border.fromBorderSide.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -25,10 +24,7 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
 
   factory PreferBorderFromBorderSide.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferBorderFromBorderSide(options: options);
   }
@@ -66,9 +62,7 @@ class _ReplaceWithBorderFromBorderSide extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
@@ -81,14 +75,8 @@ class _ReplaceWithBorderFromBorderSide extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          constructorNameIdentifier.sourceRange,
-          'fromBorderSide(BorderSide',
-        );
-        builder.addSimpleInsertion(
-          node.endToken.offset,
-          '),',
-        );
+        builder.addSimpleReplacement(constructorNameIdentifier.sourceRange, 'fromBorderSide(BorderSide');
+        builder.addSimpleInsertion(node.endToken.offset, '),');
       });
     });
   }

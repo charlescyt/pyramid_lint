@@ -48,14 +48,9 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
   static const ruleName = 'prefer_dedicated_media_query_functions';
   static const url = '$flutterLintDocUrl/$ruleName';
 
-  factory PreferDedicatedMediaQueryFunctions.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory PreferDedicatedMediaQueryFunctions.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferDedicatedMediaQueryFunctions(options: options);
   }
@@ -73,8 +68,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
       if (!_properties.contains(propertyName)) return;
 
       final targetType = node.prefix.staticType;
-      if (targetType == null ||
-          !mediaQueryDataChecker.isExactlyType(targetType)) {
+      if (targetType == null || !mediaQueryDataChecker.isExactlyType(targetType)) {
         return;
       }
 
@@ -90,14 +84,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
       final dedicatedMethod = 'MediaQuery.${propertyName}Of';
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [
-          'MediaQuery.of and accessing $propertyName',
-          dedicatedMethod,
-        ],
-      );
+      reporter.atNode(node, code, arguments: ['MediaQuery.of and accessing $propertyName', dedicatedMethod]);
     });
 
     context.registry.addPropertyAccess((node) {
@@ -106,8 +93,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
       final target = node.realTarget;
       final targetType = target.staticType;
-      if (targetType == null ||
-          !mediaQueryDataChecker.isExactlyType(targetType)) {
+      if (targetType == null || !mediaQueryDataChecker.isExactlyType(targetType)) {
         return;
       }
 
@@ -122,17 +108,8 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
         if (prefixNode is! VariableDeclaration) return;
         if (!_isInitializedWithMediaQueryOfOrMaybeOf(prefixNode)) return;
 
-        final dedicatedMethod =
-            'MediaQuery.maybe${propertyName.capitalize()}Of';
-
-        reporter.atNode(
-          node,
-          code,
-          arguments: [
-            'MediaQuery.maybeOf and accessing $propertyName',
-            dedicatedMethod,
-          ],
-        );
+        final dedicatedMethod = 'MediaQuery.maybe${propertyName.capitalize()}Of';
+        reporter.atNode(node, code, arguments: ['MediaQuery.maybeOf and accessing $propertyName', dedicatedMethod]);
       }
 
       if (target is MethodInvocation) {
@@ -143,14 +120,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
             ? 'MediaQuery.${propertyName}Of'
             : 'MediaQuery.maybe${propertyName.capitalize()}Of';
 
-        reporter.atNode(
-          node,
-          code,
-          arguments: [
-            node.toSource(),
-            dedicatedMethod,
-          ],
-        );
+        reporter.atNode(node, code, arguments: [node.toSource(), dedicatedMethod]);
       }
     });
   }
@@ -182,8 +152,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
       if (initializer.methodName.name != 'of') return;
 
       final initializerType = initializer.realTarget?.staticType;
-      if (initializerType != null &&
-          mediaQueryChecker.isExactlyType(initializerType)) {
+      if (initializerType != null && mediaQueryChecker.isExactlyType(initializerType)) {
         return;
       }
 
@@ -202,10 +171,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          dedicatedMethod,
-        );
+        builder.addSimpleReplacement(node.sourceRange, dedicatedMethod);
       });
     });
 
@@ -229,8 +195,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
         if (initializer.methodName.name != 'maybeOf') return;
 
         final initializerType = initializer.realTarget?.staticType;
-        if (initializerType != null &&
-            mediaQueryChecker.isExactlyType(initializerType)) {
+        if (initializerType != null && mediaQueryChecker.isExactlyType(initializerType)) {
           return;
         }
 
@@ -249,10 +214,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
         );
 
         changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            dedicatedMethod,
-          );
+          builder.addSimpleReplacement(node.sourceRange, dedicatedMethod);
         });
       }
 
@@ -263,9 +225,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
         if (target.argumentList.arguments.length != 1) return;
         final argumentName = target.argumentList.arguments.first.toSource();
 
-        final newMethodName = methodName == 'of'
-            ? '${propertyName}Of'
-            : 'maybe${propertyName.capitalize()}Of';
+        final newMethodName = methodName == 'of' ? '${propertyName}Of' : 'maybe${propertyName.capitalize()}Of';
 
         final dedicatedMethod = 'MediaQuery.$newMethodName($argumentName)';
 
@@ -275,10 +235,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
         );
 
         changeBuilder.addDartFileEdit((builder) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            dedicatedMethod,
-          );
+          builder.addSimpleReplacement(node.sourceRange, dedicatedMethod);
         });
       }
     });
@@ -292,13 +249,11 @@ bool _isInitializedWithMediaQueryOfOrMaybeOf(VariableDeclaration node) {
   if (initializer is! MethodInvocation) return false;
 
   final initializerType = initializer.realTarget?.staticType;
-  if (initializerType != null &&
-      !mediaQueryChecker.isExactlyType(initializerType)) {
+  if (initializerType != null && !mediaQueryChecker.isExactlyType(initializerType)) {
     return false;
   }
 
-  if (initializer.methodName.name != 'of' &&
-      initializer.methodName.name != 'maybeOf') {
+  if (initializer.methodName.name != 'of' && initializer.methodName.name != 'maybeOf') {
     return false;
   }
 

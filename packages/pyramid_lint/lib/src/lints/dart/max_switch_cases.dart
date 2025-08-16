@@ -33,8 +33,7 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
     : super(
         name: ruleName,
         problemMessage: 'There are too many cases in this switch statement.',
-        correctionMessage:
-            'Consider reducing the number of cases to {0} or less.',
+        correctionMessage: 'Consider reducing the number of cases to {0} or less.',
         url: url,
         errorSeverity: ErrorSeverity.WARNING,
       );
@@ -59,27 +58,17 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
     CustomLintContext context,
   ) {
     context.registry.addSwitchStatement((node) {
-      final cases = node.members.where(
-        (e) => e is SwitchCase || e is SwitchPatternCase,
-      );
+      final cases = node.members.where((e) => e is SwitchCase || e is SwitchPatternCase);
       if (cases.length <= options.params.maxCases) return;
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [options.params.maxCases],
-      );
+      reporter.atNode(node, code, arguments: [options.params.maxCases]);
     });
 
     context.registry.addSwitchExpression((node) {
       final cases = node.cases;
       if (cases.length <= options.params.maxCases) return;
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [options.params.maxCases],
-      );
+      reporter.atNode(node, code, arguments: [options.params.maxCases]);
     });
   }
 }

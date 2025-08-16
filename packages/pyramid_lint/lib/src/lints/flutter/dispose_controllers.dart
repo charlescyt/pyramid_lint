@@ -25,10 +25,7 @@ class DisposeControllers extends PyramidLintRule {
 
   factory DisposeControllers.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return DisposeControllers(options: options);
   }
@@ -49,49 +46,33 @@ class DisposeControllers extends PyramidLintRule {
       }
 
       final superClassType = parent.extendsClause?.superclass.type;
-      if (superClassType == null ||
-          !stateChecker.isAssignableFromType(superClassType)) {
+      if (superClassType == null || !stateChecker.isAssignableFromType(superClassType)) {
         return;
       }
 
-      final disposeFunctionBody = parent.members
-          .findMethodDeclarationByName('dispose')
-          ?.body;
+      final disposeFunctionBody = parent.members.findMethodDeclarationByName('dispose')?.body;
 
-      final controllerDeclarations = node.fields.variables.where(
-        (e) {
-          final variableType = e.declaredFragment?.element.type;
-          if (variableType == null) return false;
-          return disposableControllerChecker.isAssignableFromType(variableType);
-        },
-      );
+      final controllerDeclarations = node.fields.variables.where((e) {
+        final variableType = e.declaredFragment?.element.type;
+        if (variableType == null) return false;
+        return disposableControllerChecker.isAssignableFromType(variableType);
+      });
 
-      if (disposeFunctionBody == null ||
-          disposeFunctionBody is! BlockFunctionBody) {
+      if (disposeFunctionBody == null || disposeFunctionBody is! BlockFunctionBody) {
         for (final controller in controllerDeclarations) {
           final controllerName = controller.name.lexeme;
-          reporter.atToken(
-            controller.name,
-            code,
-            arguments: [controllerName],
-          );
+          reporter.atToken(controller.name, code, arguments: [controllerName]);
         }
         return;
       }
 
       final statements = disposeFunctionBody.block.statements;
-      final disposeStatementTargetNames = _getDisposeStatementTargetNames(
-        statements,
-      );
+      final disposeStatementTargetNames = _getDisposeStatementTargetNames(statements);
 
       for (final controllerDeclaration in controllerDeclarations) {
         final controllerName = controllerDeclaration.name.lexeme;
         if (!disposeStatementTargetNames.contains(controllerName)) {
-          reporter.atToken(
-            controllerDeclaration.name,
-            code,
-            arguments: [controllerName],
-          );
+          reporter.atToken(controllerDeclaration.name, code, arguments: [controllerName]);
         }
       }
     });
@@ -125,31 +106,16 @@ class _ProperControllerDisposeFix extends DartFix {
       );
       if (controllerToBeDisposed == null) return;
 
-      final disposeMethod = parent.members.findMethodDeclarationByName(
-        'dispose',
-      );
+      final disposeMethod = parent.members.findMethodDeclarationByName('dispose');
       final toBeDisposedControllerName = controllerToBeDisposed.name.lexeme;
 
       switch (disposeMethod?.body) {
         case null:
-          _handleNullFunctionBody(
-            parent,
-            node,
-            toBeDisposedControllerName,
-            changeBuilder,
-          );
+          _handleNullFunctionBody(parent, node, toBeDisposedControllerName, changeBuilder);
         case final BlockFunctionBody body:
-          _handleBlockFunctionBody(
-            body,
-            toBeDisposedControllerName,
-            changeBuilder,
-          );
+          _handleBlockFunctionBody(body, toBeDisposedControllerName, changeBuilder);
         case final ExpressionFunctionBody body:
-          _handleExpressionFunctionBody(
-            body,
-            toBeDisposedControllerName,
-            changeBuilder,
-          );
+          _handleExpressionFunctionBody(body, toBeDisposedControllerName, changeBuilder);
         case EmptyFunctionBody() || NativeFunctionBody():
       }
     });
@@ -161,9 +127,7 @@ class _ProperControllerDisposeFix extends DartFix {
     String toBeDisposedControllerName,
     ChangeBuilder changeBuilder,
   ) {
-    final initStateMethod = parent.members.findMethodDeclarationByName(
-      'initState',
-    );
+    final initStateMethod = parent.members.findMethodDeclarationByName('initState');
 
     final buildMethod = parent.members.findMethodDeclarationByName('build');
 
@@ -199,9 +163,7 @@ class _ProperControllerDisposeFix extends DartFix {
     ChangeBuilder changeBuilder,
   ) {
     final statements = disposeFunctionBody.block.statements;
-    final disposeStatementTargetNames = _getDisposeStatementTargetNames(
-      statements,
-    );
+    final disposeStatementTargetNames = _getDisposeStatementTargetNames(statements);
 
     if (!disposeStatementTargetNames.contains(toBeDisposedControllerName)) {
       changeBuilder.addDartFileEdit((builder) {
@@ -228,29 +190,20 @@ class _ProperControllerDisposeFix extends DartFix {
   }
 }
 
-Iterable<String> _getDisposeStatementTargetNames(
-  NodeList<Statement> statements,
-) {
-  return statements.expressionStatements
-      .map(_getTargetNameOfDisposeMethodInvocation)
-      .nonNulls;
+Iterable<String> _getDisposeStatementTargetNames(NodeList<Statement> statements) {
+  return statements.expressionStatements.map(_getTargetNameOfDisposeMethodInvocation).nonNulls;
 }
 
-String? _getTargetNameOfDisposeMethodInvocation(
-  ExpressionStatement expressionStatement,
-) {
-  if (expressionStatement.expression
-      case final CascadeExpression cascadeExpression) {
+String? _getTargetNameOfDisposeMethodInvocation(ExpressionStatement expressionStatement) {
+  if (expressionStatement.expression case final CascadeExpression cascadeExpression) {
     for (final section in cascadeExpression.cascadeSections) {
       if (section is MethodInvocation && section.methodName.name == 'dispose') {
-        if (cascadeExpression.target
-            case final SimpleIdentifier simpleIdentifier) {
+        if (cascadeExpression.target case final SimpleIdentifier simpleIdentifier) {
           return simpleIdentifier.name;
         }
       }
     }
-  } else if (expressionStatement.expression
-      case final MethodInvocation methodInvocation) {
+  } else if (expressionStatement.expression case final MethodInvocation methodInvocation) {
     final target = methodInvocation.target;
     if (target is! SimpleIdentifier) return null;
 

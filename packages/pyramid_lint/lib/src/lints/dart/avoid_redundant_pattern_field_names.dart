@@ -20,14 +20,9 @@ class AvoidRedundantPatternFieldNames extends PyramidLintRule {
   static const ruleName = 'avoid_redundant_pattern_field_names';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidRedundantPatternFieldNames.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AvoidRedundantPatternFieldNames.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidRedundantPatternFieldNames(options: options);
   }

@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for prefer_iterable_any fix',
     'lints/dart/prefer_iterable_any/fix/prefer_iterable_any.diff',
-    sourcePath:
-        'test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart',
+    sourcePath: 'test/lints/dart/prefer_iterable_any/fix/prefer_iterable_any.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferIterableAny(options: options);

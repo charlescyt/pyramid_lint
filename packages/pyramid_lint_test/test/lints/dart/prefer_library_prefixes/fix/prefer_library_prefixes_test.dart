@@ -10,13 +10,9 @@ void main() {
   testGolden(
     'Test for prefer_library_prefixes fix',
     'lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.diff',
-    sourcePath:
-        'test/lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.dart',
+    sourcePath: 'test/lints/dart/prefer_library_prefixes/fix/prefer_library_prefixes.dart',
     (result) async {
-      const params = PreferLibraryPrefixesOptions(
-        includeDefaultLibraries: true,
-        libraries: ['dart:io'],
-      );
+      const params = PreferLibraryPrefixesOptions(includeDefaultLibraries: true, libraries: ['dart:io']);
       const options = PyramidLintRuleOptions(params: params);
       final lint = PreferLibraryPrefixes(options: options);
       final fix = lint.getFixes().single as DartFix;

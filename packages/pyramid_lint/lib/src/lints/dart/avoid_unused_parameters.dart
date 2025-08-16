@@ -18,9 +18,7 @@ class AvoidUnusedParametersOptions {
 
   final List<String>? _ignoredParameters;
 
-  List<String> get ignoredParameters => [
-    ...?_ignoredParameters,
-  ];
+  List<String> get ignoredParameters => [...?_ignoredParameters];
 
   factory AvoidUnusedParametersOptions.fromJson(Json json) {
     final ignoredParameters = switch (json['ignored_parameters']) {
@@ -28,14 +26,11 @@ class AvoidUnusedParametersOptions {
       _ => null,
     };
 
-    return AvoidUnusedParametersOptions(
-      ignoredParameters: ignoredParameters,
-    );
+    return AvoidUnusedParametersOptions(ignoredParameters: ignoredParameters);
   }
 }
 
-class AvoidUnusedParameters
-    extends PyramidLintRule<AvoidUnusedParametersOptions> {
+class AvoidUnusedParameters extends PyramidLintRule<AvoidUnusedParametersOptions> {
   AvoidUnusedParameters({required super.options})
     : super(
         name: ruleName,
@@ -71,9 +66,7 @@ class AvoidUnusedParameters
       final body = node.functionExpression.body;
 
       final simpleIdentifiers = <SimpleIdentifier>[];
-      final visitor = RecursiveSimpleIdentifierVisitor(
-        onVisitSimpleIdentifier: simpleIdentifiers.add,
-      );
+      final visitor = RecursiveSimpleIdentifierVisitor(onVisitSimpleIdentifier: simpleIdentifiers.add);
       body.accept(visitor);
 
       for (final parameter in parameters) {
@@ -105,9 +98,7 @@ class AvoidUnusedParameters
       final isAbstractClass = classDeclaration.abstractKeyword != null;
       if (isAbstractClass) return;
 
-      final isOverrideMethod = node.metadata.any(
-        (e) => e.name.name == 'override',
-      );
+      final isOverrideMethod = node.metadata.any((e) => e.name.name == 'override');
       if (isOverrideMethod) return;
 
       final parameters = node.parameters?.parameters;
@@ -116,9 +107,7 @@ class AvoidUnusedParameters
       final body = node.body;
 
       final simpleIdentifiers = <SimpleIdentifier>[];
-      final visitor = RecursiveSimpleIdentifierVisitor(
-        onVisitSimpleIdentifier: simpleIdentifiers.add,
-      );
+      final visitor = RecursiveSimpleIdentifierVisitor(onVisitSimpleIdentifier: simpleIdentifiers.add);
       body.accept(visitor);
 
       for (final parameter in parameters) {

@@ -1,18 +1,19 @@
 Message: `Add tooltip`
 Priority: 80
-Diff for file `test/lints/flutter/specify_icon_button_tooltip/fix/specify_icon_button_tooltip.dart:6`:
+Diff for file `test/lints/flutter/specify_icon_button_tooltip/fix/specify_icon_button_tooltip.dart:7`:
 ```
-
 // expect_lint: specify_icon_button_tooltip
-- final Widget a = IconButton(icon: const Icon(Icons.add), onPressed: () {});
-+ final Widget a = IconButton(tooltip: 'tooltip', icon: const Icon(Icons.add), onPressed: () {});
-
-// expect_lint: specify_icon_button_tooltip
+final Widget a = IconButton(
+-   icon: const Icon(Icons.add),
++   tooltip: 'tooltip',
++   icon: const Icon(Icons.add),
+  onPressed: () {},
+);
 ```
 ---
 Message: `Add tooltip`
 Priority: 80
-Diff for file `test/lints/flutter/specify_icon_button_tooltip/fix/specify_icon_button_tooltip.dart:10`:
+Diff for file `test/lints/flutter/specify_icon_button_tooltip/fix/specify_icon_button_tooltip.dart:13`:
 ```
 // expect_lint: specify_icon_button_tooltip
 final Widget b = IconButton.filled(

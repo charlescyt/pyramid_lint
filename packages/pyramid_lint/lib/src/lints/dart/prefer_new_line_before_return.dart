@@ -11,10 +11,8 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
   PreferNewLineBeforeReturn({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'There should be a new line before the return statement.',
-        correctionMessage:
-            'Consider adding a new line before the return statement.',
+        problemMessage: 'There should be a new line before the return statement.',
+        correctionMessage: 'Consider adding a new line before the return statement.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -24,10 +22,7 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
 
   factory PreferNewLineBeforeReturn.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferNewLineBeforeReturn(options: options);
   }
@@ -51,12 +46,8 @@ class PreferNewLineBeforeReturn extends PyramidLintRule {
 
         final lineInfo = resolver.lineInfo;
 
-        final previousTokenLine = lineInfo
-            .getLocation(previousToken.offset)
-            .lineNumber;
-        final returnTokenLine = lineInfo
-            .getLocation(returnToken.offset)
-            .lineNumber;
+        final previousTokenLine = lineInfo.getLocation(previousToken.offset).lineNumber;
+        final returnTokenLine = lineInfo.getLocation(returnToken.offset).lineNumber;
 
         if (returnTokenLine - previousTokenLine == 1) {
           reporter.atToken(returnToken, code);

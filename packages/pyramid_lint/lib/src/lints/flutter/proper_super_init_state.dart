@@ -14,10 +14,8 @@ class ProperSuperInitState extends PyramidLintRule {
   ProperSuperInitState({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'super.initState() should be called at the start of the initState method.',
-        correctionMessage:
-            'Try placing super.initState() at the start of the initState method.',
+        problemMessage: 'super.initState() should be called at the start of the initState method.',
+        correctionMessage: 'Try placing super.initState() at the start of the initState method.',
         url: url,
         errorSeverity: ErrorSeverity.ERROR,
       );
@@ -27,10 +25,7 @@ class ProperSuperInitState extends PyramidLintRule {
 
   factory ProperSuperInitState.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ProperSuperInitState(options: options);
   }
@@ -100,22 +95,14 @@ class _PlaceSuperInitStateAtTheStart extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final superInitStateStatementIndex = statements.indexOf(
-          superInitStateStatement,
-        );
+        final superInitStateStatementIndex = statements.indexOf(superInitStateStatement);
         final firstStatement = statements.first;
 
         for (var i = superInitStateStatementIndex; i > 0; i--) {
-          builder.addSimpleReplacement(
-            statements[i].sourceRange,
-            statements[i - 1].toSource(),
-          );
+          builder.addSimpleReplacement(statements[i].sourceRange, statements[i - 1].toSource());
         }
 
-        builder.addSimpleReplacement(
-          firstStatement.sourceRange,
-          superInitStateStatement.toSource(),
-        );
+        builder.addSimpleReplacement(firstStatement.sourceRange, superInitStateStatement.toSource());
       });
     });
   }

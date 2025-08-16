@@ -23,9 +23,7 @@ class MaxLinesForFileOptions {
       _ => null,
     };
 
-    return MaxLinesForFileOptions(
-      maxLines: maxLines,
-    );
+    return MaxLinesForFileOptions(maxLines: maxLines);
   }
 }
 
@@ -34,8 +32,7 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
     : super(
         name: ruleName,
         problemMessage: 'There are too many lines in this file.',
-        correctionMessage:
-            'Consider reducing the number of lines to {0} or less.',
+        correctionMessage: 'Consider reducing the number of lines to {0} or less.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -45,10 +42,7 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
 
   factory MaxLinesForFile.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: MaxLinesForFileOptions.fromJson,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: MaxLinesForFileOptions.fromJson);
 
     return MaxLinesForFile(options: options);
   }
@@ -63,11 +57,7 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
       final lineCount = node.lineInfo.lineCount;
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [options.params.maxLines],
-      );
+      reporter.atNode(node, code, arguments: [options.params.maxLines]);
     });
   }
 }

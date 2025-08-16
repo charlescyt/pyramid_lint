@@ -25,19 +25,14 @@ class WrapWithListenableBuilder extends DartAssist {
     final dartSdkVersion = context.pubspec.dartSdkVersion;
     if (dartSdkVersion == null) return;
 
-    if (!dartSdkVersion.meetMinimumRequiredVersion(
-      minimumRequiredDartSdkVersion,
-    )) {
+    if (!dartSdkVersion.meetMinimumRequiredVersion(minimumRequiredDartSdkVersion)) {
       return;
     }
 
     context.registry.addInstanceCreationExpression((node) {
       final sourceRange = switch (node.keyword) {
         null => node.constructorName.sourceRange,
-        final keyword => range.startEnd(
-          keyword,
-          node.constructorName,
-        ),
+        final keyword => range.startEnd(keyword, node.constructorName),
       };
       if (!sourceRange.covers(target)) return;
 
@@ -47,8 +42,7 @@ class WrapWithListenableBuilder extends DartAssist {
       SimpleIdentifier? listenableVariable;
       node.visitChildren(
         _SingleLevelChangeNotifierIdentifierVisitor(
-          onVisitNotifierIdentifier: (identifier) =>
-              listenableVariable = identifier,
+          onVisitNotifierIdentifier: (identifier) => listenableVariable = identifier,
         ),
       );
 
@@ -58,16 +52,13 @@ class WrapWithListenableBuilder extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addInsertion(
-          node.offset,
-          (builder) {
-            builder.write('ListenableBuilder(');
-            if (listenableVariable != null) {
-              builder.write('listenable: ${listenableVariable!.name},');
-            }
-            builder.write('builder: (context, child) { return ');
-          },
-        );
+        builder.addInsertion(node.offset, (builder) {
+          builder.write('ListenableBuilder(');
+          if (listenableVariable != null) {
+            builder.write('listenable: ${listenableVariable!.name},');
+          }
+          builder.write('builder: (context, child) { return ');
+        });
 
         builder.addSimpleInsertion(node.end, '; },)');
       });
@@ -75,19 +66,15 @@ class WrapWithListenableBuilder extends DartAssist {
   }
 }
 
-class _SingleLevelChangeNotifierIdentifierVisitor
-    extends RecursiveAstVisitor<void> {
-  const _SingleLevelChangeNotifierIdentifierVisitor({
-    required this.onVisitNotifierIdentifier,
-  });
+class _SingleLevelChangeNotifierIdentifierVisitor extends RecursiveAstVisitor<void> {
+  const _SingleLevelChangeNotifierIdentifierVisitor({required this.onVisitNotifierIdentifier});
 
   final void Function(SimpleIdentifier node) onVisitNotifierIdentifier;
 
   @override
   void visitNamedExpression(NamedExpression node) {
     // We only want to traverse the current node not the node's child subtree
-    if (node.name.label.name == 'child' &&
-        node.expression is InstanceCreationExpression) {
+    if (node.name.label.name == 'child' && node.expression is InstanceCreationExpression) {
       return;
     }
 
@@ -96,8 +83,7 @@ class _SingleLevelChangeNotifierIdentifierVisitor
 
   @override
   void visitSimpleIdentifier(SimpleIdentifier node) {
-    if (node.staticType != null &&
-        changeNotifierChecker.isAssignableFromType(node.staticType!)) {
+    if (node.staticType != null && changeNotifierChecker.isAssignableFromType(node.staticType!)) {
       onVisitNotifierIdentifier(node);
       return;
     }

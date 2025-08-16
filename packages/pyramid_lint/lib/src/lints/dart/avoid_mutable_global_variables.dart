@@ -20,10 +20,7 @@ class AvoidMutableGlobalVariables extends PyramidLintRule {
 
   factory AvoidMutableGlobalVariables.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidMutableGlobalVariables(options: options);
   }

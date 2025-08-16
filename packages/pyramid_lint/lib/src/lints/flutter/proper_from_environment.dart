@@ -25,10 +25,7 @@ class ProperFromEnvironment extends PyramidLintRule {
 
   factory ProperFromEnvironment.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ProperFromEnvironment(options: options);
   }
@@ -48,18 +45,11 @@ class ProperFromEnvironment extends PyramidLintRule {
       if (node.isConst) return;
 
       final type = node.staticType;
-      if (type == null ||
-          (!type.isDartCoreBool &&
-              !type.isDartCoreInt &&
-              !type.isDartCoreString)) {
+      if (type == null || (!type.isDartCoreBool && !type.isDartCoreInt && !type.isDartCoreString)) {
         return;
       }
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: [type.getDisplayString()],
-      );
+      reporter.atNode(node, code, arguments: [type.getDisplayString()]);
     });
   }
 
@@ -81,23 +71,15 @@ class _InvokeAsConstConstructor extends DartFix {
 
       final keyword = node.keyword;
       final changeBuilder = reporter.createChangeBuilder(
-        message: keyword == null
-            ? 'Add const keyword'
-            : 'Replace new with const',
+        message: keyword == null ? 'Add const keyword' : 'Replace new with const',
         priority: 80,
       );
 
       changeBuilder.addDartFileEdit((builder) {
         if (keyword == null) {
-          builder.addSimpleInsertion(
-            node.offset,
-            'const ',
-          );
+          builder.addSimpleInsertion(node.offset, 'const ');
         } else {
-          builder.addSimpleReplacement(
-            keyword.sourceRange,
-            'const',
-          );
+          builder.addSimpleReplacement(keyword.sourceRange, 'const');
         }
       });
     });

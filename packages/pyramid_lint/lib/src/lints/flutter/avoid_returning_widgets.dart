@@ -27,19 +27,15 @@ class AvoidReturningWidgetsOptions {
       _ => null,
     };
 
-    return AvoidReturningWidgetsOptions(
-      ignoredMethodNames: ignoredMethodNames,
-    );
+    return AvoidReturningWidgetsOptions(ignoredMethodNames: ignoredMethodNames);
   }
 }
 
-class AvoidReturningWidgets
-    extends PyramidLintRule<AvoidReturningWidgetsOptions> {
+class AvoidReturningWidgets extends PyramidLintRule<AvoidReturningWidgetsOptions> {
   AvoidReturningWidgets({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Returning widgets is not recommended for performance reasons.',
+        problemMessage: 'Returning widgets is not recommended for performance reasons.',
         correctionMessage: 'Consider creating a separate widget instead.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
@@ -69,20 +65,15 @@ class AvoidReturningWidgets
     context.registry.addMethodDeclaration((node) {
       final element = node.declaredFragment?.element;
       if (element == null) return;
-      final isExtensionMethod =
-          node.declaredFragment?.enclosingFragment?.element.kind ==
-          ElementKind.EXTENSION;
+      final isExtensionMethod = node.declaredFragment?.enclosingFragment?.element.kind == ElementKind.EXTENSION;
       if (isExtensionMethod) return;
 
-      final isOverride = node.metadata.any(
-        (e) => e.elementAnnotation?.isOverride == true,
-      );
+      final isOverride = node.metadata.any((e) => e.elementAnnotation?.isOverride == true);
       if (isOverride) return;
       if (element.isStatic) return;
 
       final returnType = node.returnType?.type;
-      if (returnType == null ||
-          !widgetChecker.isAssignableFromType(returnType)) {
+      if (returnType == null || !widgetChecker.isAssignableFromType(returnType)) {
         return;
       }
 
@@ -93,8 +84,7 @@ class AvoidReturningWidgets
 
     context.registry.addFunctionDeclaration((node) {
       final returnType = node.returnType?.type;
-      if (returnType == null ||
-          !widgetChecker.isAssignableFromType(returnType)) {
+      if (returnType == null || !widgetChecker.isAssignableFromType(returnType)) {
         return;
       }
 

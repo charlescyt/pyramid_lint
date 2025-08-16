@@ -14,8 +14,7 @@ class PreferBorderRadiusAll extends PyramidLintRule {
         problemMessage:
             'BorderRadius.circular is not a const constructor and it uses const '
             'constructor BorderRadius.all internally.',
-        correctionMessage:
-            'Consider replacing BorderRadius.circular with BorderRadius.all.',
+        correctionMessage: 'Consider replacing BorderRadius.circular with BorderRadius.all.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -25,10 +24,7 @@ class PreferBorderRadiusAll extends PyramidLintRule {
 
   factory PreferBorderRadiusAll.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferBorderRadiusAll(options: options);
   }
@@ -66,9 +62,7 @@ class _ReplaceWithBorderRadiusAll extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
@@ -81,14 +75,8 @@ class _ReplaceWithBorderRadiusAll extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          constructorNameIdentifier.sourceRange,
-          'all(Radius.circular',
-        );
-        builder.addSimpleInsertion(
-          node.endToken.offset,
-          ')',
-        );
+        builder.addSimpleReplacement(constructorNameIdentifier.sourceRange, 'all(Radius.circular');
+        builder.addSimpleInsertion(node.endToken.offset, ')');
       });
     });
   }

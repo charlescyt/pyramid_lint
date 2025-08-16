@@ -16,10 +16,8 @@ class PreferIterableEvery extends PyramidLintRule {
   PreferIterableEvery({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
-        correctionMessage:
-            'Consider using Iterable.every for better readability.',
+        problemMessage: 'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
+        correctionMessage: 'Consider using Iterable.every for better readability.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -29,10 +27,7 @@ class PreferIterableEvery extends PyramidLintRule {
 
   factory PreferIterableEvery.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferIterableEvery(options: options);
   }
@@ -91,8 +86,7 @@ class _ReplaceWithIterableEvery extends DartFix {
 
       final body = arg.body;
       final expression = switch (body) {
-        BlockFunctionBody(:final block) =>
-          block.statements.whereType<ReturnStatement>().firstOrNull?.expression,
+        BlockFunctionBody(:final block) => block.statements.whereType<ReturnStatement>().firstOrNull?.expression,
         ExpressionFunctionBody(:final expression) => expression,
         _ => null,
       };
@@ -102,13 +96,8 @@ class _ReplaceWithIterableEvery extends DartFix {
       if (type == null || !type.isDartCoreBool) return;
 
       switch (expression) {
-        case PrefixExpression() ||
-            PrefixedIdentifier() ||
-            SimpleIdentifier() ||
-            MethodInvocation() ||
-            IsExpression():
-        case BinaryExpression(:final operator)
-            when !operator.type.isLogicalOperator:
+        case PrefixExpression() || PrefixedIdentifier() || SimpleIdentifier() || MethodInvocation() || IsExpression():
+        case BinaryExpression(:final operator) when !operator.type.isLogicalOperator:
           break;
         case _:
           return;
@@ -126,9 +115,7 @@ class _ReplaceWithIterableEvery extends DartFix {
             if (operator.type == TokenType.BANG) {
               builder.addDeletion(operator.sourceRange);
             }
-          case PrefixedIdentifier(:final offset) ||
-              SimpleIdentifier(:final offset) ||
-              MethodInvocation(:final offset):
+          case PrefixedIdentifier(:final offset) || SimpleIdentifier(:final offset) || MethodInvocation(:final offset):
             builder.addSimpleInsertion(offset, '!');
           case IsExpression(:final isOperator, :final notOperator):
             if (notOperator != null) {
@@ -136,15 +123,11 @@ class _ReplaceWithIterableEvery extends DartFix {
             } else {
               builder.addSimpleInsertion(isOperator.end, '!');
             }
-          case BinaryExpression(:final operator)
-              when !operator.type.isLogicalOperator:
+          case BinaryExpression(:final operator) when !operator.type.isLogicalOperator:
             final token = operator;
             final invertedToken = getInvertedOperator(token.type);
             if (invertedToken != null) {
-              builder.addSimpleReplacement(
-                token.sourceRange,
-                invertedToken.lexeme,
-              );
+              builder.addSimpleReplacement(token.sourceRange, invertedToken.lexeme);
             }
         }
         builder.addDeletion(range.startEnd(node.operator, node.propertyName));

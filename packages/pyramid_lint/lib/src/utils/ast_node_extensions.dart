@@ -11,9 +11,7 @@ extension AstNodeExtension on AstNode {
   /// children of this [AstNode].
   Iterable<IfStatement> get childrenIfStatements {
     final ifStatements = <IfStatement>[];
-    final visitor = RecursiveIfStatementVisitor(
-      onVisitIfStatement: ifStatements.add,
-    );
+    final visitor = RecursiveIfStatementVisitor(onVisitIfStatement: ifStatements.add);
 
     visitChildren(visitor);
 
@@ -24,9 +22,7 @@ extension AstNodeExtension on AstNode {
   /// children of this [AstNode].
   Iterable<ConditionalExpression> get childrenConditionalExpressions {
     final conditionalExpressions = <ConditionalExpression>[];
-    final visitor = RecursiveConditionalExpressionVisitor(
-      onVisitConditionalExpression: conditionalExpressions.add,
-    );
+    final visitor = RecursiveConditionalExpressionVisitor(onVisitConditionalExpression: conditionalExpressions.add);
 
     visitChildren(visitor);
 
@@ -37,9 +33,7 @@ extension AstNodeExtension on AstNode {
   /// children of this [AstNode].
   Iterable<BinaryExpression> get childrenBinaryExpressions {
     final binaryExpressions = <BinaryExpression>[];
-    final visitor = RecursiveBinaryExpressionVisitor(
-      onVisitBinaryExpression: binaryExpressions.add,
-    );
+    final visitor = RecursiveBinaryExpressionVisitor(onVisitBinaryExpression: binaryExpressions.add);
 
     visitChildren(visitor);
 
@@ -99,9 +93,7 @@ extension ClassMembersExtension on NodeList<ClassMember> {
   /// Returns the first [ConstructorDeclaration] with the given [name], or
   /// `null` if there is none.
   ConstructorDeclaration? findConstructorDeclarationByName(String name) {
-    return constructorDeclarations.firstWhereOrNull(
-      (e) => e.name?.lexeme == name,
-    );
+    return constructorDeclarations.firstWhereOrNull((e) => e.name?.lexeme == name);
   }
 
   /// Returns the first [MethodDeclaration] with the given [name], or `null` if
@@ -113,28 +105,23 @@ extension ClassMembersExtension on NodeList<ClassMember> {
   /// Returns the first [FieldDeclaration] with the given [name], or `null` if
   /// there is none.
   FieldDeclaration? findFieldDeclarationByName(String name) {
-    return fieldDeclarations.firstWhereOrNull(
-      (e) => e.fields.variables.first.name.lexeme == name,
-    );
+    return fieldDeclarations.firstWhereOrNull((e) => e.fields.variables.first.name.lexeme == name);
   }
 }
 
 extension ConstructorInitializersExtension on NodeList<ConstructorInitializer> {
   /// Returns an iterable of all the [ConstructorFieldInitializer] in this
   /// [ConstructorInitializer] list.
-  Iterable<ConstructorFieldInitializer> get constructorFieldInitializers =>
-      whereType<ConstructorFieldInitializer>();
+  Iterable<ConstructorFieldInitializer> get constructorFieldInitializers => whereType<ConstructorFieldInitializer>();
 
   /// Returns an iterable of all the [RedirectingConstructorInvocation] in this
   /// [ConstructorInitializer] list.
-  Iterable<RedirectingConstructorInvocation>
-  get redirectingConstructorInvocations =>
+  Iterable<RedirectingConstructorInvocation> get redirectingConstructorInvocations =>
       whereType<RedirectingConstructorInvocation>();
 
   /// Returns an iterable of all the [SuperConstructorInvocation] in this
   /// [ConstructorInitializer] list.
-  Iterable<SuperConstructorInvocation> get superConstructorInvocations =>
-      whereType<SuperConstructorInvocation>();
+  Iterable<SuperConstructorInvocation> get superConstructorInvocations => whereType<SuperConstructorInvocation>();
 }
 
 extension InstanceCreationExpressionExtension on InstanceCreationExpression {

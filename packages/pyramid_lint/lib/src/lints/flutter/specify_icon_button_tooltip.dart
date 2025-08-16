@@ -52,11 +52,7 @@ class SpecifyIconButtonTooltip extends PyramidLintRule {
       final tooltip = node.argumentList.findArgumentByName('tooltip');
       if (tooltip != null) return;
 
-      reporter.atNode(
-        node.constructorName,
-        code,
-        data: node,
-      );
+      reporter.atNode(node.constructorName, code, data: node);
     });
   }
 
@@ -84,10 +80,7 @@ class _AddTooltip extends DartFix {
     );
 
     changeBuilder.addDartFileEdit((builder) {
-      final isArgumentListOnSameLine = _isNodeWithinSameLine(
-        resolver.lineInfo,
-        node.argumentList,
-      );
+      final isArgumentListOnSameLine = _isNodeWithinSameLine(resolver.lineInfo, node.argumentList);
 
       const tooltipGroupName = 'tooltip';
       const tooltipText = 'tooltip';
@@ -106,18 +99,10 @@ class _AddTooltip extends DartFix {
         int indentLevel;
         if (hasArgument) {
           // Indent the tooltip to the same level as the first argument
-          indentLevel = _getLineIndentLevelAtToken(
-            resolver.lineInfo,
-            node.argumentList.arguments.first.beginToken,
-          );
+          indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.arguments.first.beginToken);
         } else {
           // Indent the tooltip to the +1 level of the right parenthesis
-          indentLevel =
-              _getLineIndentLevelAtToken(
-                resolver.lineInfo,
-                node.argumentList.rightParenthesis,
-              ) +
-              1;
+          indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.rightParenthesis) + 1;
         }
 
         builder.addInsertion(leftParenthesis.end, (builder) {
@@ -135,11 +120,7 @@ class _AddTooltip extends DartFix {
 /// Returns true if the given [node] is entirely on the same line and
 /// false otherwise.
 bool _isNodeWithinSameLine(LineInfo lineInfo, AstNode node) {
-  return _areEntitiesOnSameLine(
-    lineInfo,
-    begin: node.beginToken,
-    end: node.endToken,
-  );
+  return _areEntitiesOnSameLine(lineInfo, begin: node.beginToken, end: node.endToken);
 }
 
 /// Whether the given [begin] and [end] entities are on the same line.
@@ -165,8 +146,7 @@ int _getLineIndentLevelAtToken(
 
   // Find the first token on the same line
   var currentToken = token;
-  while (currentToken.previous != null &&
-      currentToken.previous!.offset >= lineOffset) {
+  while (currentToken.previous != null && currentToken.previous!.offset >= lineOffset) {
     currentToken = currentToken.previous!;
   }
 

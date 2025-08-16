@@ -4,12 +4,10 @@ class WrapWithListenableBuilderExample extends StatefulWidget {
   const WrapWithListenableBuilderExample({super.key});
 
   @override
-  State<WrapWithListenableBuilderExample> createState() =>
-      _WrapWithListenableBuilderExampleState();
+  State<WrapWithListenableBuilderExample> createState() => _WrapWithListenableBuilderExampleState();
 }
 
-class _WrapWithListenableBuilderExampleState
-    extends State<WrapWithListenableBuilderExample> {
+class _WrapWithListenableBuilderExampleState extends State<WrapWithListenableBuilderExample> {
   final _focusNode = FocusNode();
 
   @override
@@ -23,9 +21,7 @@ class _WrapWithListenableBuilderExampleState
     return Column(
       children: [
         Text(_focusNode.hasFocus ? 'Focused' : 'Unfocused'),
-        TextFormField(
-          focusNode: _focusNode,
-        ),
+        TextFormField(focusNode: _focusNode),
       ],
     );
   }

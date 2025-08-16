@@ -14,8 +14,7 @@ class AvoidDynamic extends PyramidLintRule {
         problemMessage:
             'Avoid using dynamic type as it reduces type safety and can '
             'lead to potential runtime errors.',
-        correctionMessage:
-            'Consider specifying a type instead of using dynamic.',
+        correctionMessage: 'Consider specifying a type instead of using dynamic.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -25,10 +24,7 @@ class AvoidDynamic extends PyramidLintRule {
 
   factory AvoidDynamic.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidDynamic(options: options);
   }

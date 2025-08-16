@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for prefer_new_line_before_return fix',
     'lints/dart/prefer_new_line_before_return/fix/prefer_new_line_before_return.diff',
-    sourcePath:
-        'test/lints/dart/prefer_new_line_before_return/fix/prefer_new_line_before_return.dart',
+    sourcePath: 'test/lints/dart/prefer_new_line_before_return/fix/prefer_new_line_before_return.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferNewLineBeforeReturn(options: options);

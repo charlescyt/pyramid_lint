@@ -31,18 +31,14 @@ AstNode? getAstNodeFromElement(Element2 element) {
   final elementLibrary = element.library2;
   if (elementLibrary == null) return null;
 
-  final parsedLibraryResult =
-      session.getParsedLibraryByElement2(elementLibrary) as ParsedLibraryResult;
-  final elementDeclarationResult = parsedLibraryResult.getFragmentDeclaration(
-    element.firstFragment,
-  );
+  final parsedLibraryResult = session.getParsedLibraryByElement2(elementLibrary) as ParsedLibraryResult;
+  final elementDeclarationResult = parsedLibraryResult.getFragmentDeclaration(element.firstFragment);
 
   return elementDeclarationResult?.node;
 }
 
 InstanceCreationExpression? findParentWidget(InstanceCreationExpression expr) {
-  final parentExpr = expr.parent
-      ?.thisOrAncestorOfType<InstanceCreationExpression>();
+  final parentExpr = expr.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
   if (parentExpr == null) return null;
 
   final parentType = parentExpr.staticType;

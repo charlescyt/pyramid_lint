@@ -11,10 +11,8 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   PreferConstConstructorDeclarations({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Constructors should be declared as const constructors when possible.',
-        correctionMessage:
-            'Consider adding a const keyword to the constructor.',
+        problemMessage: 'Constructors should be declared as const constructors when possible.',
+        correctionMessage: 'Consider adding a const keyword to the constructor.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -22,14 +20,9 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   static const ruleName = 'prefer_const_constructor_declarations';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory PreferConstConstructorDeclarations.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory PreferConstConstructorDeclarations.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferConstConstructorDeclarations(options: options);
   }
@@ -50,27 +43,24 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
       if (!_areAllRedirectingConstructorInvocationsConst(node)) return;
       if (!_areAllSuperConstructorInvocationsConst(node)) return;
 
-      final superParameters = node.parameters.parameters
-          .whereType<SuperFormalParameter>();
+      final superParameters = node.parameters.parameters.whereType<SuperFormalParameter>();
       if (superParameters.isNotEmpty) {
         if (!_isSuperConstructorConst(node)) return;
       }
 
       final fieldInitializers = node.initializers.constructorFieldInitializers;
       if (fieldInitializers.isNotEmpty) {
-        final allExpressionResolveToConstant = fieldInitializers.every(
-          (e) {
-            // TODO(charlescyt): find a better way to check if the expression resolves to a constant value.
-            if (e.expression is BooleanLiteral ||
-                e.expression is DoubleLiteral ||
-                e.expression is IntegerLiteral ||
-                e.expression is StringLiteral) {
-              return true;
-            } else {
-              return e.expression.inConstantContext;
-            }
-          },
-        );
+        final allExpressionResolveToConstant = fieldInitializers.every((e) {
+          // TODO(charlescyt): find a better way to check if the expression resolves to a constant value.
+          if (e.expression is BooleanLiteral ||
+              e.expression is DoubleLiteral ||
+              e.expression is IntegerLiteral ||
+              e.expression is StringLiteral) {
+            return true;
+          } else {
+            return e.expression.inConstantContext;
+          }
+        });
 
         if (!allExpressionResolveToConstant) return;
       }
@@ -88,20 +78,12 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
     return superConstructor?.isConst == true;
   }
 
-  bool _areAllRedirectingConstructorInvocationsConst(
-    ConstructorDeclaration node,
-  ) {
-    return node.initializers.redirectingConstructorInvocations.every(
-      (e) => e.element?.isConst == true,
-    );
+  bool _areAllRedirectingConstructorInvocationsConst(ConstructorDeclaration node) {
+    return node.initializers.redirectingConstructorInvocations.every((e) => e.element?.isConst == true);
   }
 
-  bool _areAllSuperConstructorInvocationsConst(
-    ConstructorDeclaration node,
-  ) {
-    return node.initializers.superConstructorInvocations.every(
-      (e) => e.element?.isConst == true,
-    );
+  bool _areAllSuperConstructorInvocationsConst(ConstructorDeclaration node) {
+    return node.initializers.superConstructorInvocations.every((e) => e.element?.isConst == true);
   }
 
   @override
@@ -126,10 +108,7 @@ class _AddConst extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleInsertion(
-          node.offset,
-          'const ',
-        );
+        builder.addSimpleInsertion(node.offset, 'const ');
       });
     });
   }

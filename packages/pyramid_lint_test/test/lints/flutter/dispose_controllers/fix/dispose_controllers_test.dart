@@ -11,16 +11,12 @@ void main() {
   testGolden(
     'Test for dispose_controllers fix',
     'lints/flutter/dispose_controllers/fix/dispose_controllers.diff',
-    sourcePath:
-        'test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart',
+    sourcePath: 'test/lints/flutter/dispose_controllers/fix/dispose_controllers.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = DisposeControllers(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(10));

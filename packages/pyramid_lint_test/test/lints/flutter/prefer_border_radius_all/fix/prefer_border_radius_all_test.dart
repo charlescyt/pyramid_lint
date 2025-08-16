@@ -11,16 +11,12 @@ void main() {
   testGolden(
     'Test for prefer_border_radius_all fix',
     'lints/flutter/prefer_border_radius_all/fix/prefer_border_radius_all.diff',
-    sourcePath:
-        'test/lints/flutter/prefer_border_radius_all/fix/prefer_border_radius_all.dart',
+    sourcePath: 'test/lints/flutter/prefer_border_radius_all/fix/prefer_border_radius_all.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferBorderRadiusAll(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(1));

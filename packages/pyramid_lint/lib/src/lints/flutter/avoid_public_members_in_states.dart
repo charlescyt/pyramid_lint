@@ -22,10 +22,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
 
   factory AvoidPublicMembersInStates.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidPublicMembersInStates(options: options);
   }
@@ -47,14 +44,10 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
       final type = superClass.type;
       if (type == null || !stateChecker.isAssignableFromType(type)) return;
 
-      final hasOverrideAnnotation = classMember.metadata.any(
-        (e) => e.name.name == 'override',
-      );
+      final hasOverrideAnnotation = classMember.metadata.any((e) => e.name.name == 'override');
       if (hasOverrideAnnotation) return;
 
-      final hasVisibleForTestingAnnotation = classMember.metadata.any(
-        (e) => e.name.name == 'visibleForTesting',
-      );
+      final hasVisibleForTestingAnnotation = classMember.metadata.any((e) => e.name.name == 'visibleForTesting');
       if (hasVisibleForTestingAnnotation) return;
 
       switch (classMember) {
@@ -68,22 +61,15 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
     });
   }
 
-  void _checkMethodDeclaration(
-    MethodDeclaration methodDeclaration,
-    ErrorReporter reporter,
-  ) {
-    if (methodDeclaration.isStatic ||
-        methodDeclaration.name.lexeme.startsWith('_')) {
+  void _checkMethodDeclaration(MethodDeclaration methodDeclaration, ErrorReporter reporter) {
+    if (methodDeclaration.isStatic || methodDeclaration.name.lexeme.startsWith('_')) {
       return;
     }
 
     reporter.atToken(methodDeclaration.name, code);
   }
 
-  void _checkFieldDeclaration(
-    FieldDeclaration fieldDeclaration,
-    ErrorReporter reporter,
-  ) {
+  void _checkFieldDeclaration(FieldDeclaration fieldDeclaration, ErrorReporter reporter) {
     if (fieldDeclaration.isStatic) return;
 
     for (final variable in fieldDeclaration.fields.variables) {

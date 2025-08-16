@@ -13,8 +13,7 @@ class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
     : super(
         name: ruleName,
         problemMessage: 'Doc comments should be placed before annotations.',
-        correctionMessage:
-            'Consider moving the doc comment before the annotation.',
+        correctionMessage: 'Consider moving the doc comment before the annotation.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -22,14 +21,9 @@ class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
   static const ruleName = 'always_put_doc_comments_before_annotations';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AlwaysPutDocCommentsBeforeAnnotations(options: options);
   }
@@ -83,19 +77,13 @@ class _PutDocCommentsBeforeAnnotations extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final sourceRange = range.startOffsetEndOffset(
-          node.offset,
-          math.max(annotations.last.end, comment.end),
-        );
+        final sourceRange = range.startOffsetEndOffset(node.offset, math.max(annotations.last.end, comment.end));
         final newCommentAndAnnotations = [
           ...comment.tokens.map((e) => e.lexeme),
           ...annotations.map((e) => e.toSource()),
         ].join('\n');
 
-        builder.addSimpleReplacement(
-          sourceRange,
-          newCommentAndAnnotations,
-        );
+        builder.addSimpleReplacement(sourceRange, newCommentAndAnnotations);
       });
     });
   }

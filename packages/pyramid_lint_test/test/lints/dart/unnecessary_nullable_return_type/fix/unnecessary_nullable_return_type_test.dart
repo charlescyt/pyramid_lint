@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for unnecessary_nullable_return_type fix',
     'lints/dart/unnecessary_nullable_return_type/fix/unnecessary_nullable_return_type.diff',
-    sourcePath:
-        'test/lints/dart/unnecessary_nullable_return_type/fix/unnecessary_nullable_return_type.dart',
+    sourcePath: 'test/lints/dart/unnecessary_nullable_return_type/fix/unnecessary_nullable_return_type.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = UnnecessaryNullableReturnType(options: options);

@@ -22,10 +22,7 @@ class AlwaysSpecifyParameterNames extends PyramidLintRule {
 
   factory AlwaysSpecifyParameterNames.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AlwaysSpecifyParameterNames(options: options);
   }

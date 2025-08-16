@@ -9,29 +9,17 @@ void main() {
   testGolden(
     'Wrap all children with Expanded',
     'assists/flutter/wrap_all_children_with_expanded/wrap_all_children_with_expanded.diff',
-    sourcePath:
-        'test/assists/flutter/wrap_all_children_with_expanded/wrap_all_children_with_expanded.dart',
+    sourcePath: 'test/assists/flutter/wrap_all_children_with_expanded/wrap_all_children_with_expanded.dart',
     (result) async {
       final assist = WrapAllChildrenWithExpanded();
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final changes = [
         // Column
-        ...await assist.testRun(
-          result,
-          const SourceRange(169, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(169, 0), pubspec: pubspec),
 
         // Row
-        ...await assist.testRun(
-          result,
-          const SourceRange(202, 0),
-          pubspec: pubspec,
-        ),
+        ...await assist.testRun(result, const SourceRange(202, 0), pubspec: pubspec),
       ];
 
       expect(changes, hasLength(2));

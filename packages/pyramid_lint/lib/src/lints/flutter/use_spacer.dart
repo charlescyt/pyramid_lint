@@ -24,10 +24,7 @@ class UseSpacer extends PyramidLintRule {
 
   factory UseSpacer.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return UseSpacer(options: options);
   }
@@ -52,20 +49,14 @@ class UseSpacer extends PyramidLintRule {
 
       final childType = childArgument.staticType;
       if (childType == null ||
-          (!containerChecker.isExactlyType(childType) &&
-              !sizedBoxChecker.isExactlyType(childType))) {
+          (!containerChecker.isExactlyType(childType) && !sizedBoxChecker.isExactlyType(childType))) {
         return;
       }
 
-      final isChildArgumentEmpty =
-          childExpression.argumentList.arguments.isEmpty;
+      final isChildArgumentEmpty = childExpression.argumentList.arguments.isEmpty;
       if (!isChildArgumentEmpty) return;
 
-      reporter.atNode(
-        node.constructorName,
-        code,
-        arguments: [childType.getDisplayString()],
-      );
+      reporter.atNode(node.constructorName, code, arguments: [childType.getDisplayString()]);
     });
   }
 
@@ -83,9 +74,7 @@ class _ReplaceWithSpacer extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
@@ -98,15 +87,9 @@ class _ReplaceWithSpacer extends DartFix {
         final flexArgument = node.argumentList.findArgumentByName('flex');
 
         if (flexArgument == null) {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'const Spacer()',
-          );
+          builder.addSimpleReplacement(node.sourceRange, 'const Spacer()');
         } else {
-          builder.addSimpleReplacement(
-            node.sourceRange,
-            'Spacer(${flexArgument.toSource()})',
-          );
+          builder.addSimpleReplacement(node.sourceRange, 'Spacer(${flexArgument.toSource()})');
         }
       });
     });

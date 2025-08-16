@@ -22,14 +22,9 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
   static const ruleName = 'unnecessary_nullable_return_type';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory UnnecessaryNullableReturnType.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory UnnecessaryNullableReturnType.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return UnnecessaryNullableReturnType(options: options);
   }
@@ -50,19 +45,11 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
       final body = node.functionExpression.body;
 
       if (body is BlockFunctionBody) {
-        _checkBlockFunctionBody(
-          reporter: reporter,
-          node: body,
-          returnType: returnType,
-        );
+        _checkBlockFunctionBody(reporter: reporter, node: body, returnType: returnType);
       }
 
       if (body is ExpressionFunctionBody) {
-        _checkExpressionFunctionBody(
-          reporter: reporter,
-          node: body,
-          returnType: returnType,
-        );
+        _checkExpressionFunctionBody(reporter: reporter, node: body, returnType: returnType);
       }
     });
 
@@ -76,19 +63,11 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
       final body = node.body;
 
       if (body is BlockFunctionBody) {
-        _checkBlockFunctionBody(
-          reporter: reporter,
-          node: body,
-          returnType: returnType,
-        );
+        _checkBlockFunctionBody(reporter: reporter, node: body, returnType: returnType);
       }
 
       if (body is ExpressionFunctionBody) {
-        _checkExpressionFunctionBody(
-          reporter: reporter,
-          node: body,
-          returnType: node.returnType!,
-        );
+        _checkExpressionFunctionBody(reporter: reporter, node: body, returnType: node.returnType!);
       }
     });
   }
@@ -145,11 +124,7 @@ class _ReplaceWithNonNullableType extends DartFix {
       final questionToken = node.returnType?.question;
       if (questionToken == null) return;
 
-      _deleteQuestionToken(
-        reporter: reporter,
-        returnType: node.returnType!,
-        questionToken: questionToken,
-      );
+      _deleteQuestionToken(reporter: reporter, returnType: node.returnType!, questionToken: questionToken);
     });
 
     context.registry.addMethodDeclaration((node) {
@@ -158,11 +133,7 @@ class _ReplaceWithNonNullableType extends DartFix {
       final questionToken = node.returnType?.question;
       if (questionToken == null) return;
 
-      _deleteQuestionToken(
-        reporter: reporter,
-        returnType: node.returnType!,
-        questionToken: questionToken,
-      );
+      _deleteQuestionToken(reporter: reporter, returnType: node.returnType!, questionToken: questionToken);
     });
   }
 

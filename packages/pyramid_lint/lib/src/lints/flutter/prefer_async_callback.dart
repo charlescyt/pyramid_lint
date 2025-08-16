@@ -13,8 +13,7 @@ class PreferAsyncCallback extends PyramidLintRule {
     : super(
         name: ruleName,
         problemMessage: 'There is a typedef AsyncCallback defined in flutter.',
-        correctionMessage:
-            'Consider using AsyncCallback instead of Future<void> Function().',
+        correctionMessage: 'Consider using AsyncCallback instead of Future<void> Function().',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -24,10 +23,7 @@ class PreferAsyncCallback extends PyramidLintRule {
 
   factory PreferAsyncCallback.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferAsyncCallback(options: options);
   }
@@ -84,9 +80,7 @@ class _ReplaceWithAsyncCallback extends DartFix {
     context.registry.addGenericFunctionType((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-      final replacement = node.question == null
-          ? 'AsyncCallback'
-          : 'AsyncCallback?';
+      final replacement = node.question == null ? 'AsyncCallback' : 'AsyncCallback?';
 
       final changeBuilder = reporter.createChangeBuilder(
         message: 'Replace with $replacement',
@@ -94,10 +88,7 @@ class _ReplaceWithAsyncCallback extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          replacement,
-        );
+        builder.addSimpleReplacement(node.sourceRange, replacement);
       });
     });
   }

@@ -22,10 +22,7 @@ class ClassMembersOrdering extends PyramidLintRule {
 
   factory ClassMembersOrdering.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[name]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ClassMembersOrdering(options: options);
   }
@@ -40,9 +37,7 @@ class ClassMembersOrdering extends PyramidLintRule {
       final members = node.members;
       if (members.isEmpty || members.length == 1) return;
 
-      final comparator = _isWidget(node)
-          ? _compareMembersInWidget
-          : _compareMembersInClass;
+      final comparator = _isWidget(node) ? _compareMembersInWidget : _compareMembersInClass;
 
       for (var i = 0; i < members.length; i++) {
         final current = members[i];
@@ -50,27 +45,11 @@ class ClassMembersOrdering extends PyramidLintRule {
         final next = i < members.length - 1 ? members[i + 1] : null;
 
         if (previous != null && comparator(current.type, previous.type) < 0) {
-          reporter.atNode(
-            current,
-            code,
-            arguments: [
-              current.type.label,
-              'before',
-              previous.type.label,
-            ],
-          );
+          reporter.atNode(current, code, arguments: [current.type.label, 'before', previous.type.label]);
         }
 
         if (next != null && comparator(current.type, next.type) > 0) {
-          reporter.atNode(
-            current,
-            code,
-            arguments: [
-              current.type.label,
-              'after',
-              next.type.label,
-            ],
-          );
+          reporter.atNode(current, code, arguments: [current.type.label, 'after', next.type.label]);
         }
       }
     });
@@ -139,11 +118,8 @@ extension on ConstructorDeclaration {
 extension on ClassMember {
   bool get isPrivate {
     return switch (this) {
-      FieldDeclaration(:final fields) => fields.variables.any(
-        (e) => e.name.lexeme.startsWith('_'),
-      ),
-      ConstructorDeclaration(:final name) =>
-        name?.lexeme.startsWith('_') == true,
+      FieldDeclaration(:final fields) => fields.variables.any((e) => e.name.lexeme.startsWith('_')),
+      ConstructorDeclaration(:final name) => name?.lexeme.startsWith('_') == true,
       MethodDeclaration(:final name) => name.lexeme.startsWith('_'),
     };
   }
@@ -152,46 +128,25 @@ extension on ClassMember {
     switch (this) {
       case FieldDeclaration(:final isStatic, :final isPrivate):
         if (isStatic) {
-          return isPrivate
-              ? _MemberType.privateStaticFields
-              : _MemberType.publicStaticFields;
+          return isPrivate ? _MemberType.privateStaticFields : _MemberType.publicStaticFields;
         }
-        return isPrivate //
-            ? _MemberType.privateFields
-            : _MemberType.publicFields;
+        return isPrivate ? _MemberType.privateFields : _MemberType.publicFields;
       case ConstructorDeclaration(:final isNamed, :final isPrivate):
         if (isNamed) {
-          return isPrivate
-              ? _MemberType.privateNamedConstructors
-              : _MemberType.publicNamedConstructors;
+          return isPrivate ? _MemberType.privateNamedConstructors : _MemberType.publicNamedConstructors;
         }
-        return isPrivate
-            ? _MemberType.privateConstructors
-            : _MemberType.publicConstructors;
-      case MethodDeclaration(
-        :final isGetter,
-        :final isSetter,
-        :final isStatic,
-        :final isPrivate,
-      ):
+        return isPrivate ? _MemberType.privateConstructors : _MemberType.publicConstructors;
+      case MethodDeclaration(:final isGetter, :final isSetter, :final isStatic, :final isPrivate):
         if (isGetter) {
-          return isPrivate
-              ? _MemberType.privateGetters
-              : _MemberType.publicGetters;
+          return isPrivate ? _MemberType.privateGetters : _MemberType.publicGetters;
         }
         if (isSetter) {
-          return isPrivate
-              ? _MemberType.privateSetters
-              : _MemberType.publicSetters;
+          return isPrivate ? _MemberType.privateSetters : _MemberType.publicSetters;
         }
         if (isStatic) {
-          return isPrivate
-              ? _MemberType.privateStaticMethods
-              : _MemberType.publicStaticMethods;
+          return isPrivate ? _MemberType.privateStaticMethods : _MemberType.publicStaticMethods;
         }
-        return isPrivate
-            ? _MemberType.privateMethods
-            : _MemberType.publicMethods;
+        return isPrivate ? _MemberType.privateMethods : _MemberType.publicMethods;
     }
   }
 }

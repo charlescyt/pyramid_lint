@@ -24,10 +24,7 @@ class AvoidSingleChildInFlex extends PyramidLintRule {
 
   factory AvoidSingleChildInFlex.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidSingleChildInFlex(options: options);
   }
@@ -52,11 +49,7 @@ class AvoidSingleChildInFlex extends PyramidLintRule {
       final firstElement = childrenExpression.elements.first;
       if (firstElement is SpreadElement || firstElement is ForElement) return;
 
-      reporter.atNode(
-        node.constructorName,
-        code,
-        arguments: [type.getDisplayString()],
-      );
+      reporter.atNode(node.constructorName, code, arguments: [type.getDisplayString()]);
     });
   }
 
@@ -74,15 +67,12 @@ class _ReplaceWithAlign extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
-      if (childrenExpression is! ListLiteral ||
-          childrenExpression.elements.length != 1) {
+      if (childrenExpression is! ListLiteral || childrenExpression.elements.length != 1) {
         return;
       }
 
@@ -93,11 +83,7 @@ class _ReplaceWithAlign extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         final child = childrenExpression.elements.first;
-
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          'Align(child: ${child.toSource()},)',
-        );
+        builder.addSimpleReplacement(node.sourceRange, 'Align(child: ${child.toSource()},)');
       });
     });
   }
@@ -113,15 +99,12 @@ class _ReplaceWithCenter extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
       final childrenExpression = node.argumentList.childrenArgument?.expression;
-      if (childrenExpression is! ListLiteral ||
-          childrenExpression.elements.length != 1) {
+      if (childrenExpression is! ListLiteral || childrenExpression.elements.length != 1) {
         return;
       }
 
@@ -132,11 +115,7 @@ class _ReplaceWithCenter extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         final child = childrenExpression.elements.first;
-
-        builder.addSimpleReplacement(
-          node.sourceRange,
-          'Center(child: ${child.toSource()},)',
-        );
+        builder.addSimpleReplacement(node.sourceRange, 'Center(child: ${child.toSource()},)');
       });
     });
   }

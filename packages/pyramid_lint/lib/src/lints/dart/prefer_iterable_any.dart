@@ -12,10 +12,8 @@ class PreferIterableAny extends PyramidLintRule {
   PreferIterableAny({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
-        correctionMessage:
-            'Consider using Iterable.any for better readability.',
+        problemMessage: 'Using Iterable.where(...).isNotEmpty is more verbose than Iterable.any.',
+        correctionMessage: 'Consider using Iterable.any for better readability.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -25,10 +23,7 @@ class PreferIterableAny extends PyramidLintRule {
 
   factory PreferIterableAny.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferIterableAny(options: options);
   }

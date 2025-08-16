@@ -28,15 +28,8 @@ class WrapWithStack extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleInsertion(
-          node.offset,
-          'Stack(children: [',
-        );
-
-        builder.addSimpleInsertion(
-          node.end,
-          ',],)',
-        );
+        builder.addSimpleInsertion(node.offset, 'Stack(children: [');
+        builder.addSimpleInsertion(node.end, ',],)');
       });
     });
   }

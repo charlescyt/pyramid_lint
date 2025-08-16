@@ -13,8 +13,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
     : super(
         name: ruleName,
         problemMessage: 'The callback parameter is not used.',
-        correctionMessage:
-            'Consider using underscores for the unused parameter.',
+        correctionMessage: 'Consider using underscores for the unused parameter.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -22,14 +21,9 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
   static const ruleName = 'prefer_underscore_for_unused_callback_parameters';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory PreferUnderscoreForUnusedCallbackParameters.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory PreferUnderscoreForUnusedCallbackParameters.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferUnderscoreForUnusedCallbackParameters(options: options);
   }

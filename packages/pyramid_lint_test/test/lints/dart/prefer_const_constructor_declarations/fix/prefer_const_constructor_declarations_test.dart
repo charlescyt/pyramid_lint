@@ -10,8 +10,7 @@ void main() {
   testGolden(
     'Test for prefer_const_constructor_declarations fix',
     'lints/dart/prefer_const_constructor_declarations/fix/prefer_const_constructor_declarations.diff',
-    sourcePath:
-        'test/lints/dart/prefer_const_constructor_declarations/fix/prefer_const_constructor_declarations.dart',
+    sourcePath: 'test/lints/dart/prefer_const_constructor_declarations/fix/prefer_const_constructor_declarations.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferConstConstructorDeclarations(options: options);

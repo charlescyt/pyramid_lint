@@ -28,8 +28,7 @@ class WrapWithLayoutBuilder extends DartAssist {
       final parentWidget = findParentWidget(node);
       if (parentWidget != null) {
         final parentType = parentWidget.staticType;
-        if (parentType != null &&
-            layoutBuilderChecker.isExactlyType(parentType)) {
+        if (parentType != null && layoutBuilderChecker.isExactlyType(parentType)) {
           return;
         }
       }
@@ -40,10 +39,7 @@ class WrapWithLayoutBuilder extends DartAssist {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleInsertion(
-          node.offset,
-          'LayoutBuilder(builder: (context, constraints) { return ',
-        );
+        builder.addSimpleInsertion(node.offset, 'LayoutBuilder(builder: (context, constraints) { return ');
         builder.addSimpleInsertion(node.end, '; },)');
       });
     });

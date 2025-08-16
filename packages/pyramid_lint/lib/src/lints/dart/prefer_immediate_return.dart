@@ -24,10 +24,7 @@ class PreferImmediateReturn extends PyramidLintRule {
 
   factory PreferImmediateReturn.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferImmediateReturn(options: options);
   }
@@ -45,8 +42,7 @@ class PreferImmediateReturn extends PyramidLintRule {
       final secondLastStatement = statements[statements.length - 2];
       final lastStatement = statements.last;
 
-      if (secondLastStatement is! VariableDeclarationStatement ||
-          lastStatement is! ReturnStatement) {
+      if (secondLastStatement is! VariableDeclarationStatement || lastStatement is! ReturnStatement) {
         return;
       }
 
@@ -84,8 +80,7 @@ class _ReplaceWithImmediateReturn extends DartFix {
       final secondLastStatement = statements[statements.length - 2];
       final lastStatement = statements.last;
 
-      if (secondLastStatement is! VariableDeclarationStatement ||
-          lastStatement is! ReturnStatement) {
+      if (secondLastStatement is! VariableDeclarationStatement || lastStatement is! ReturnStatement) {
         return;
       }
 
@@ -104,10 +99,7 @@ class _ReplaceWithImmediateReturn extends DartFix {
 
       changeBuilder.addDartFileEdit((builder) {
         builder.addDeletion(range.deletionRange(secondLastStatement));
-        builder.addSimpleReplacement(
-          lastStatement.sourceRange,
-          'return ${variableDeclaration.initializer};',
-        );
+        builder.addSimpleReplacement(lastStatement.sourceRange, 'return ${variableDeclaration.initializer};');
       });
     });
   }

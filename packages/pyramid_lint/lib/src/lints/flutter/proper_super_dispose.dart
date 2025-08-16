@@ -14,10 +14,8 @@ class ProperSuperDispose extends PyramidLintRule {
   ProperSuperDispose({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'super.dispose() should be called at the end of the dispose method.',
-        correctionMessage:
-            'Try placing super.dispose() at the end of the dispose method.',
+        problemMessage: 'super.dispose() should be called at the end of the dispose method.',
+        correctionMessage: 'Try placing super.dispose() at the end of the dispose method.',
         url: url,
         errorSeverity: ErrorSeverity.ERROR,
       );
@@ -27,10 +25,7 @@ class ProperSuperDispose extends PyramidLintRule {
 
   factory ProperSuperDispose.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return ProperSuperDispose(options: options);
   }
@@ -100,26 +95,14 @@ class _PlaceSuperDisposeAtTheEnd extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        final superDisposeStatementIndex = statements.indexOf(
-          superDisposeStatement,
-        );
+        final superDisposeStatementIndex = statements.indexOf(superDisposeStatement);
         final lastStatement = statements.last;
 
-        for (
-          var i = superDisposeStatementIndex;
-          i < statements.length - 1;
-          i++
-        ) {
-          builder.addSimpleReplacement(
-            statements[i].sourceRange,
-            statements[i + 1].toSource(),
-          );
+        for (var i = superDisposeStatementIndex; i < statements.length - 1; i++) {
+          builder.addSimpleReplacement(statements[i].sourceRange, statements[i + 1].toSource());
         }
 
-        builder.addSimpleReplacement(
-          lastStatement.sourceRange,
-          superDisposeStatement.toSource(),
-        );
+        builder.addSimpleReplacement(lastStatement.sourceRange, superDisposeStatement.toSource());
       });
     });
   }

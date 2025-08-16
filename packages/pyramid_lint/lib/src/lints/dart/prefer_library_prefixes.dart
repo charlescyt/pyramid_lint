@@ -19,15 +19,9 @@ class PreferLibraryPrefixesOptions {
   final bool _includeDefaultLibraries;
   final List<String>? _libraries;
 
-  static const defaultLibraries = [
-    'dart:developer',
-    'dart:math',
-  ];
+  static const defaultLibraries = ['dart:developer', 'dart:math'];
 
-  List<String> get libraries => [
-    if (_includeDefaultLibraries) ...defaultLibraries,
-    ...?_libraries,
-  ];
+  List<String> get libraries => [if (_includeDefaultLibraries) ...defaultLibraries, ...?_libraries];
 
   factory PreferLibraryPrefixesOptions.fromJson(Json json) {
     final includeDefaultLibraries = switch (json['include_default_libraries']) {
@@ -40,15 +34,11 @@ class PreferLibraryPrefixesOptions {
       _ => null,
     };
 
-    return PreferLibraryPrefixesOptions(
-      includeDefaultLibraries: includeDefaultLibraries,
-      libraries: libraries,
-    );
+    return PreferLibraryPrefixesOptions(includeDefaultLibraries: includeDefaultLibraries, libraries: libraries);
   }
 }
 
-class PreferLibraryPrefixes
-    extends PyramidLintRule<PreferLibraryPrefixesOptions> {
+class PreferLibraryPrefixes extends PyramidLintRule<PreferLibraryPrefixesOptions> {
   PreferLibraryPrefixes({required super.options})
     : super(
         name: ruleName,
@@ -120,10 +110,7 @@ class _AddPrefix extends DartFix {
       );
 
       changeBuilder.addDartFileEdit((builder) {
-        builder.addSimpleInsertion(
-          node.uri.end,
-          ' as $lastUriSegment',
-        );
+        builder.addSimpleInsertion(node.uri.end, ' as $lastUriSegment');
       });
     });
   }

@@ -24,9 +24,7 @@ class MaxLinesForFunctionOptions {
       _ => null,
     };
 
-    return MaxLinesForFunctionOptions(
-      maxLines: maxLines,
-    );
+    return MaxLinesForFunctionOptions(maxLines: maxLines);
   }
 }
 
@@ -35,8 +33,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
     : super(
         name: ruleName,
         problemMessage: 'There are too many lines in this {0}.',
-        correctionMessage:
-            'Consider reducing the number of lines to {1} or less.',
+        correctionMessage: 'Consider reducing the number of lines to {1} or less.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
       );
@@ -46,10 +43,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
 
   factory MaxLinesForFunction.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: MaxLinesForFunctionOptions.fromJson,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: MaxLinesForFunctionOptions.fromJson);
 
     return MaxLinesForFunction(options: options);
   }
@@ -66,11 +60,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
       final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: ['function', options.params.maxLines],
-      );
+      reporter.atNode(node, code, arguments: ['function', options.params.maxLines]);
     });
 
     context.registry.addMethodDeclaration((node) {
@@ -79,11 +69,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
       final lineCount = getLineCountForNode(body, lineInfo);
       if (lineCount <= options.params.maxLines) return;
 
-      reporter.atNode(
-        node,
-        code,
-        arguments: ['method', options.params.maxLines],
-      );
+      reporter.atNode(node, code, arguments: ['method', options.params.maxLines]);
     });
   }
 }

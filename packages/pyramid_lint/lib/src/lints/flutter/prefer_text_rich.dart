@@ -12,8 +12,7 @@ class PreferTextRich extends PyramidLintRule {
   PreferTextRich({required super.options})
     : super(
         name: ruleName,
-        problemMessage:
-            'RichText does not inherit TextStyle from DefaultTextStyle.',
+        problemMessage: 'RichText does not inherit TextStyle from DefaultTextStyle.',
         correctionMessage: 'Consider replacing RichText with Text.rich.',
         url: url,
         errorSeverity: ErrorSeverity.INFO,
@@ -24,10 +23,7 @@ class PreferTextRich extends PyramidLintRule {
 
   factory PreferTextRich.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return PreferTextRich(options: options);
   }
@@ -62,9 +58,7 @@ class _ReplaceWithTextRich extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
-      if (!analysisError.sourceRange.intersects(
-        node.constructorName.sourceRange,
-      )) {
+      if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {
         return;
       }
 
@@ -76,10 +70,7 @@ class _ReplaceWithTextRich extends DartFix {
       changeBuilder.addDartFileEdit((builder) {
         final textArgument = node.argumentList.findArgumentByName('text');
 
-        builder.addSimpleReplacement(
-          node.constructorName.sourceRange,
-          'Text.rich',
-        );
+        builder.addSimpleReplacement(node.constructorName.sourceRange, 'Text.rich');
 
         if (textArgument != null) {
           builder.addDeletion(textArgument.name.sourceRange);

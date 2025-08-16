@@ -19,14 +19,9 @@ class AvoidPositionalFieldsInRecords extends PyramidLintRule {
   static const ruleName = 'avoid_positional_fields_in_records';
   static const url = '$dartLintDocUrl/$ruleName';
 
-  factory AvoidPositionalFieldsInRecords.fromConfigs(
-    CustomLintConfigs configs,
-  ) {
+  factory AvoidPositionalFieldsInRecords.fromConfigs(CustomLintConfigs configs) {
     final json = configs.rules[ruleName]?.json ?? {};
-    final options = PyramidLintRuleOptions.fromJson(
-      json: json,
-      paramsConverter: (_) => null,
-    );
+    final options = PyramidLintRuleOptions.fromJson(json: json, paramsConverter: (_) => null);
 
     return AvoidPositionalFieldsInRecords(options: options);
   }

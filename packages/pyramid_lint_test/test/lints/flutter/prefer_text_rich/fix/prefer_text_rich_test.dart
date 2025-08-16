@@ -16,10 +16,7 @@ void main() {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferTextRich(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(1));

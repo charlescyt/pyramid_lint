@@ -16,8 +16,9 @@ class InvertBooleanExpression extends DartAssist {
       if (!node.sourceRange.covers(target)) return;
 
       final childrenBinaryExpressions = node.childrenBinaryExpressions;
-      final isTargetInsideChildrenBinaryExpressions = childrenBinaryExpressions
-          .any((e) => e.sourceRange.intersects(target));
+      final isTargetInsideChildrenBinaryExpressions = childrenBinaryExpressions.any(
+        (e) => e.sourceRange.intersects(target),
+      );
       if (isTargetInsideChildrenBinaryExpressions) return;
 
       final operator = node.operator.type;

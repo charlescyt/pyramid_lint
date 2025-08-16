@@ -11,16 +11,12 @@ void main() {
   testGolden(
     'Test for prefer_border_from_border_side fix',
     'lints/flutter/prefer_border_from_border_side/fix/prefer_border_from_border_side.diff',
-    sourcePath:
-        'test/lints/flutter/prefer_border_from_border_side/fix/prefer_border_from_border_side.dart',
+    sourcePath: 'test/lints/flutter/prefer_border_from_border_side/fix/prefer_border_from_border_side.dart',
     (result) async {
       const options = PyramidLintRuleOptions(params: null);
       final lint = PreferBorderFromBorderSide(options: options);
       final fix = lint.getFixes().single as DartFix;
-      final pubspec = Pubspec(
-        'test',
-        dependencies: {'flutter': SdkDependency('flutter')},
-      );
+      final pubspec = Pubspec('test', dependencies: {'flutter': SdkDependency('flutter')});
 
       final errors = await lint.testRun(result, pubspec: pubspec);
       expect(errors, hasLength(1));
