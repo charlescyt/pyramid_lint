@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+<a href="https://pub.dev/packages/pyramid_lint"><img alt="Pub Version" src="https://img.shields.io/pub/v/pyramid_lint"></a>
+<a href="https://github.com/charlescyt/pyramid_lint/actions/workflows/build.yml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/charlescyt/pyramid_lint/build.yml"></a>
+<a href="https://opensource.org/licenses/MIT>"><img alt="GitHub License" src="https://img.shields.io/github/license/charlescyt/pyramid_lint"></a>
+</p>
+
+<p align="center">
 <strong>Linting tool for Dart and Flutter projects.</strong>
 </p>
 
