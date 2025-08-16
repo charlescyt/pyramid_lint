@@ -12,10 +12,10 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  analyzer: ^7.4.0
+  analyzer: ^7.5.0
   analyzer_plugin: ^0.13.1
-  custom_lint: ^0.7.5
-  custom_lint_core: ^0.7.5
+  custom_lint: ^0.8.0
+  custom_lint_core: ^0.8.0
   flutter_test:
     sdk: flutter
   path: ^1.8.3
