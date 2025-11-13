@@ -52,7 +52,7 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
         problemMessage: '{0} should be named with a valid prefix.',
         correctionMessage: 'Try naming your {1} with a valid prefix.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'boolean_prefixes';
@@ -68,7 +68,7 @@ class BooleanPrefixes extends PyramidLintRule<BooleanPrefixesOptions> {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addBooleanLiteral((node) {

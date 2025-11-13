@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
@@ -17,7 +18,7 @@ class ProperSuperInitState extends PyramidLintRule {
         problemMessage: 'super.initState() should be called at the start of the initState method.',
         correctionMessage: 'Try placing super.initState() at the start of the initState method.',
         url: url,
-        errorSeverity: ErrorSeverity.ERROR,
+        errorSeverity: DiagnosticSeverity.ERROR,
       );
 
   static const ruleName = 'proper_super_init_state';
@@ -33,7 +34,7 @@ class ProperSuperInitState extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -72,8 +73,8 @@ class _PlaceSuperInitStateAtTheStart extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addClassDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

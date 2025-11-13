@@ -37,7 +37,7 @@ class AvoidUnusedParameters extends PyramidLintRule<AvoidUnusedParametersOptions
         problemMessage: 'Unused parameter should be removed.',
         correctionMessage: 'Consider removing the unused parameter.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'avoid_unused_parameters';
@@ -56,7 +56,7 @@ class AvoidUnusedParameters extends PyramidLintRule<AvoidUnusedParametersOptions
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addFunctionDeclaration((node) {

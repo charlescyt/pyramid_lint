@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -16,7 +17,7 @@ class PreferImmediateReturn extends PyramidLintRule {
             'unnecessary.',
         correctionMessage: 'Consider returning the value immediately.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_immediate_return';
@@ -32,7 +33,7 @@ class PreferImmediateReturn extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addBlockFunctionBody((node) {
@@ -68,8 +69,8 @@ class _ReplaceWithImmediateReturn extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addBlockFunctionBody((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

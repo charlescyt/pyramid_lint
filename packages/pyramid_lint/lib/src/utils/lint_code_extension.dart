@@ -8,7 +8,7 @@ extension LintCodeExtension on LintCode {
     String? correctionMessage,
     String? uniqueName,
     String? url,
-    ErrorSeverity? errorSeverity,
+    DiagnosticSeverity? errorSeverity,
   }) {
     return LintCode(
       name: name ?? this.name,

@@ -13,7 +13,7 @@ class AvoidEmptyBlocks extends PyramidLintRule {
         problemMessage: 'Empty block usually indicates a missing implementation.',
         correctionMessage: 'Consider adding an implementation or a TODO comment.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'avoid_empty_blocks';
@@ -29,7 +29,7 @@ class AvoidEmptyBlocks extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addBlock((node) {

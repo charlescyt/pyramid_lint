@@ -13,7 +13,7 @@ class AvoidPositionalFieldsInRecords extends PyramidLintRule {
         problemMessage: 'Using positional field getters decreases readability.',
         correctionMessage: 'Consider using named field getters instead.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_positional_fields_in_records';
@@ -29,7 +29,7 @@ class AvoidPositionalFieldsInRecords extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addPropertyAccess((node) {

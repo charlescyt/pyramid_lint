@@ -12,7 +12,7 @@ class PreferAsyncAwait extends PyramidLintRule {
         problemMessage: 'Using Future.then() decreases readability.',
         correctionMessage: 'Consider using async/await instead.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_async_await';
@@ -28,7 +28,7 @@ class PreferAsyncAwait extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addMethodInvocation((node) {

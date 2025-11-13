@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -16,7 +17,7 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
         problemMessage: 'Using inverted boolean expression decreases code readability.',
         correctionMessage: 'Consider using {0} instead.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_inverted_boolean_expressions';
@@ -32,7 +33,7 @@ class AvoidInvertedBooleanExpressions extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addPrefixExpression((node) {
@@ -88,8 +89,8 @@ class _ReplaceWithPositiveBooleanExpression extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addPrefixExpression((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

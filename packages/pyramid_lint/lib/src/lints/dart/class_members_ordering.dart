@@ -14,7 +14,7 @@ class ClassMembersOrdering extends PyramidLintRule {
         problemMessage: 'Incorrect order of {0}.',
         correctionMessage: 'Consider putting {0} {1} {2}.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const name = 'class_members_ordering';
@@ -30,7 +30,7 @@ class ClassMembersOrdering extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addClassDeclaration((node) {

@@ -13,7 +13,7 @@ class NoSelfComparisons extends PyramidLintRule {
         problemMessage: 'Self comparison is usually a mistake.',
         correctionMessage: 'Consider changing the comparison to something else.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'no_self_comparisons';
@@ -29,7 +29,7 @@ class NoSelfComparisons extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addIfStatement((node) {

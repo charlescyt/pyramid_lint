@@ -11,7 +11,7 @@ abstract class PyramidLintRule<T extends Object?> extends DartLintRule {
     required String problemMessage,
     required String correctionMessage,
     required String url,
-    required ErrorSeverity errorSeverity,
+    required DiagnosticSeverity errorSeverity,
     required this.options,
   }) : super(
          code: LintCode(
@@ -32,7 +32,7 @@ abstract class PyramidLintRule<T extends Object?> extends DartLintRule {
 @immutable
 class PyramidLintRuleOptions<T extends Object?> {
   final T params;
-  final ErrorSeverity? severity;
+  final DiagnosticSeverity? severity;
 
   const PyramidLintRuleOptions({
     required this.params,
@@ -45,9 +45,9 @@ class PyramidLintRuleOptions<T extends Object?> {
   }) {
     final params = paramsConverter(json);
     final severity = switch (json['severity']) {
-      'info' => ErrorSeverity.INFO,
-      'warning' => ErrorSeverity.WARNING,
-      'error' => ErrorSeverity.ERROR,
+      'info' => DiagnosticSeverity.INFO,
+      'warning' => DiagnosticSeverity.WARNING,
+      'error' => DiagnosticSeverity.ERROR,
       _ => null,
     };
 

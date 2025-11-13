@@ -36,7 +36,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
         problemMessage: 'Avoid nested if statements to reduce code complexity.',
         correctionMessage: 'Try reducing the nesting level to less than ${options.params.maxNestingLevel}.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'avoid_nested_if';
@@ -52,7 +52,7 @@ class AvoidNestedIf extends PyramidLintRule<AvoidNestedIfOptions> {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addIfStatement((node) {

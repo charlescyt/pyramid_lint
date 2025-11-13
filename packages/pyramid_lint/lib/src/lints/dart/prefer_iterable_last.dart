@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -16,7 +17,7 @@ class PreferIterableLast extends PyramidLintRule {
         problemMessage: '{0} is more verbose than iterable.last.',
         correctionMessage: 'Consider replacing {1} with {2}.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_iterable_last';
@@ -32,7 +33,7 @@ class PreferIterableLast extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addIndexExpression((node) {
@@ -105,8 +106,8 @@ class _ReplaceWithIterableLast extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addIndexExpression((node) {
       if (!analysisError.sourceRange.covers(node.sourceRange)) return;

@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -14,7 +15,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
         problemMessage: 'Constructors should be declared as const constructors when possible.',
         correctionMessage: 'Consider adding a const keyword to the constructor.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_const_constructor_declarations';
@@ -30,7 +31,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addConstructorDeclaration((node) {
@@ -74,7 +75,7 @@ class PreferConstConstructorDeclarations extends PyramidLintRule {
   }
 
   bool _isSuperConstructorConst(ConstructorDeclaration node) {
-    final superConstructor = node.declaredFragment?.element.superConstructor2;
+    final superConstructor = node.declaredFragment?.element.superConstructor;
     return superConstructor?.isConst == true;
   }
 
@@ -96,8 +97,8 @@ class _AddConst extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addConstructorDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

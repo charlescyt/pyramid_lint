@@ -15,7 +15,7 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
         problemMessage: '{0} should be placed inside a Row, Column, or Flex.',
         correctionMessage: 'Try placing {0} inside a Row, Column, or Flex, or remove it.',
         url: url,
-        errorSeverity: ErrorSeverity.ERROR,
+        errorSeverity: DiagnosticSeverity.ERROR,
       );
 
   static const ruleName = 'proper_expanded_and_flexible';
@@ -31,7 +31,7 @@ class ProperExpandedAndFlexible extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;

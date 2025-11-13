@@ -35,7 +35,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
         problemMessage: 'There are too many lines in this {0}.',
         correctionMessage: 'Consider reducing the number of lines to {1} or less.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'max_lines_for_function';
@@ -51,7 +51,7 @@ class MaxLinesForFunction extends PyramidLintRule<MaxLinesForFunctionOptions> {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addFunctionDeclaration((node) {

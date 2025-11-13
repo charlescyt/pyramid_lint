@@ -15,7 +15,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
         problemMessage: 'The callback parameter is not used.',
         correctionMessage: 'Consider using underscores for the unused parameter.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_underscore_for_unused_callback_parameters';
@@ -31,7 +31,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addFunctionExpression((node) {
@@ -45,7 +45,7 @@ class PreferUnderscoreForUnusedCallbackParameters extends PyramidLintRule {
         final parameterElement = parameter.declaredFragment?.element;
         if (parameterElement == null) continue;
 
-        final parameterName = parameterElement.name3;
+        final parameterName = parameterElement.name;
         if (parameterName?.containsOnlyUnderscores == true) continue;
 
         var isParameterReferenced = false;

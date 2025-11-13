@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/syntactic_entity.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer/source/line_info.dart';
@@ -19,7 +20,7 @@ class SpecifyIconButtonTooltip extends PyramidLintRule {
         problemMessage: 'There is no tooltip specified for the icon button.',
         correctionMessage: 'Try specifying a tooltip for the icon button.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'specify_icon_button_tooltip';
@@ -38,7 +39,7 @@ class SpecifyIconButtonTooltip extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -66,8 +67,8 @@ class _AddTooltip extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     final data = analysisError.data;
     if (data is! InstanceCreationExpression) return;

@@ -1,3 +1,4 @@
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -16,7 +17,7 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
             'Border.fromBorderSide internally.',
         correctionMessage: 'Consider replacing Border.all with Border.fromBorderSide.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_border_from_border_side';
@@ -32,7 +33,7 @@ class PreferBorderFromBorderSide extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -58,8 +59,8 @@ class _ReplaceWithBorderFromBorderSide extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange.intersects(node.constructorName.sourceRange)) {

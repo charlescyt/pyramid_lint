@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/element/element2.dart';
+import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -42,7 +43,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
         problemMessage: 'Using {0} will cause unnecessary rebuilds.',
         correctionMessage: 'Consider using {1} instead.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_dedicated_media_query_functions';
@@ -58,7 +59,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -76,7 +77,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
       // Lint should only work if the MediaQueryData variable is declared locally
       // and initialized with MediaQuery.of(context).
-      if (prefixElement is! LocalVariableElement2) return;
+      if (prefixElement is! LocalVariableElement) return;
 
       final prefixNode = getAstNodeFromElement(prefixElement);
       if (prefixNode is! VariableDeclaration) return;
@@ -102,7 +103,7 @@ class PreferDedicatedMediaQueryFunctions extends PyramidLintRule {
 
         // Lint should only work if the MediaQueryData variable is declared locally
         // and initialized with MediaQuery.maybeOf(context).
-        if (prefixElement is! LocalVariableElement2) return;
+        if (prefixElement is! LocalVariableElement) return;
 
         final prefixNode = getAstNodeFromElement(prefixElement);
         if (prefixNode is! VariableDeclaration) return;
@@ -135,14 +136,14 @@ class _ReplaceWithDedicatedMethod extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addPrefixedIdentifier((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       final prefixElement = node.prefix.element;
-      if (prefixElement is! LocalVariableElement2) return;
+      if (prefixElement is! LocalVariableElement) return;
 
       final prefixNode = getAstNodeFromElement(prefixElement);
       if (prefixNode is! VariableDeclaration) return;
@@ -185,7 +186,7 @@ class _ReplaceWithDedicatedMethod extends DartFix {
 
         // Lint should only work if the MediaQueryData variable is declared locally
         // and initialized with MediaQuery.maybeOf(context).
-        if (targetElement is! LocalVariableElement2) return;
+        if (targetElement is! LocalVariableElement) return;
 
         final prefixNode = getAstNodeFromElement(targetElement);
         if (prefixNode is! VariableDeclaration) return;
