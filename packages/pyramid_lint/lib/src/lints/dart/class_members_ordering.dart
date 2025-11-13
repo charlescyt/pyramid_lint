@@ -82,7 +82,8 @@ enum _MemberType implements Comparable<_MemberType> {
   publicStaticMethods(41),
   publicMethods(42),
   privateStaticMethods(43),
-  privateMethods(44);
+  privateMethods(44)
+  ;
 
   final int orderInWidget;
 
