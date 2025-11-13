@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:collection/collection.dart';
@@ -17,7 +18,7 @@ class DisposeControllers extends PyramidLintRule {
         problemMessage: 'Controller should be disposed in the dispose method.',
         correctionMessage: 'Try adding {0}.dispose() in the dispose method.',
         url: url,
-        errorSeverity: ErrorSeverity.ERROR,
+        errorSeverity: DiagnosticSeverity.ERROR,
       );
 
   static const ruleName = 'dispose_controllers';
@@ -33,7 +34,7 @@ class DisposeControllers extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -88,8 +89,8 @@ class _ProperControllerDisposeFix extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addFieldDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

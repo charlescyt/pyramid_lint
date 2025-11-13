@@ -35,7 +35,7 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
         problemMessage: 'There are too many cases in this switch statement.',
         correctionMessage: 'Consider reducing the number of cases to {0} or less.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'max_switch_cases';
@@ -54,7 +54,7 @@ class MaxSwitchCases extends PyramidLintRule<MaxSwitchCasesOptions> {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addSwitchStatement((node) {

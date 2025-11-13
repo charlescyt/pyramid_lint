@@ -1,3 +1,4 @@
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -17,7 +18,7 @@ class ProperFromEnvironment extends PyramidLintRule {
             'Try invoking the {0}.fromEnvironment constructor as a '
             'const constructor.',
         url: url,
-        errorSeverity: ErrorSeverity.ERROR,
+        errorSeverity: DiagnosticSeverity.ERROR,
       );
 
   static const ruleName = 'proper_from_environment';
@@ -33,7 +34,7 @@ class ProperFromEnvironment extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -63,8 +64,8 @@ class _InvokeAsConstConstructor extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

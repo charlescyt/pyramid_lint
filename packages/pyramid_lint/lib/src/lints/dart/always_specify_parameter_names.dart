@@ -14,7 +14,7 @@ class AlwaysSpecifyParameterNames extends PyramidLintRule {
             'and enable IDEs to provide code completion suggestions.',
         correctionMessage: 'Consider declaring a descriptive parameter name.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'always_specify_parameter_names';
@@ -30,7 +30,7 @@ class AlwaysSpecifyParameterNames extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addSimpleFormalParameter((node) {

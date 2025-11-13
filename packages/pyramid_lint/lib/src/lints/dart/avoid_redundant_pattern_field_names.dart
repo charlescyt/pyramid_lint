@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -14,7 +15,7 @@ class AvoidRedundantPatternFieldNames extends PyramidLintRule {
         problemMessage: 'Using explicit getter names is redundant.',
         correctionMessage: 'Consider omitting the getter name.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_redundant_pattern_field_names';
@@ -30,7 +31,7 @@ class AvoidRedundantPatternFieldNames extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addPatternField((node) {
@@ -57,8 +58,8 @@ class _RemoveName extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addPatternField((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

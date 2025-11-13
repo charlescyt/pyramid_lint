@@ -16,7 +16,7 @@ class AvoidDynamic extends PyramidLintRule {
             'lead to potential runtime errors.',
         correctionMessage: 'Consider specifying a type instead of using dynamic.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_dynamic';
@@ -32,7 +32,7 @@ class AvoidDynamic extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addNamedType((node) {

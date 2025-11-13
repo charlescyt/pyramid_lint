@@ -14,7 +14,7 @@ class NoDuplicateImports extends PyramidLintRule {
         problemMessage: 'Duplicate imports can lead to confusion.',
         correctionMessage: 'Consider combining or removing the duplicate imports.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'no_duplicate_imports';
@@ -30,7 +30,7 @@ class NoDuplicateImports extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addCompilationUnit((node) {

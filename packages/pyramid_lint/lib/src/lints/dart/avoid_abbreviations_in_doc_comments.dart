@@ -39,7 +39,7 @@ class AvoidAbbreviationsInDocComments extends PyramidLintRule<AvoidAbbreviations
             'readability and cause confusion.',
         correctionMessage: 'Consider using the full word instead.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'avoid_abbreviations_in_doc_comments';
@@ -58,7 +58,7 @@ class AvoidAbbreviationsInDocComments extends PyramidLintRule<AvoidAbbreviations
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addComment((node) {
@@ -71,7 +71,7 @@ class AvoidAbbreviationsInDocComments extends PyramidLintRule<AvoidAbbreviations
           if (!commentText.contains(abbreviation)) continue;
 
           final index = commentText.indexOf(abbreviation);
-          reporter.atOffset(offset: comment.offset + index, length: abbreviation.length, errorCode: code);
+          reporter.atOffset(offset: comment.offset + index, length: abbreviation.length, diagnosticCode: code);
         }
       }
     });

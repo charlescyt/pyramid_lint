@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -16,7 +17,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
         problemMessage: 'The nullable return type is unnecessary.',
         correctionMessage: 'Consider using non-nullable return type.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'unnecessary_nullable_return_type';
@@ -32,7 +33,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addFunctionDeclaration((node) {
@@ -73,7 +74,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
   }
 
   void _checkBlockFunctionBody({
-    required ErrorReporter reporter,
+    required DiagnosticReporter reporter,
     required BlockFunctionBody node,
     required TypeAnnotation returnType,
   }) {
@@ -95,7 +96,7 @@ class UnnecessaryNullableReturnType extends PyramidLintRule {
   }
 
   void _checkExpressionFunctionBody({
-    required ErrorReporter reporter,
+    required DiagnosticReporter reporter,
     required ExpressionFunctionBody node,
     required TypeAnnotation returnType,
   }) {
@@ -115,8 +116,8 @@ class _ReplaceWithNonNullableType extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addFunctionDeclaration((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

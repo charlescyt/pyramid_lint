@@ -38,7 +38,7 @@ class AvoidReturningWidgets extends PyramidLintRule<AvoidReturningWidgetsOptions
         problemMessage: 'Returning widgets is not recommended for performance reasons.',
         correctionMessage: 'Consider creating a separate widget instead.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_returning_widgets';
@@ -57,7 +57,7 @@ class AvoidReturningWidgets extends PyramidLintRule<AvoidReturningWidgetsOptions
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;

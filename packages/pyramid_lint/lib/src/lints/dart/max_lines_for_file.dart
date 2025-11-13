@@ -34,7 +34,7 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
         problemMessage: 'There are too many lines in this file.',
         correctionMessage: 'Consider reducing the number of lines to {0} or less.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'max_lines_for_file';
@@ -50,7 +50,7 @@ class MaxLinesForFile extends PyramidLintRule<MaxLinesForFileOptions> {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addCompilationUnit((node) {

@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/type.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -19,7 +20,7 @@ class PreferIterableEvery extends PyramidLintRule {
         problemMessage: 'Using Iterable.where(...).isEmpty is more verbose than Iterable.every.',
         correctionMessage: 'Consider using Iterable.every for better readability.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'prefer_iterable_every';
@@ -35,7 +36,7 @@ class PreferIterableEvery extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addPropertyAccess((node) {
@@ -68,8 +69,8 @@ class _ReplaceWithIterableEvery extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addPropertyAccess((node) {
       if (!analysisError.sourceRange.covers(node.sourceRange)) return;

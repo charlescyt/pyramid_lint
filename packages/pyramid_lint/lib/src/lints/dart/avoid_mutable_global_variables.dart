@@ -12,7 +12,7 @@ class AvoidMutableGlobalVariables extends PyramidLintRule {
         problemMessage: 'Using mutable global variables is discouraged.',
         correctionMessage: 'Consider declaring the variable as final or const.',
         url: url,
-        errorSeverity: ErrorSeverity.WARNING,
+        errorSeverity: DiagnosticSeverity.WARNING,
       );
 
   static const ruleName = 'avoid_mutable_global_variables';
@@ -28,7 +28,7 @@ class AvoidMutableGlobalVariables extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addTopLevelVariableDeclaration((node) {

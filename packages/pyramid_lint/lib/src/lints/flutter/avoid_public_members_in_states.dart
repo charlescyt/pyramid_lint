@@ -14,7 +14,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
         problemMessage: 'Avoid public members in widget state classes.',
         correctionMessage: 'Consider using private members.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'avoid_public_members_in_states';
@@ -30,7 +30,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addClassMember((classMember) {
@@ -61,7 +61,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
     });
   }
 
-  void _checkMethodDeclaration(MethodDeclaration methodDeclaration, ErrorReporter reporter) {
+  void _checkMethodDeclaration(MethodDeclaration methodDeclaration, DiagnosticReporter reporter) {
     if (methodDeclaration.isStatic || methodDeclaration.name.lexeme.startsWith('_')) {
       return;
     }
@@ -69,7 +69,7 @@ class AvoidPublicMembersInStates extends PyramidLintRule {
     reporter.atToken(methodDeclaration.name, code);
   }
 
-  void _checkFieldDeclaration(FieldDeclaration fieldDeclaration, ErrorReporter reporter) {
+  void _checkFieldDeclaration(FieldDeclaration fieldDeclaration, DiagnosticReporter reporter) {
     if (fieldDeclaration.isStatic) return;
 
     for (final variable in fieldDeclaration.fields.variables) {

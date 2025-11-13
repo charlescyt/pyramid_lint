@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
@@ -17,7 +18,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
         problemMessage: 'Using incorrect EdgeInsets constructor and arguments.',
         correctionMessage: 'Consider replacing with {0}.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'proper_edge_insets_constructors';
@@ -33,7 +34,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     if (!context.pubspec.isFlutterProject) return;
@@ -57,7 +58,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     });
   }
 
-  void handleFromLTRB({required InstanceCreationExpression node, required ErrorReporter reporter}) {
+  void handleFromLTRB({required InstanceCreationExpression node, required DiagnosticReporter reporter}) {
     final arguments = node.argumentList.positionalArguments.toList();
     if (arguments.length != 4) return;
 
@@ -105,7 +106,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     }
   }
 
-  void handleOnly({required InstanceCreationExpression node, required ErrorReporter reporter}) {
+  void handleOnly({required InstanceCreationExpression node, required DiagnosticReporter reporter}) {
     final left = node.argumentList.findArgumentByName('left')?.expression;
     final top = node.argumentList.findArgumentByName('top')?.expression;
     final right = node.argumentList.findArgumentByName('right')?.expression;
@@ -159,7 +160,7 @@ class ProperEdgeInsetsConstructors extends PyramidLintRule {
     }
   }
 
-  void handleSymmetric({required InstanceCreationExpression node, required ErrorReporter reporter}) {
+  void handleSymmetric({required InstanceCreationExpression node, required DiagnosticReporter reporter}) {
     final vertical = node.argumentList.findArgumentByName('vertical')?.expression;
     final horizontal = node.argumentList.findArgumentByName('horizontal')?.expression;
 
@@ -195,8 +196,8 @@ class _ReplaceWithProperConstructor extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addInstanceCreationExpression((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;

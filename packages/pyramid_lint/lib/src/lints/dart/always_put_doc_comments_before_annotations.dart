@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:analyzer/diagnostic/diagnostic.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
@@ -15,7 +16,7 @@ class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
         problemMessage: 'Doc comments should be placed before annotations.',
         correctionMessage: 'Consider moving the doc comment before the annotation.',
         url: url,
-        errorSeverity: ErrorSeverity.INFO,
+        errorSeverity: DiagnosticSeverity.INFO,
       );
 
   static const ruleName = 'always_put_doc_comments_before_annotations';
@@ -31,7 +32,7 @@ class AlwaysPutDocCommentsBeforeAnnotations extends PyramidLintRule {
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addAnnotatedNode((node) {
@@ -59,8 +60,8 @@ class _PutDocCommentsBeforeAnnotations extends DartFix {
     CustomLintResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
-    AnalysisError analysisError,
-    List<AnalysisError> others,
+    Diagnostic analysisError,
+    List<Diagnostic> others,
   ) {
     context.registry.addAnnotatedNode((node) {
       if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
