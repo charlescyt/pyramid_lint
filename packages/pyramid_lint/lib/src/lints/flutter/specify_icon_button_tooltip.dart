@@ -53,7 +53,7 @@ class SpecifyIconButtonTooltip extends PyramidLintRule {
       final tooltip = node.argumentList.findArgumentByName('tooltip');
       if (tooltip != null) return;
 
-      reporter.atNode(node.constructorName, code, data: node);
+      reporter.atNode(node.constructorName, code);
     });
   }
 
@@ -70,50 +70,49 @@ class _AddTooltip extends DartFix {
     Diagnostic analysisError,
     List<Diagnostic> others,
   ) {
-    final data = analysisError.data;
-    if (data is! InstanceCreationExpression) return;
+    context.registry.addInstanceCreationExpression((node) {
+      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
 
-    final node = data;
+      final changeBuilder = reporter.createChangeBuilder(
+        message: 'Add tooltip',
+        priority: 80,
+      );
 
-    final changeBuilder = reporter.createChangeBuilder(
-      message: 'Add tooltip',
-      priority: 80,
-    );
+      changeBuilder.addDartFileEdit((builder) {
+        final isArgumentListOnSameLine = _isNodeWithinSameLine(resolver.lineInfo, node.argumentList);
 
-    changeBuilder.addDartFileEdit((builder) {
-      final isArgumentListOnSameLine = _isNodeWithinSameLine(resolver.lineInfo, node.argumentList);
+        const tooltipGroupName = 'tooltip';
+        const tooltipText = 'tooltip';
 
-      const tooltipGroupName = 'tooltip';
-      const tooltipText = 'tooltip';
+        final leftParenthesis = node.argumentList.leftParenthesis;
 
-      final leftParenthesis = node.argumentList.leftParenthesis;
-
-      if (isArgumentListOnSameLine) {
-        builder.addInsertion(leftParenthesis.end, (builder) {
-          builder.write("tooltip: '");
-          builder.addSimpleLinkedEdit(tooltipGroupName, tooltipText);
-          builder.write("', ");
-        });
-      } else {
-        final hasArgument = node.argumentList.arguments.isNotEmpty;
-
-        int indentLevel;
-        if (hasArgument) {
-          // Indent the tooltip to the same level as the first argument
-          indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.arguments.first.beginToken);
+        if (isArgumentListOnSameLine) {
+          builder.addInsertion(leftParenthesis.end, (builder) {
+            builder.write("tooltip: '");
+            builder.addSimpleLinkedEdit(tooltipGroupName, tooltipText);
+            builder.write("', ");
+          });
         } else {
-          // Indent the tooltip to the +1 level of the right parenthesis
-          indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.rightParenthesis) + 1;
-        }
+          final hasArgument = node.argumentList.arguments.isNotEmpty;
 
-        builder.addInsertion(leftParenthesis.end, (builder) {
-          builder.writeln();
-          builder.writeIndent(indentLevel);
-          builder.write("tooltip: '");
-          builder.addSimpleLinkedEdit(tooltipGroupName, tooltipText);
-          builder.write("',");
-        });
-      }
+          int indentLevel;
+          if (hasArgument) {
+            // Indent the tooltip to the same level as the first argument
+            indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.arguments.first.beginToken);
+          } else {
+            // Indent the tooltip to the +1 level of the right parenthesis
+            indentLevel = _getLineIndentLevelAtToken(resolver.lineInfo, node.argumentList.rightParenthesis) + 1;
+          }
+
+          builder.addInsertion(leftParenthesis.end, (builder) {
+            builder.writeln();
+            builder.writeIndent(indentLevel);
+            builder.write("tooltip: '");
+            builder.addSimpleLinkedEdit(tooltipGroupName, tooltipText);
+            builder.write("',");
+          });
+        }
+      });
     });
   }
 }
