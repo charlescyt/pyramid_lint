@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, deprecated_member_use, max_lines_for_file
+// ignore_for_file: unused_local_variable, deprecated_member_use
 
 import 'package:flutter/material.dart';
 

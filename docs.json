@@ -64,10 +64,6 @@
           "href": "/dart-lints/always_specify_parameter_names"
         },
         {
-          "title": "avoid_abbreviations_in_doc_comments",
-          "href": "/dart-lints/avoid_abbreviations_in_doc_comments"
-        },
-        {
           "title": "avoid_dynamic",
           "href": "/dart-lints/avoid_dynamic"
         },
@@ -84,10 +80,6 @@
           "href": "/dart-lints/avoid_mutable_global_variables"
         },
         {
-          "title": "avoid_nested_if",
-          "href": "/dart-lints/avoid_nested_if"
-        },
-        {
           "title": "avoid_positional_fields_in_records",
           "href": "/dart-lints/avoid_positional_fields_in_records"
         },
@@ -100,24 +92,8 @@
           "href": "/dart-lints/avoid_unused_parameters"
         },
         {
-          "title": "boolean_prefixes",
-          "href": "/dart-lints/boolean_prefixes"
-        },
-        {
           "title": "class_members_ordering",
           "href": "/dart-lints/class_members_ordering"
-        },
-        {
-          "title": "max_lines_for_file",
-          "href": "/dart-lints/max_lines_for_file"
-        },
-        {
-          "title": "max_lines_for_function",
-          "href": "/dart-lints/max_lines_for_function"
-        },
-        {
-          "title": "max_switch_cases",
-          "href": "/dart-lints/max_switch_cases"
         },
         {
           "title": "no_duplicate_imports",
@@ -156,10 +132,6 @@
           "href": "/dart-lints/prefer_iterable_last"
         },
         {
-          "title": "prefer_library_prefixes",
-          "href": "/dart-lints/prefer_library_prefixes"
-        },
-        {
           "title": "prefer_new_line_before_return",
           "href": "/dart-lints/prefer_new_line_before_return"
         },
@@ -179,10 +151,6 @@
         {
           "title": "avoid_public_members_in_states",
           "href": "/flutter-lints/avoid_public_members_in_states"
-        },
-        {
-          "title": "avoid_returning_widgets",
-          "href": "/flutter-lints/avoid_returning_widgets"
         },
         {
           "title": "avoid_single_child_in_flex",

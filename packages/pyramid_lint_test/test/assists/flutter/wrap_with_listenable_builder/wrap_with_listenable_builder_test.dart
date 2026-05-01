@@ -1,5 +1,3 @@
-// ignore_for_file: max_lines_for_function
-
 import 'package:analyzer/source/source_range.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:pubspec_parse/pubspec_parse.dart';

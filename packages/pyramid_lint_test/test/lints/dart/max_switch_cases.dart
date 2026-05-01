@@ -12,7 +12,6 @@ enum Direction {
 }
 
 void fn(Direction direction) {
-  // expect_lint: max_switch_cases
   switch (direction) {
     case Direction.north:
       print('north');
@@ -34,7 +33,6 @@ void fn(Direction direction) {
 }
 
 String fn2(Direction direction) {
-  // expect_lint: max_switch_cases
   return switch (direction) {
     Direction.north => 'north',
     Direction.northEast => 'northEast',

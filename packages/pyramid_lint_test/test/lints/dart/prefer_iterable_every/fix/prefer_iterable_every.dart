@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_lambdas, max_lines_for_function
+// ignore_for_file: unnecessary_lambdas
 
 void fn(Iterable<int> numbers) {
   // expect_lint: prefer_iterable_every
