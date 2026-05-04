@@ -13,7 +13,6 @@ import 'src/lints/dart/always_specify_parameter_names.dart';
 import 'src/lints/dart/avoid_dynamic.dart';
 import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
-import 'src/lints/dart/avoid_mutable_global_variables.dart';
 import 'src/lints/dart/avoid_positional_fields_in_records.dart';
 import 'src/lints/dart/avoid_redundant_pattern_field_names.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
@@ -59,7 +58,6 @@ class _PyramidLinter extends PluginBase {
     AvoidDynamic.fromConfigs(configs),
     AvoidEmptyBlocks.fromConfigs(configs),
     AvoidInvertedBooleanExpressions.fromConfigs(configs),
-    AvoidMutableGlobalVariables.fromConfigs(configs),
     AvoidPositionalFieldsInRecords.fromConfigs(configs),
     AvoidRedundantPatternFieldNames.fromConfigs(configs),
     AvoidUnusedParameters.fromConfigs(configs),
