@@ -1,6 +1,7 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
+import 'src/rules/dart/always_specify_parameter_names.dart';
 import 'src/rules/dart/avoid_mutable_global_variables.dart';
 
 final plugin = PyramidLintPlugin();
@@ -11,6 +12,8 @@ class PyramidLintPlugin extends Plugin {
 
   @override
   void register(PluginRegistry registry) {
-    registry.registerLintRule(AvoidMutableGlobalVariablesRule());
+    registry
+      ..registerLintRule(AlwaysSpecifyParameterNamesRule())
+      ..registerLintRule(AvoidMutableGlobalVariablesRule());
   }
 }
