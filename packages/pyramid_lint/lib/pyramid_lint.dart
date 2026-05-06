@@ -17,7 +17,6 @@ import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/no_duplicate_imports.dart';
 import 'src/lints/dart/no_self_comparisons.dart';
-import 'src/lints/dart/prefer_async_await.dart';
 import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
 import 'src/lints/dart/prefer_iterable_any.dart';
@@ -59,7 +58,6 @@ class _PyramidLinter extends PluginBase {
     ClassMembersOrdering.fromConfigs(configs),
     NoDuplicateImports.fromConfigs(configs),
     NoSelfComparisons.fromConfigs(configs),
-    PreferAsyncAwait.fromConfigs(configs),
     PreferConstConstructorDeclarations.fromConfigs(configs),
     PreferImmediateReturn.fromConfigs(configs),
     PreferIterableAny.fromConfigs(configs),
