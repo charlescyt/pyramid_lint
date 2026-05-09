@@ -8,6 +8,7 @@ import 'src/rules/dart/avoid_positional_fields_in_records.dart';
 import 'src/rules/dart/no_duplicate_imports.dart';
 import 'src/rules/dart/no_self_comparisons.dart';
 import 'src/rules/dart/prefer_async_await.dart';
+import 'src/rules/dart/prefer_iterable_any.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 
 final plugin = PyramidLintPlugin();
@@ -27,6 +28,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(NoSelfComparisonsRule())
       ..registerLintRule(PreferAsyncAwaitRule())
       ..registerLintRule(PreferNewLineBeforeReturnRule())
-      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new);
+      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
+      ..registerLintRule(PreferIterableAnyRule())
+      ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new);
   }
 }
