@@ -13,7 +13,6 @@ import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/class_members_ordering.dart';
-import 'src/lints/dart/no_duplicate_imports.dart';
 import 'src/lints/dart/no_self_comparisons.dart';
 import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
@@ -52,7 +51,6 @@ class _PyramidLinter extends PluginBase {
     AvoidInvertedBooleanExpressions.fromConfigs(configs),
     AvoidUnusedParameters.fromConfigs(configs),
     ClassMembersOrdering.fromConfigs(configs),
-    NoDuplicateImports.fromConfigs(configs),
     NoSelfComparisons.fromConfigs(configs),
     PreferConstConstructorDeclarations.fromConfigs(configs),
     PreferImmediateReturn.fromConfigs(configs),
