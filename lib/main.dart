@@ -6,6 +6,7 @@ import 'src/rules/dart/avoid_dynamic.dart';
 import 'src/rules/dart/avoid_mutable_global_variables.dart';
 import 'src/rules/dart/avoid_positional_fields_in_records.dart';
 import 'src/rules/dart/no_duplicate_imports.dart';
+import 'src/rules/dart/no_self_comparisons.dart';
 import 'src/rules/dart/prefer_async_await.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 
@@ -23,6 +24,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(AvoidMutableGlobalVariablesRule())
       ..registerLintRule(AvoidPositionalFieldsInRecordsRule())
       ..registerLintRule(NoDuplicateImportsRule())
+      ..registerLintRule(NoSelfComparisonsRule())
       ..registerLintRule(PreferAsyncAwaitRule())
       ..registerLintRule(PreferNewLineBeforeReturnRule())
       ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new);
