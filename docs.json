@@ -84,10 +84,6 @@
           "href": "/dart-lints/avoid_positional_fields_in_records"
         },
         {
-          "title": "avoid_redundant_pattern_field_names",
-          "href": "/dart-lints/avoid_redundant_pattern_field_names"
-        },
-        {
           "title": "avoid_unused_parameters",
           "href": "/dart-lints/avoid_unused_parameters"
         },

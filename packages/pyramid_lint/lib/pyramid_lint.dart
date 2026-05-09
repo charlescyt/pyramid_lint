@@ -12,7 +12,6 @@ import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/avoid_positional_fields_in_records.dart';
-import 'src/lints/dart/avoid_redundant_pattern_field_names.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/no_duplicate_imports.dart';
@@ -53,7 +52,6 @@ class _PyramidLinter extends PluginBase {
     AvoidEmptyBlocks.fromConfigs(configs),
     AvoidInvertedBooleanExpressions.fromConfigs(configs),
     AvoidPositionalFieldsInRecords.fromConfigs(configs),
-    AvoidRedundantPatternFieldNames.fromConfigs(configs),
     AvoidUnusedParameters.fromConfigs(configs),
     ClassMembersOrdering.fromConfigs(configs),
     NoDuplicateImports.fromConfigs(configs),
