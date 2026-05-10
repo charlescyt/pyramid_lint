@@ -10,6 +10,7 @@ import 'src/rules/dart/no_self_comparisons.dart';
 import 'src/rules/dart/prefer_async_await.dart';
 import 'src/rules/dart/prefer_iterable_any.dart';
 import 'src/rules/dart/prefer_iterable_every.dart';
+import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 
 final plugin = PyramidLintPlugin();
@@ -32,6 +33,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new)
       ..registerLintRule(PreferIterableEveryRule())
       ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
+      ..registerLintRule(PreferIterableFirstRule())
+      ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
       ..registerLintRule(PreferNewLineBeforeReturnRule())
       ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new);
   }
