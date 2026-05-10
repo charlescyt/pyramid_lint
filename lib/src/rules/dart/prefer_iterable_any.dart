@@ -9,7 +9,8 @@ import 'package:analyzer/error/error.dart';
 import 'package:analyzer_plugin/utilities/change_builder/change_builder_core.dart';
 import 'package:analyzer_plugin/utilities/fixes/fixes.dart';
 import 'package:analyzer_plugin/utilities/range_factory.dart';
-import 'package:source_gen/source_gen.dart';
+
+import '../../utils/type_checker.dart';
 
 class PreferIterableAnyRule extends AnalysisRule {
   static const LintCode code = LintCode(
@@ -61,8 +62,6 @@ class _Visitor extends SimpleAstVisitor<void> {
     rule.reportAtNode(node);
   }
 }
-
-const TypeChecker iterableChecker = TypeChecker.fromUrl('dart:core#Iterable');
 
 class ReplaceWithIterableAny extends ResolvedCorrectionProducer {
   static const _replaceWithIterableAnyKind = FixKind(
