@@ -32,7 +32,6 @@ import 'src/lints/flutter/proper_from_environment.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
 import 'src/lints/flutter/proper_super_init_state.dart';
 import 'src/lints/flutter/specify_icon_button_tooltip.dart';
-import 'src/lints/flutter/use_spacer.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -66,7 +65,6 @@ class _PyramidLinter extends PluginBase {
     ProperSuperDispose.fromConfigs(configs),
     ProperSuperInitState.fromConfigs(configs),
     SpecifyIconButtonTooltip.fromConfigs(configs),
-    UseSpacer.fromConfigs(configs),
   ];
 
   @override
