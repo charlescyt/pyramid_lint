@@ -13,6 +13,7 @@ import 'src/rules/dart/prefer_iterable_every.dart';
 import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_iterable_last.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
+import 'src/rules/flutter/proper_expanded_and_flexible.dart';
 import 'src/rules/flutter/use_spacer.dart';
 
 final plugin = PyramidLintPlugin();
@@ -43,6 +44,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new);
 
     registry
+      ..registerLintRule(ProperExpandedAndFlexibleRule())
       ..registerLintRule(UseSpacerRule())
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
   }
