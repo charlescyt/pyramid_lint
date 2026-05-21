@@ -5,7 +5,7 @@ version: 3.0.0-beta.1
 repository: https://github.com/charlescyt/pyramid_lint
 issue_tracker: https://github.com/charlescyt/pyramid_lint/issues
 documentation: https://docs.page/charlescyt/pyramid_lint
-topics: [ lint, lints, linter, analyzer ]
+topics: [lint, lints, linter, analyzer]
 
 screenshots:
   - description: >-
@@ -20,7 +20,7 @@ screenshots:
     path: screenshots/wrap_with_layout_builder_demo.gif
 
 environment:
-  sdk: ^3.11.0
+  sdk: ^3.12.0
 
 dependencies:
   analysis_server_plugin: ^0.3.10
