@@ -20,7 +20,6 @@ import 'src/lints/dart/unnecessary_nullable_return_type.dart';
 import 'src/lints/flutter/avoid_public_members_in_states.dart';
 import 'src/lints/flutter/avoid_single_child_in_flex.dart';
 import 'src/lints/flutter/dispose_controllers.dart';
-import 'src/lints/flutter/prefer_async_callback.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_functions.dart';
@@ -51,7 +50,6 @@ class _PyramidLinter extends PluginBase {
     AvoidPublicMembersInStates.fromConfigs(configs),
     AvoidSingleChildInFlex.fromConfigs(configs),
     DisposeControllers.fromConfigs(configs),
-    PreferAsyncCallback.fromConfigs(configs),
     PreferBorderFromBorderSide.fromConfigs(configs),
     PreferBorderRadiusAll.fromConfigs(configs),
     PreferDedicatedMediaQueryFunctions.fromConfigs(configs),
