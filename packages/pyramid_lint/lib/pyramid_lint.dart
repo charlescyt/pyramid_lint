@@ -1,6 +1,5 @@
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-import 'src/assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
 import 'src/assists/dart/invert_boolean_expression.dart';
 import 'src/assists/dart/swap_then_else_expression.dart';
 import 'src/assists/flutter/use_edge_insets_zero.dart';
@@ -48,7 +47,6 @@ class _PyramidLinter extends PluginBase {
   @override
   List<Assist> getAssists() => [
     // Dart assists
-    ConvertToForInIterableIndexedLoop(),
     InvertBooleanExpression(),
     SwapThenElseExpression(),
     // Flutter assists

@@ -1,6 +1,7 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
+import 'src/assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
 import 'src/rules/dart/always_specify_parameter_names.dart';
 import 'src/rules/dart/avoid_dynamic.dart';
 import 'src/rules/dart/avoid_mutable_global_variables.dart';
@@ -82,5 +83,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(ProperEdgeInsetsConstructorsRule.code, ReplaceWithProperEdgeInsets.new)
       ..registerFixForRule(SpecifyIconButtonTooltipRule.code, AddTooltip.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
+
+    registry.registerAssist(ConvertToForInIterableIndexedLoop.new);
   }
 }
