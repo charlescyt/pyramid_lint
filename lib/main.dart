@@ -21,6 +21,7 @@ import 'src/rules/flutter/prefer_border_radius_all.dart';
 import 'src/rules/flutter/prefer_text_rich.dart';
 import 'src/rules/flutter/prefer_void_callback.dart';
 import 'src/rules/flutter/proper_expanded_and_flexible.dart';
+import 'src/rules/flutter/specify_icon_button_tooltip.dart';
 import 'src/rules/flutter/use_spacer.dart';
 
 final plugin = PyramidLintPlugin();
@@ -54,6 +55,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferTextRichRule())
       ..registerLintRule(PreferVoidCallbackRule())
       ..registerLintRule(ProperExpandedAndFlexibleRule())
+      ..registerLintRule(SpecifyIconButtonTooltipRule())
       ..registerLintRule(UseSpacerRule());
 
     registry
@@ -72,6 +74,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)
       ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
       ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
+      ..registerFixForRule(SpecifyIconButtonTooltipRule.code, AddTooltip.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
   }
 }

@@ -23,7 +23,6 @@ import 'src/lints/flutter/prefer_dedicated_media_query_functions.dart';
 import 'src/lints/flutter/proper_edge_insets_constructors.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
 import 'src/lints/flutter/proper_super_init_state.dart';
-import 'src/lints/flutter/specify_icon_button_tooltip.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -48,7 +47,6 @@ class _PyramidLinter extends PluginBase {
     ProperEdgeInsetsConstructors.fromConfigs(configs),
     ProperSuperDispose.fromConfigs(configs),
     ProperSuperInitState.fromConfigs(configs),
-    SpecifyIconButtonTooltip.fromConfigs(configs),
   ];
 
   @override

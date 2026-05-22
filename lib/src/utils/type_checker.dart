@@ -11,6 +11,7 @@ const TypeChecker sizedBoxChecker = TypeChecker.typeNamedLiterally('SizedBox', i
 const TypeChecker richTextChecker = TypeChecker.typeNamedLiterally('RichText', inPackage: 'flutter');
 const TypeChecker borderChecker = TypeChecker.typeNamedLiterally('Border', inPackage: 'flutter');
 const TypeChecker borderRadiusChecker = TypeChecker.typeNamedLiterally('BorderRadius', inPackage: 'flutter');
+const TypeChecker iconButtonChecker = TypeChecker.typeNamedLiterally('IconButton', inPackage: 'flutter');
 
 const TypeChecker containerOrSizedBoxChecker = TypeChecker.any([containerChecker, sizedBoxChecker]);
 const TypeChecker expandedOrFlexibleChecker = TypeChecker.any([expandedChecker, flexibleChecker]);
