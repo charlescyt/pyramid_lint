@@ -37,27 +37,31 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(NoSelfComparisonsRule())
       ..registerLintRule(PreferAsyncAwaitRule())
       ..registerLintRule(PreferIterableAnyRule())
-      ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new)
       ..registerLintRule(PreferIterableEveryRule())
-      ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
       ..registerLintRule(PreferIterableFirstRule())
-      ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
       ..registerLintRule(PreferIterableLastRule())
-      ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
       ..registerLintRule(PreferNewLineBeforeReturnRule())
-      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
-      ..registerLintRule(ProperFromEnvironmentRule())
-      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new);
+      ..registerLintRule(ProperFromEnvironmentRule());
 
     registry
       ..registerLintRule(PreferAsyncCallbackRule())
-      ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
       ..registerLintRule(PreferTextRichRule())
-      ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
       ..registerLintRule(PreferVoidCallbackRule())
-      ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
       ..registerLintRule(ProperExpandedAndFlexibleRule())
-      ..registerLintRule(UseSpacerRule())
+      ..registerLintRule(UseSpacerRule());
+
+    registry
+      ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new)
+      ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
+      ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
+      ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
+      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
+      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new);
+
+    registry
+      ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
+      ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
+      ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
   }
 }

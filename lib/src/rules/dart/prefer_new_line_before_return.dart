@@ -68,7 +68,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 }
 
 class AddNewLineBeforeReturn extends ResolvedCorrectionProducer {
-  static const _addNewLineBeforeReturnKind = FixKind(
+  static const _fixKind = FixKind(
     'dart.fix.addNewLineBeforeReturn',
     DartFixKindPriority.standard,
     'Add a new line before the return statement',
@@ -80,7 +80,7 @@ class AddNewLineBeforeReturn extends ResolvedCorrectionProducer {
   CorrectionApplicability get applicability => CorrectionApplicability.acrossSingleFile;
 
   @override
-  FixKind get fixKind => _addNewLineBeforeReturnKind;
+  FixKind get fixKind => _fixKind;
 
   @override
   Future<void> compute(ChangeBuilder builder) async {

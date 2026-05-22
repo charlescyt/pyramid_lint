@@ -106,7 +106,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 }
 
 class ReplaceWithIterableLast extends ResolvedCorrectionProducer {
-  static const _replaceWithIterableLastKind = FixKind(
+  static const _fixKind = FixKind(
     'dart.fix.replaceWithIterableLast',
     DartFixKindPriority.standard,
     'Replace with Iterable.last',
@@ -118,7 +118,7 @@ class ReplaceWithIterableLast extends ResolvedCorrectionProducer {
   CorrectionApplicability get applicability => CorrectionApplicability.acrossSingleFile;
 
   @override
-  FixKind get fixKind => _replaceWithIterableLastKind;
+  FixKind get fixKind => _fixKind;
 
   @override
   Future<void> compute(ChangeBuilder builder) async {

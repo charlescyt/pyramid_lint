@@ -67,7 +67,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 }
 
 class ReplaceWithIterableEvery extends ResolvedCorrectionProducer {
-  static const _replaceWithIterableEveryKind = FixKind(
+  static const _fixKind = FixKind(
     'dart.fix.replaceWithIterableEvery',
     DartFixKindPriority.standard,
     'Replace with Iterable.every',
@@ -79,7 +79,7 @@ class ReplaceWithIterableEvery extends ResolvedCorrectionProducer {
   CorrectionApplicability get applicability => CorrectionApplicability.acrossSingleFile;
 
   @override
-  FixKind get fixKind => _replaceWithIterableEveryKind;
+  FixKind get fixKind => _fixKind;
 
   @override
   Future<void> compute(ChangeBuilder builder) async {

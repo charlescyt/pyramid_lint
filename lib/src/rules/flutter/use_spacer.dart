@@ -66,7 +66,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 }
 
 class ReplaceWithSpacer extends ResolvedCorrectionProducer {
-  static const _replaceWithSpacerKind = FixKind(
+  static const _fixKind = FixKind(
     'dart.fix.replaceWithSpacer',
     DartFixKindPriority.standard,
     'Replace with Spacer',
@@ -78,7 +78,7 @@ class ReplaceWithSpacer extends ResolvedCorrectionProducer {
   CorrectionApplicability get applicability => CorrectionApplicability.acrossSingleFile;
 
   @override
-  FixKind get fixKind => _replaceWithSpacerKind;
+  FixKind get fixKind => _fixKind;
 
   @override
   Future<void> compute(ChangeBuilder builder) async {
