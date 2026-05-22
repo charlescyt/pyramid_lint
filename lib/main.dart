@@ -15,6 +15,8 @@ import 'src/rules/dart/prefer_iterable_last.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 import 'src/rules/dart/proper_from_environment.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
+import 'src/rules/flutter/prefer_border_from_border_side.dart';
+import 'src/rules/flutter/prefer_border_radius_all.dart';
 import 'src/rules/flutter/prefer_text_rich.dart';
 import 'src/rules/flutter/prefer_void_callback.dart';
 import 'src/rules/flutter/proper_expanded_and_flexible.dart';
@@ -45,6 +47,8 @@ class PyramidLintPlugin extends Plugin {
 
     registry
       ..registerLintRule(PreferAsyncCallbackRule())
+      ..registerLintRule(PreferBorderFromBorderSideRule())
+      ..registerLintRule(PreferBorderRadiusAllRule())
       ..registerLintRule(PreferTextRichRule())
       ..registerLintRule(PreferVoidCallbackRule())
       ..registerLintRule(ProperExpandedAndFlexibleRule())
@@ -60,6 +64,8 @@ class PyramidLintPlugin extends Plugin {
 
     registry
       ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
+      ..registerFixForRule(PreferBorderFromBorderSideRule.code, ReplaceWithBorderFromBorderSide.new)
+      ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)
       ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
       ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
