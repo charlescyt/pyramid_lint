@@ -23,7 +23,6 @@ import 'src/lints/flutter/dispose_controllers.dart';
 import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_functions.dart';
-import 'src/lints/flutter/prefer_text_rich.dart';
 import 'src/lints/flutter/proper_edge_insets_constructors.dart';
 import 'src/lints/flutter/proper_from_environment.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
@@ -53,7 +52,6 @@ class _PyramidLinter extends PluginBase {
     PreferBorderFromBorderSide.fromConfigs(configs),
     PreferBorderRadiusAll.fromConfigs(configs),
     PreferDedicatedMediaQueryFunctions.fromConfigs(configs),
-    PreferTextRich.fromConfigs(configs),
     ProperEdgeInsetsConstructors.fromConfigs(configs),
     ProperFromEnvironment.fromConfigs(configs),
     ProperSuperDispose.fromConfigs(configs),
