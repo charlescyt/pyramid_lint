@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:analyzer_testing/analysis_rule/analysis_rule.dart';
 import 'package:pyramid_lint/src/rules/dart/no_self_comparisons.dart';
 import 'package:test_reflective_loader/test_reflective_loader.dart';
