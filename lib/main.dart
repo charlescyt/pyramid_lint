@@ -14,6 +14,7 @@ import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_iterable_last.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 import 'src/rules/dart/proper_from_environment.dart';
+import 'src/rules/flutter/avoid_single_child_in_flex.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_border_from_border_side.dart';
 import 'src/rules/flutter/prefer_border_radius_all.dart';
@@ -46,6 +47,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(ProperFromEnvironmentRule());
 
     registry
+      ..registerLintRule(AvoidSingleChildInFlexRule())
       ..registerLintRule(PreferAsyncCallbackRule())
       ..registerLintRule(PreferBorderFromBorderSideRule())
       ..registerLintRule(PreferBorderRadiusAllRule())
@@ -63,6 +65,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new);
 
     registry
+      ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithAlign.new)
+      ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithCenter.new)
       ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
       ..registerFixForRule(PreferBorderFromBorderSideRule.code, ReplaceWithBorderFromBorderSide.new)
       ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)
