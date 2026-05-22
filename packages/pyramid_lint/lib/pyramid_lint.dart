@@ -24,7 +24,6 @@ import 'src/lints/flutter/prefer_border_from_border_side.dart';
 import 'src/lints/flutter/prefer_border_radius_all.dart';
 import 'src/lints/flutter/prefer_dedicated_media_query_functions.dart';
 import 'src/lints/flutter/proper_edge_insets_constructors.dart';
-import 'src/lints/flutter/proper_from_environment.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
 import 'src/lints/flutter/proper_super_init_state.dart';
 import 'src/lints/flutter/specify_icon_button_tooltip.dart';
@@ -53,7 +52,6 @@ class _PyramidLinter extends PluginBase {
     PreferBorderRadiusAll.fromConfigs(configs),
     PreferDedicatedMediaQueryFunctions.fromConfigs(configs),
     ProperEdgeInsetsConstructors.fromConfigs(configs),
-    ProperFromEnvironment.fromConfigs(configs),
     ProperSuperDispose.fromConfigs(configs),
     ProperSuperInitState.fromConfigs(configs),
     SpecifyIconButtonTooltip.fromConfigs(configs),

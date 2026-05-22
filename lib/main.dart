@@ -13,6 +13,7 @@ import 'src/rules/dart/prefer_iterable_every.dart';
 import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_iterable_last.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
+import 'src/rules/dart/proper_from_environment.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_text_rich.dart';
 import 'src/rules/flutter/prefer_void_callback.dart';
@@ -44,7 +45,9 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferIterableLastRule())
       ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
       ..registerLintRule(PreferNewLineBeforeReturnRule())
-      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new);
+      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
+      ..registerLintRule(ProperFromEnvironmentRule())
+      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new);
 
     registry
       ..registerLintRule(PreferAsyncCallbackRule())
