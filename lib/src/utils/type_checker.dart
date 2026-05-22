@@ -13,6 +13,8 @@ const TypeChecker borderChecker = TypeChecker.typeNamedLiterally('Border', inPac
 const TypeChecker borderRadiusChecker = TypeChecker.typeNamedLiterally('BorderRadius', inPackage: 'flutter');
 const TypeChecker iconButtonChecker = TypeChecker.typeNamedLiterally('IconButton', inPackage: 'flutter');
 const TypeChecker edgeInsetsChecker = TypeChecker.typeNamedLiterally('EdgeInsets', inPackage: 'flutter');
+const TypeChecker mediaQueryChecker = TypeChecker.typeNamedLiterally('MediaQuery', inPackage: 'flutter');
+const TypeChecker mediaQueryDataChecker = TypeChecker.typeNamedLiterally('MediaQueryData', inPackage: 'flutter');
 
 const TypeChecker containerOrSizedBoxChecker = TypeChecker.any([containerChecker, sizedBoxChecker]);
 const TypeChecker expandedOrFlexibleChecker = TypeChecker.any([expandedChecker, flexibleChecker]);

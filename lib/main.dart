@@ -18,6 +18,7 @@ import 'src/rules/flutter/avoid_single_child_in_flex.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_border_from_border_side.dart';
 import 'src/rules/flutter/prefer_border_radius_all.dart';
+import 'src/rules/flutter/prefer_dedicated_media_query_functions.dart';
 import 'src/rules/flutter/prefer_text_rich.dart';
 import 'src/rules/flutter/prefer_void_callback.dart';
 import 'src/rules/flutter/proper_edge_insets_constructors.dart';
@@ -53,6 +54,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferAsyncCallbackRule())
       ..registerLintRule(PreferBorderFromBorderSideRule())
       ..registerLintRule(PreferBorderRadiusAllRule())
+      ..registerLintRule(PreferDedicatedMediaQueryFunctionsRule())
       ..registerLintRule(PreferTextRichRule())
       ..registerLintRule(PreferVoidCallbackRule())
       ..registerLintRule(ProperEdgeInsetsConstructorsRule())
@@ -74,6 +76,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
       ..registerFixForRule(PreferBorderFromBorderSideRule.code, ReplaceWithBorderFromBorderSide.new)
       ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)
+      ..registerFixForRule(PreferDedicatedMediaQueryFunctionsRule.code, ReplaceWithDedicatedMediaQueryFunction.new)
       ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
       ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
       ..registerFixForRule(ProperEdgeInsetsConstructorsRule.code, ReplaceWithProperEdgeInsets.new)
