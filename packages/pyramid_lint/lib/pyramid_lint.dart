@@ -9,7 +9,6 @@ import 'src/assists/flutter/wrap_with_listenable_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
-import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
@@ -28,7 +27,6 @@ class _PyramidLinter extends PluginBase {
     // Dart lints
     AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(configs),
     AvoidInvertedBooleanExpressions.fromConfigs(configs),
-    AvoidUnusedParameters.fromConfigs(configs),
     ClassMembersOrdering.fromConfigs(configs),
     PreferConstConstructorDeclarations.fromConfigs(configs),
     PreferImmediateReturn.fromConfigs(configs),
