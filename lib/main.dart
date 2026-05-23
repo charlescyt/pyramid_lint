@@ -2,6 +2,7 @@ import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
 import 'src/assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
+import 'src/rules/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/rules/dart/always_specify_parameter_names.dart';
 import 'src/rules/dart/avoid_dynamic.dart';
 import 'src/rules/dart/avoid_empty_blocks.dart';
@@ -40,6 +41,7 @@ class PyramidLintPlugin extends Plugin {
   @override
   void register(PluginRegistry registry) {
     registry
+      ..registerLintRule(AlwaysPutDocCommentsBeforeAnnotationsRule())
       ..registerLintRule(AlwaysSpecifyParameterNamesRule())
       ..registerLintRule(AvoidDynamicRule())
       ..registerLintRule(AvoidEmptyBlocksRule())
@@ -72,6 +74,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(UseSpacerRule());
 
     registry
+      ..registerFixForRule(AlwaysPutDocCommentsBeforeAnnotationsRule.code, PutDocCommentsBeforeAnnotations.new)
       ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new)
       ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
       ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
