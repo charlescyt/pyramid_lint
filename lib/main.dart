@@ -4,6 +4,7 @@ import 'package:analysis_server_plugin/registry.dart';
 import 'src/assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
 import 'src/rules/dart/always_specify_parameter_names.dart';
 import 'src/rules/dart/avoid_dynamic.dart';
+import 'src/rules/dart/avoid_empty_blocks.dart';
 import 'src/rules/dart/avoid_mutable_global_variables.dart';
 import 'src/rules/dart/avoid_positional_fields_in_records.dart';
 import 'src/rules/dart/no_duplicate_imports.dart';
@@ -38,6 +39,7 @@ class PyramidLintPlugin extends Plugin {
     registry
       ..registerLintRule(AlwaysSpecifyParameterNamesRule())
       ..registerLintRule(AvoidDynamicRule())
+      ..registerLintRule(AvoidEmptyBlocksRule())
       ..registerLintRule(AvoidMutableGlobalVariablesRule())
       ..registerLintRule(AvoidPositionalFieldsInRecordsRule())
       ..registerLintRule(NoDuplicateImportsRule())

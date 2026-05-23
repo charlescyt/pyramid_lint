@@ -8,7 +8,6 @@ import 'src/assists/flutter/wrap_with_layout_builder.dart';
 import 'src/assists/flutter/wrap_with_listenable_builder.dart';
 import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/lints/dart/always_put_doc_comments_before_annotations.dart';
-import 'src/lints/dart/avoid_empty_blocks.dart';
 import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/avoid_unused_parameters.dart';
 import 'src/lints/dart/class_members_ordering.dart';
@@ -29,7 +28,6 @@ class _PyramidLinter extends PluginBase {
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
     // Dart lints
     AlwaysPutDocCommentsBeforeAnnotations.fromConfigs(configs),
-    AvoidEmptyBlocks.fromConfigs(configs),
     AvoidInvertedBooleanExpressions.fromConfigs(configs),
     AvoidUnusedParameters.fromConfigs(configs),
     ClassMembersOrdering.fromConfigs(configs),
