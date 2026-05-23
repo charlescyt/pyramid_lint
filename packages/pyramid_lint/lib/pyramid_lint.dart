@@ -12,7 +12,6 @@ import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
-import 'src/lints/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/lints/flutter/avoid_public_members_in_states.dart';
 import 'src/lints/flutter/dispose_controllers.dart';
 import 'src/lints/flutter/proper_super_dispose.dart';
@@ -30,7 +29,6 @@ class _PyramidLinter extends PluginBase {
     ClassMembersOrdering.fromConfigs(configs),
     PreferConstConstructorDeclarations.fromConfigs(configs),
     PreferImmediateReturn.fromConfigs(configs),
-    PreferUnderscoreForUnusedCallbackParameters.fromConfigs(configs),
     // Flutter lints
     AvoidPublicMembersInStates.fromConfigs(configs),
     DisposeControllers.fromConfigs(configs),
