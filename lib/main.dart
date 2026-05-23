@@ -16,6 +16,7 @@ import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_iterable_last.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 import 'src/rules/dart/proper_from_environment.dart';
+import 'src/rules/dart/unnecessary_nullable_return_type.dart';
 import 'src/rules/flutter/avoid_single_child_in_flex.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_border_from_border_side.dart';
@@ -50,7 +51,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferIterableFirstRule())
       ..registerLintRule(PreferIterableLastRule())
       ..registerLintRule(PreferNewLineBeforeReturnRule())
-      ..registerLintRule(ProperFromEnvironmentRule());
+      ..registerLintRule(ProperFromEnvironmentRule())
+      ..registerLintRule(UnnecessaryNullableReturnTypeRule());
 
     registry
       ..registerLintRule(AvoidSingleChildInFlexRule())
@@ -71,7 +73,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
       ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
       ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
-      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new);
+      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new)
+      ..registerFixForRule(UnnecessaryNullableReturnTypeRule.code, ReplaceWithNonNullableType.new);
 
     registry
       ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithAlign.new)
