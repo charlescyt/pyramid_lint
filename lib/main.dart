@@ -20,6 +20,7 @@ import 'src/rules/dart/prefer_new_line_before_return.dart';
 import 'src/rules/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/rules/dart/proper_from_environment.dart';
 import 'src/rules/dart/unnecessary_nullable_return_type.dart';
+import 'src/rules/flutter/avoid_public_members_in_states.dart';
 import 'src/rules/flutter/avoid_single_child_in_flex.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_border_from_border_side.dart';
@@ -61,6 +62,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(UnnecessaryNullableReturnTypeRule());
 
     registry
+      ..registerLintRule(AvoidPublicMembersInStatesRule())
       ..registerLintRule(AvoidSingleChildInFlexRule())
       ..registerLintRule(PreferAsyncCallbackRule())
       ..registerLintRule(PreferBorderFromBorderSideRule())

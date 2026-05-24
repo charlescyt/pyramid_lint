@@ -3,6 +3,7 @@ import 'package:source_gen/source_gen.dart';
 const TypeChecker iterableChecker = TypeChecker.typeNamedLiterally('Iterable', inSdk: true);
 const TypeChecker listChecker = TypeChecker.typeNamedLiterally('List', inSdk: true);
 
+const TypeChecker stateChecker = TypeChecker.typeNamedLiterally('State', inPackage: 'flutter');
 const TypeChecker containerChecker = TypeChecker.typeNamedLiterally('Container', inPackage: 'flutter');
 const TypeChecker expandedChecker = TypeChecker.typeNamedLiterally('Expanded', inPackage: 'flutter');
 const TypeChecker flexChecker = TypeChecker.typeNamedLiterally('Flex', inPackage: 'flutter');
