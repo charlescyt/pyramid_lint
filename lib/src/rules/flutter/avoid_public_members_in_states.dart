@@ -91,8 +91,8 @@ class _Visitor extends SimpleAstVisitor<void> {
 
     for (final variable in fieldDeclaration.fields.variables) {
       final element = variable.declaredFragment?.element;
-      if (element == null) return;
-      if (element.isPrivate) return;
+      if (element == null) continue;
+      if (element.isPrivate) continue;
 
       rule.reportAtToken(variable.name);
     }
