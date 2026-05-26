@@ -30,3 +30,11 @@ extension ArgumentListExtension on ArgumentList {
     return namedArguments.firstWhereOrNull((e) => e.name.label.name == name);
   }
 }
+
+extension ClassMembersExtension on NodeList<ClassMember> {
+  /// Returns the first [MethodDeclaration] with the given [name], or `null` if
+  /// there is none.
+  MethodDeclaration? getMethodDeclarationByName(String name) {
+    return whereType<MethodDeclaration>().firstWhereOrNull((e) => e.name.lexeme == name);
+  }
+}
