@@ -22,6 +22,7 @@ import 'src/rules/dart/proper_from_environment.dart';
 import 'src/rules/dart/unnecessary_nullable_return_type.dart';
 import 'src/rules/flutter/avoid_public_members_in_states.dart';
 import 'src/rules/flutter/avoid_single_child_in_flex.dart';
+import 'src/rules/flutter/dispose_controllers.dart';
 import 'src/rules/flutter/prefer_async_callback.dart';
 import 'src/rules/flutter/prefer_border_from_border_side.dart';
 import 'src/rules/flutter/prefer_border_radius_all.dart';
@@ -66,6 +67,7 @@ class PyramidLintPlugin extends Plugin {
     registry
       ..registerLintRule(AvoidPublicMembersInStatesRule())
       ..registerLintRule(AvoidSingleChildInFlexRule())
+      ..registerLintRule(DisposeControllersRule())
       ..registerLintRule(PreferAsyncCallbackRule())
       ..registerLintRule(PreferBorderFromBorderSideRule())
       ..registerLintRule(PreferBorderRadiusAllRule())
@@ -92,6 +94,7 @@ class PyramidLintPlugin extends Plugin {
     registry
       ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithAlign.new)
       ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithCenter.new)
+      ..registerFixForRule(DisposeControllersRule.code, AddControllerDispose.new)
       ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
       ..registerFixForRule(PreferBorderFromBorderSideRule.code, ReplaceWithBorderFromBorderSide.new)
       ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)

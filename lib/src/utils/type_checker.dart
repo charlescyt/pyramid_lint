@@ -16,6 +16,12 @@ const TypeChecker iconButtonChecker = TypeChecker.typeNamedLiterally('IconButton
 const TypeChecker edgeInsetsChecker = TypeChecker.typeNamedLiterally('EdgeInsets', inPackage: 'flutter');
 const TypeChecker mediaQueryChecker = TypeChecker.typeNamedLiterally('MediaQuery', inPackage: 'flutter');
 const TypeChecker mediaQueryDataChecker = TypeChecker.typeNamedLiterally('MediaQueryData', inPackage: 'flutter');
+const TypeChecker changeNotifierChecker = TypeChecker.typeNamedLiterally('ChangeNotifier', inPackage: 'flutter');
+const TypeChecker animationControllerChecker = TypeChecker.typeNamedLiterally(
+  'AnimationController',
+  inPackage: 'flutter',
+);
 
 const TypeChecker containerOrSizedBoxChecker = TypeChecker.any([containerChecker, sizedBoxChecker]);
 const TypeChecker expandedOrFlexibleChecker = TypeChecker.any([expandedChecker, flexibleChecker]);
+const TypeChecker disposableControllerChecker = TypeChecker.any([animationControllerChecker, changeNotifierChecker]);

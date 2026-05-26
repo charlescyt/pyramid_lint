@@ -11,7 +11,6 @@ import 'src/lints/dart/avoid_inverted_boolean_expressions.dart';
 import 'src/lints/dart/class_members_ordering.dart';
 import 'src/lints/dart/prefer_const_constructor_declarations.dart';
 import 'src/lints/dart/prefer_immediate_return.dart';
-import 'src/lints/flutter/dispose_controllers.dart';
 
 /// This is the entry point of Pyramid Linter.
 PluginBase createPlugin() => _PyramidLinter();
@@ -25,7 +24,6 @@ class _PyramidLinter extends PluginBase {
     PreferConstConstructorDeclarations.fromConfigs(configs),
     PreferImmediateReturn.fromConfigs(configs),
     // Flutter lints
-    DisposeControllers.fromConfigs(configs),
   ];
 
   @override
