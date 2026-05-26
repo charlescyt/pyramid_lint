@@ -48,7 +48,7 @@ class _Visitor extends SimpleAstVisitor<void> {
     final type = node.staticType;
     if (type == null || !flexChecker.isAssignableFromType(type)) return;
 
-    final childrenExpression = node.argumentList.childrenArgument?.expression;
+    final childrenExpression = node.argumentList.childrenArgument?.argumentExpression;
     if (childrenExpression is! ListLiteral) return;
 
     if (childrenExpression.elements.length != 1) return;
@@ -80,7 +80,7 @@ class ReplaceWithAlign extends ResolvedCorrectionProducer {
     final instanceCreation = node.thisOrAncestorOfType<InstanceCreationExpression>();
     if (instanceCreation == null) return;
 
-    final childrenExpression = instanceCreation.argumentList.childrenArgument?.expression;
+    final childrenExpression = instanceCreation.argumentList.childrenArgument?.argumentExpression;
     if (childrenExpression is! ListLiteral || childrenExpression.elements.length != 1) return;
 
     final child = childrenExpression.elements.first;
@@ -114,7 +114,7 @@ class ReplaceWithCenter extends ResolvedCorrectionProducer {
     final instanceCreation = node.thisOrAncestorOfType<InstanceCreationExpression>();
     if (instanceCreation == null) return;
 
-    final childrenExpression = instanceCreation.argumentList.childrenArgument?.expression;
+    final childrenExpression = instanceCreation.argumentList.childrenArgument?.argumentExpression;
     if (childrenExpression is! ListLiteral || childrenExpression.elements.length != 1) return;
 
     final child = childrenExpression.elements.first;

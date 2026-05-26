@@ -25,7 +25,7 @@ class AlwaysSpecifyParameterNamesRule extends AnalysisRule {
   @override
   void registerNodeProcessors(RuleVisitorRegistry registry, RuleContext context) {
     final visitor = _Visitor(this, context);
-    registry.addSimpleFormalParameter(this, visitor);
+    registry.addRegularFormalParameter(this, visitor);
   }
 }
 
@@ -36,7 +36,7 @@ class _Visitor extends SimpleAstVisitor<void> {
   const _Visitor(this.rule, this.context);
 
   @override
-  void visitSimpleFormalParameter(SimpleFormalParameter node) {
+  void visitRegularFormalParameter(RegularFormalParameter node) {
     if (node.name == null) {
       rule.reportAtNode(node);
     }

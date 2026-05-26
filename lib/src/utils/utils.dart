@@ -2,10 +2,10 @@ import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 
-/// Whether the [expression] is the zero number literal.
-bool isZeroExpression(Expression expression) {
-  if (expression is IntegerLiteral) return expression.value == 0;
-  if (expression is DoubleLiteral) return expression.value == 0.0;
+/// Whether the [argument] is the zero number literal.
+bool isZeroArgumentExpression(Argument argument) {
+  if (argument is IntegerLiteral) return argument.value == 0;
+  if (argument is DoubleLiteral) return argument.value == 0.0;
   return false;
 }
 

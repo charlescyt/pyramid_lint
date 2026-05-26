@@ -124,15 +124,15 @@ String? _fromLtrbReplacement(InstanceCreationExpression node) {
     case (left: final l, top: final t, right: final r, bottom: final b)
         when l.toSource() == r.toSource() && t.toSource() == b.toSource():
       return 'EdgeInsets.symmetric(${[
-        if (!isZeroExpression(l)) 'horizontal: ${l.toSource()}',
-        if (!isZeroExpression(t)) 'vertical: ${t.toSource()}',
+        if (!isZeroArgumentExpression(l)) 'horizontal: ${l.toSource()}',
+        if (!isZeroArgumentExpression(t)) 'vertical: ${t.toSource()}',
       ].join(', ')})';
-    case (left: final l, top: final t, right: final r, bottom: final b) when [l, t, r, b].any(isZeroExpression):
+    case (left: final l, top: final t, right: final r, bottom: final b) when [l, t, r, b].any(isZeroArgumentExpression):
       return 'EdgeInsets.only(${[
-        if (!isZeroExpression(l)) 'left: ${l.toSource()}',
-        if (!isZeroExpression(t)) 'top: ${t.toSource()}',
-        if (!isZeroExpression(r)) 'right: ${r.toSource()}',
-        if (!isZeroExpression(b)) 'bottom: ${b.toSource()}',
+        if (!isZeroArgumentExpression(l)) 'left: ${l.toSource()}',
+        if (!isZeroArgumentExpression(t)) 'top: ${t.toSource()}',
+        if (!isZeroArgumentExpression(r)) 'right: ${r.toSource()}',
+        if (!isZeroArgumentExpression(b)) 'bottom: ${b.toSource()}',
       ].join(', ')})';
     case _:
       return null;
@@ -140,10 +140,10 @@ String? _fromLtrbReplacement(InstanceCreationExpression node) {
 }
 
 String? _onlyReplacement(InstanceCreationExpression node) {
-  final left = node.argumentList.getArgumentByName('left')?.expression;
-  final top = node.argumentList.getArgumentByName('top')?.expression;
-  final right = node.argumentList.getArgumentByName('right')?.expression;
-  final bottom = node.argumentList.getArgumentByName('bottom')?.expression;
+  final left = node.argumentList.getArgumentByName('left')?.argumentExpression;
+  final top = node.argumentList.getArgumentByName('top')?.argumentExpression;
+  final right = node.argumentList.getArgumentByName('right')?.argumentExpression;
+  final bottom = node.argumentList.getArgumentByName('bottom')?.argumentExpression;
 
   switch ((left: left, top: top, right: right, bottom: bottom)) {
     case (
@@ -159,8 +159,8 @@ String? _onlyReplacement(InstanceCreationExpression node) {
     case (left: final l, top: final t, right: final r, bottom: final b)
         when l?.toSource() == r?.toSource() && t?.toSource() == b?.toSource():
       return 'EdgeInsets.symmetric(${[
-        if (l != null && !isZeroExpression(l)) 'horizontal: ${l.toSource()}',
-        if (t != null && !isZeroExpression(t)) 'vertical: ${t.toSource()}',
+        if (l != null && !isZeroArgumentExpression(l)) 'horizontal: ${l.toSource()}',
+        if (t != null && !isZeroArgumentExpression(t)) 'vertical: ${t.toSource()}',
       ].join(', ')})';
     case (left: final l, top: final t, right: final r, bottom: final b)
         when [l, t, r, b].any((e) => (e is IntegerLiteral && e.value == 0) || (e is DoubleLiteral && e.value == 0.0)):
@@ -178,8 +178,8 @@ String? _onlyReplacement(InstanceCreationExpression node) {
 }
 
 String? _symmetricReplacement(InstanceCreationExpression node) {
-  final vertical = node.argumentList.getArgumentByName('vertical')?.expression;
-  final horizontal = node.argumentList.getArgumentByName('horizontal')?.expression;
+  final vertical = node.argumentList.getArgumentByName('vertical')?.argumentExpression;
+  final horizontal = node.argumentList.getArgumentByName('horizontal')?.argumentExpression;
 
   switch ((vertical: vertical, horizontal: horizontal)) {
     case (
@@ -189,10 +189,10 @@ String? _symmetricReplacement(InstanceCreationExpression node) {
       return null;
     case (vertical: final v?, horizontal: final h?) when v.toSource() == h.toSource():
       return 'EdgeInsets.all(${v.toSource()})';
-    case (vertical: final v?, horizontal: final h?) when [v, h].any(isZeroExpression):
+    case (vertical: final v?, horizontal: final h?) when [v, h].any(isZeroArgumentExpression):
       return 'EdgeInsets.symmetric(${[
-        if (!isZeroExpression(v)) 'vertical: ${v.toSource()}',
-        if (!isZeroExpression(h)) 'horizontal: ${h.toSource()}',
+        if (!isZeroArgumentExpression(v)) 'vertical: ${v.toSource()}',
+        if (!isZeroArgumentExpression(h)) 'horizontal: ${h.toSource()}',
       ].join(', ')})';
     case _:
       return null;

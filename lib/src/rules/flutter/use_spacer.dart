@@ -51,7 +51,7 @@ class _Visitor extends SimpleAstVisitor<void> {
     final childArgument = node.argumentList.childArgument;
     if (childArgument == null) return;
 
-    final childExpression = childArgument.expression;
+    final childExpression = childArgument.argumentExpression;
     if (childExpression is! InstanceCreationExpression) return;
 
     final childType = childExpression.staticType;
