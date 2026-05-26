@@ -2,6 +2,7 @@ import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
 import 'src/assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
+import 'src/assists/flutter/wrap_with_stack.dart';
 import 'src/rules/dart/always_put_doc_comments_before_annotations.dart';
 import 'src/rules/dart/always_specify_parameter_names.dart';
 import 'src/rules/dart/avoid_dynamic.dart';
@@ -107,6 +108,8 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(SpecifyIconButtonTooltipRule.code, AddTooltip.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
 
-    registry.registerAssist(ConvertToForInIterableIndexedLoop.new);
+    registry
+      ..registerAssist(ConvertToForInIterableIndexedLoop.new)
+      ..registerAssist(WrapWithStack.new);
   }
 }
