@@ -30,6 +30,7 @@ import 'src/rules/flutter/prefer_text_rich.dart';
 import 'src/rules/flutter/prefer_void_callback.dart';
 import 'src/rules/flutter/proper_edge_insets_constructors.dart';
 import 'src/rules/flutter/proper_expanded_and_flexible.dart';
+import 'src/rules/flutter/proper_super_dispose.dart';
 import 'src/rules/flutter/proper_super_init_state.dart';
 import 'src/rules/flutter/specify_icon_button_tooltip.dart';
 import 'src/rules/flutter/use_spacer.dart';
@@ -73,6 +74,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferVoidCallbackRule())
       ..registerLintRule(ProperEdgeInsetsConstructorsRule())
       ..registerLintRule(ProperExpandedAndFlexibleRule())
+      ..registerLintRule(ProperSuperDisposeRule())
       ..registerLintRule(ProperSuperInitStateRule())
       ..registerLintRule(SpecifyIconButtonTooltipRule())
       ..registerLintRule(UseSpacerRule());
@@ -97,6 +99,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
       ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
       ..registerFixForRule(ProperEdgeInsetsConstructorsRule.code, ReplaceWithProperEdgeInsets.new)
+      ..registerFixForRule(ProperSuperDisposeRule.code, PlaceSuperDisposeAtTheEnd.new)
       ..registerFixForRule(ProperSuperInitStateRule.code, PlaceSuperInitStateAtTheStart.new)
       ..registerFixForRule(SpecifyIconButtonTooltipRule.code, AddTooltip.new)
       ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
