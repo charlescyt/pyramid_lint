@@ -5,6 +5,33 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
+import 'package:meta/meta.dart' show immutable;
+
+import '../../utils/rule_options.dart';
+
+@immutable
+class AvoidUnusedParametersOptions {
+  final List<String> ignoredParameters;
+
+  const AvoidUnusedParametersOptions({List<String>? ignoredParameters})
+    : ignoredParameters = ignoredParameters ?? const [];
+
+  factory AvoidUnusedParametersOptions.fromMap(Map<String, Object?> map) {
+    final ignoredParameters = switch (map['ignored_parameters']) {
+      final List<String> ignoredParameters => ignoredParameters,
+      _ => const <String>[],
+    };
+
+    return AvoidUnusedParametersOptions(ignoredParameters: ignoredParameters);
+  }
+
+  factory AvoidUnusedParametersOptions.fromRuleContext(RuleContext context) {
+    final map = readPluginRuleOptions(context, AvoidUnusedParametersRule.code.lowerCaseName);
+    return AvoidUnusedParametersOptions.fromMap(map);
+  }
+
+  bool isIgnored(String? name) => name != null && ignoredParameters.contains(name);
+}
 
 class AvoidUnusedParametersRule extends AnalysisRule {
   static const LintCode code = LintCode(
@@ -25,7 +52,8 @@ class AvoidUnusedParametersRule extends AnalysisRule {
 
   @override
   void registerNodeProcessors(RuleVisitorRegistry registry, RuleContext context) {
-    final visitor = _Visitor(this, context);
+    final options = AvoidUnusedParametersOptions.fromRuleContext(context);
+    final visitor = _Visitor(this, context, options);
     registry.addFunctionDeclaration(this, visitor);
     registry.addMethodDeclaration(this, visitor);
   }
@@ -34,8 +62,9 @@ class AvoidUnusedParametersRule extends AnalysisRule {
 class _Visitor extends SimpleAstVisitor<void> {
   final AnalysisRule rule;
   final RuleContext context;
+  final AvoidUnusedParametersOptions options;
 
-  const _Visitor(this.rule, this.context);
+  const _Visitor(this.rule, this.context, this.options);
 
   @override
   void visitFunctionDeclaration(FunctionDeclaration node) {
@@ -67,6 +96,8 @@ class _Visitor extends SimpleAstVisitor<void> {
     final referencedParameterElements = _collectReferencedParameterElements(body);
 
     for (final parameter in parameters) {
+      if (options.isIgnored(parameter.name?.lexeme)) continue;
+
       final parameterElement = parameter.declaredFragment?.element;
       if (parameterElement == null) continue;
       if (referencedParameterElements.contains(parameterElement)) continue;

@@ -84,4 +84,28 @@ abstract class C {
 ''',
     );
   }
+
+  Future<void> test_ignored_parameter() async {
+    newAnalysisOptionsYamlFile(
+      testPackageRootPath,
+      '''
+linter:
+  rules:
+    avoid_unused_parameters: true
+
+plugins:
+  pyramid_lint:
+    options:
+      avoid_unused_parameters:
+        ignored_parameters:
+          - ref
+''',
+    );
+
+    await assertNoDiagnostics(
+      '''
+void f(Object ref) {}
+''',
+    );
+  }
 }
