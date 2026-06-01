@@ -1,0 +1,38 @@
+# max_lines_for_file
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ✅    |
+
+## Details
+
+**DO** limit the number of lines in a file.
+
+## Usage
+
+To enable the `max_lines_for_file` rule, add `max_lines_for_file` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
+
+```yaml
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      max_lines_for_file: true
+```
+
+## Options
+
+| Option      | Type  | Description                  | Default Value |
+| ----------- | ----- | ---------------------------- |:-------------:|
+| `max_lines` | `int` | The maximum number of lines. |     `200`     |
+
+To configure the maximum number of lines, add the `max_lines` under `plugins > pyramid_lint > options`:
+
+```yaml
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      max_lines_for_file: true
+    options:
+      max_lines_for_file:
+        max_lines: 20
+```

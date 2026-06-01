@@ -92,6 +92,10 @@
           "href": "/dart-lints/class_members_ordering"
         },
         {
+          "title": "max_lines_for_file",
+          "href": "/dart-lints/max_lines_for_file"
+        },
+        {
           "title": "no_duplicate_imports",
           "href": "/dart-lints/no_duplicate_imports"
         },
