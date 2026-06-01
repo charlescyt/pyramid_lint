@@ -136,6 +136,10 @@
           "href": "/dart-lints/prefer_iterable_last"
         },
         {
+          "title": "prefer_library_prefixes",
+          "href": "/dart-lints/prefer_library_prefixes"
+        },
+        {
           "title": "prefer_new_line_before_return",
           "href": "/dart-lints/prefer_new_line_before_return"
         },

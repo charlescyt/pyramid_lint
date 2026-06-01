@@ -19,6 +19,7 @@ import 'src/rules/dart/prefer_iterable_any.dart';
 import 'src/rules/dart/prefer_iterable_every.dart';
 import 'src/rules/dart/prefer_iterable_first.dart';
 import 'src/rules/dart/prefer_iterable_last.dart';
+import 'src/rules/dart/prefer_library_prefixes.dart';
 import 'src/rules/dart/prefer_new_line_before_return.dart';
 import 'src/rules/dart/prefer_underscore_for_unused_callback_parameters.dart';
 import 'src/rules/dart/proper_from_environment.dart';
@@ -64,6 +65,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(PreferIterableEveryRule())
       ..registerLintRule(PreferIterableFirstRule())
       ..registerLintRule(PreferIterableLastRule())
+      ..registerLintRule(PreferLibraryPrefixesRule())
       ..registerLintRule(PreferNewLineBeforeReturnRule())
       ..registerLintRule(PreferUnderscoreForUnusedCallbackParametersRule())
       ..registerLintRule(ProperFromEnvironmentRule())
@@ -92,6 +94,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
       ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
       ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
+      ..registerFixForRule(PreferLibraryPrefixesRule.code, AddLibraryPrefix.new)
       ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
       ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new)
       ..registerFixForRule(UnnecessaryNullableReturnTypeRule.code, ReplaceWithNonNullableType.new);
