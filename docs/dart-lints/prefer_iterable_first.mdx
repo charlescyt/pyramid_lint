@@ -23,10 +23,11 @@ final firstNumber = numbers.first;
 
 ## Usage
 
-To enable the `prefer_iterable_first` rule, add `prefer_iterable_first` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_iterable_first` rule, add `prefer_iterable_first` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_iterable_first
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_iterable_first: true
 ```

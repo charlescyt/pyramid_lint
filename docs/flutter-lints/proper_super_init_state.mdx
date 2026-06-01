@@ -26,10 +26,11 @@ void initState() {
 
 ## Usage
 
-To enable the `proper_super_init_state` rule, add `proper_super_init_state` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `proper_super_init_state` rule, add `proper_super_init_state` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - proper_super_init_state
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      proper_super_init_state: true
 ```

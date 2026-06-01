@@ -22,10 +22,11 @@ final text = number != 0 ? 'Not zero' : 'Zero';
 
 ## Usage
 
-To enable the `avoid_inverted_boolean_expressions` rule, add `avoid_inverted_boolean_expressions` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_inverted_boolean_expressions` rule, add `avoid_inverted_boolean_expressions` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_inverted_boolean_expressions
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_inverted_boolean_expressions: true
 ```

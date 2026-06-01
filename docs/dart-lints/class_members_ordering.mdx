@@ -96,10 +96,11 @@ class AWidget extends StatelessWidget {
 
 ## Usage
 
-To enable the `class_members_ordering` rule, add `class_members_ordering` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `class_members_ordering` rule, add `class_members_ordering` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - class_members_ordering
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      class_members_ordering: true
 ```

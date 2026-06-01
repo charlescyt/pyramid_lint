@@ -29,10 +29,11 @@ Column(
 
 ## Usage
 
-To enable the `use_spacer` rule, add `use_spacer` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `use_spacer` rule, add `use_spacer` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - use_spacer
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      use_spacer: true
 ```

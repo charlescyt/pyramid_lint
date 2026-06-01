@@ -26,10 +26,11 @@ const string = String.fromEnvironment('String');
 
 ## Usage
 
-To enable the `proper_from_environment` rule, add `proper_from_environment` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `proper_from_environment` rule, add `proper_from_environment` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - proper_from_environment
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      proper_from_environment: true
 ```

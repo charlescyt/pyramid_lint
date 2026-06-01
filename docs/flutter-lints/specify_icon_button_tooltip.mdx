@@ -25,10 +25,11 @@ IconButton(
 
 ## Usage
 
-To enable the `specify_icon_button_tooltip` rule, add `specify_icon_button_tooltip` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `specify_icon_button_tooltip` rule, add `specify_icon_button_tooltip` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - specify_icon_button_tooltip
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      specify_icon_button_tooltip: true
 ```

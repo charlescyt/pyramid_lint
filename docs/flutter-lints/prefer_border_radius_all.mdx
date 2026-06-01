@@ -28,10 +28,11 @@ const DecoratedBox(
 
 ## Usage
 
-To enable the `prefer_border_radius_all` rule, add `prefer_border_radius_all` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_border_radius_all` rule, add `prefer_border_radius_all` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_border_radius_all
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_border_radius_all: true
 ```

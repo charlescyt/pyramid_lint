@@ -39,10 +39,11 @@ Future<void> fetchData() async {
 
 ## Usage
 
-To enable the `prefer_async_await` rule, add `prefer_async_await` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_async_await` rule, add `prefer_async_await` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_async_await
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_async_await: true
 ```

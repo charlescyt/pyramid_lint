@@ -20,10 +20,11 @@ if (foo.property == bar.property) {}
 
 ## Usage
 
-To enable the `no_self_comparisons` rule, add `no_self_comparisons` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `no_self_comparisons` rule, add `no_self_comparisons` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - no_self_comparisons
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      no_self_comparisons: true
 ```

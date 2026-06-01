@@ -20,10 +20,11 @@ final areAllPositive = numbers.every((number) => number > 0);
 
 ## Usage
 
-To enable the `prefer_iterable_every` rule, add `prefer_iterable_every` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_iterable_every` rule, add `prefer_iterable_every` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_iterable_every
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_iterable_every: true
 ```

@@ -23,10 +23,11 @@ int add(int a, int b) {
 
 ## Usage
 
-To enable the `prefer_immediate_return` rule, add `prefer_immediate_return` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_immediate_return` rule, add `prefer_immediate_return` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_immediate_return
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_immediate_return: true
 ```

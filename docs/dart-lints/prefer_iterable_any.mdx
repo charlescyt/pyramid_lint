@@ -20,10 +20,11 @@ final hasPositiveNumber = numbers.any((number) => number > 0);
 
 ## Usage
 
-To enable the `prefer_iterable_any` rule, add `prefer_iterable_any` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_iterable_any` rule, add `prefer_iterable_any` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_iterable_any
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_iterable_any: true
 ```

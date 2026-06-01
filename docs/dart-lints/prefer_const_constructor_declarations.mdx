@@ -36,10 +36,11 @@ class Point {
 
 ## Usage
 
-To enable the `prefer_const_constructor_declarations` rule, add `prefer_const_constructor_declarations` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_const_constructor_declarations` rule, add `prefer_const_constructor_declarations` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_const_constructor_declarations
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_const_constructor_declarations: true
 ```

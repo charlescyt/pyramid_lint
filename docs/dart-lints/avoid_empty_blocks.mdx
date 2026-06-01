@@ -24,10 +24,11 @@ void doSomething() {
 
 ## Usage
 
-To enable the `avoid_empty_blocks` rule, add `avoid_empty_blocks` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_empty_blocks` rule, add `avoid_empty_blocks` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_empty_blocks
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_empty_blocks: true
 ```
