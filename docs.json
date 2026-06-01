@@ -96,6 +96,10 @@
           "href": "/dart-lints/max_lines_for_file"
         },
         {
+          "title": "max_lines_for_function",
+          "href": "/dart-lints/max_lines_for_function"
+        },
+        {
           "title": "no_duplicate_imports",
           "href": "/dart-lints/no_duplicate_imports"
         },

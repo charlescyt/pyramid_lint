@@ -1,0 +1,38 @@
+# max_lines_for_function
+
+| Severity | Quick Fix | Options |
+|:--------:|:---------:|:-------:|
+|   Info   |    ❌     |   ✅    |
+
+## Details
+
+A function or method should not exceed a certain number of lines.
+
+## Usage
+
+To enable the `max_lines_for_function` rule, add `max_lines_for_function` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
+
+```yaml
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      max_lines_for_function: true
+```
+
+## Options
+
+| Option      | Type  | Description                  | Default Value |
+| ----------- | ----- | ---------------------------- |:-------------:|
+| `max_lines` | `int` | The maximum number of lines. |     `100`     |
+
+To configure the maximum number of lines, add the `max_lines` under `plugins > pyramid_lint > options`:
+
+```yaml
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      max_lines_for_function: true
+    options:
+      max_lines_for_function:
+        max_lines: 200
+```
