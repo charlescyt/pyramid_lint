@@ -18,7 +18,7 @@ class AvoidUnusedParametersOptions {
 
   factory AvoidUnusedParametersOptions.fromMap(Map<String, Object?> map) {
     final ignoredParameters = switch (map['ignored_parameters']) {
-      final List<String> ignoredParameters => ignoredParameters,
+      final List<Object?> ignoredParameters => ignoredParameters.whereType<String>().toList(),
       _ => const <String>[],
     };
 

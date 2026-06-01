@@ -20,7 +20,7 @@ class PreferLibraryPrefixesOptions {
 
   factory PreferLibraryPrefixesOptions.fromMap(Map<String, Object?> map) {
     final libraries = switch (map['libraries']) {
-      final List<String> libraries => libraries,
+      final List<Object?> libraries => libraries.whereType<String>().toList(),
       _ => const <String>[],
     };
 
