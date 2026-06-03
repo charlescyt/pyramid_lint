@@ -3,6 +3,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/source/line_info.dart';
 
+import 'type_checker.dart';
+
 /// Whether the [argument] is the zero number literal.
 bool isZeroArgumentExpression(Argument argument) {
   if (argument is IntegerLiteral) return argument.value == 0;
@@ -27,4 +29,16 @@ int getLineCountForNode(AstNode node, LineInfo lineInfo) {
   final startLine = lineInfo.getLocation(node.offset).lineNumber;
   final endLine = lineInfo.getLocation(node.end).lineNumber;
   return endLine - startLine + 1;
+}
+
+InstanceCreationExpression? findParentWidget(InstanceCreationExpression expr) {
+  final parentExpr = expr.parent?.thisOrAncestorOfType<InstanceCreationExpression>();
+  if (parentExpr == null) return null;
+
+  final parentType = parentExpr.staticType;
+  if (parentType == null || !widgetChecker.isSuperTypeOf(parentType)) {
+    return null;
+  }
+
+  return parentExpr;
 }

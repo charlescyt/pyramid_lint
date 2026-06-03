@@ -23,7 +23,6 @@
 - Assist: `swap_then_else_expression`.
 - Assist: `use_edge_insets_zero`.
 - Assist: `wrap_all_children_with_expanded`.
-- Assist: `wrap_with_layout_builder`.
 - Assist: `wrap_with_listenable_builder`.
 
 ## [2.4.0] - 2025-11-14

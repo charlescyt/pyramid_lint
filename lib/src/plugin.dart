@@ -1,6 +1,7 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 import 'assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
+import 'assists/flutter/wrap_with_layout_builder.dart';
 import 'assists/flutter/wrap_with_stack.dart';
 import 'rules/dart/always_put_doc_comments_before_annotations.dart';
 import 'rules/dart/always_specify_parameter_names.dart';
@@ -116,6 +117,7 @@ class PyramidLintPlugin extends Plugin {
 
     registry
       ..registerAssist(ConvertToForInIterableIndexedLoop.new)
+      ..registerAssist(WrapWithLayoutBuilder.new)
       ..registerAssist(WrapWithStack.new);
   }
 }
