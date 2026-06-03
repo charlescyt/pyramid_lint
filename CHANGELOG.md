@@ -1,5 +1,31 @@
 # Changelog
 
+## [3.0.0-beta.1] - 2026-06-03
+
+### Changed
+
+- **BREAKING**: Migrate from [`custom_lint`](https://pub.dev/packages/custom_lint) to Dart [analyzer plugins](https://dart.dev/tools/analyzer-plugins) via [`analysis_server_plugin`](https://pub.dev/packages/analysis_server_plugin).
+- **BREAKING**: Require Dart **3.12.0** (was `>=3.10.0`) and analyzer **13.0.0** (was `^8.0.0`).
+
+### Removed
+
+- **BREAKING**: Drop `custom_lint` / `custom_lint_builder` dependency and CLI integration.
+- Lint: `avoid_abbreviations_in_doc_comments`.
+- Lint: `avoid_nested_if`.
+- Lint: `boolean_prefixes`.
+- Lint: `max_switch_cases`.
+- Lint: `avoid_returning_widgets`.
+- Lint: `avoid_redundant_pattern_field_names` in favor of the built-in `simplify_variable_pattern`.
+- Lint: `avoid_inverted_boolean_expressions`.
+- Lint: `prefer_const_constructor_declarations`.
+- Lint: `prefer_immediate_return`.
+- Assist: `invert_boolean_expression`.
+- Assist: `swap_then_else_expression`.
+- Assist: `use_edge_insets_zero`.
+- Assist: `wrap_all_children_with_expanded`.
+- Assist: `wrap_with_layout_builder`.
+- Assist: `wrap_with_listenable_builder`.
+
 ## [2.4.0] - 2025-11-14
 
 ### Changed
