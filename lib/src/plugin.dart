@@ -1,0 +1,121 @@
+import 'package:analysis_server_plugin/plugin.dart';
+import 'package:analysis_server_plugin/registry.dart';
+import 'assists/dart/convert_to_for_in_iterable_indexed_loop.dart';
+import 'assists/flutter/wrap_with_stack.dart';
+import 'rules/dart/always_put_doc_comments_before_annotations.dart';
+import 'rules/dart/always_specify_parameter_names.dart';
+import 'rules/dart/avoid_dynamic.dart';
+import 'rules/dart/avoid_empty_blocks.dart';
+import 'rules/dart/avoid_mutable_global_variables.dart';
+import 'rules/dart/avoid_positional_fields_in_records.dart';
+import 'rules/dart/avoid_unused_parameters.dart';
+import 'rules/dart/class_members_ordering.dart';
+import 'rules/dart/max_line_for_file.dart';
+import 'rules/dart/max_lines_for_function.dart';
+import 'rules/dart/no_duplicate_imports.dart';
+import 'rules/dart/no_self_comparisons.dart';
+import 'rules/dart/prefer_async_await.dart';
+import 'rules/dart/prefer_iterable_any.dart';
+import 'rules/dart/prefer_iterable_every.dart';
+import 'rules/dart/prefer_iterable_first.dart';
+import 'rules/dart/prefer_iterable_last.dart';
+import 'rules/dart/prefer_library_prefixes.dart';
+import 'rules/dart/prefer_new_line_before_return.dart';
+import 'rules/dart/prefer_underscore_for_unused_callback_parameters.dart';
+import 'rules/dart/proper_from_environment.dart';
+import 'rules/dart/unnecessary_nullable_return_type.dart';
+import 'rules/flutter/avoid_public_members_in_states.dart';
+import 'rules/flutter/avoid_single_child_in_flex.dart';
+import 'rules/flutter/dispose_controllers.dart';
+import 'rules/flutter/prefer_async_callback.dart';
+import 'rules/flutter/prefer_border_from_border_side.dart';
+import 'rules/flutter/prefer_border_radius_all.dart';
+import 'rules/flutter/prefer_dedicated_media_query_functions.dart';
+import 'rules/flutter/prefer_text_rich.dart';
+import 'rules/flutter/prefer_void_callback.dart';
+import 'rules/flutter/proper_edge_insets_constructors.dart';
+import 'rules/flutter/proper_expanded_and_flexible.dart';
+import 'rules/flutter/proper_super_dispose.dart';
+import 'rules/flutter/proper_super_init_state.dart';
+import 'rules/flutter/specify_icon_button_tooltip.dart';
+import 'rules/flutter/use_spacer.dart';
+
+class PyramidLintPlugin extends Plugin {
+  @override
+  String get name => 'Pyramid Lint';
+
+  @override
+  void register(PluginRegistry registry) {
+    registry
+      ..registerLintRule(AlwaysPutDocCommentsBeforeAnnotationsRule())
+      ..registerLintRule(AlwaysSpecifyParameterNamesRule())
+      ..registerLintRule(AvoidDynamicRule())
+      ..registerLintRule(AvoidEmptyBlocksRule())
+      ..registerLintRule(AvoidMutableGlobalVariablesRule())
+      ..registerLintRule(AvoidPositionalFieldsInRecordsRule())
+      ..registerLintRule(AvoidUnusedParametersRule())
+      ..registerLintRule(ClassMembersOrderingRule())
+      ..registerLintRule(MaxLinesForFileRule())
+      ..registerLintRule(MaxLinesForFunctionRule())
+      ..registerLintRule(NoDuplicateImportsRule())
+      ..registerLintRule(NoSelfComparisonsRule())
+      ..registerLintRule(PreferAsyncAwaitRule())
+      ..registerLintRule(PreferIterableAnyRule())
+      ..registerLintRule(PreferIterableEveryRule())
+      ..registerLintRule(PreferIterableFirstRule())
+      ..registerLintRule(PreferIterableLastRule())
+      ..registerLintRule(PreferLibraryPrefixesRule())
+      ..registerLintRule(PreferNewLineBeforeReturnRule())
+      ..registerLintRule(PreferUnderscoreForUnusedCallbackParametersRule())
+      ..registerLintRule(ProperFromEnvironmentRule())
+      ..registerLintRule(UnnecessaryNullableReturnTypeRule());
+
+    registry
+      ..registerLintRule(AvoidPublicMembersInStatesRule())
+      ..registerLintRule(AvoidSingleChildInFlexRule())
+      ..registerLintRule(DisposeControllersRule())
+      ..registerLintRule(PreferAsyncCallbackRule())
+      ..registerLintRule(PreferBorderFromBorderSideRule())
+      ..registerLintRule(PreferBorderRadiusAllRule())
+      ..registerLintRule(PreferDedicatedMediaQueryFunctionsRule())
+      ..registerLintRule(PreferTextRichRule())
+      ..registerLintRule(PreferVoidCallbackRule())
+      ..registerLintRule(ProperEdgeInsetsConstructorsRule())
+      ..registerLintRule(ProperExpandedAndFlexibleRule())
+      ..registerLintRule(ProperSuperDisposeRule())
+      ..registerLintRule(ProperSuperInitStateRule())
+      ..registerLintRule(SpecifyIconButtonTooltipRule())
+      ..registerLintRule(UseSpacerRule());
+
+    registry
+      ..registerFixForRule(AlwaysPutDocCommentsBeforeAnnotationsRule.code, PutDocCommentsBeforeAnnotations.new)
+      ..registerFixForRule(PreferIterableAnyRule.code, ReplaceWithIterableAny.new)
+      ..registerFixForRule(PreferIterableEveryRule.code, ReplaceWithIterableEvery.new)
+      ..registerFixForRule(PreferIterableFirstRule.code, ReplaceWithIterableFirst.new)
+      ..registerFixForRule(PreferIterableLastRule.code, ReplaceWithIterableLast.new)
+      ..registerFixForRule(PreferLibraryPrefixesRule.code, AddLibraryPrefix.new)
+      ..registerFixForRule(PreferNewLineBeforeReturnRule.code, AddNewLineBeforeReturn.new)
+      ..registerFixForRule(ProperFromEnvironmentRule.code, InvokeAsConstConstructor.new)
+      ..registerFixForRule(UnnecessaryNullableReturnTypeRule.code, ReplaceWithNonNullableType.new);
+
+    registry
+      ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithAlign.new)
+      ..registerFixForRule(AvoidSingleChildInFlexRule.code, ReplaceWithCenter.new)
+      ..registerFixForRule(DisposeControllersRule.code, AddControllerDispose.new)
+      ..registerFixForRule(PreferAsyncCallbackRule.code, ReplaceWithAsyncCallback.new)
+      ..registerFixForRule(PreferBorderFromBorderSideRule.code, ReplaceWithBorderFromBorderSide.new)
+      ..registerFixForRule(PreferBorderRadiusAllRule.code, ReplaceWithBorderRadiusAll.new)
+      ..registerFixForRule(PreferDedicatedMediaQueryFunctionsRule.code, ReplaceWithDedicatedMediaQueryFunction.new)
+      ..registerFixForRule(PreferTextRichRule.code, ReplaceWithTextRich.new)
+      ..registerFixForRule(PreferVoidCallbackRule.code, ReplaceWithVoidCallback.new)
+      ..registerFixForRule(ProperEdgeInsetsConstructorsRule.code, ReplaceWithProperEdgeInsets.new)
+      ..registerFixForRule(ProperSuperDisposeRule.code, PlaceSuperDisposeAtTheEnd.new)
+      ..registerFixForRule(ProperSuperInitStateRule.code, PlaceSuperInitStateAtTheStart.new)
+      ..registerFixForRule(SpecifyIconButtonTooltipRule.code, AddTooltip.new)
+      ..registerFixForRule(UseSpacerRule.code, ReplaceWithSpacer.new);
+
+    registry
+      ..registerAssist(ConvertToForInIterableIndexedLoop.new)
+      ..registerAssist(WrapWithStack.new);
+  }
+}
