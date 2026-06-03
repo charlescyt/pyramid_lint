@@ -25,10 +25,11 @@ final b = math.min(1, 10);
 
 ## Usage
 
-To enable the `no_duplicate_imports` rule, add `no_duplicate_imports` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `no_duplicate_imports` rule, add `no_duplicate_imports` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - no_duplicate_imports
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      no_duplicate_imports: true
 ```

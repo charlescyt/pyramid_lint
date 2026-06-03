@@ -8,6 +8,8 @@
 
 **DO** arrange class members in a consistent order.
 
+### Regular classes
+
 Class members should be ordered in the following sequence:
 
 1. Public static fields
@@ -27,7 +29,9 @@ Class members should be ordered in the following sequence:
 15. Private static methods
 16. Private instance methods
 
-For widgets, the order is slightly different:
+### Widgets and states
+
+When a class extends `Widget` or `State`, constructors come first:
 
 1. Public constructors
 2. Public named constructors
@@ -52,10 +56,24 @@ class A {
 
   int field;
 
-  A();
+  A({required this.field});
 }
+```
 
-class AWidget extends StatelessWidget {
+```dart title="Good"
+class A {
+  final int field;
+
+  A({required this.field});
+
+  void method() {}
+}
+```
+
+```dart title="Bad"
+import 'package:flutter/widgets.dart';
+
+class A extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
@@ -63,7 +81,7 @@ class AWidget extends StatelessWidget {
 
   final String field;
 
-  const AWidget({
+  const A({
     super.key,
     required this.field,
   });
@@ -71,16 +89,10 @@ class AWidget extends StatelessWidget {
 ```
 
 ```dart title="Good"
-class A {
-  int field;
+import 'package:flutter/widgets.dart';
 
-  A();
-
-  void method() {}
-}
-
-class AWidget extends StatelessWidget {
-  const AWidget({
+class A extends StatelessWidget {
+  const A({
     super.key,
     required this.field,
   });
@@ -96,10 +108,11 @@ class AWidget extends StatelessWidget {
 
 ## Usage
 
-To enable the `class_members_ordering` rule, add `class_members_ordering` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `class_members_ordering` rule, add `class_members_ordering` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - class_members_ordering
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      class_members_ordering: true
 ```

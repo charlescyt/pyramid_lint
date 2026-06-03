@@ -1,33 +1,35 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/logo-192x192.png" alt="logo" />
+  <img src="https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/logo-192x192.png" alt="Pyramid Lint logo" />
 </p>
 
 <p align="center">
-  <strong>Linting tool for Dart and Flutter projects.</strong>
+  <strong>Custom lints, quick fixes, and assists for Dart and Flutter.</strong>
 </p>
 
 # What is Pyramid Lint?
 
-Pyramid Lint is a linting tool for Dart and Flutter projects. It provides a set of additional lints and quick fixes to help developers identify issues within their Dart code, offers suggestions for potential fixes, and enforces consistent coding styles.
+[Pyramid Lint](https://pub.dev/packages/pyramid_lint) extends the Dart analyzer with optional rules for general Dart code and Flutter widgets. Enable only the checks you want, apply quick fixes from your IDE, and run the same analysis from the command line with `dart analyze` or `flutter analyze`.
 
-<Info> Pyramid Lint is built with [custom_lint][custom_lint]. </Info>
+<Info>
+  Pyramid Lint is an [analyzer plugin](https://dart.dev/tools/analyzer-plugins) built with [`analysis_server_plugin`](https://pub.dev/packages/analysis_server_plugin). See [Getting Started](/getting-started) to enable it in your project.
+</Info>
+
+## Requirements
+
+- **Dart** 3.10+ (3.12+ recommended) or **Flutter** 3.38+
 
 ## Lints
 
-Identifies potential issues in your code.
+Identifies potential issues in your code. All rules are opt-in. See [Available Lints](/available-lints) and [Getting Started](/getting-started#enable-lints) for more information.
 
 ## Quick fixes
 
-Suggests potential fixes for the issues identified by lints.
+Suggests automated corrections for many diagnostics in the IDE.
 
 ![proper_super_init_state](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/proper_super_init_state.gif)
 
-## Assist
+## Assists
 
-Provides refactoring and code completion for common tasks.
+Provides local refactorings at the cursor, such as `wrap_with_stack` and `convert_to_for_in_iterable_indexed_loop`.
 
 ![wrap_with_layout_builder](https://raw.githubusercontent.com/charlescyt/pyramid_lint/main/docs/assets/wrap_with_layout_builder.gif)
-
-<!-- Links -->
-
-[custom_lint]: https://pub.dev/packages/custom_lint

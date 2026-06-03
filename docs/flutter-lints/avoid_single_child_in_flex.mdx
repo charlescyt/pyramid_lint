@@ -30,10 +30,11 @@ Center(
 
 ## Usage
 
-To enable the `avoid_single_child_in_flex` rule, add `avoid_single_child_in_flex` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_single_child_in_flex` rule, add `avoid_single_child_in_flex` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_single_child_in_flex
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_single_child_in_flex: true
 ```

@@ -28,10 +28,11 @@ Row(
 
 ## Usage
 
-To enable the `proper_expanded_and_flexible` rule, add `proper_expanded_and_flexible` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `proper_expanded_and_flexible` rule, add `proper_expanded_and_flexible` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - proper_expanded_and_flexible
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      proper_expanded_and_flexible: true
 ```

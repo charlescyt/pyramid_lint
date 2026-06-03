@@ -24,12 +24,13 @@ void log(String a) {
 
 ## Usage
 
-To enable the `avoid_unused_parameters` rule, add `avoid_unused_parameters` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_unused_parameters` rule, add `avoid_unused_parameters` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_unused_parameters
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_unused_parameters: true
 ```
 
 ## Options
@@ -38,11 +39,15 @@ custom_lint:
 | -------------------- | -------------- | ------------------------------- |:-------------:|
 | `ignored_parameters` | `List<String>` | A list of parameters to ignore. |     `[]`      |
 
-To configure the list of ignored parameters, add a list of strings to the `ignored_parameters` option:
+To configure the list of ignored parameters, add `ignored_parameters` under `plugins > pyramid_lint > options`:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_unused_parameters:
-      ignored_parameters: ['ref']
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_unused_parameters: true
+    options:
+      avoid_unused_parameters:
+        ignored_parameters:
+          - ref
 ```

@@ -18,10 +18,11 @@ final AsyncCallback cb;
 
 ## Usage
 
-To enable the `prefer_async_callback` rule, add `prefer_async_callback` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_async_callback` rule, add `prefer_async_callback` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_async_callback
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_async_callback: true
 ```

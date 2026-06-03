@@ -52,10 +52,11 @@ class _MyWidgetState extends State<MyWidget> {
 
 ## Usage
 
-To enable the `avoid_public_members_in_states` rule, add `avoid_public_members_in_states` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_public_members_in_states` rule, add `avoid_public_members_in_states` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_public_members_in_states
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_public_members_in_states: true
 ```

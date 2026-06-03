@@ -28,10 +28,11 @@ final setLiteral = <String>{'a', 'b', 'c'};
 
 ## Usage
 
-To enable the `avoid_dynamic` rule, add `avoid_dynamic` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `avoid_dynamic` rule, add `avoid_dynamic` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - avoid_dynamic
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      avoid_dynamic: true
 ```

@@ -23,10 +23,11 @@ final lastNumber = numbers.last;
 
 ## Usage
 
-To enable the `prefer_iterable_last` rule, add `prefer_iterable_last` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_iterable_last` rule, add `prefer_iterable_last` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_iterable_last
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_iterable_last: true
 ```

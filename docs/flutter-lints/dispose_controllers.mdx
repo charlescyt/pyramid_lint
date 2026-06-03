@@ -42,10 +42,11 @@ class _MyWidgetState extends State<MyWidget> {
 
 ## Usage
 
-To enable the `dispose_controllers` rule, add `dispose_controllers` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `dispose_controllers` rule, add `dispose_controllers` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - dispose_controllers
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      dispose_controllers: true
 ```

@@ -27,10 +27,11 @@ itemBuilder: (_, index) {
 
 ## Usage
 
-To enable the `prefer_underscore_for_unused_callback_parameters` rule, add `prefer_underscore_for_unused_callback_parameters` under custom_lint > rules in your `analysis_options.yaml` file:
+To enable the `prefer_underscore_for_unused_callback_parameters` rule, add `prefer_underscore_for_unused_callback_parameters` under `plugins > pyramid_lint > diagnostics` in your `analysis_options.yaml` file:
 
 ```yaml
-custom_lint:
-  rules:
-    - prefer_underscore_for_unused_callback_parameters
+plugins:
+  pyramid_lint: <version>
+    diagnostics:
+      prefer_underscore_for_unused_callback_parameters: true
 ```

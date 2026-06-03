@@ -5,20 +5,7 @@ analyzer:
     strict-raw-types: true
 
   errors:
-    deprecated_member_use_from_same_package: ignore
-    missing_required_param: error
-    missing_return: error
-    parameter_assignments: warning
     todo: ignore
-
-  exclude:
-    - "**.freezed.dart"
-    - "**.g.dart"
-    - "**.gr.dart"
-    - "bin/cache/**"
-    - "build/**"
-    - "lib/generated_plugin_registrant.dart"
-    - "test/.test_coverage.dart"
 
 formatter:
   trailing_commas: preserve
@@ -51,7 +38,6 @@ linter:
     - avoid_init_to_null
     - avoid_js_rounded_ints
     - avoid_multiple_declarations_per_line
-    - avoid_null_checks_in_equality_operators
     # - avoid_positional_boolean_parameters
     - avoid_print
     - avoid_private_typedef_functions
@@ -158,7 +144,6 @@ linter:
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
-    # - prefer_final_parameters
     - prefer_for_elements_to_map_fromIterable
     # - prefer_foreach
     - prefer_function_declarations_over_variables
@@ -184,8 +169,11 @@ linter:
     - provide_deprecation_message
     # - public_member_api_docs
     - recursive_getters
+    - remove_deprecations_in_breaking_versions
     - require_trailing_commas
     - secure_pubspec_urls
+    - simple_directive_paths
+    - simplify_variable_pattern
     - sized_box_for_whitespace
     - sized_box_shrink_expand
     - slash_for_doc_comments
@@ -196,6 +184,7 @@ linter:
     # - specify_nonobvious_local_variable_types
     # - specify_nonobvious_property_types
     - strict_top_level_inference
+    - switch_on_type
     - test_types_in_equals
     - throw_in_finally
     - tighten_type_of_initializing_formals
@@ -231,6 +220,7 @@ linter:
     - unnecessary_string_interpolations
     - unnecessary_this
     - unnecessary_to_list_in_spreads
+    - unnecessary_unawaited
     - unnecessary_underscores
     - unreachable_from_main
     - unrelated_type_equality_checks
@@ -241,7 +231,6 @@ linter:
     - use_enums
     - use_full_hex_values_for_flutter_colors
     - use_function_type_syntax_for_parameters
-    # - use_if_null_to_convert_nulls_to_bools
     - use_is_even_rather_than_modulo
     - use_key_in_widget_constructors
     - use_late_for_private_fields_and_variables
@@ -257,4 +246,5 @@ linter:
     - use_to_and_as_if_applicable
     - use_truncating_division
     - valid_regexps
+    - var_with_no_type_annotation
     - void_checks
