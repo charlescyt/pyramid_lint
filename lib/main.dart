@@ -10,6 +10,7 @@ import 'src/rules/dart/avoid_empty_blocks.dart';
 import 'src/rules/dart/avoid_mutable_global_variables.dart';
 import 'src/rules/dart/avoid_positional_fields_in_records.dart';
 import 'src/rules/dart/avoid_unused_parameters.dart';
+import 'src/rules/dart/class_members_ordering.dart';
 import 'src/rules/dart/max_line_for_file.dart';
 import 'src/rules/dart/max_lines_for_function.dart';
 import 'src/rules/dart/no_duplicate_imports.dart';
@@ -56,6 +57,7 @@ class PyramidLintPlugin extends Plugin {
       ..registerLintRule(AvoidMutableGlobalVariablesRule())
       ..registerLintRule(AvoidPositionalFieldsInRecordsRule())
       ..registerLintRule(AvoidUnusedParametersRule())
+      ..registerLintRule(ClassMembersOrderingRule())
       ..registerLintRule(MaxLinesForFileRule())
       ..registerLintRule(MaxLinesForFunctionRule())
       ..registerLintRule(NoDuplicateImportsRule())

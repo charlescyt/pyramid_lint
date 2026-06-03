@@ -23,6 +23,7 @@ const TypeChecker animationControllerChecker = TypeChecker.typeNamedLiterally(
   inPackage: 'flutter',
 );
 
+const TypeChecker widgetOrStateChecker = TypeChecker.any([widgetChecker, stateChecker]);
 const TypeChecker containerOrSizedBoxChecker = TypeChecker.any([containerChecker, sizedBoxChecker]);
 const TypeChecker expandedOrFlexibleChecker = TypeChecker.any([expandedChecker, flexibleChecker]);
 const TypeChecker disposableControllerChecker = TypeChecker.any([animationControllerChecker, changeNotifierChecker]);
