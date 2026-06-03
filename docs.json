@@ -72,10 +72,6 @@
           "href": "/dart-lints/avoid_empty_blocks"
         },
         {
-          "title": "avoid_inverted_boolean_expressions",
-          "href": "/dart-lints/avoid_inverted_boolean_expressions"
-        },
-        {
           "title": "avoid_mutable_global_variables",
           "href": "/dart-lints/avoid_mutable_global_variables"
         },
@@ -112,14 +108,6 @@
           "href": "/dart-lints/prefer_async_await"
         },
         {
-          "title": "prefer_const_constructor_declarations",
-          "href": "/dart-lints/prefer_const_constructor_declarations"
-        },
-        {
-          "title": "prefer_immediate_return",
-          "href": "/dart-lints/prefer_immediate_return"
-        },
-        {
           "title": "prefer_iterable_any",
           "href": "/dart-lints/prefer_iterable_any"
         },
@@ -146,6 +134,10 @@
         {
           "title": "prefer_underscore_for_unused_callback_parameters",
           "href": "/dart-lints/prefer_underscore_for_unused_callback_parameters"
+        },
+        {
+          "title": "proper_from_environment",
+          "href": "/dart-lints/proper_from_environment"
         },
         {
           "title": "unnecessary_nullable_return_type",
@@ -201,10 +193,6 @@
           "href": "/flutter-lints/proper_expanded_and_flexible"
         },
         {
-          "title": "proper_from_environment",
-          "href": "/flutter-lints/proper_from_environment"
-        },
-        {
           "title": "proper_super_dispose",
           "href": "/flutter-lints/proper_super_dispose"
         },
@@ -228,14 +216,6 @@
         {
           "title": "convert_to_for_in_iterable_indexed_loop",
           "href": "/dart-assists/convert_to_for_in_iterable_indexed_loop"
-        },
-        {
-          "title": "invert_boolean_expression",
-          "href": "/dart-assists/invert_boolean_expression"
-        },
-        {
-          "title": "swap_then_else_expression",
-          "href": "/dart-assists/swap_then_else_expression"
         }
       ]
     },
@@ -243,20 +223,8 @@
       "group": "Flutter Assists",
       "pages": [
         {
-          "title": "use_edge_insets_zero",
-          "href": "/flutter-assists/use_edge_insets_zero"
-        },
-        {
-          "title": "wrap_all_children_with_expanded",
-          "href": "/flutter-assists/wrap_all_children_with_expanded"
-        },
-        {
           "title": "wrap_with_layout_builder",
           "href": "/flutter-assists/wrap_with_layout_builder"
-        },
-        {
-          "title": "wrap_with_listenable_builder",
-          "href": "/flutter-assists/wrap_with_listenable_builder"
         },
         {
           "title": "wrap_with_stack",
