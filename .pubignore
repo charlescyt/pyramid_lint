@@ -1,0 +1,36 @@
+# Controls which files are included in the package published to pub.dev.
+# https://dart.dev/tools/pub/publishing#what-files-are-published
+#
+# When this file exists, pub uses ONLY these patterns (not .gitignore). Keep the
+# block below in sync with .gitignore so local and published exclusions match.
+
+# --- .gitignore ---
+
+.DS_Store
+.atom/
+.idea/*
+.vscode/*
+
+# Files and directories created by pub
+.dart_tool/
+.packages
+pubspec.lock
+
+# Conventional directory for build outputs
+build/
+
+# Exceptions to above rules.
+!.vscode/dart.code-snippets
+
+# Log files
+*.log
+
+# --- Not published (in addition to .gitignore) ---
+
+# User docs site (https://docs.page/charlescyt/pyramid_lint).
+docs/
+docs.json
+
+# GitHub / community files.
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
